@@ -15,7 +15,10 @@
 #基本使用
 ###1.添加Gradle依赖 
  
-        compile 'com.allen.supertextview:supertextview:1.0.0' 
+        dependencies {
+        ...
+        compile 'com.allen.supertextview:supertextview:1.0.0'
+        }
 
 ###2.布局中如何使用
         <com.allen.supertextviewlibrary.SuperTextView
