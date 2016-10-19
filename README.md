@@ -17,7 +17,7 @@
  
         dependencies {
         ...
-        compile 'com.allen.supertextview:supertextview:1.0.0'
+        compile 'com.allen.supertextview:supertextview:1.0.1'
         }
 
 ###2.布局中如何使用
@@ -141,6 +141,7 @@
         <attr name="sRightTextMarginRight" format="dimension"/>
         <attr name="sRightCheckBoxMarginRight" format="dimension"/>
         <attr name="sRightCheckBoxShow" format="boolean"/>
+        <attr name="sIsChecked" format="boolean"/>
         <attr name="sUseRipple" format="boolean"/>
 
         <attr name="sLeftTextSize" format="dimension"/>
