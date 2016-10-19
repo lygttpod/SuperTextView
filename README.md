@@ -2,8 +2,7 @@
 一个功能强大的TextView，可以满足日常大部分布局方式，开发者可已自行组合属性配置出属于自己风格的样式
 
 #效果图
-![效果图](https://github.com/lygttpod/SuperTextView/blob/master/screenshot.png =540*960)
-<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot.png" width = "540" height = "960" alt="图片名称" align=center />
+<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot.png" width = "270" height = "480" alt="效果图" align=center />
 #基本使用
 ###1.添加Gradle依赖 
  
