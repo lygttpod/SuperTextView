@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="mLeftIconId" type="id" />
-    <item name="mCenterBaseLineId" type="id" />
-    <item name="mLeftBottomTextId" type="id" />
+    <item name="sLeftIconId" type="id" />
+    <item name="sCenterBaseLineId" type="id" />
+    <item name="sLeftBottomTextId" type="id" />
 
 </resources>

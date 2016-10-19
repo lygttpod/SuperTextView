@@ -285,7 +285,7 @@ public class SuperTextView extends RelativeLayout {
         View view = new View(mContext);
         centerBaseLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, dip2px(mContext, 10));
         centerBaseLineParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
-        view.setId(R.id.mCenterBaseLineId);
+        view.setId(R.id.sCenterBaseLineId);
         view.setLayoutParams(centerBaseLineParams);
         addView(view);
     }
@@ -301,7 +301,7 @@ public class SuperTextView extends RelativeLayout {
         leftImgParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
         setMargin(leftImgParams, leftIconMarginLeft, 0, 0, 0);
         leftIconIV.setScaleType(ImageView.ScaleType.CENTER);
-        leftIconIV.setId(R.id.mLeftIconId);
+        leftIconIV.setId(R.id.sLeftIconId);
         leftIconIV.setLayoutParams(leftImgParams);
         leftIconIV.setImageDrawable(leftIconRes);
         addView(leftIconIV);
@@ -314,7 +314,7 @@ public class SuperTextView extends RelativeLayout {
         leftTV = new TextView(mContext);
         leftTextParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         leftTextParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
-        leftTextParams.addRule(RelativeLayout.RIGHT_OF, R.id.mLeftIconId);
+        leftTextParams.addRule(RelativeLayout.RIGHT_OF, R.id.sLeftIconId);
         setMargin(leftTextParams, leftTVMarginLeft, 0, 0, 0);
         leftTV.setLayoutParams(leftTextParams);
         leftTV.setText(leftTextString);
@@ -329,8 +329,8 @@ public class SuperTextView extends RelativeLayout {
     private void initLeftTopText() {
         leftTopTV = new TextView(mContext);
         leftTopTextParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        leftTopTextParams.addRule(RelativeLayout.ABOVE, R.id.mCenterBaseLineId);
-        leftTopTextParams.addRule(RelativeLayout.RIGHT_OF, R.id.mLeftIconId);
+        leftTopTextParams.addRule(RelativeLayout.ABOVE, R.id.sCenterBaseLineId);
+        leftTopTextParams.addRule(RelativeLayout.RIGHT_OF, R.id.sLeftIconId);
         setMargin(leftTopTextParams, leftTopMarginLeft, 0, 0, 0);
         leftTopTV.setLayoutParams(leftTopTextParams);
         leftTopTV.setText(leftTopTextString);
@@ -353,11 +353,11 @@ public class SuperTextView extends RelativeLayout {
     private void initLeftBottomText() {
         leftBottomTV = new TextView(mContext);
         leftBottomParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        leftBottomParams.addRule(RelativeLayout.BELOW, R.id.mCenterBaseLineId);
-        leftBottomParams.addRule(RelativeLayout.RIGHT_OF, R.id.mLeftIconId);
+        leftBottomParams.addRule(RelativeLayout.BELOW, R.id.sCenterBaseLineId);
+        leftBottomParams.addRule(RelativeLayout.RIGHT_OF, R.id.sLeftIconId);
         setMargin(leftBottomParams, leftBottomMarginLeft, 0, 0, 0);
         leftBottomTV.setLayoutParams(leftBottomParams);
-        leftBottomTV.setId(R.id.mLeftBottomTextId);
+        leftBottomTV.setId(R.id.sLeftBottomTextId);
         leftBottomTV.setText(leftBottomTextString);
         setTextColor(leftBottomTV, leftBottomTVColor);
         setTextSize(leftBottomTV, leftBottomTVSize);
@@ -378,8 +378,8 @@ public class SuperTextView extends RelativeLayout {
     private void initLeftBottomText2() {
         leftBottomTV2 = new TextView(mContext);
         leftBottomParams2 = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        leftBottomParams2.addRule(RelativeLayout.BELOW, R.id.mCenterBaseLineId);
-        leftBottomParams2.addRule(RelativeLayout.RIGHT_OF, R.id.mLeftBottomTextId);
+        leftBottomParams2.addRule(RelativeLayout.BELOW, R.id.sCenterBaseLineId);
+        leftBottomParams2.addRule(RelativeLayout.RIGHT_OF, R.id.sLeftBottomTextId);
         setMargin(leftBottomParams2, leftBottomMarginLeft2, 0, 0, 0);
         leftBottomTV2.setLayoutParams(leftBottomParams2);
         leftBottomTV2.setText(leftBottomTextString2);
