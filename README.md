@@ -1,9 +1,10 @@
 # SuperTextView
-一个功能强大的TextView，可以满足日常大部分布局方式，开发者可已自行组合属性配置出属于自己风格的样式(可以通过配置设置是否开启点击出现水波效果(useRipple)！)
+一个功能强大的TextView，可以满足日常大部分布局方式，开发者可已自行组合属性配置出属于自己风格的样式!
 
 #效果图
 <div  align="center">    
 <img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot.png" width = "360" height = "640" alt="效果图" align=center />
+<img src="https://github.com/lygttpod/SuperTextView/blob/master/type1.png" width = "360" height = "640" alt="效果图" align=center />
 </div>
 #基本使用
 ###1.添加Gradle依赖 
