@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 白色 -->
+    <color name="white">#FFF</color>
+    <color name="common_pressed">#20000000</color>  <!--白色背景按下去的颜色-->
+
+</resources>
