@@ -29,6 +29,7 @@
         <attr name="sRightTextMarginRight" format="dimension"/>
         <attr name="sRightCheckBoxMarginRight" format="dimension"/>
         <attr name="sRightCheckBoxShow" format="boolean"/>
+        <attr name="sIsChecked" format="boolean"/>
         <attr name="sUseRipple" format="boolean"/>
 
         <attr name="sLeftTextSize" format="dimension"/>

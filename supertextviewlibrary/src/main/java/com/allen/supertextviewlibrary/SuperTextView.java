@@ -66,6 +66,7 @@ public class SuperTextView extends RelativeLayout {
     private int rightIconMarginRight;//右边图标的右边距
     private int rightCheckBoxMarginRight;//右边checkBox的右边距
     private boolean showCheckBox;//是否显示右边选择框
+    private boolean isChecked;//是否默认选中
 
     private int defaultSize = 0;//默认字体大小
 
@@ -140,6 +141,7 @@ public class SuperTextView extends RelativeLayout {
         leftBottomTextString2 = typedArray.getString(R.styleable.SuperTextView_sLeftBottomTextString2);
 
         showCheckBox = typedArray.getBoolean(R.styleable.SuperTextView_sRightCheckBoxShow, false);
+        isChecked = typedArray.getBoolean(R.styleable.SuperTextView_sIsChecked, false);
         useRipple = typedArray.getBoolean(R.styleable.SuperTextView_sUseRipple, false);
 
         lineType = typedArray.getInt(R.styleable.SuperTextView_sLineShow, DEFAULT);
@@ -461,6 +463,7 @@ public class SuperTextView extends RelativeLayout {
             rightCheckBox.setGravity(CENTER_IN_PARENT);
             rightCheckBox.setButtonDrawable(rightCheckBoxBg);
         }
+        rightCheckBox.setChecked(isChecked);
         addView(rightCheckBox);
     }
 
@@ -620,6 +623,7 @@ public class SuperTextView extends RelativeLayout {
      * @return 返回值
      */
     public SuperTextView setCbChecked(boolean checked) {
+        isChecked = checked;
         if (rightCheckBox == null) {
             initRightCheckBox();
         } else {
