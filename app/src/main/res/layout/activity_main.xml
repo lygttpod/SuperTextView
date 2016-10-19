@@ -31,66 +31,47 @@
                 android:text="(更多组合方式可自行组合)"
                 android:textColor="@color/colorAccent" />
 
-            <com.allen.supertextviewlibrary.SuperTextView
-                android:id="@+id/super_tv"
+            <Button
+                android:id="@+id/button0"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                stv:sLeftBottomTextColor2="@color/colorAccent"
-                stv:sLeftBottomTextString="招商银行（8888）"
-                stv:sLeftBottomTextString2="限额说明>>"
-                stv:sLeftIconRes="@drawable/bank_zhao_shang"
-                stv:sLeftTopTextString="银行卡支付"
-                stv:sRightCheckBoxRes="@drawable/circular_check_bg"
-                stv:sRightCheckBoxShow="true" />
+                android:layout_height="wrap_content"
+                android:text="组合0" />
 
-            <com.allen.supertextviewlibrary.SuperTextView
+            <Button
+                android:id="@+id/button1"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                stv:sLeftBottomTextColor="@color/colorAccent"
-                stv:sLeftBottomTextString="限额说明>>"
-                stv:sLeftIconRes="@drawable/not_bank_card_icon"
-                stv:sLeftTopTextString="银行卡支付" />
+                android:layout_height="wrap_content"
+                android:text="组合1" />
 
-            <com.allen.supertextviewlibrary.SuperTextView
+            <Button
+                android:id="@+id/button2"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                stv:sLeftBottomTextString="188****8888"
-                stv:sLeftIconRes="@drawable/head_default"
-                stv:sLeftTopTextString="张三" />
+                android:layout_height="wrap_content"
+                android:text="组合2" />
 
-            <com.allen.supertextviewlibrary.SuperTextView
+            <Button
+                android:id="@+id/button3"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                stv:sLeftIconRes="@drawable/question"
-                stv:sLeftTextString="常见问题" />
+                android:layout_height="wrap_content"
+                android:text="组合3" />
 
-            <com.allen.supertextviewlibrary.SuperTextView
+            <Button
+                android:id="@+id/button4"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                stv:sLeftIconRes="@drawable/my_bankcard"
-                stv:sLeftTextString="我的银行卡"
-                stv:sRightTextColor="@color/colorAccent"
-                stv:sRightTextString="已绑定" />
+                android:layout_height="wrap_content"
+                android:text="组合4" />
 
-            <com.allen.supertextviewlibrary.SuperTextView
+            <Button
+                android:id="@+id/button5"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                stv:sLeftTextString="设置中心"
-                stv:sRightIconRes="@drawable/arrow_right_red" />
+                android:layout_height="wrap_content"
+                android:text="组合5" />
 
-            <com.allen.supertextviewlibrary.SuperTextView
+            <Button
+                android:id="@+id/button6"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                stv:sCenterTextString="88.88元"
-                stv:sLeftTextString="2016-10-18"
-                stv:sRightTextString="正常" />
-
-            <com.allen.supertextviewlibrary.SuperTextView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                stv:sLeftTextString="年化率"
-                stv:sRightTextColor="@color/colorAccent"
-                stv:sRightTextString="13.8%" />
+                android:layout_height="wrap_content"
+                android:text="组合6" />
         </LinearLayout>
     </ScrollView>
 

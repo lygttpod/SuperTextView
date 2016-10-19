@@ -1,5 +1,5 @@
 # SuperTextView
-一个功能强大的TextView，可以满足日常大部分布局方式，开发者可已自行组合属性配置出属于自己风格的样式
+一个功能强大的TextView，可以满足日常大部分布局方式，开发者可已自行组合属性配置出属于自己风格的样式(可以通过配置设置是否开启点击出现水波效果(useRipple)！)
 
 #效果图
 ![效果图](https://github.com/lygttpod/SuperTextView/screenshot.png)
@@ -19,8 +19,12 @@
                 stv:sLeftIconRes="@drawable/bank_zhao_shang"
                 stv:sLeftTopTextString="银行卡支付"
                 stv:sRightCheckBoxRes="@drawable/circular_check_bg"
-                stv:sRightCheckBoxShow="true" />
-                
+                stv:sRightCheckBoxShow="true"
+                stv:sLineShow="bottom"
+                 />
+        注意：
+                1、上下的线可以通过   sLineShow 设置  有四种显示方式 none，top，bottom，both
+                2、通过设置 sUseRipple=true 开启水波效果
 ###3.代码中如何使用
        /**
      * 可以通过链式设置大部分常用的属性值

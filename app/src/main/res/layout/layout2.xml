@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.allen.supertextviewlibrary.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        stv:sLeftIconRes="@drawable/uu"
+        stv:sBottomLineMargin="0dp"
+        stv:sLeftTextString="收货地址" />
+    <com.allen.supertextviewlibrary.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        stv:sLeftIconRes="@drawable/uy"
+        stv:sBottomLineMargin="0dp"
+        stv:sLeftTextString="我的收藏" />
+    <com.allen.supertextviewlibrary.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        stv:sLeftIconRes="@drawable/uv"
+        stv:sBottomLineMargin="0dp"
+        stv:sLeftTextString="美食相册" />
+
+    <com.allen.supertextviewlibrary.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        stv:sLeftIconRes="@drawable/v0"
+        stv:sBottomLineMargin="0dp"
+        stv:sLeftTextString="积分商城" />
+    <com.allen.supertextviewlibrary.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        stv:sLeftIconRes="@drawable/v1"
+        stv:sBottomLineMargin="0dp"
+        stv:sLeftTextString="会员中心" />
+    <com.allen.supertextviewlibrary.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        stv:sLeftIconRes="@drawable/v2"
+        stv:sBottomLineMargin="0dp"
+        stv:sLeftTextString="加盟合作" />
+
+</LinearLayout>
