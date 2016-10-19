@@ -3,8 +3,14 @@
 
 #效果图
 <div  align="center">    
-<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot.png" width = "360" height = "640" alt="效果图" align=center />
+<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot.png" width = "360" height = "640" alt="效果图" align=center /></div>
+<div  align="center">    
 <img src="https://github.com/lygttpod/SuperTextView/blob/master/type1.png" width = "360" height = "640" alt="效果图" align=center />
+<img src="https://github.com/lygttpod/SuperTextView/blob/master/type2.png" width = "360" height = "640" alt="效果图" align=center />
+<img src="https://github.com/lygttpod/SuperTextView/blob/master/type3.png" width = "360" height = "640" alt="效果图" align=center />
+<img src="https://github.com/lygttpod/SuperTextView/blob/master/type4.png" width = "360" height = "640" alt="效果图" align=center />
+<img src="https://github.com/lygttpod/SuperTextView/blob/master/type5.png" width = "360" height = "640" alt="效果图" align=center />
+<img src="https://github.com/lygttpod/SuperTextView/blob/master/type6.png" width = "360" height = "640" alt="效果图" align=center />
 </div>
 #基本使用
 ###1.添加Gradle依赖 
