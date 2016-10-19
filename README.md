@@ -3,6 +3,7 @@
 
 #效果图
 ![效果图](https://github.com/lygttpod/SuperTextView/blob/master/screenshot.png =540*960)
+<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot.png" width = "540" height = "960" alt="图片名称" align=center />
 #基本使用
 ###1.添加Gradle依赖 
  
