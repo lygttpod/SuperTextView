@@ -342,9 +342,13 @@ public class SuperTextView extends RelativeLayout {
     /**
      * 设置通用的textView显示效果属性
      * @param textView
+     * view
      * @param isSingLines
+     * 是否单行显示
      * @param maxLines
+     * 显示最大行
      * @param maxEms
+     * 最多显示多少个字
      */
     private void setTextViewParams(TextView textView,boolean isSingLines,int maxLines,int maxEms) {
         textView.setSingleLine(isSingLines);
