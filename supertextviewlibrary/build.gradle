@@ -31,5 +31,5 @@ publish {
     userOrg = 'lygttpod'
     groupId = 'com.allen.supertextview'
     artifactId = 'supertextview'
-    publishVersion = '1.0.1'
+    publishVersion = '1.0.2'
 }

@@ -3,5 +3,7 @@
     <item name="sLeftIconId" type="id" />
     <item name="sCenterBaseLineId" type="id" />
     <item name="sLeftBottomTextId" type="id" />
+    <item name="sLeftTextId" type="id" />
+    <item name="sRightTextId" type="id" />
 
 </resources>

@@ -3,8 +3,10 @@ package com.allen.supertextviewlibrary;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -87,6 +89,10 @@ public class SuperTextView extends RelativeLayout {
     private int leftBottomTVColor2;//左下第二个文字颜色
     private int rightTVColor;//右边文字颜色
     private int centerTVColor;//中间文字颜色
+
+    private boolean isSingLines = true;//是否单行显示   默认单行
+    private int maxLines = 1;//最多几行    默认显示一行
+    private int maxEms = 10;//最多几个字    默认显示10个汉子
 
     private static final int NONE = 0;
     private static final int TOP = 1;
@@ -176,6 +182,10 @@ public class SuperTextView extends RelativeLayout {
         rightTVSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTextSize, defaultSize);
         centerTVSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterTextSize, defaultSize);
 
+        ///////设置textView的属性///////////
+        isSingLines = typedArray.getBoolean(R.styleable.SuperTextView_sIsSingLines, isSingLines);
+        maxLines = typedArray.getInt(R.styleable.SuperTextView_sMaxLines,maxLines);
+        maxEms =  typedArray.getInt(R.styleable.SuperTextView_sMaxEms,maxEms);
         typedArray.recycle();
     }
 
@@ -317,12 +327,30 @@ public class SuperTextView extends RelativeLayout {
         leftTextParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         leftTextParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
         leftTextParams.addRule(RelativeLayout.RIGHT_OF, R.id.sLeftIconId);
-        setMargin(leftTextParams, leftTVMarginLeft, 0, 0, 0);
+        setMargin(leftTextParams, leftTVMarginLeft, 0, dip2px(mContext,10), 0);
+        leftTV.setId(R.id.sLeftTextId);
         leftTV.setLayoutParams(leftTextParams);
         leftTV.setText(leftTextString);
+
+        setTextViewParams(leftTV,isSingLines,maxLines,maxEms);
+
         setTextColor(leftTV, leftTVColor);
         setTextSize(leftTV, leftTVSize);
         addView(leftTV);
+    }
+
+    /**
+     * 设置通用的textView显示效果属性
+     * @param textView
+     * @param isSingLines
+     * @param maxLines
+     * @param maxEms
+     */
+    private void setTextViewParams(TextView textView,boolean isSingLines,int maxLines,int maxEms) {
+        textView.setSingleLine(isSingLines);
+        textView.setMaxLines(maxLines);
+        textView.setMaxEms(maxEms);
+        textView.setEllipsize(TextUtils.TruncateAt.END);
     }
 
     /**
@@ -346,6 +374,7 @@ public class SuperTextView extends RelativeLayout {
                 }
             }
         });
+        setTextViewParams(leftTopTV,isSingLines,maxLines,maxEms);
         addView(leftTopTV);
     }
 
@@ -371,6 +400,7 @@ public class SuperTextView extends RelativeLayout {
                 }
             }
         });
+        setTextViewParams(leftBottomTV,isSingLines,maxLines,maxEms);
         addView(leftBottomTV);
     }
 
@@ -395,6 +425,7 @@ public class SuperTextView extends RelativeLayout {
                 }
             }
         });
+        setTextViewParams(leftBottomTV2,isSingLines,maxLines,maxEms);
         addView(leftBottomTV2);
     }
 
@@ -409,6 +440,7 @@ public class SuperTextView extends RelativeLayout {
         centerTV.setText(centerTextString);
         setTextColor(centerTV, centerTVColor);
         setTextSize(centerTV, centerTVSize);
+        setTextViewParams(centerTV,isSingLines,maxLines,maxEms);
         addView(centerTV);
     }
 
@@ -420,12 +452,15 @@ public class SuperTextView extends RelativeLayout {
         rightTextParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         rightTextParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
         rightTextParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, TRUE);
+        rightTextParams.addRule(RelativeLayout.RIGHT_OF, R.id.sLeftTextId);
         setMargin(rightTextParams, 0, 0, rightTVMarginRight, 0);
+        rightTV.setId(R.id.sRightTextId);
         rightTV.setLayoutParams(rightTextParams);
         rightTV.setText(rightTextString);
         setTextColor(rightTV, rightTVColor);
         setTextSize(rightTV, rightTVSize);
-
+        rightTV.setGravity(Gravity.RIGHT);
+        setTextViewParams(rightTV,isSingLines,maxLines,maxEms);
         addView(rightTV);
     }
 

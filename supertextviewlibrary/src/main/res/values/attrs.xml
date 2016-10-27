@@ -47,6 +47,10 @@
         <attr name="sRightTextColor" format="color"/>
         <attr name="sCenterTextColor" format="color"/>
 
+        <attr name="sIsSingLines" format="boolean"/>
+        <attr name="sMaxLines" format="integer"/>
+        <attr name="sMaxEms" format="integer"/>
+
         <attr name="sLineShow" format="enum">
             <enum name="none" value="0"/>
             <enum name="top" value="1"/>
