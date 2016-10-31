@@ -14,10 +14,20 @@
 </div>
 #基本使用
 ###1.添加Gradle依赖 
+先在 build.gradle 的 repositories 添加:
+
+     allprojects {
+         repositories {
+            ...
+            maven { url "https://jitpack.io" }
+        }
+    }
+    
+ 然后在dependencies添加:
  
         dependencies {
         ...
-        compile 'com.allen.supertextview:supertextview:1.0.2'
+        compile 'com.allen.supertextview:supertextview:1.0.3'
         }
 
 ###2.布局中如何使用
@@ -168,11 +178,21 @@
 
     </declare-styleable> 
     
+###5.使用第三方库(Picasso或者Glide)加载网络图片
+         Picasso.with(this).load(url)
+                .placeholder(R.drawable.head_default)
+                .into((ImageView) superTextView.getView(SuperTextView.leftImageViewId));
+    
 #更新日志
+### V1.0.3
+* 	新增左右两边图片支持常用三方库加载网络图片
+
 ### V1.0.2
 * 修复文字内容过多，超过1行的处理，导致两边的文字会引起重叠的bug
+
 ### V1.0.1
 * 修复编译版本不同导致无法正常使用的bug
+
 ### V1.0.0
 * 功能强大的TextView
 
