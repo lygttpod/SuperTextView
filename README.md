@@ -17,7 +17,7 @@
  
         dependencies {
         ...
-        compile 'com.allen.supertextview:supertextview:1.0.1'
+        compile 'com.allen.supertextview:supertextview:1.0.2'
         }
 
 ###2.布局中如何使用
@@ -169,6 +169,10 @@
     </declare-styleable> 
     
 #更新日志
+### V1.0.2
+* 修复文字内容过多，超过1行的处理，导致两边的文字会引起重叠的bug
+### V1.0.1
+* 修复编译版本不同导致无法正常使用的bug
 ### V1.0.0
 * 功能强大的TextView
 
