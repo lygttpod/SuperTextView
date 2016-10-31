@@ -2,8 +2,11 @@
 <resources>
     <item name="sLeftIconId" type="id" />
     <item name="sCenterBaseLineId" type="id" />
-    <item name="sLeftBottomTextId" type="id" />
+    <item name="sCenterTextId" type="id" />
     <item name="sLeftTextId" type="id" />
+    <item name="sLeftTopTextId" type="id" />
+    <item name="sLeftBottomTextId" type="id" />
+    <item name="sLeftBottomTextId2" type="id" />
     <item name="sRightTextId" type="id" />
-
+    <item name="sRightIconId" type="id" />
 </resources>

@@ -100,6 +100,15 @@ public class SuperTextView extends RelativeLayout {
     private static final int BOTH = 3;
     private static final int DEFAULT = BOTTOM;
 
+    public static final int leftTextViewId = 0;
+    public static final int leftTopTextViewId = 1;
+    public static final int leftBottomTextViewId = 2;
+    public static final int leftBottomTextViewId2 = 3;
+    public static final int rightTextViewId = 4;
+    public static final int centerTextViewId = 5;
+    public static final int leftImageViewId = 6;
+    public static final int rightImageViewId = 7;
+
     private boolean useRipple;
 
     private int lineType;
@@ -184,8 +193,8 @@ public class SuperTextView extends RelativeLayout {
 
         ///////设置textView的属性///////////
         isSingLines = typedArray.getBoolean(R.styleable.SuperTextView_sIsSingLines, isSingLines);
-        maxLines = typedArray.getInt(R.styleable.SuperTextView_sMaxLines,maxLines);
-        maxEms =  typedArray.getInt(R.styleable.SuperTextView_sMaxEms,maxEms);
+        maxLines = typedArray.getInt(R.styleable.SuperTextView_sMaxLines, maxLines);
+        maxEms = typedArray.getInt(R.styleable.SuperTextView_sMaxEms, maxEms);
         typedArray.recycle();
     }
 
@@ -315,7 +324,9 @@ public class SuperTextView extends RelativeLayout {
         leftIconIV.setScaleType(ImageView.ScaleType.CENTER);
         leftIconIV.setId(R.id.sLeftIconId);
         leftIconIV.setLayoutParams(leftImgParams);
-        leftIconIV.setImageDrawable(leftIconRes);
+        if (leftIconRes != null) {
+            leftIconIV.setImageDrawable(leftIconRes);
+        }
         addView(leftIconIV);
     }
 
@@ -327,12 +338,12 @@ public class SuperTextView extends RelativeLayout {
         leftTextParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         leftTextParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
         leftTextParams.addRule(RelativeLayout.RIGHT_OF, R.id.sLeftIconId);
-        setMargin(leftTextParams, leftTVMarginLeft, 0, dip2px(mContext,10), 0);
+        setMargin(leftTextParams, leftTVMarginLeft, 0, dip2px(mContext, 10), 0);
         leftTV.setId(R.id.sLeftTextId);
         leftTV.setLayoutParams(leftTextParams);
         leftTV.setText(leftTextString);
 
-        setTextViewParams(leftTV,isSingLines,maxLines,maxEms);
+        setTextViewParams(leftTV, isSingLines, maxLines, maxEms);
 
         setTextColor(leftTV, leftTVColor);
         setTextSize(leftTV, leftTVSize);
@@ -341,16 +352,13 @@ public class SuperTextView extends RelativeLayout {
 
     /**
      * 设置通用的textView显示效果属性
-     * @param textView
-     * view
-     * @param isSingLines
-     * 是否单行显示
-     * @param maxLines
-     * 显示最大行
-     * @param maxEms
-     * 最多显示多少个字
+     *
+     * @param textView    view
+     * @param isSingLines 是否单行显示
+     * @param maxLines    显示最大行
+     * @param maxEms      最多显示多少个字
      */
-    private void setTextViewParams(TextView textView,boolean isSingLines,int maxLines,int maxEms) {
+    private void setTextViewParams(TextView textView, boolean isSingLines, int maxLines, int maxEms) {
         textView.setSingleLine(isSingLines);
         textView.setMaxLines(maxLines);
         textView.setMaxEms(maxEms);
@@ -366,6 +374,7 @@ public class SuperTextView extends RelativeLayout {
         leftTopTextParams.addRule(RelativeLayout.ABOVE, R.id.sCenterBaseLineId);
         leftTopTextParams.addRule(RelativeLayout.RIGHT_OF, R.id.sLeftIconId);
         setMargin(leftTopTextParams, leftTopMarginLeft, 0, 0, 0);
+        leftTopTV.setId(R.id.sLeftTopTextId);
         leftTopTV.setLayoutParams(leftTopTextParams);
         leftTopTV.setText(leftTopTextString);
         setTextColor(leftTopTV, leftTopTVColor);
@@ -378,7 +387,7 @@ public class SuperTextView extends RelativeLayout {
                 }
             }
         });
-        setTextViewParams(leftTopTV,isSingLines,maxLines,maxEms);
+        setTextViewParams(leftTopTV, isSingLines, maxLines, maxEms);
         addView(leftTopTV);
     }
 
@@ -391,8 +400,8 @@ public class SuperTextView extends RelativeLayout {
         leftBottomParams.addRule(RelativeLayout.BELOW, R.id.sCenterBaseLineId);
         leftBottomParams.addRule(RelativeLayout.RIGHT_OF, R.id.sLeftIconId);
         setMargin(leftBottomParams, leftBottomMarginLeft, 0, 0, 0);
-        leftBottomTV.setLayoutParams(leftBottomParams);
         leftBottomTV.setId(R.id.sLeftBottomTextId);
+        leftBottomTV.setLayoutParams(leftBottomParams);
         leftBottomTV.setText(leftBottomTextString);
         setTextColor(leftBottomTV, leftBottomTVColor);
         setTextSize(leftBottomTV, leftBottomTVSize);
@@ -404,7 +413,7 @@ public class SuperTextView extends RelativeLayout {
                 }
             }
         });
-        setTextViewParams(leftBottomTV,isSingLines,maxLines,maxEms);
+        setTextViewParams(leftBottomTV, isSingLines, maxLines, maxEms);
         addView(leftBottomTV);
     }
 
@@ -417,6 +426,7 @@ public class SuperTextView extends RelativeLayout {
         leftBottomParams2.addRule(RelativeLayout.BELOW, R.id.sCenterBaseLineId);
         leftBottomParams2.addRule(RelativeLayout.RIGHT_OF, R.id.sLeftBottomTextId);
         setMargin(leftBottomParams2, leftBottomMarginLeft2, 0, 0, 0);
+        leftBottomTV2.setId(R.id.sLeftBottomTextId2);
         leftBottomTV2.setLayoutParams(leftBottomParams2);
         leftBottomTV2.setText(leftBottomTextString2);
         setTextColor(leftBottomTV2, leftBottomTVColor2);
@@ -429,7 +439,7 @@ public class SuperTextView extends RelativeLayout {
                 }
             }
         });
-        setTextViewParams(leftBottomTV2,isSingLines,maxLines,maxEms);
+        setTextViewParams(leftBottomTV2, isSingLines, maxLines, maxEms);
         addView(leftBottomTV2);
     }
 
@@ -440,11 +450,12 @@ public class SuperTextView extends RelativeLayout {
         centerTV = new TextView(mContext);
         centerTextParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         centerTextParams.addRule(RelativeLayout.CENTER_IN_PARENT, TRUE);
+        centerTV.setId(R.id.sCenterTextId);
         centerTV.setLayoutParams(centerTextParams);
         centerTV.setText(centerTextString);
         setTextColor(centerTV, centerTVColor);
         setTextSize(centerTV, centerTVSize);
-        setTextViewParams(centerTV,isSingLines,maxLines,maxEms);
+        setTextViewParams(centerTV, isSingLines, maxLines, maxEms);
         addView(centerTV);
     }
 
@@ -457,6 +468,7 @@ public class SuperTextView extends RelativeLayout {
         rightTextParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
         rightTextParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, TRUE);
         rightTextParams.addRule(RelativeLayout.RIGHT_OF, R.id.sLeftTextId);
+        rightTextParams.addRule(RelativeLayout.LEFT_OF, R.id.sRightIconId);
         setMargin(rightTextParams, 0, 0, rightTVMarginRight, 0);
         rightTV.setId(R.id.sRightTextId);
         rightTV.setLayoutParams(rightTextParams);
@@ -464,7 +476,7 @@ public class SuperTextView extends RelativeLayout {
         setTextColor(rightTV, rightTVColor);
         setTextSize(rightTV, rightTVSize);
         rightTV.setGravity(Gravity.RIGHT);
-        setTextViewParams(rightTV,isSingLines,maxLines,maxEms);
+        setTextViewParams(rightTV, isSingLines, maxLines, maxEms);
         addView(rightTV);
     }
 
@@ -473,16 +485,16 @@ public class SuperTextView extends RelativeLayout {
      */
     private void initRightIcon() {
         rightIconIV = new ImageView(mContext);
-
         rightImgParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-
         rightImgParams.addRule(ALIGN_PARENT_RIGHT, TRUE);
         rightImgParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
-
         setMargin(rightImgParams, 0, 0, rightIconMarginRight, 0);
+        rightIconIV.setScaleType(ImageView.ScaleType.CENTER);
+        rightIconIV.setId(R.id.sRightIconId);
         rightIconIV.setLayoutParams(rightImgParams);
-        rightIconIV.setImageDrawable(rightIconRes);
-
+        if (rightIconRes != null) {
+            rightIconIV.setImageDrawable(rightIconRes);
+        }
         addView(rightIconIV);
     }
 
@@ -658,6 +670,22 @@ public class SuperTextView extends RelativeLayout {
     }
 
     /**
+     * 设备中间文字
+     *
+     * @param centerString 中间文字
+     * @return 返回对象
+     */
+    public SuperTextView setCenterString(String centerString) {
+        centerTextString = centerString;
+        if (centerTV == null) {
+            initCenterText();
+        } else {
+            centerTV.setText(centerString);
+        }
+        return this;
+    }
+
+    /**
      * @param checked 是否选中
      * @return 返回值
      */
@@ -784,7 +812,6 @@ public class SuperTextView extends RelativeLayout {
 
     /**
      * 点击事件
-     *
      * @param listener listener对象
      * @return 返回对象
      */
@@ -810,6 +837,94 @@ public class SuperTextView extends RelativeLayout {
         }
 
     }
+
+    /**
+     * 获取控件ID便于根据ID设置值
+     *
+     * @param viewName 需要的textViewName
+     * @return 返回ID
+     */
+    public int getViewId(int viewName) {
+        int viewId = 0;
+        switch (viewName) {
+            case leftTextViewId:
+                if (leftTV == null) {
+                    initLeftText();
+                }
+                viewId = R.id.sLeftTextId;
+                break;
+            case leftTopTextViewId:
+                if (leftTopTV == null) {
+                    initLeftTopText();
+                }
+                viewId = R.id.sLeftTopTextId;
+                break;
+            case leftBottomTextViewId:
+                if (leftBottomTV == null) {
+                    initLeftBottomText();
+                }
+                viewId = R.id.sLeftBottomTextId;
+                break;
+            case leftBottomTextViewId2:
+                if (leftBottomTV2 == null) {
+                    initLeftBottomText2();
+                }
+                viewId = R.id.sLeftBottomTextId2;
+                break;
+            case centerTextViewId:
+                if (centerTV == null) {
+                    initCenterText();
+                }
+                viewId = R.id.sCenterTextId;
+                break;
+            case rightTextViewId:
+                if (rightTV == null) {
+                    initRightText();
+                }
+                viewId = R.id.sRightTextId;
+                break;
+            case leftImageViewId:
+                if (leftIconIV == null) {
+                    initLeftIcon();
+                }
+                viewId = R.id.sLeftIconId;
+                break;
+            case rightImageViewId:
+                if (rightIconIV == null) {
+                    initRightIcon();
+                }
+                viewId = R.id.sRightIconId;
+                break;
+        }
+        return viewId;
+    }
+
+    /**
+     * 获取view对象
+     *
+     * @param viewName 传入viewName
+     * @return 返回view
+     */
+    public View getView(int viewName) {
+        View view = null;
+        switch (viewName) {
+
+            case leftImageViewId:
+                if (leftIconIV == null) {
+                    initLeftIcon();
+                }
+                view = leftIconIV;
+                break;
+            case rightImageViewId:
+                if (rightIconIV == null) {
+                    initRightIcon();
+                }
+                view = rightIconIV;
+                break;
+        }
+        return view;
+    }
+
 
     public int dip2px(Context context, float dipValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
