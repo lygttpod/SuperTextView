@@ -1,5 +1,5 @@
 # SuperTextView
-一个功能强大的TextView，可以满足日常大部分布局方式，开发者可已自行组合属性配置出属于自己风格的样式!
+一个功能强大的TextView，可以满足日常大部分布局方式，开发者可已自行组合属性配置出属于自己风格的样式!如果觉得对你有用的话，点一下右上的星星赞一下吧!
 
 #效果图
 <div  align="center">    
@@ -178,10 +178,11 @@
 
     </declare-styleable> 
     
-###5.使用第三方库(Picasso或者Glide)加载网络图片
-         Picasso.with(this).load(url)
-                .placeholder(R.drawable.head_default)
-                .into((ImageView) superTextView.getView(SuperTextView.leftImageViewId));
+###6.使用第三方库(Picasso或者Glide)加载网络图片
+         Picasso.with(this)
+         .load(url)
+         .placeholder(R.drawable.head_default)
+         .into((ImageView) superTextView.getView(SuperTextView.leftImageViewId));
     
 #更新日志
 ### V1.0.3
@@ -197,7 +198,7 @@
 * 功能强大的TextView
 
 #意见反馈
-如果遇到问题或者好的建议，请反馈到我的邮箱：lygttpod@163.com 或者lygttpod@gmail.com
+如果遇到问题或者好的建议，请反馈到我的邮箱：lygttpod@163.com 或者lygttpod@gmail.com 或者QQ：460605805
 
 如果觉得对你有用的话，点一下右上的星星赞一下吧!
 
