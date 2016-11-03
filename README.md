@@ -1,6 +1,8 @@
 # SuperTextView
 一个功能强大的TextView，可以满足日常大部分布局方式，开发者可已自行组合属性配置出属于自己风格的样式!如果觉得对你有用的话，点一下右上的星星赞一下吧!
 
+###因为这是首次编写的开源项目，经验并不是很足，使用过程中大家遇到什么问题欢迎在Issues或者发送邮件提出来，这边会尽快修改完善这个库，谢谢大家的支持！
+
 #效果图
 <div  align="center">    
 <img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot.png" width = "360" height = "640" alt="效果图" align=center /></div>
