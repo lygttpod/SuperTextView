@@ -1,1 +1,1 @@
-include ':app', ':supertextviewlibrary'
+include ':app', ':library'
