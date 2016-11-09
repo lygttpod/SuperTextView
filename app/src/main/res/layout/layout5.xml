@@ -5,36 +5,36 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.allen.supertextviewlibrary.SuperTextView
+    <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="80dp"
         stv:sLeftBottomTextString="188****8888"
         stv:sLeftIconRes="@drawable/head_default"
         stv:sLeftTopTextString="张三" />
 
-    <com.allen.supertextviewlibrary.SuperTextView
+    <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="80dp"
         stv:sLeftBottomTextString="188****8888"
         stv:sLeftIconRes="@drawable/head_default"
         stv:sLeftTopTextString="张三" />
 
-    <com.allen.supertextviewlibrary.SuperTextView
+    <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="80dp"
         stv:sLeftBottomTextString="188****8888"
         stv:sLeftIconRes="@drawable/head_default"
         stv:sLeftTopTextString="张三" />
 
-    <com.allen.supertextviewlibrary.SuperTextView
+    <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         stv:sCenterTextString="下边展示使用网络图片的情况"
         android:layout_height="50dp"/>
-    <com.allen.supertextviewlibrary.SuperTextView
+    <com.allen.library.SuperTextView
         android:id="@+id/super_tv1"
         android:layout_width="match_parent"
         android:layout_height="80dp" />
-    <com.allen.supertextviewlibrary.SuperTextView
+    <com.allen.library.SuperTextView
         android:id="@+id/super_tv2"
         android:layout_width="match_parent"
         android:layout_height="80dp" />

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.allen.supertextviewlibrary.SuperTextView
+    <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="80dp"
         stv:sLeftBottomTextColor2="@color/colorAccent"
@@ -16,7 +16,7 @@
         stv:sRightCheckBoxRes="@drawable/circular_check_bg"
         stv:sRightCheckBoxShow="true" />
 
-    <com.allen.supertextviewlibrary.SuperTextView
+    <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="80dp"
         stv:sLeftBottomTextColor2="@color/colorAccent"
@@ -27,7 +27,7 @@
         stv:sRightCheckBoxRes="@drawable/circular_check_bg"
         stv:sRightCheckBoxShow="true" />
 
-    <com.allen.supertextviewlibrary.SuperTextView
+    <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginTop="50dp"

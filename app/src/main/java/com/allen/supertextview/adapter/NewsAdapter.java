@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.allen.supertextview.R;
 import com.allen.supertextview.bean.NewsBean;
-import com.allen.supertextviewlibrary.SuperTextView;
+import com.allen.library.SuperTextView;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 

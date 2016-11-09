@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
-import com.allen.supertextviewlibrary.SuperTextView;
+import com.allen.library.SuperTextView;
 import com.squareup.picasso.Picasso;
 
 /**

@@ -3,19 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <com.allen.supertextviewlibrary.SuperTextView
+    <com.allen.library.SuperTextView
         android:id="@+id/super_tv1"
         android:layout_width="match_parent"
         android:layout_height="80dp" />
-    <com.allen.supertextviewlibrary.SuperTextView
+    <com.allen.library.SuperTextView
         android:id="@+id/super_tv2"
         android:layout_width="match_parent"
         android:layout_height="80dp" />
-    <com.allen.supertextviewlibrary.SuperTextView
+    <com.allen.library.SuperTextView
         android:id="@+id/super_tv3"
         android:layout_width="match_parent"
         android:layout_height="80dp" />
-    <com.allen.supertextviewlibrary.SuperTextView
+    <com.allen.library.SuperTextView
         android:id="@+id/super_tv4"
         android:layout_width="match_parent"
         android:layout_height="80dp" />

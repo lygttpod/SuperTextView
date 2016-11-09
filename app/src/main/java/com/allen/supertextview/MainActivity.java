@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.allen.supertextviewlibrary.SuperTextView;
+import com.allen.library.SuperTextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

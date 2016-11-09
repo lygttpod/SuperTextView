@@ -1,4 +1,4 @@
-package com.allen.supertextviewlibrary;
+package com.allen.library;
 
 import android.content.Context;
 import android.content.res.TypedArray;

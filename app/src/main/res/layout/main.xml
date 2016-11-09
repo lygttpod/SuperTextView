@@ -31,7 +31,7 @@
                 android:text="(更多组合方式可自行组合)"
                 android:textColor="@color/colorAccent" />
 
-            <com.allen.supertextviewlibrary.SuperTextView
+            <com.allen.library.SuperTextView
                 android:id="@+id/super_tv"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
@@ -43,7 +43,7 @@
                 stv:sRightCheckBoxRes="@drawable/circular_check_bg"
                 stv:sRightCheckBoxShow="true" />
 
-            <com.allen.supertextviewlibrary.SuperTextView
+            <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 stv:sLeftBottomTextColor="@color/colorAccent"
@@ -51,20 +51,20 @@
                 stv:sLeftIconRes="@drawable/not_bank_card_icon"
                 stv:sLeftTopTextString="银行卡支付" />
 
-            <com.allen.supertextviewlibrary.SuperTextView
+            <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 stv:sLeftBottomTextString="188****8888"
                 stv:sLeftIconRes="@drawable/head_default"
                 stv:sLeftTopTextString="张三" />
 
-            <com.allen.supertextviewlibrary.SuperTextView
+            <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 stv:sLeftIconRes="@drawable/question"
                 stv:sLeftTextString="常见问题" />
 
-            <com.allen.supertextviewlibrary.SuperTextView
+            <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 stv:sLeftIconRes="@drawable/my_bankcard"
@@ -72,20 +72,20 @@
                 stv:sRightTextColor="@color/colorAccent"
                 stv:sRightTextString="已绑定" />
 
-            <com.allen.supertextviewlibrary.SuperTextView
+            <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 stv:sLeftTextString="设置中心"
                 stv:sRightIconRes="@drawable/arrow_right_red" />
 
-            <com.allen.supertextviewlibrary.SuperTextView
+            <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 stv:sCenterTextString="88.88元"
                 stv:sLeftTextString="2016-10-18"
                 stv:sRightTextString="正常" />
 
-            <com.allen.supertextviewlibrary.SuperTextView
+            <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 stv:sLeftTextString="年化率"

@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <com.allen.supertextviewlibrary.SuperTextView
+    <com.allen.library.SuperTextView
         android:id="@+id/super_tv"
         android:layout_width="match_parent"
         android:layout_height="80dp"
