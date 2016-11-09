@@ -15,6 +15,7 @@
 <img src="https://github.com/lygttpod/SuperTextView/blob/master/type6.png" width = "270" height = "480" alt="效果图" align=center />
 </div>
 #基本使用
+##公告：由于Bintray试用期已到，穷屌丝无法支付起高昂的仓库管理费用(Bintrayr收费标准 $150/month）,故迁移库至JitPack，依赖方式有所改变，开发者在使用过程中请注意。
 ###1.添加Gradle依赖 
 先在 build.gradle 的 repositories 添加:
 
@@ -27,6 +28,13 @@
     
  然后在dependencies添加:
  
+        dependencies {
+        ...
+        compile 'com.github.lygttpod:SuperTextView:1.0.3'
+        }
+
+以下依赖方式将在2016年11月16号之后停止使用（老用户请注意）
+
         dependencies {
         ...
         compile 'com.allen.supertextview:supertextview:1.0.3'
