@@ -30,7 +30,7 @@
  
         dependencies {
         ...
-        compile 'com.github.lygttpod:SuperTextView:1.0.3'
+        compile 'com.github.lygttpod:SuperTextView:1.0.4'
         }
 
 以下依赖方式将在2016年11月16号之后停止使用（老用户请注意）
