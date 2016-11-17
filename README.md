@@ -17,7 +17,7 @@
 #基本使用
 ##公告：由于Bintray试用期已到，穷屌丝无法支付起高昂的仓库管理费用(Bintrayr收费标准 $150/month）,故迁移库至JitPack，依赖方式有所改变，开发者在使用过程中请注意。
 ###1.添加Gradle依赖 
-先在 build.gradle 的 repositories 添加:
+先在项目根目录的 build.gradle 的 repositories 添加:
 
      allprojects {
          repositories {
