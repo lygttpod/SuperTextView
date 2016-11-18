@@ -13,6 +13,9 @@
         <attr name="sLeftBottomTextString" format="string"/>
         <attr name="sLeftBottomTextString2" format="string"/>
 
+        <attr name="sRightTextStringRightIconRes" format="reference"/>
+        <attr name="sRightTextStringRightIconResPadding" format="dimension"/>
+
 
         <attr name="sTopLineMargin" format="dimension"/>
         <attr name="sBottomLineMargin" format="dimension"/>
@@ -50,6 +53,8 @@
         <attr name="sIsSingLines" format="boolean"/>
         <attr name="sMaxLines" format="integer"/>
         <attr name="sMaxEms" format="integer"/>
+
+
 
         <attr name="sLineShow" format="enum">
             <enum name="none" value="0"/>

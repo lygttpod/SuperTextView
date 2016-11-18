@@ -107,6 +107,8 @@ public class SuperTextView extends RelativeLayout {
             leftBottomParams2, rightTextParams, rightImgParams, rightCheckBoxParams;
 
     private OnSuperTextViewClickListener onSuperTextViewClickListener;
+    private Drawable rightTextStringRightIconRes;//右边显示文字的TextView增加 向右的 drawable
+    private int rightTextStringRightIconPadding;//右边显示文字的TextView增加 向右的 drawable 间距
 
 
     public SuperTextView(Context context) {
@@ -141,6 +143,9 @@ public class SuperTextView extends RelativeLayout {
         leftTextString = typedArray.getString(R.styleable.SuperTextView_sLeftTextString);
         centerTextString = typedArray.getString(R.styleable.SuperTextView_sCenterTextString);
         rightTextString = typedArray.getString(R.styleable.SuperTextView_sRightTextString);
+
+        rightTextStringRightIconRes = typedArray.getDrawable(R.styleable.SuperTextView_sRightTextStringRightIconRes);
+        rightTextStringRightIconPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTextStringRightIconResPadding,dip2px(mContext,5));
 
         leftTopTextString = typedArray.getString(R.styleable.SuperTextView_sLeftTopTextString);
         leftBottomTextString = typedArray.getString(R.styleable.SuperTextView_sLeftBottomTextString);
@@ -218,7 +223,7 @@ public class SuperTextView extends RelativeLayout {
         if (rightIconRes != null) {
             initRightIcon();
         }
-        if (rightTextString != null) {
+        if (rightTextString != null || rightTextStringRightIconRes != null) {
             initRightText();
         }
         if (showCheckBox) {
@@ -463,6 +468,7 @@ public class SuperTextView extends RelativeLayout {
         rightTV.setText(rightTextString);
         setTextColor(rightTV, rightTVColor);
         setTextSize(rightTV, rightTVSize);
+        setTextViewRightDrawble(rightTV,rightTextStringRightIconRes,rightTextStringRightIconPadding);
         rightTV.setGravity(Gravity.RIGHT);
         setTextViewParams(rightTV,isSingLines,maxLines,maxEms);
         addView(rightTV);
@@ -824,5 +830,14 @@ public class SuperTextView extends RelativeLayout {
     public int sp2px(Context context, float spValue) {
         final float scale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * scale + 0.5f);
+    }
+
+
+    public static void setTextViewRightDrawble(TextView textView,Drawable drawable,int drawablePadding){
+        if (textView != null && drawable != null) {
+            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+            textView.setCompoundDrawables(null, null, drawable, null);
+            textView.setCompoundDrawablePadding(drawablePadding);
+        }
     }
 }
