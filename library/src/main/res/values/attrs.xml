@@ -25,6 +25,9 @@
         <attr name="sLeftBottomTextMarginLeft" format="dimension"/>
         <attr name="sLeftBottomTextMarginLeft2" format="dimension"/>
 
+        <attr name="sRightTextStringRightIconRes" format="reference"/>
+        <attr name="sRightTextStringRightIconResPadding" format="dimension"/>
+
         <attr name="sRightIconMarginRight" format="dimension"/>
         <attr name="sRightTextMarginRight" format="dimension"/>
         <attr name="sRightCheckBoxMarginRight" format="dimension"/>

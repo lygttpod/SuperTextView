@@ -78,6 +78,19 @@
                 stv:sLeftTextString="设置中心"
                 stv:sRightIconRes="@drawable/arrow_right_red" />
 
+
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                stv:sLeftTextString="客服热线"
+                stv:sRightTextColor="#ff0000"
+                stv:sRightTextSize="12dp"
+                stv:sLeftTextSize="14dip"
+                stv:sRightTextStringRightIconRes="@drawable/arrow_right_red"
+                stv:sRightTextStringRightIconResPadding="8dip"
+                stv:sRightTextString="4006179999"
+                stv:sUseRipple="true" />
+
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
