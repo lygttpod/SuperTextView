@@ -73,7 +73,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.button6:
-                intent.setClass(this, ListActivity.class);
+//                intent.setClass(this, ListActivity.class);
+                intent.setClass(this, CommonTextViewActivity.class);
                 intent.putExtra("type", 6);
                 startActivity(intent);
                 break;

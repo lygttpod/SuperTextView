@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="cLeftTextId" type="id" />
+    <item name="cRightTextId" type="id" />
+    <item name="cCenterTextId" type="id" />
+</resources>

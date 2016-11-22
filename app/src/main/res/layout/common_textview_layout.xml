@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ctv="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.allen.library.CommonTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        ctv:cLeftTextColor="@color/colorAccent"
+        ctv:cLeftTextSize="15dp"
+        ctv:cLeftTextString="帐号管理"
+        ctv:cRightIconResForDrawableRight="@drawable/arrow_right_red"
+        ctv:cShowDividerLineType="none" />
+
+    <com.allen.library.CommonTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        ctv:cLeftTextString="清除缓存"
+        ctv:cRightIconResForDrawableRight="@drawable/arrow_right_red"
+        ctv:cRightTextColor="@color/colorAccent"
+        ctv:cRightTextString="20.5M"
+        ctv:cShowDividerLineType="both"
+        ctv:cUseRipple="true" />
+
+    <com.allen.library.CommonTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        ctv:cLeftIconResForDrawableLeft="@drawable/uu"
+        ctv:cLeftTextColor="@color/colorAccent"
+        ctv:cLeftTextSize="15dp"
+        ctv:cLeftTextString="收获地址" />
+
+    <com.allen.library.CommonTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        ctv:cCenterTextString="中间文字"
+        ctv:cLeftTextString="左边文字"
+        ctv:cRightTextString="右边文字" />
+
+    <com.allen.library.CommonTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        ctv:cLeftIconResForDrawableLeft="@drawable/scatter_time"
+        ctv:cLeftTextString="起息时间"
+        ctv:cRightTextString="T+1日" />
+
+    <com.allen.library.CommonTextView
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        ctv:cCenterIconResForDrawableTop="@drawable/scatter_use"
+        ctv:cCenterTextString="还款方式"
+        ctv:cLeftIconResForDrawableTop="@drawable/scatter_time"
+        ctv:cLeftTextString="起息时间"
+        ctv:cRightIconResForDrawableTop="@drawable/scatter_type"
+        ctv:cRightTextString="截至日期" />
+
+
+</LinearLayout>

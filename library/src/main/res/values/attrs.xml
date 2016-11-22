@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="BaseTextView">
+        <attr name="sDrawableLeft" format="reference"/>
+        <attr name="sDrawableTop" format="reference"/>
+        <attr name="sDrawableRight" format="reference"/>
+        <attr name="sDrawableBottom" format="reference"/>
+
+        <attr name="sTextString" format="string"/>
+        <attr name="sTextSize" format="dimension"/>
+        <attr name="sTextColor" format="color"/>
+
+        <attr name="sDrawablePadding" format="dimension"/>
+
+        <attr name="sPadding" format="dimension"/>
+        <attr name="sPaddingLeft" format="dimension"/>
+        <attr name="sPaddingTop" format="dimension"/>
+        <attr name="sPaddingBottom" format="dimension"/>
+        <attr name="sPaddingRight" format="dimension"/>
+
+
+    </declare-styleable>
+
     <declare-styleable name="SuperTextView">
         <attr name="sLeftIconRes" format="reference"/>
         <attr name="sRightIconRes" format="reference"/>
@@ -17,6 +38,8 @@
         <attr name="sTopLineMargin" format="dimension"/>
         <attr name="sBottomLineMargin" format="dimension"/>
         <attr name="sBothLineMargin" format="dimension"/>
+
+        <attr name="sCenterSpaceHeight" format="dimension"/>
 
         <attr name="sLeftIconMarginLeft" format="dimension"/>
         <attr name="sLeftTextMarginLeft" format="dimension"/>
@@ -42,6 +65,7 @@
         <attr name="sRightTextSize" format="dimension"/>
         <attr name="sCenterTextSize" format="dimension"/>
 
+
         <attr name="sBackgroundColor" format="color"/>
         <attr name="sLeftTextColor" format="color"/>
         <attr name="sLeftTopTextColor" format="color"/>
@@ -61,5 +85,73 @@
             <enum name="both" value="3"/>
         </attr>
 
+        <attr name="sBothLineWidth" format="dimension"/>
+        <attr name="sTopLineWidth" format="dimension"/>
+        <attr name="sBottomLineWidth" format="dimension"/>
+        <attr name="sLineColor" format="color"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="CommonTextView">
+
+        <attr name="cLeftIconResForDrawableLeft" format="reference"/>
+        <attr name="cLeftIconResForDrawableTop" format="reference"/>
+        <attr name="cLeftIconResForDrawableRight" format="reference"/>
+        <attr name="cLeftIconResForDrawableBottom" format="reference"/>
+
+        <attr name="cCenterIconResForDrawableLeft" format="reference"/>
+        <attr name="cCenterIconResForDrawableTop" format="reference"/>
+        <attr name="cCenterIconResForDrawableRight" format="reference"/>
+        <attr name="cCenterIconResForDrawableBottom" format="reference"/>
+
+        <attr name="cRightIconResForDrawableLeft" format="reference"/>
+        <attr name="cRightIconResForDrawableTop" format="reference"/>
+        <attr name="cRightIconResForDrawableRight" format="reference"/>
+        <attr name="cRightIconResForDrawableBottom" format="reference"/>
+
+
+        <attr name="cLeftTextString" format="string"/>
+        <attr name="cCenterTextString" format="string"/>
+        <attr name="cRightTextString" format="string"/>
+
+        <attr name="cLeftTextSize" format="dimension"/>
+        <attr name="cRightTextSize" format="dimension"/>
+        <attr name="cCenterTextSize" format="dimension"/>
+
+        <attr name="cLeftTextColor" format="color"/>
+        <attr name="cRightTextColor" format="color"/>
+        <attr name="cCenterTextColor" format="color"/>
+
+        <attr name="cLeftIconDrawablePadding" format="dimension"/>
+        <attr name="cCenterIconDrawablePadding" format="dimension"/>
+        <attr name="cRightIconDrawablePadding" format="dimension"/>
+
+        <attr name="cLeftViewPaddingLeft" format="dimension"/>
+        <attr name="cLeftViewPaddingRight" format="dimension"/>
+        <attr name="cCenterViewPaddingLeft" format="dimension"/>
+        <attr name="cCenterViewPaddingRight" format="dimension"/>
+        <attr name="cRightViewPaddingLeft" format="dimension"/>
+        <attr name="cRightViewPaddingRight" format="dimension"/>
+
+        <attr name="cTopDividerLineMarginLR" format="dimension"/>
+        <attr name="cBottomDividerLineMarginLR" format="dimension"/>
+        <attr name="cBothDividerLineMarginLR" format="dimension"/>
+
+        <attr name="cLeftTextViewLineSpacingExtra" format="dimension"/>
+        <attr name="cCenterTextViewLineSpacingExtra" format="dimension"/>
+        <attr name="cRightTextViewLineSpacingExtra" format="dimension"/>
+
+        <attr name="cDividerLineColor" format="color"/>
+        <attr name="cDividerLineHeight" format="dimension"/>
+
+        <attr name="cShowDividerLineType" format="enum">
+            <enum name="none" value="0"/>
+            <enum name="top" value="1"/>
+            <enum name="bottom" value="2"/>
+            <enum name="both" value="3"/>
+        </attr>
+
+        <attr name="cUseRipple" format="boolean"/>
+        <attr name="cBackgroundColor" format="color"/>
     </declare-styleable>
 </resources>
