@@ -51,8 +51,8 @@
         android:layout_height="50dp"
         ctv:cLeftIconResForDrawableLeft="@drawable/scatter_time"
         ctv:cLeftTextString="起息时间"
-        ctv:cRightTextString="T+1日"
-        ctv:cRightIconResForDrawableRight="@drawable/arrow_right_red"/>
+        ctv:cRightIconResForDrawableRight="@drawable/arrow_right_red"
+        ctv:cRightTextString="T+1日" />
 
     <com.allen.library.CommonTextView
         android:layout_width="match_parent"
@@ -76,9 +76,9 @@
             ctv:cCenterIconResForDrawableTop="@mipmap/ic_launcher"
             ctv:cCenterTextColor="@color/colorAccent"
             ctv:cCenterTextSize="15dp"
-            ctv:cUseRipple="true"
+            ctv:cCenterTextString="帐号管理"
 
-            ctv:cCenterTextString="帐号管理" />
+            ctv:cUseRipple="true" />
 
         <com.allen.library.CommonTextView
             android:layout_width="0dp"
@@ -87,18 +87,55 @@
             ctv:cCenterIconResForDrawableTop="@mipmap/ic_launcher"
             ctv:cCenterTextColor="@color/colorAccent"
             ctv:cCenterTextSize="15dp"
-            ctv:cUseRipple="true"
+            ctv:cCenterTextString="帐号管理"
 
-            ctv:cCenterTextString="帐号管理" />
+            ctv:cUseRipple="true" />
 
         <com.allen.library.CommonTextView
             android:layout_width="0dp"
             android:layout_height="100dp"
-            ctv:cUseRipple="true"
             android:layout_weight="1"
             ctv:cCenterIconResForDrawableTop="@mipmap/ic_launcher"
             ctv:cCenterTextColor="@color/colorAccent"
             ctv:cCenterTextSize="15dp"
-            ctv:cCenterTextString="帐号管理" />
+            ctv:cCenterTextString="帐号管理"
+            ctv:cUseRipple="true" />
     </LinearLayout>
+
+    <com.allen.library.CommonTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        ctv:cLeftIconDrawablePadding="10dp"
+        ctv:cLeftIconResForDrawableLeft="@drawable/uu"
+        ctv:cLeftTextColor="@color/colorAccent"
+        ctv:cLeftTextSize="15dp"
+        ctv:cLeftTextString="左边文字"
+        ctv:cLeftViewPaddingLeft="10dp"
+        ctv:cLeftViewPaddingRight="10dp"
+
+        ctv:cCenterIconDrawablePadding="10dp"
+        ctv:cCenterIconResForDrawableLeft="@drawable/uu"
+        ctv:cCenterTextColor="@color/colorAccent"
+        ctv:cCenterTextSize="15dp"
+        ctv:cCenterTextString="中间文字"
+        ctv:cCenterViewPaddingLeft="10dp"
+        ctv:cCenterViewPaddingRight="10dp"
+
+        ctv:cRightIconDrawablePadding="10dp"
+        ctv:cRightIconResForDrawableLeft="@drawable/uu"
+        ctv:cRightTextColor="@color/colorAccent"
+        ctv:cRightTextSize="15dp"
+        ctv:cRightTextString="右边文字"
+        ctv:cRightViewPaddingLeft="10dp"
+        ctv:cRightViewPaddingRight="10dp"
+
+        ctv:cDividerLineColor="@color/colorPrimary"
+        ctv:cDividerLineHeight="1dp"
+        ctv:cBothDividerLineMarginLR="10dp"
+        ctv:cShowDividerLineType="both"
+        ctv:cBackgroundColor="@color/colorAccent"
+        ctv:cUseRipple="true"
+        ctv:cSetLines="1"
+        ctv:cSetMaxEms="10"
+        ctv:cSetSingleLine="true" />
 </LinearLayout>

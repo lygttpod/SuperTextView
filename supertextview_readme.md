@@ -1,4 +1,4 @@
-# SuperTextView 以及简化版 [**CommonTextView**](https://github.com/lygttpod/SuperTextView)
+# SuperTextView
 一个功能强大的TextView，可以满足日常大部分布局方式，开发者可已自行组合属性配置出属于自己风格的样式!如果觉得对你有用的话，点一下右上的星星赞一下吧!
 
 ###因为这是首次编写的开源项目，经验并不是很足，使用过程中大家遇到什么问题欢迎在Issues或者发送邮件提出来，这边会尽快修改完善这个库，谢谢大家的支持！
@@ -30,7 +30,7 @@
  
         dependencies {
         ...
-        compile 'com.github.lygttpod:SuperTextView:1.0.6'
+        compile 'com.github.lygttpod:SuperTextView:1.0.4'
         }
 
 以下依赖方式将在2016年11月16号之后停止使用（老用户请注意）
@@ -197,6 +197,7 @@
 #更新日志
 
 ### V1.0.6
+
 * 	新增设置分割线颜色和宽度的方法
 * 	新增简化版CommonTextView
 
