@@ -157,5 +157,22 @@
         <attr name="cSetSingleLine" format="boolean" />
         <attr name="cSetMaxEms" format="integer" />
         <attr name="cSetLines" format="integer" />
+
+        <attr name="cLeftTextViewGravity" format="enum">
+            <enum name="left_center" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right_center" value="2" />
+        </attr>
+        <attr name="cCenterTextViewGravity" format="enum">
+            <enum name="left_center" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right_center" value="2" />
+        </attr>
+        <attr name="cRightTextViewGravity" format="enum">
+            <enum name="left_center" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right_center" value="2" />
+        </attr>
+
     </declare-styleable>
 </resources>

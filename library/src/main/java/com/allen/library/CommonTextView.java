@@ -101,6 +101,19 @@ public class CommonTextView extends RelativeLayout {
     private int mSetMaxEms = 10;
     private int mSetLines = 1;
 
+    /**
+     * TextView的Gravity
+     */
+    private static final int Gravity_Left_Center = 0;
+    private static final int Gravity_Center = 1;
+    private static final int Gravity_Right_Center = 2;
+
+    private static final int DEFAULT_Gravity = 1;
+
+    private int mLeftTextViewGravity;
+    private int mCenterTextViewGravity;
+    private int mRightTextViewGravity;
+
     private TextView leftTextView, centerTextView, rightTextView;
 
     private View topLineView, bottomLineView;
@@ -194,6 +207,10 @@ public class CommonTextView extends RelativeLayout {
         mSetSingleLine = typedArray.getBoolean(R.styleable.CommonTextView_cSetSingleLine, true);
         mSetMaxEms = typedArray.getInt(R.styleable.CommonTextView_cSetMaxEms, mSetMaxEms);
         mSetLines = typedArray.getInt(R.styleable.CommonTextView_cSetLines, 1);
+
+        mLeftTextViewGravity = typedArray.getInt(R.styleable.CommonTextView_cLeftTextViewGravity, DEFAULT_Gravity);
+        mCenterTextViewGravity = typedArray.getInt(R.styleable.CommonTextView_cCenterTextViewGravity, DEFAULT_Gravity);
+        mRightTextViewGravity = typedArray.getInt(R.styleable.CommonTextView_cRightTextViewGravity, DEFAULT_Gravity);
 
         typedArray.recycle();
     }
@@ -310,6 +327,7 @@ public class CommonTextView extends RelativeLayout {
             leftTextView.setText(mLeftTextString);
 //            leftTextView.setGravity(Gravity.CENTER_VERTICAL);
             leftTextView.setLineSpacing(mLeftTextViewLineSpacingExtra, 1.0f);
+            setTextViewGravity(leftTextView, mLeftTextViewGravity);
         }
 
         setDrawable(leftTextView, mLeft_drawableLeft, mLeft_drawableTop, mLeft_drawableRight, mLeft_drawableBottom, mLeftIconDrawablePadding);
@@ -332,6 +350,7 @@ public class CommonTextView extends RelativeLayout {
             centerTextView = initText(centerTextView, centerTVParams, R.id.cCenterTextId, mCenterTextColor, mCenterTextSize);
             centerTextView.setText(mCenterTextString);
             centerTextView.setLineSpacing(mCenterTextViewLineSpacingExtra, 1.0f);
+            setTextViewGravity(centerTextView, mCenterTextViewGravity);
 
         }
         setDrawable(centerTextView, mCenter_drawableLeft, mCenter_drawableTop, mCenter_drawableRight, mCenter_drawableBottom, mCenterIconDrawablePadding);
@@ -354,6 +373,7 @@ public class CommonTextView extends RelativeLayout {
             rightTextView.setText(mRightTextString);
 //            rightTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
             rightTextView.setLineSpacing(mRightTextViewLineSpacingExtra, 1.0f);
+            setTextViewGravity(rightTextView, mRightTextViewGravity);
 
         }
         setDrawable(rightTextView, mRight_drawableLeft, mRight_drawableTop, mRight_drawableRight, mRight_drawableBottom, mRightIconDrawablePadding);
@@ -391,7 +411,7 @@ public class CommonTextView extends RelativeLayout {
             textView.setLayoutParams(layoutParams);
             textView.setTextColor(textColor);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
-            textView.setGravity(Gravity.CENTER);
+//            textView.setGravity(Gravity.CENTER);
             textView.setLines(mSetLines);
             textView.setSingleLine(mSetSingleLine);
             textView.setMaxEms(mSetMaxEms);
@@ -399,6 +419,21 @@ public class CommonTextView extends RelativeLayout {
             addView(textView);
         }
         return textView;
+    }
+
+    private void setTextViewGravity(TextView textView, int gravity_type) {
+
+        switch (gravity_type) {
+            case Gravity_Left_Center:
+                textView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+                break;
+            case Gravity_Center:
+                textView.setGravity(Gravity.CENTER);
+                break;
+            case Gravity_Right_Center:
+                textView.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+        }
+
     }
 
     /**
