@@ -3,6 +3,7 @@ package com.allen.library;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -96,11 +97,9 @@ public class CommonTextView extends RelativeLayout {
      */
     private boolean useRipple;
 
-    private static final int DRAWABLE_LEFT = 11;
-    private static final int DRAWABLE_TOP = 12;
-    private static final int DRAWABLE_RIGHT = 13;
-    private static final int DRAWABLE_BOTTOM = 14;
-
+    private boolean mSetSingleLine = true;
+    private int mSetMaxEms = 10;
+    private int mSetLines = 1;
 
     private TextView leftTextView, centerTextView, rightTextView;
 
@@ -109,6 +108,7 @@ public class CommonTextView extends RelativeLayout {
     private RelativeLayout.LayoutParams leftTVParams, centerTVParams, rightTVParams, topLineParams, bottomLineParams;
 
     private OnCommonTextViewClickListener onCommonTextViewClickListener;
+
 
     public CommonTextView(Context context) {
         this(context, null);
@@ -190,6 +190,11 @@ public class CommonTextView extends RelativeLayout {
         useRipple = typedArray.getBoolean(R.styleable.CommonTextView_cUseRipple, false);
 
         mBackgroundColor = typedArray.getColor(R.styleable.CommonTextView_cBackgroundColor, mBackgroundColor);
+
+        mSetSingleLine = typedArray.getBoolean(R.styleable.CommonTextView_cSetSingleLine, true);
+        mSetMaxEms = typedArray.getInt(R.styleable.CommonTextView_cSetMaxEms, mSetMaxEms);
+        mSetLines = typedArray.getInt(R.styleable.CommonTextView_cSetLines, 1);
+
         typedArray.recycle();
     }
 
@@ -199,9 +204,15 @@ public class CommonTextView extends RelativeLayout {
     private void init() {
         initCommonTextView();
         initLineView();
-        initLeftText();
-        initCenterText();
-        initRightText();
+        if (mLeftTextString != null) {
+            initLeftText();
+        }
+        if (mCenterTextString != null) {
+            initCenterText();
+        }
+        if (mRightTextString != null) {
+            initRightText();
+        }
     }
 
     /**
@@ -293,10 +304,11 @@ public class CommonTextView extends RelativeLayout {
             }
             leftTVParams.addRule(CENTER_VERTICAL, TRUE);
             leftTVParams.addRule(ALIGN_PARENT_LEFT, TRUE);
+//            leftTVParams.addRule(LEFT_OF, R.id.cRightTextId);
             leftTVParams.setMargins(mLeftViewPaddingLeft, 0, mLeftViewPaddingRight, 0);
             leftTextView = initText(leftTextView, leftTVParams, R.id.cLeftTextId, mLeftTextColor, mLeftTextSize);
             leftTextView.setText(mLeftTextString);
-            leftTextView.setGravity(Gravity.CENTER_VERTICAL);
+//            leftTextView.setGravity(Gravity.CENTER_VERTICAL);
             leftTextView.setLineSpacing(mLeftTextViewLineSpacingExtra, 1.0f);
         }
 
@@ -319,7 +331,6 @@ public class CommonTextView extends RelativeLayout {
 
             centerTextView = initText(centerTextView, centerTVParams, R.id.cCenterTextId, mCenterTextColor, mCenterTextSize);
             centerTextView.setText(mCenterTextString);
-            centerTextView.setGravity(Gravity.CENTER);
             centerTextView.setLineSpacing(mCenterTextViewLineSpacingExtra, 1.0f);
 
         }
@@ -339,10 +350,9 @@ public class CommonTextView extends RelativeLayout {
             rightTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
             rightTVParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, TRUE);
             rightTVParams.setMargins(mRightViewPaddingLeft, 0, mRightViewPaddingRight, 0);
-
             rightTextView = initText(rightTextView, rightTVParams, R.id.cRightTextId, mRightTextColor, mRightTextSize);
             rightTextView.setText(mRightTextString);
-            rightTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
+//            rightTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
             rightTextView.setLineSpacing(mRightTextViewLineSpacingExtra, 1.0f);
 
         }
@@ -382,8 +392,10 @@ public class CommonTextView extends RelativeLayout {
             textView.setTextColor(textColor);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
             textView.setGravity(Gravity.CENTER);
-            textView.setLines(1);
-            textView.setEms(10);
+            textView.setLines(mSetLines);
+            textView.setSingleLine(mSetSingleLine);
+            textView.setMaxEms(mSetMaxEms);
+            textView.setEllipsize(TextUtils.TruncateAt.END);
             addView(textView);
         }
         return textView;

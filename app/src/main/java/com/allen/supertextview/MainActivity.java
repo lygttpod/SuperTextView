@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Drawable drawable;
 
-    private Button button0,button1,button2,button3,button4,button5,button6;
+    private Button button0,button1,button2,button3,button4,button5,button6,button7;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button4 = (Button) findViewById(R.id.button4);
         button5 = (Button) findViewById(R.id.button5);
         button6 = (Button) findViewById(R.id.button6);
+        button7 = (Button) findViewById(R.id.button7);
 
         button0.setOnClickListener(this);
         button1.setOnClickListener(this);
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button4.setOnClickListener(this);
         button5.setOnClickListener(this);
         button6.setOnClickListener(this);
+        button7.setOnClickListener(this);
     }
 
     @Override
@@ -73,6 +75,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.button6:
+//                intent.setClass(this, ListActivity.class);
+                intent.setClass(this,TypeActivity.class);
+                intent.putExtra("type", 6);
+                startActivity(intent);
+                break;
+            case R.id.button7:
 //                intent.setClass(this, ListActivity.class);
                 intent.setClass(this, CommonTextViewActivity.class);
                 intent.putExtra("type", 6);

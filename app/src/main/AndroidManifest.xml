@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".TypeActivity"/>
         <activity android:name=".ListActivity"/>
-        <activity android:name=".CommonTextViewActivity"/>
+        <activity android:name=".CommonTextViewActivity"
+            android:label="CommonTextView"/>
     </application>
 
 </manifest>

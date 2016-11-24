@@ -47,7 +47,14 @@
         ctv:cRightTextString="T+1日" />
 
     <com.allen.library.CommonTextView
-        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        ctv:cLeftIconResForDrawableLeft="@drawable/scatter_time"
+        ctv:cLeftTextString="起息时间"
+        ctv:cRightTextString="T+1日"
+        ctv:cRightIconResForDrawableRight="@drawable/arrow_right_red"/>
+
+    <com.allen.library.CommonTextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         ctv:cCenterIconResForDrawableTop="@drawable/scatter_use"
@@ -57,5 +64,41 @@
         ctv:cRightIconResForDrawableTop="@drawable/scatter_type"
         ctv:cRightTextString="截至日期" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
+        <com.allen.library.CommonTextView
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            ctv:cCenterIconResForDrawableTop="@mipmap/ic_launcher"
+            ctv:cCenterTextColor="@color/colorAccent"
+            ctv:cCenterTextSize="15dp"
+            ctv:cUseRipple="true"
+
+            ctv:cCenterTextString="帐号管理" />
+
+        <com.allen.library.CommonTextView
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            ctv:cCenterIconResForDrawableTop="@mipmap/ic_launcher"
+            ctv:cCenterTextColor="@color/colorAccent"
+            ctv:cCenterTextSize="15dp"
+            ctv:cUseRipple="true"
+
+            ctv:cCenterTextString="帐号管理" />
+
+        <com.allen.library.CommonTextView
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            ctv:cUseRipple="true"
+            android:layout_weight="1"
+            ctv:cCenterIconResForDrawableTop="@mipmap/ic_launcher"
+            ctv:cCenterTextColor="@color/colorAccent"
+            ctv:cCenterTextSize="15dp"
+            ctv:cCenterTextString="帐号管理" />
+    </LinearLayout>
 </LinearLayout>
