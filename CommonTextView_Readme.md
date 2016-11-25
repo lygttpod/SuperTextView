@@ -4,7 +4,7 @@
 
 #效果图
 <div  align="center">    
-<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/commontextview.png" width = "360" height = "640" alt="效果图" align=center /></div>
+<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/commontextview.jpg" width = "360" height = "640" alt="效果图" align=center /></div>
 </div>
 #基本使用
 
@@ -22,7 +22,7 @@
  
         dependencies {
         ...
-        compile 'com.github.lygttpod:SuperTextView:1.0.6'
+        compile 'com.github.lygttpod:SuperTextView:1.0.7'
         }
 
 ###2.布局中如何使用（列出所有属性使用方法）
@@ -77,6 +77,20 @@
 
                 //设置是否单行显示-----------------默认单行
                 ctv:cSetSingleLine="true" />
+
+                //上下两行文字的间距
+                ctv:cLeftTextViewLineSpacingExtra="8dp"
+                ctv:cCenterTextViewLineSpacingExtra="8dp"
+                ctv:cRightTextViewLineSpacingExtra="8dp"
+
+
+                //使用上下两行显示的时候设置对齐方式,选择left_center|center|right_center中的一种方式（配合XXXTextViewLineSpacingExtra使用）
+
+                ctv:cLeftTextViewGravity="left_center|center|right_center"
+                ctv:cCenterTextViewGravity="left_center|center|right_center"
+                ctv:cRightTextViewGravity="left_center|center|right_center"
+
+
         注意：
                 1、上下的线可以通过   cShowDividerLineType 设置  有四种显示方式 none，top，bottom，both
                 2、以上是全部的属性，用户可以根据需求选取需要使用的属性即可，不必全选
@@ -147,6 +161,19 @@
                commonTextView.getLeftTextString();
                commonTextView.getCenterTextString();
                commonTextView.getRightTextString();
+
+     3、使用图片缓存框架加载在网络图片
+
+                Glide
+                .with(this)
+                .load("url")
+                .placeholder(R.drawable.head_default)
+                .into(new SimpleTarget<GlideDrawable>() {
+                                   @Override
+                                   public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                                       commonTextView.setLeftDrawableLeft(resource);
+                                   }
+                               });
           
 ###4.点击事件（可根据需求选择实现某个点击事件）
         commonTextView.
@@ -243,6 +270,22 @@
                 <attr name="cSetSingleLine" format="boolean" />
                 <attr name="cSetMaxEms" format="integer" />
                 <attr name="cSetLines" format="integer" />
+
+                <attr name="cLeftTextViewGravity" format="enum">
+                            <enum name="left_center" value="0" />
+                            <enum name="center" value="1" />
+                            <enum name="right_center" value="2" />
+                        </attr>
+                <attr name="cCenterTextViewGravity" format="enum">
+                            <enum name="left_center" value="0" />
+                            <enum name="center" value="1" />
+                            <enum name="right_center" value="2" />
+                        </attr>
+                <attr name="cRightTextViewGravity" format="enum">
+                            <enum name="left_center" value="0" />
+                            <enum name="center" value="1" />
+                            <enum name="right_center" value="2" />
+                        </attr>
             </declare-styleable>
 
 #意见反馈

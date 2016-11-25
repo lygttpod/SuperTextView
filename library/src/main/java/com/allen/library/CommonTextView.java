@@ -45,9 +45,9 @@ public class CommonTextView extends RelativeLayout {
     private Drawable mRight_drawableBottom;
 
 
-    private String mLeftTextString;
-    private String mRightTextString;
-    private String mCenterTextString;
+    private CharSequence mLeftTextString;
+    private CharSequence mRightTextString;
+    private CharSequence mCenterTextString;
 
     private int mLeftTextSize;
     private int mRightTextSize;
@@ -457,7 +457,7 @@ public class CommonTextView extends RelativeLayout {
      * @param string 字符串
      * @return 返回
      */
-    public CommonTextView setLeftTextString(String string) {
+    public CommonTextView setLeftTextString(CharSequence string) {
         if (leftTextView == null) {
             initLeftText();
         }
@@ -499,7 +499,7 @@ public class CommonTextView extends RelativeLayout {
      * @param string 字符串
      * @return 返回
      */
-    public CommonTextView setCenterTextString(String string) {
+    public CommonTextView setCenterTextString(CharSequence string) {
         if (centerTextView == null) {
             initCenterText();
         }
@@ -541,7 +541,7 @@ public class CommonTextView extends RelativeLayout {
      * @param string 字符串
      * @return 返回
      */
-    public CommonTextView setRightTextString(String string) {
+    public CommonTextView setRightTextString(CharSequence string) {
         if (rightTextView == null) {
             initRightText();
         }

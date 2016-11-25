@@ -25,14 +25,6 @@
         <com.allen.library.CommonTextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            ctv:cLeftIconResForDrawableLeft="@drawable/uu"
-            ctv:cLeftTextColor="@color/colorAccent"
-            ctv:cLeftTextSize="15dp"
-            ctv:cLeftTextString="收获地址" />
-
-        <com.allen.library.CommonTextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
             ctv:cCenterTextString="中间文字"
             ctv:cLeftTextString="左边文字"
             ctv:cRightTextString="右边文字" />
@@ -126,6 +118,7 @@
             ctv:cRightTextViewGravity="right_center"
             ctv:cSetSingleLine="false"
             ctv:cUseRipple="true" />
+
     </LinearLayout>
 </ScrollView>
 
