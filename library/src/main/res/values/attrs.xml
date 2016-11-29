@@ -109,18 +109,45 @@
         <attr name="cRightIconResForDrawableRight" format="reference" />
         <attr name="cRightIconResForDrawableBottom" format="reference" />
 
+        <attr name="cLeftImageViewDrawableRes" format="reference" />
+        <!--<attr name="cRightImageViewDrawableRes" format="reference" />-->
+
 
         <attr name="cLeftTextString" format="string" />
+        <attr name="cLeftTopTextString" format="string" />
+        <attr name="cLeftBottomTextString" format="string" />
+
         <attr name="cCenterTextString" format="string" />
+        <attr name="cCenterTopTextString" format="string" />
+        <attr name="cCenterBottomTextString" format="string" />
+
         <attr name="cRightTextString" format="string" />
+        <attr name="cRightTopTextString" format="string" />
+        <attr name="cRightBottomTextString" format="string" />
 
         <attr name="cLeftTextSize" format="dimension" />
-        <attr name="cRightTextSize" format="dimension" />
+        <attr name="cLeftTopTextSize" format="dimension" />
+        <attr name="cLeftBottomTextSize" format="dimension" />
+
         <attr name="cCenterTextSize" format="dimension" />
+        <attr name="cCenterTopTextSize" format="dimension" />
+        <attr name="cCenterBottomTextSize" format="dimension" />
+
+        <attr name="cRightTextSize" format="dimension" />
+        <attr name="cRightTopTextSize" format="dimension" />
+        <attr name="cRightBottomTextSize" format="dimension" />
 
         <attr name="cLeftTextColor" format="color" />
-        <attr name="cRightTextColor" format="color" />
+        <attr name="cLeftTopTextColor" format="color" />
+        <attr name="cLeftBottomTextColor" format="color" />
+
         <attr name="cCenterTextColor" format="color" />
+        <attr name="cCenterTopTextColor" format="color" />
+        <attr name="cCenterBottomTextColor" format="color" />
+
+        <attr name="cRightTextColor" format="color" />
+        <attr name="cRightTopTextColor" format="color" />
+        <attr name="cRightBottomTextColor" format="color" />
 
         <attr name="cLeftIconDrawablePadding" format="dimension" />
         <attr name="cCenterIconDrawablePadding" format="dimension" />
@@ -140,6 +167,11 @@
         <attr name="cLeftTextViewLineSpacingExtra" format="dimension" />
         <attr name="cCenterTextViewLineSpacingExtra" format="dimension" />
         <attr name="cRightTextViewLineSpacingExtra" format="dimension" />
+
+        <attr name="cCenterSpaceHeight" format="dimension" />
+
+        <attr name="cLeftImageViewMarginLeft" format="dimension" />
+        <!--<attr name="cRightImageViewMarginRight" format="dimension" />-->
 
         <attr name="cDividerLineColor" format="color" />
         <attr name="cDividerLineHeight" format="dimension" />

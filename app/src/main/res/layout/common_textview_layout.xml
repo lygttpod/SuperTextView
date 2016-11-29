@@ -5,122 +5,124 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <com.allen.library.CommonTextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            ctv:cLeftTextString="清除缓存"
-            ctv:cRightIconResForDrawableRight="@drawable/arrow_right_red"
-            ctv:cRightTextColor="@color/colorAccent"
-            ctv:cRightTextString="20.5M"
-            ctv:cShowDividerLineType="both"
-            ctv:cUseRipple="true" />
-
-        <com.allen.library.CommonTextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            ctv:cCenterTextString="中间文字"
-            ctv:cLeftTextString="左边文字"
-            ctv:cRightTextString="右边文字" />
-        <com.allen.library.CommonTextView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            ctv:cShowDividerLineType="bottom"
-            ctv:cCenterTextString="年龄\n250"
-            ctv:cLeftTextViewLineSpacingExtra="8dp"
-            ctv:cCenterTextViewLineSpacingExtra="8dp"
-            ctv:cRightTextViewLineSpacingExtra="8dp"
-            ctv:cSetSingleLine="false"
-            ctv:cLeftTextString="姓名\n欧阳峰鸟"
-            ctv:cRightTextString="学籍\n北京科技大学" />
-
-        <com.allen.library.CommonTextView
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            ctv:cShowDividerLineType="bottom"
-            ctv:cLeftIconResForDrawableLeft="@drawable/head_default"
-            ctv:cLeftTextViewLineSpacingExtra="8dp"
-            ctv:cCenterTextViewLineSpacingExtra="8dp"
-            ctv:cRightTextViewLineSpacingExtra="8dp"
-            ctv:cSetSingleLine="false"
-            ctv:cLeftTextString="姓名\n欧阳峰"
-            ctv:cLeftTextViewGravity="left_center"
-            ctv:cRightTextString="已实名"
-            ctv:cRightTextColor="@color/colorAccent"
-            ctv:cRightIconResForDrawableRight="@drawable/arrow_right_red"/>
-
-
-        <com.allen.library.CommonTextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            ctv:cLeftIconResForDrawableLeft="@drawable/scatter_time"
-            ctv:cLeftTextString="起息时间"
-            ctv:cRightIconResForDrawableRight="@drawable/arrow_right_red"
-            ctv:cRightTextString="T+1日" />
-
-        <com.allen.library.CommonTextView
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            ctv:cCenterIconResForDrawableTop="@drawable/scatter_use"
-            ctv:cCenterTextString="还款方式"
-            ctv:cLeftIconResForDrawableTop="@drawable/scatter_time"
-            ctv:cLeftTextString="起息时间"
-            ctv:cRightIconResForDrawableTop="@drawable/scatter_type"
-            ctv:cRightTextString="截至日期" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <com.allen.library.CommonTextView
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_weight="1"
-                ctv:cCenterIconResForDrawableTop="@mipmap/ic_launcher"
-                ctv:cCenterTextString="文字"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                ctv:cLeftBottomTextColor="@color/colorAccent"
+                ctv:cLeftBottomTextSize="13sp"
+                ctv:cLeftBottomTextString="188******88"
+                ctv:cLeftImageViewDrawableRes="@drawable/head_default"
+                ctv:cLeftTopTextColor="@color/colorPrimary"
+                ctv:cLeftTopTextSize="15sp"
+                ctv:cLeftTopTextString="张三"
+                ctv:cRightIconResForDrawableRight="@drawable/arrow_right_red"
+                ctv:cRightTextColor="@color/colorAccent"
+                ctv:cRightTextString="已实名"
                 ctv:cUseRipple="true" />
 
-            <com.allen.library.CommonTextView
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_weight="1"
-                ctv:cCenterIconResForDrawableTop="@mipmap/ic_launcher"
-                ctv:cCenterTextString="文字"
-                ctv:cUseRipple="true" />
 
             <com.allen.library.CommonTextView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                ctv:cCenterTextString="年龄\n250"
+                ctv:cCenterTextViewLineSpacingExtra="8dp"
+                ctv:cLeftTextString="姓名\n欧阳峰鸟"
+                ctv:cLeftTextViewLineSpacingExtra="8dp"
+                ctv:cRightTextString="学籍\n北京科技大学"
+                ctv:cRightTextViewLineSpacingExtra="8dp"
+                ctv:cSetSingleLine="false"
+                ctv:cShowDividerLineType="bottom" />
+
+            <com.allen.library.CommonTextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                ctv:cCenterTextViewLineSpacingExtra="8dp"
+                ctv:cLeftIconResForDrawableLeft="@drawable/head_default"
+                ctv:cLeftTextString="姓名\n欧阳峰"
+                ctv:cLeftTextViewGravity="left_center"
+                ctv:cLeftTextViewLineSpacingExtra="8dp"
+                ctv:cRightIconResForDrawableRight="@drawable/arrow_right_red"
+                ctv:cRightTextColor="@color/colorAccent"
+                ctv:cRightTextString="已实名"
+                ctv:cRightTextViewLineSpacingExtra="8dp"
+                ctv:cSetSingleLine="false"
+                ctv:cShowDividerLineType="bottom" />
+
+
+            <com.allen.library.CommonTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                ctv:cLeftIconResForDrawableLeft="@drawable/scatter_time"
+                ctv:cLeftTextString="起息时间"
+                ctv:cRightIconResForDrawableRight="@drawable/arrow_right_red"
+                ctv:cRightTextString="T+1日" />
+
+            <com.allen.library.CommonTextView
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                ctv:cCenterIconResForDrawableTop="@drawable/scatter_use"
+                ctv:cCenterTextString="还款方式"
+                ctv:cLeftIconResForDrawableTop="@drawable/scatter_time"
+                ctv:cLeftTextString="起息时间"
+                ctv:cRightIconResForDrawableTop="@drawable/scatter_type"
+                ctv:cRightTextString="截至日期" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.allen.library.CommonTextView
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    ctv:cCenterIconResForDrawableTop="@mipmap/ic_launcher"
+                    ctv:cCenterTextString="文字"
+                    ctv:cUseRipple="true" />
+
+                <com.allen.library.CommonTextView
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    ctv:cCenterIconResForDrawableTop="@mipmap/ic_launcher"
+                    ctv:cCenterTextString="文字"
+                    ctv:cUseRipple="true" />
+
+                <com.allen.library.CommonTextView
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    ctv:cCenterIconResForDrawableTop="@mipmap/ic_launcher"
+                    ctv:cCenterTextString="文字"
+                    ctv:cUseRipple="true" />
+            </LinearLayout>
+
+            <com.allen.library.CommonTextView
+                android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:layout_weight="1"
-                ctv:cCenterIconResForDrawableTop="@mipmap/ic_launcher"
-                ctv:cCenterTextString="文字"
+                ctv:cCenterTextString="张三\n188******88"
+                ctv:cCenterTextViewGravity="center"
+                ctv:cLeftIconResForDrawableLeft="@mipmap/ic_launcher"
+                ctv:cLeftTextString="张三\n188******88"
+                ctv:cLeftTextViewGravity="left_center"
+                ctv:cRightIconResForDrawableRight="@mipmap/ic_launcher"
+                ctv:cRightTextString="张三\n188******88"
+                ctv:cRightTextViewGravity="right_center"
+                ctv:cSetSingleLine="false"
+                ctv:cShowDividerLineType="both"
                 ctv:cUseRipple="true" />
+
         </LinearLayout>
-
-        <com.allen.library.CommonTextView
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            ctv:cShowDividerLineType="both"
-            ctv:cLeftIconResForDrawableLeft="@mipmap/ic_launcher"
-            ctv:cRightIconResForDrawableRight="@mipmap/ic_launcher"
-            ctv:cCenterTextString="张三\n188******88"
-            ctv:cLeftTextString="张三\n188******88"
-            ctv:cLeftTextViewGravity="left_center"
-            ctv:cRightTextString="张三\n188******88"
-            ctv:cCenterTextViewGravity="center"
-            ctv:cRightTextViewGravity="right_center"
-            ctv:cSetSingleLine="false"
-            ctv:cUseRipple="true" />
-
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
 
 
 </LinearLayout>
