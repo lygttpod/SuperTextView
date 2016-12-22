@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ctv="http://schemas.android.com/apk/res-auto"
+    xmlns:wave="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -121,7 +122,20 @@
                 ctv:cShowDividerLineType="both"
                 ctv:cUseRipple="true" />
 
+            <com.allen.library.CommonTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                ctv:cCenterTextColor="@android:color/darker_gray"
+                ctv:cCenterTextString="请选择客户性别:"
+                ctv:cCenterTextViewGravity="left_center"
+                ctv:cLeftTextString="客户性别"
+                ctv:cLeftViewPaddingLeft="20dp"
+                ctv:cRightIconResForDrawableRight="@drawable/arrow_right_red"
+                ctv:cRightTextString=""
+                ctv:cUseRipple="true" />
         </LinearLayout>
+
+
     </ScrollView>
 
 

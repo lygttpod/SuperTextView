@@ -307,13 +307,13 @@ public class CommonTextView extends RelativeLayout {
 //        if (mRight_IV_drawable!=null){
 //            initRightImageView();
 //        }
-        if (mLeftTextString != null) {
+        if (mLeftTextString != null||mLeft_drawableLeft!=null||mLeft_drawableRight!=null) {
             initLeftText();
         }
         if (mCenterTextString != null) {
             initCenterText();
         }
-        if (mRightTextString != null) {
+        if (mRightTextString != null||mRight_drawableLeft!=null||mRight_drawableRight!=null) {
             initRightText();
         }
 
@@ -487,6 +487,14 @@ public class CommonTextView extends RelativeLayout {
             leftTextView.setText(mLeftTextString);
             leftTextView.setLineSpacing(mLeftTextViewLineSpacingExtra, 1.0f);
             setTextViewGravity(leftTextView, mLeftTextViewGravity);
+            leftTextView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onCommonTextViewClickListener!=null){
+                        onCommonTextViewClickListener.onLeftViewClick();
+                    }
+                }
+            });
         }
 
         setDrawable(leftTextView, mLeft_drawableLeft, mLeft_drawableTop, mLeft_drawableRight, mLeft_drawableBottom, mLeftIconDrawablePadding);
@@ -550,6 +558,14 @@ public class CommonTextView extends RelativeLayout {
             centerTextView.setText(mCenterTextString);
             centerTextView.setLineSpacing(mCenterTextViewLineSpacingExtra, 1.0f);
             setTextViewGravity(centerTextView, mCenterTextViewGravity);
+            centerTextView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onCommonTextViewClickListener!=null){
+                        onCommonTextViewClickListener.onCenterViewClick();
+                    }
+                }
+            });
 
         }
         setDrawable(centerTextView, mCenter_drawableLeft, mCenter_drawableTop, mCenter_drawableRight, mCenter_drawableBottom, mCenterIconDrawablePadding);
@@ -615,6 +631,14 @@ public class CommonTextView extends RelativeLayout {
 //            rightTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
             rightTextView.setLineSpacing(mRightTextViewLineSpacingExtra, 1.0f);
             setTextViewGravity(rightTextView, mRightTextViewGravity);
+            rightTextView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onCommonTextViewClickListener!=null){
+                        onCommonTextViewClickListener.onRightViewClick();
+                    }
+                }
+            });
 
         }
         setDrawable(rightTextView, mRight_drawableLeft, mRight_drawableTop, mRight_drawableRight, mRight_drawableBottom, mRightIconDrawablePadding);
