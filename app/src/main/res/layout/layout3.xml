@@ -12,8 +12,8 @@
         stv:sBottomLineMargin="0dp"
         stv:sLeftIconRes="@drawable/scatter_time"
         stv:sIsSingLines="true"
-        stv:sLeftTextString="起息时间起息时间起息时间起息时间起息时间起息时间"
-        stv:sRightTextString="立即起息立即起息立即起息立即起息立即起息立即起息" />
+        stv:sLeftTextString="起息时间"
+        stv:sRightTextString="立即起息" />
 
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
         stv:sBottomLineMargin="0dp"
         stv:sLeftIconRes="@drawable/scatter_type"
         stv:sLeftTextString="还款方式"
-        stv:sRightTextString="等额本息ADADADASDAADA1231414214141414141" />
+        stv:sRightTextString="等额本息" />
 
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"

@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -45,17 +46,45 @@ public class CommonTextView extends RelativeLayout {
     private Drawable mRight_drawableBottom;
 
 
+    private Drawable mLeft_IV_drawable;
+//    private Drawable mRight_IV_drawable;
+
+
     private CharSequence mLeftTextString;
+    private CharSequence mLeftTopTextString;
+    private CharSequence mLeftBottomTextString;
+
     private CharSequence mRightTextString;
+    private CharSequence mRightTopTextString;
+    private CharSequence mRightBottomTextString;
+
     private CharSequence mCenterTextString;
+    private CharSequence mCenterTopTextString;
+    private CharSequence mCenterBottomTextString;
 
     private int mLeftTextSize;
+    private int mLeftTopTextSize;
+    private int mLeftBottomTextSize;
+
     private int mRightTextSize;
+    private int mRightTopTextSize;
+    private int mRightBottomTextSize;
+
     private int mCenterTextSize;
+    private int mCenterTopTextSize;
+    private int mCenterBottomTextSize;
 
     private int mLeftTextColor;
+    private int mLeftTopTextColor;
+    private int mLeftBottomTextColor;
+
     private int mCenterTextColor;
+    private int mCenterTopTextColor;
+    private int mCenterBottomTextColor;
+
     private int mRightTextColor;
+    private int mRightTopTextColor;
+    private int mRightBottomTextColor;
 
     private int mLeftIconDrawablePadding;
     private int mCenterIconDrawablePadding;
@@ -73,6 +102,11 @@ public class CommonTextView extends RelativeLayout {
     private int mTopDividerLineMarginLR;
     private int mBottomDividerLineMarginLR;
     private int mBothDividerLineMarginLR;
+
+    private int mCenterSpaceHeight;
+
+    private int mLeftImageViewMarginLeft;
+//    private int mRightImageViewMarginRight;
 
     private int mDividerLineType;
     private int mDividerLineColor;
@@ -115,10 +149,20 @@ public class CommonTextView extends RelativeLayout {
     private int mRightTextViewGravity;
 
     private TextView leftTextView, centerTextView, rightTextView;
+    private TextView leftTopTextView, centerTopTextView, rightTopTextView;
+    private TextView leftBottomTextView, centerBottomTextView, rightBottomTextView;
 
+    private ImageView leftImageView;
+    //    private ImageView rightImageView;
     private View topLineView, bottomLineView;
+    private View centerBaseLineView;
 
     private RelativeLayout.LayoutParams leftTVParams, centerTVParams, rightTVParams, topLineParams, bottomLineParams;
+    private RelativeLayout.LayoutParams leftTopTVParams, centerTopTVParams, rightTopTVParams;
+    private RelativeLayout.LayoutParams leftBottomTVParams, centerBottomTVParams, rightBottomTVParams;
+    private RelativeLayout.LayoutParams centerBaseLineParams;
+    private RelativeLayout.LayoutParams leftIVParams;
+//    private RelativeLayout.LayoutParams rightIVParams;
 
     private OnCommonTextViewClickListener onCommonTextViewClickListener;
 
@@ -136,6 +180,7 @@ public class CommonTextView extends RelativeLayout {
         mContext = context;
         defaultSize = dip2px(context, 13);
         defaultPadding = dip2px(context, 10);
+        mCenterSpaceHeight = dip2px(context,5);
         getAttr(attrs);
         init();
     }
@@ -164,17 +209,45 @@ public class CommonTextView extends RelativeLayout {
         mRight_drawableRight = typedArray.getDrawable(R.styleable.CommonTextView_cRightIconResForDrawableRight);
         mRight_drawableBottom = typedArray.getDrawable(R.styleable.CommonTextView_cRightIconResForDrawableBottom);
 
+        mLeft_IV_drawable = typedArray.getDrawable(R.styleable.CommonTextView_cLeftImageViewDrawableRes);
+//        mRight_IV_drawable = typedArray.getDrawable(R.styleable.CommonTextView_cRightImageViewDrawableRes);
+        /////////////////////
+
         mLeftTextString = typedArray.getString(R.styleable.CommonTextView_cLeftTextString);
+        mLeftTopTextString = typedArray.getString(R.styleable.CommonTextView_cLeftTopTextString);
+        mLeftBottomTextString = typedArray.getString(R.styleable.CommonTextView_cLeftBottomTextString);
+
         mCenterTextString = typedArray.getString(R.styleable.CommonTextView_cCenterTextString);
+        mCenterTopTextString = typedArray.getString(R.styleable.CommonTextView_cCenterTopTextString);
+        mCenterBottomTextString = typedArray.getString(R.styleable.CommonTextView_cCenterBottomTextString);
+
         mRightTextString = typedArray.getString(R.styleable.CommonTextView_cRightTextString);
+        mRightTopTextString = typedArray.getString(R.styleable.CommonTextView_cRightTopTextString);
+        mRightBottomTextString = typedArray.getString(R.styleable.CommonTextView_cRightBottomTextString);
 
         mLeftTextColor = typedArray.getColor(R.styleable.CommonTextView_cLeftTextColor, defaultColor);
+        mLeftTopTextColor = typedArray.getColor(R.styleable.CommonTextView_cLeftTopTextColor, defaultColor);
+        mLeftBottomTextColor = typedArray.getColor(R.styleable.CommonTextView_cLeftBottomTextColor, defaultColor);
+
         mCenterTextColor = typedArray.getColor(R.styleable.CommonTextView_cCenterTextColor, defaultColor);
+        mCenterTopTextColor = typedArray.getColor(R.styleable.CommonTextView_cCenterTopTextColor, defaultColor);
+        mCenterBottomTextColor = typedArray.getColor(R.styleable.CommonTextView_cCenterBottomTextColor, defaultColor);
+
         mRightTextColor = typedArray.getColor(R.styleable.CommonTextView_cRightTextColor, defaultColor);
+        mRightTopTextColor = typedArray.getColor(R.styleable.CommonTextView_cRightTopTextColor, defaultColor);
+        mRightBottomTextColor = typedArray.getColor(R.styleable.CommonTextView_cRightBottomTextColor, defaultColor);
 
         mLeftTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftTextSize, defaultSize);
+        mLeftTopTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftTopTextSize, defaultSize);
+        mLeftBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftBottomTextSize, defaultSize);
+
         mCenterTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterTextSize, defaultSize);
+        mCenterTopTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterTopTextSize, defaultSize);
+        mCenterBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterBottomTextSize, defaultSize);
+
         mRightTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightTextSize, defaultSize);
+        mRightTopTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightTopTextSize, defaultSize);
+        mRightBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightBottomTextSize, defaultSize);
 
         mLeftIconDrawablePadding = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftIconDrawablePadding, defaultPadding);
         mCenterIconDrawablePadding = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterIconDrawablePadding, defaultPadding);
@@ -190,6 +263,12 @@ public class CommonTextView extends RelativeLayout {
         mBothDividerLineMarginLR = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cBothDividerLineMarginLR, 0);
         mTopDividerLineMarginLR = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cTopDividerLineMarginLR, 0);
         mBottomDividerLineMarginLR = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cBottomDividerLineMarginLR, 0);
+
+        mLeftImageViewMarginLeft = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftImageViewMarginLeft, defaultPadding);
+//        mRightImageViewMarginRight = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightImageViewMarginRight, defaultPadding);
+
+        mCenterSpaceHeight = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterSpaceHeight, mCenterSpaceHeight);
+
 
         mLeftTextViewLineSpacingExtra = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftTextViewLineSpacingExtra, 0);
         mCenterTextViewLineSpacingExtra = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterTextViewLineSpacingExtra, 0);
@@ -221,15 +300,43 @@ public class CommonTextView extends RelativeLayout {
     private void init() {
         initCommonTextView();
         initLineView();
-        if (mLeftTextString != null) {
+        initCenterBaseLine();
+        if (mLeft_IV_drawable != null) {
+            initLeftImageView();
+        }
+//        if (mRight_IV_drawable!=null){
+//            initRightImageView();
+//        }
+        if (mLeftTextString != null||mLeft_drawableLeft!=null||mLeft_drawableRight!=null) {
             initLeftText();
         }
         if (mCenterTextString != null) {
             initCenterText();
         }
-        if (mRightTextString != null) {
+        if (mRightTextString != null||mRight_drawableLeft!=null||mRight_drawableRight!=null) {
             initRightText();
         }
+
+        if (mLeftTopTextString != null) {
+            initLeftTopText();
+        }
+        if (mLeftBottomTextString != null) {
+            initLeftBottomText();
+        }
+
+        if (mCenterTopTextString != null) {
+            initCenterTopText();
+        }
+        if (mCenterBottomTextString != null) {
+            initCenterBottomText();
+        }
+        if (mRightTopTextString != null) {
+            initRightTopText();
+        }
+        if (mRightBottomTextString != null) {
+            initRightBottomText();
+        }
+
     }
 
     /**
@@ -248,6 +355,23 @@ public class CommonTextView extends RelativeLayout {
                 }
             }
         });
+    }
+
+    /**
+     * 为了设置上下两排文字居中对齐显示而需要设置的基准线
+     */
+    private void initCenterBaseLine() {
+        if (centerBaseLineView == null) {
+            if (centerBaseLineParams == null) {
+                centerBaseLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, mCenterSpaceHeight);
+                centerBaseLineParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+            }
+            centerBaseLineView = new View(mContext);
+
+            centerBaseLineView.setId(R.id.cCenterBaseLineId);
+            centerBaseLineView.setLayoutParams(centerBaseLineParams);
+        }
+        addView(centerBaseLineView);
     }
 
     /**
@@ -310,6 +434,43 @@ public class CommonTextView extends RelativeLayout {
         addView(bottomLineView);
     }
 
+    /**
+     * 初始化左边ImageView
+     * 主要是为了便于使用第三方图片框架获取网络图片使用
+     */
+    private void initLeftImageView() {
+        leftImageView = new ImageView(mContext);
+        leftIVParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        leftIVParams.addRule(ALIGN_PARENT_LEFT, TRUE);
+        leftIVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+        leftIVParams.setMargins(mLeftImageViewMarginLeft, 0, 0, 0);
+        leftImageView.setScaleType(ImageView.ScaleType.CENTER);
+        leftImageView.setId(R.id.cLeftImageViewId);
+        leftImageView.setLayoutParams(leftIVParams);
+        if (mLeft_IV_drawable != null) {
+            leftImageView.setImageDrawable(mLeft_IV_drawable);
+        }
+        addView(leftImageView);
+    }
+
+    /**
+     * 初始化右边ImageView
+     * 主要是为了便于使用第三方图片框架获取网络图片使用
+     */
+//    private void initRightImageView() {
+//        rightImageView = new ImageView(mContext);
+//        rightIVParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+//        rightIVParams.addRule(ALIGN_PARENT_RIGHT, TRUE);
+//        rightIVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+//        rightIVParams.setMargins(0, 0, mRightImageViewMarginRight, 0);
+//        rightImageView.setScaleType(ImageView.ScaleType.CENTER);
+//        rightImageView.setId(R.id.cRightImageViewId);
+//        rightImageView.setLayoutParams(rightIVParams);
+//        if (mRight_IV_drawable != null) {
+//            rightImageView.setImageDrawable(mRight_IV_drawable);
+//        }
+//        addView(rightImageView);
+//    }
 
     /**
      * 初始化左边textView
@@ -320,17 +481,63 @@ public class CommonTextView extends RelativeLayout {
                 leftTVParams = getParams(leftTVParams);
             }
             leftTVParams.addRule(CENTER_VERTICAL, TRUE);
-            leftTVParams.addRule(ALIGN_PARENT_LEFT, TRUE);
-//            leftTVParams.addRule(LEFT_OF, R.id.cRightTextId);
+            leftTVParams.addRule(RIGHT_OF, R.id.cLeftImageViewId);
             leftTVParams.setMargins(mLeftViewPaddingLeft, 0, mLeftViewPaddingRight, 0);
             leftTextView = initText(leftTextView, leftTVParams, R.id.cLeftTextId, mLeftTextColor, mLeftTextSize);
             leftTextView.setText(mLeftTextString);
-//            leftTextView.setGravity(Gravity.CENTER_VERTICAL);
             leftTextView.setLineSpacing(mLeftTextViewLineSpacingExtra, 1.0f);
             setTextViewGravity(leftTextView, mLeftTextViewGravity);
+            leftTextView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onCommonTextViewClickListener!=null){
+                        onCommonTextViewClickListener.onLeftViewClick();
+                    }
+                }
+            });
         }
 
         setDrawable(leftTextView, mLeft_drawableLeft, mLeft_drawableTop, mLeft_drawableRight, mLeft_drawableBottom, mLeftIconDrawablePadding);
+
+    }
+
+    /**
+     * 初始化左上textView
+     */
+    private void initLeftTopText() {
+        if (leftTopTextView == null) {
+            if (leftTopTVParams == null) {
+                leftTopTVParams = getParams(leftTopTVParams);
+            }
+            leftTopTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+            leftTopTVParams.addRule(ABOVE, R.id.cCenterBaseLineId);
+            leftTopTVParams.addRule(RIGHT_OF, R.id.cLeftImageViewId);
+            leftTopTVParams.setMargins(mLeftViewPaddingLeft, 0, mLeftViewPaddingRight, 0);
+            leftTopTextView = initText(leftTopTextView, leftTopTVParams, R.id.cLeftTopTextId, mLeftTopTextColor, mLeftTopTextSize);
+            leftTopTextView.setText(mLeftTopTextString);
+            setTextViewGravity(leftTopTextView, mLeftTextViewGravity);
+
+        }
+
+    }
+
+    /**
+     * 初始化左下textView
+     */
+    private void initLeftBottomText() {
+        if (leftBottomTextView == null) {
+            if (leftBottomTVParams == null) {
+                leftBottomTVParams = getParams(leftBottomTVParams);
+            }
+            leftBottomTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+            leftBottomTVParams.addRule(BELOW, R.id.cCenterBaseLineId);
+            leftBottomTVParams.addRule(RIGHT_OF, R.id.cLeftImageViewId);
+            leftBottomTVParams.setMargins(mLeftViewPaddingLeft, 0, mLeftViewPaddingRight, 0);
+            leftBottomTextView = initText(leftBottomTextView, leftBottomTVParams, R.id.cLeftBottomTextId, mLeftBottomTextColor, mLeftBottomTextSize);
+            leftBottomTextView.setText(mLeftBottomTextString);
+            setTextViewGravity(leftBottomTextView, mLeftTextViewGravity);
+
+        }
 
     }
 
@@ -351,11 +558,60 @@ public class CommonTextView extends RelativeLayout {
             centerTextView.setText(mCenterTextString);
             centerTextView.setLineSpacing(mCenterTextViewLineSpacingExtra, 1.0f);
             setTextViewGravity(centerTextView, mCenterTextViewGravity);
+            centerTextView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onCommonTextViewClickListener!=null){
+                        onCommonTextViewClickListener.onCenterViewClick();
+                    }
+                }
+            });
 
         }
         setDrawable(centerTextView, mCenter_drawableLeft, mCenter_drawableTop, mCenter_drawableRight, mCenter_drawableBottom, mCenterIconDrawablePadding);
 
     }
+
+    /**
+     * 初始化中上textView
+     */
+    private void initCenterTopText() {
+        if (centerTopTextView == null) {
+            if (centerTopTVParams == null) {
+                centerTopTVParams = getParams(centerTopTVParams);
+            }
+            centerTopTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+            centerTopTVParams.addRule(RelativeLayout.CENTER_IN_PARENT, TRUE);
+            centerTopTVParams.addRule(ABOVE, R.id.cCenterBaseLineId);
+            centerTopTVParams.setMargins(mCenterViewPaddingLeft, 0, mCenterViewPaddingRight, 0);
+            centerTopTextView = initText(centerTopTextView, centerTopTVParams, R.id.cCenterTopTextId, mCenterTopTextColor, mCenterTopTextSize);
+            centerTopTextView.setText(mCenterTopTextString);
+            centerTopTextView.setLineSpacing(mCenterTextViewLineSpacingExtra, 1.0f);
+            setTextViewGravity(centerTopTextView, mCenterTextViewGravity);
+        }
+
+    }
+
+    /**
+     * 初始化中下textView
+     */
+    private void initCenterBottomText() {
+        if (centerBottomTextView == null) {
+            if (centerBottomTVParams == null) {
+                centerBottomTVParams = getParams(centerBottomTVParams);
+            }
+            centerBottomTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+            centerBottomTVParams.addRule(RelativeLayout.CENTER_IN_PARENT, TRUE);
+            centerBottomTVParams.addRule(BELOW, R.id.cCenterBaseLineId);
+            centerBottomTVParams.setMargins(mCenterViewPaddingLeft, 0, mCenterViewPaddingRight, 0);
+            centerBottomTextView = initText(centerBottomTextView, centerBottomTVParams, R.id.cCenterBottomTextId, mCenterBottomTextColor, mCenterBottomTextSize);
+            centerBottomTextView.setText(mCenterBottomTextString);
+            centerBottomTextView.setLineSpacing(mCenterTextViewLineSpacingExtra, 1.0f);
+            setTextViewGravity(centerBottomTextView, mCenterTextViewGravity);
+        }
+
+    }
+
 
     /**
      * 初始化右边textView
@@ -368,16 +624,67 @@ public class CommonTextView extends RelativeLayout {
 
             rightTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
             rightTVParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, TRUE);
+            rightTVParams.addRule(RelativeLayout.LEFT_OF, R.id.cRightImageViewId);
             rightTVParams.setMargins(mRightViewPaddingLeft, 0, mRightViewPaddingRight, 0);
             rightTextView = initText(rightTextView, rightTVParams, R.id.cRightTextId, mRightTextColor, mRightTextSize);
             rightTextView.setText(mRightTextString);
 //            rightTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
             rightTextView.setLineSpacing(mRightTextViewLineSpacingExtra, 1.0f);
             setTextViewGravity(rightTextView, mRightTextViewGravity);
+            rightTextView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onCommonTextViewClickListener!=null){
+                        onCommonTextViewClickListener.onRightViewClick();
+                    }
+                }
+            });
 
         }
         setDrawable(rightTextView, mRight_drawableLeft, mRight_drawableTop, mRight_drawableRight, mRight_drawableBottom, mRightIconDrawablePadding);
 
+    }
+
+    /**
+     * 初始化右上textView
+     */
+    private void initRightTopText() {
+        if (rightTopTextView == null) {
+            if (rightTopTVParams == null) {
+                rightTopTVParams = getParams(rightTopTVParams);
+            }
+            rightTopTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+            rightTopTVParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, TRUE);
+            rightTopTVParams.addRule(ABOVE, R.id.cCenterBaseLineId);
+            rightTopTVParams.addRule(RelativeLayout.LEFT_OF, R.id.cRightImageViewId);
+            rightTopTVParams.setMargins(mRightViewPaddingLeft, 0, mRightViewPaddingRight, 0);
+            rightTopTextView = initText(rightTopTextView, rightTopTVParams, R.id.cRightTopTextId, mRightTopTextColor, mRightTopTextSize);
+            rightTopTextView.setText(mRightTopTextString);
+            rightTopTextView.setLineSpacing(mRightTextViewLineSpacingExtra, 1.0f);
+            setTextViewGravity(rightTopTextView, mRightTextViewGravity);
+
+        }
+
+    }
+
+    /**
+     * 初始化右下textView
+     */
+    private void initRightBottomText() {
+        if (rightBottomTextView == null) {
+            if (rightBottomTVParams == null) {
+                rightBottomTVParams = getParams(rightBottomTVParams);
+            }
+            rightBottomTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+            rightBottomTVParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, TRUE);
+            rightBottomTVParams.addRule(BELOW, R.id.cCenterBaseLineId);
+            rightBottomTVParams.addRule(RelativeLayout.LEFT_OF, R.id.cRightImageViewId);
+            rightBottomTVParams.setMargins(mRightViewPaddingLeft, 0, mRightViewPaddingRight, 0);
+            rightBottomTextView = initText(rightBottomTextView, rightBottomTVParams, R.id.cRightBottomTextId, mRightBottomTextColor, mRightBottomTextSize);
+            rightBottomTextView.setText(mRightBottomTextString);
+            rightBottomTextView.setLineSpacing(mRightTextViewLineSpacingExtra, 1.0f);
+            setTextViewGravity(rightBottomTextView, mRightTextViewGravity);
+        }
     }
 
 
@@ -466,6 +773,34 @@ public class CommonTextView extends RelativeLayout {
     }
 
     /**
+     * 设置左上文字字符串
+     *
+     * @param string 字符串
+     * @return 返回
+     */
+    public CommonTextView setLeftTopTextString(CharSequence string) {
+        if (leftTopTextView == null) {
+            initLeftTopText();
+        }
+        leftTopTextView.setText(string);
+        return this;
+    }
+
+    /**
+     * 设置左下文字字符串
+     *
+     * @param string 字符串
+     * @return 返回
+     */
+    public CommonTextView setLeftBottomTextString(CharSequence string) {
+        if (leftBottomTextView == null) {
+            initLeftBottomText();
+        }
+        leftBottomTextView.setText(string);
+        return this;
+    }
+
+    /**
      * 设置左边文字字体大小
      *
      * @param size 字体大小
@@ -508,6 +843,34 @@ public class CommonTextView extends RelativeLayout {
     }
 
     /**
+     * 设置中上文字字符串
+     *
+     * @param string 字符串
+     * @return 返回
+     */
+    public CommonTextView setCenterTopTextString(CharSequence string) {
+        if (centerTopTextView == null) {
+            initCenterTopText();
+        }
+        centerTopTextView.setText(string);
+        return this;
+    }
+
+    /**
+     * 设置中下文字字符串
+     *
+     * @param string 字符串
+     * @return 返回
+     */
+    public CommonTextView setCenterBottomTextString(CharSequence string) {
+        if (centerBottomTextView == null) {
+            initCenterBottomText();
+        }
+        centerBottomTextView.setText(string);
+        return this;
+    }
+
+    /**
      * 设置中间文字字体大小
      *
      * @param size 字体大小
@@ -546,6 +909,34 @@ public class CommonTextView extends RelativeLayout {
             initRightText();
         }
         rightTextView.setText(string);
+        return this;
+    }
+
+    /**
+     * 设置右上文字字符串
+     *
+     * @param string 字符串
+     * @return 返回
+     */
+    public CommonTextView setRightTopTextString(CharSequence string) {
+        if (rightTopTextView == null) {
+            initRightTopText();
+        }
+        rightTopTextView.setText(string);
+        return this;
+    }
+
+    /**
+     * 设置右下文字字符串
+     *
+     * @param string 字符串
+     * @return 返回
+     */
+    public CommonTextView setRightBottomTextString(CharSequence string) {
+        if (rightBottomTextView == null) {
+            initRightBottomText();
+        }
+        rightBottomTextView.setText(string);
         return this;
     }
 
@@ -782,12 +1173,42 @@ public class CommonTextView extends RelativeLayout {
     }
 
     /**
+     * 获取左边imageView
+     *
+     * @return 返回imageView对象
+     */
+    public ImageView getLeftImageView() {
+        if (leftImageView == null) {
+            initLeftImageView();
+        }
+        return leftImageView;
+    }
+
+    /**
      * 获取左边textView的值
      *
      * @return 返回
      */
     public CharSequence getLeftTextString() {
         return leftTextView != null ? leftTextView.getText() : "";
+    }
+
+    /**
+     * 获取左上textView的值
+     *
+     * @return 返回
+     */
+    public CharSequence getLeftTopTextString() {
+        return leftTopTextView != null ? leftTopTextView.getText() : "";
+    }
+
+    /**
+     * 获取左下textView的值
+     *
+     * @return 返回
+     */
+    public CharSequence getLeftBottomTextString() {
+        return leftBottomTextView != null ? leftBottomTextView.getText() : "";
     }
 
     /**
@@ -800,12 +1221,48 @@ public class CommonTextView extends RelativeLayout {
     }
 
     /**
+     * 获取中上textView的值
+     *
+     * @return 返回
+     */
+    public CharSequence getCenterTopTextString() {
+        return centerTopTextView != null ? centerTopTextView.getText() : "";
+    }
+
+    /**
+     * 获取中下textView的值
+     *
+     * @return 返回
+     */
+    public CharSequence getCenterBottomTextString() {
+        return centerBottomTextView != null ? centerBottomTextView.getText() : "";
+    }
+
+    /**
      * 获取右边textView的值
      *
      * @return 返回
      */
     public CharSequence getRightTextString() {
         return rightTextView != null ? rightTextView.getText() : "";
+    }
+
+    /**
+     * 获取右上textView的值
+     *
+     * @return 返回
+     */
+    public CharSequence getRightTopTextString() {
+        return rightTopTextView != null ? rightTopTextView.getText() : "";
+    }
+
+    /**
+     * 获取右下textView的值
+     *
+     * @return 返回
+     */
+    public CharSequence getRightBottomTextString() {
+        return rightBottomTextView != null ? rightBottomTextView.getText() : "";
     }
 
     /**
