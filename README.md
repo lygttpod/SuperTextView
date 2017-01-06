@@ -30,7 +30,7 @@
  
         dependencies {
         ...
-        compile 'com.github.lygttpod:SuperTextView:1.0.8'
+        compile 'com.github.lygttpod:SuperTextView:1.0.9'
         }
 
 以下依赖方式将在2016年11月16号之后停止使用（老用户请注意）
@@ -196,6 +196,14 @@
     
 #更新日志
 
+### V1.0.9
+* 	SuperTextView新增左右图标可自定义大小的功能
+
+                                stv:sRightIconWidth="30dp"
+                                stv:sRightIconHeight="30dp"
+                                stv:sLeftIconWidth="30dp"
+                                stv:lefticonHeight="30dp"
+                                
 ### V1.0.8
 * 	修复CommonTextView点击事件无效的bug
 
