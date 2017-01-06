@@ -224,10 +224,10 @@ public class SuperTextView extends RelativeLayout {
         maxEms = typedArray.getInt(R.styleable.SuperTextView_sMaxEms, maxEms);
 
         leftIconWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconWidth,0);
-        leftIconHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconWidth,0);
+        leftIconHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconHeight,0);
 
-        rightIconWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconWidth,0);
-        rightIconHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconWidth,0);
+        rightIconWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightIconWidth,0);
+        rightIconHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightIconHeight,0);
 
         typedArray.recycle();
     }
