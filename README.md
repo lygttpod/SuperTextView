@@ -30,7 +30,7 @@
  
         dependencies {
         ...
-        compile 'com.github.lygttpod:SuperTextView:1.0.7'
+        compile 'com.github.lygttpod:SuperTextView:1.0.8'
         }
 
 以下依赖方式将在2016年11月16号之后停止使用（老用户请注意）
@@ -195,6 +195,9 @@
          .into((ImageView) superTextView.getView(SuperTextView.leftImageViewId));
     
 #更新日志
+
+### V1.0.8
+* 	修复CommonTextView点击事件无效的bug
 
 ### V1.0.7
 * 	CommonTextView新增支持加载网络图片

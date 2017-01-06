@@ -22,7 +22,7 @@
  
         dependencies {
         ...
-        compile 'com.github.lygttpod:SuperTextView:1.0.7'
+        compile 'com.github.lygttpod:SuperTextView:1.0.8'
         }
 
 ###2.布局中如何使用（列出所有属性使用方法）
