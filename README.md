@@ -202,7 +202,7 @@
                                 stv:sRightIconWidth="30dp"
                                 stv:sRightIconHeight="30dp"
                                 stv:sLeftIconWidth="30dp"
-                                stv:lefticonHeight="30dp"
+                                stv:slefticonHeight="30dp"
                                 
 ### V1.0.8
 * 	修复CommonTextView点击事件无效的bug
