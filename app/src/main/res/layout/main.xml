@@ -104,6 +104,24 @@
                 stv:sLeftTextString="年化率"
                 stv:sRightTextColor="@color/colorAccent"
                 stv:sRightTextString="13.8%" />
+
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                stv:sLeftTextString="自定义图片大小"
+                stv:sRightTextString="20dp"
+                stv:sLeftIconWidth="25dp"
+                stv:sLeftIconHeight="25dp"
+                stv:sLeftIconRes="@drawable/ic_hint_music" />
+
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                stv:sLeftTextString="自定义图片大小"
+                stv:sRightTextString="30dp"
+                stv:sLeftIconWidth="30dp"
+                stv:sLeftIconHeight="30dp"
+                stv:sLeftIconRes="@drawable/ic_update_password" />
         </LinearLayout>
     </ScrollView>
 

@@ -24,6 +24,13 @@
     <declare-styleable name="SuperTextView">
         <attr name="sLeftIconRes" format="reference" />
         <attr name="sRightIconRes" format="reference" />
+
+        <attr name="sLeftIconWidth" format="dimension" />
+        <attr name="sLeftIconHeight" format="dimension" />
+
+        <attr name="sRightIconWidth" format="dimension" />
+        <attr name="sRightIconHeight" format="dimension" />
+
         <attr name="sRightCheckBoxRes" format="reference" />
 
         <attr name="sLeftTextString" format="string" />

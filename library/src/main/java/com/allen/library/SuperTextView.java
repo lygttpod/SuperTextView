@@ -67,6 +67,12 @@ public class SuperTextView extends RelativeLayout {
 
     private int leftTVMarginLeft;//左边文字的左边距
 
+    private int leftIconWidth;//左边图标的宽
+    private int leftIconHeight;//左边图标的高
+
+    private int rightIconWidth;//右边图标的宽
+    private int rightIconHeight;//右边图标的高
+
     private int leftTopMarginLeft;//左上文字的左边距
     private int leftBottomMarginLeft;//左下文字的左边距
     private int leftBottomMarginLeft2;//左下第二个文字的左边距
@@ -212,10 +218,17 @@ public class SuperTextView extends RelativeLayout {
         rightTVSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTextSize, defaultSize);
         centerTVSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterTextSize, defaultSize);
 
-        ///////设置textView的属性///////////
+        ///////设置textView的属性///////////SuperTextViewxEms
         isSingLines = typedArray.getBoolean(R.styleable.SuperTextView_sIsSingLines, isSingLines);
         maxLines = typedArray.getInt(R.styleable.SuperTextView_sMaxLines, maxLines);
         maxEms = typedArray.getInt(R.styleable.SuperTextView_sMaxEms, maxEms);
+
+        leftIconWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconWidth,0);
+        leftIconHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconWidth,0);
+
+        rightIconWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconWidth,0);
+        rightIconHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconWidth,0);
+
         typedArray.recycle();
     }
 
@@ -341,8 +354,12 @@ public class SuperTextView extends RelativeLayout {
         leftImgParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         leftImgParams.addRule(ALIGN_PARENT_LEFT, TRUE);
         leftImgParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+        if (leftIconHeight!=0&&leftIconWidth!=0){
+            leftImgParams.width = leftIconWidth;
+            leftImgParams.height = leftIconHeight;
+        }
         setMargin(leftImgParams, leftIconMarginLeft, 0, 0, 0);
-        leftIconIV.setScaleType(ImageView.ScaleType.CENTER);
+        leftIconIV.setScaleType(ImageView.ScaleType.FIT_CENTER);
         leftIconIV.setId(R.id.sLeftIconId);
         leftIconIV.setLayoutParams(leftImgParams);
         if (leftIconRes != null) {
@@ -510,8 +527,12 @@ public class SuperTextView extends RelativeLayout {
         rightImgParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         rightImgParams.addRule(ALIGN_PARENT_RIGHT, TRUE);
         rightImgParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+        if (rightIconHeight!=0&&rightIconWidth!=0){
+            rightImgParams.width = rightIconWidth;
+            rightImgParams.height = rightIconHeight;
+        }
         setMargin(rightImgParams, 0, 0, rightIconMarginRight, 0);
-        rightIconIV.setScaleType(ImageView.ScaleType.CENTER);
+        rightIconIV.setScaleType(ImageView.ScaleType.FIT_CENTER);
         rightIconIV.setId(R.id.sRightIconId);
         rightIconIV.setLayoutParams(rightImgParams);
         if (rightIconRes != null) {
