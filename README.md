@@ -110,10 +110,12 @@
 ###4.点击事件（可根据需求选择实现某个点击事件）
 
           点击事件配合两种方法使用才有效果
+          
           ①、xml配置使用
                stv:sLeftTopViewIsClickable="true"
                stv:sLeftBottomViewIsClickable="true"
                stv:sLeftBottomView2IsClickable="true"
+               
           ②、代码中设置
                superTextView.setLeftTopViewIsClickable(true)
                        .setLeftBottomViewIsClickable(true)
