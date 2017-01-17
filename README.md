@@ -108,17 +108,17 @@
                 });
           
 ###4.点击事件（可根据需求选择实现某个点击事件）
-          点击事件配合两种方法使用才有效果
-          ①、xml配置使用
-                stv:sLeftTopViewIsClickable="true"
-                stv:sLeftBottomViewIsClickable="true"
-                stv:sLeftBottomView2IsClickable="true"
-          ②、代码中设置
-          superTextView.setLeftTopViewIsClickable(true)
+
+          点击事件配合两种方法使用才有效果
+          ①、xml配置使用
+               stv:sLeftTopViewIsClickable="true"
+               stv:sLeftBottomViewIsClickable="true"
+               stv:sLeftBottomView2IsClickable="true"
+          ②、代码中设置
+               superTextView.setLeftTopViewIsClickable(true)
                        .setLeftBottomViewIsClickable(true)
-                       .setLeftBottomView2IsClickable(true)
-                       
-          superTextView.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
+                       .setLeftBottomView2IsClickable(true)   
+                superTextView.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
                     @Override
                     public void onSuperTextViewClick() {
                         super.onSuperTextViewClick();
@@ -214,6 +214,7 @@
 #更新日志
 ### V1.1
 * 	修复SuperTextView和CommonTextView点击事件被子View消耗掉的bug（具体使用请参考文档）
+
 ### V1.0.9
 * 	SuperTextView新增左右图标可自定义大小的功能
 
