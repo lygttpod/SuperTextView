@@ -53,6 +53,9 @@
                 stv:sRightCheckBoxRes="@drawable/circular_check_bg"
                 stv:sRightCheckBoxShow="true"
                 stv:sLineShow="bottom"
+                stv:sLeftTopViewIsClickable="true"
+                stv:sLeftBottomViewIsClickable="true"
+                stv:sLeftBottomView2IsClickable="true"
                  />
         注意：
                 1、上下的线可以通过   sLineShow 设置  有四种显示方式 none，top，bottom，both
@@ -105,7 +108,17 @@
                 });
           
 ###4.点击事件（可根据需求选择实现某个点击事件）
-        superTextView.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
+          点击事件配合两种方法使用才有效果
+          ①、xml配置使用
+                stv:sLeftTopViewIsClickable="true"
+                stv:sLeftBottomViewIsClickable="true"
+                stv:sLeftBottomView2IsClickable="true"
+          ②、代码中设置
+          superTextView.setLeftTopViewIsClickable(true)
+                       .setLeftBottomViewIsClickable(true)
+                       .setLeftBottomView2IsClickable(true)
+                       
+          superTextView.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
                     @Override
                     public void onSuperTextViewClick() {
                         super.onSuperTextViewClick();
@@ -185,6 +198,10 @@
             <enum name="bottom" value="2"/>
             <enum name="both" value="3"/>
         </attr>
+        
+        <attr name="sLeftTopViewIsClickable" format="boolean" />
+        <attr name="sLeftBottomViewIsClickable" format="boolean" />
+        <attr name="sLeftBottomView2IsClickable" format="boolean" />
 
     </declare-styleable> 
     
@@ -195,7 +212,8 @@
          .into((ImageView) superTextView.getView(SuperTextView.leftImageViewId));
     
 #更新日志
-
+### V1.1
+* 	修复SuperTextView和CommonTextView点击事件被子View消耗掉的bug（具体使用请参考文档）
 ### V1.0.9
 * 	SuperTextView新增左右图标可自定义大小的功能
 
