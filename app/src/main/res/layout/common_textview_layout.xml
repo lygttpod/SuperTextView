@@ -108,6 +108,7 @@
             </LinearLayout>
 
             <com.allen.library.CommonTextView
+                android:id="@+id/common_tv"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 ctv:cCenterTextString="张三\n188******88"
@@ -115,6 +116,7 @@
                 ctv:cLeftIconResForDrawableLeft="@mipmap/ic_launcher"
                 ctv:cLeftTextString="张三\n188******88"
                 ctv:cLeftTextViewGravity="left_center"
+                ctv:cLeftViewIsClickable="true"
                 ctv:cRightIconResForDrawableRight="@mipmap/ic_launcher"
                 ctv:cRightTextString="张三\n188******88"
                 ctv:cRightTextViewGravity="right_center"
@@ -133,6 +135,7 @@
                 ctv:cRightIconResForDrawableRight="@drawable/arrow_right_red"
                 ctv:cRightTextString=""
                 ctv:cUseRipple="true" />
+
         </LinearLayout>
 
 

@@ -157,6 +157,11 @@ public class CommonTextView extends RelativeLayout {
     private View topLineView, bottomLineView;
     private View centerBaseLineView;
 
+    private boolean mLeftViewIsClickable = false;
+    private boolean mCenterViewIsClickable = false;
+    private boolean mRightViewIsClickable = false;
+
+
     private RelativeLayout.LayoutParams leftTVParams, centerTVParams, rightTVParams, topLineParams, bottomLineParams;
     private RelativeLayout.LayoutParams leftTopTVParams, centerTopTVParams, rightTopTVParams;
     private RelativeLayout.LayoutParams leftBottomTVParams, centerBottomTVParams, rightBottomTVParams;
@@ -180,7 +185,7 @@ public class CommonTextView extends RelativeLayout {
         mContext = context;
         defaultSize = dip2px(context, 13);
         defaultPadding = dip2px(context, 10);
-        mCenterSpaceHeight = dip2px(context,5);
+        mCenterSpaceHeight = dip2px(context, 5);
         getAttr(attrs);
         init();
     }
@@ -291,6 +296,10 @@ public class CommonTextView extends RelativeLayout {
         mCenterTextViewGravity = typedArray.getInt(R.styleable.CommonTextView_cCenterTextViewGravity, DEFAULT_Gravity);
         mRightTextViewGravity = typedArray.getInt(R.styleable.CommonTextView_cRightTextViewGravity, DEFAULT_Gravity);
 
+        mLeftViewIsClickable = typedArray.getBoolean(R.styleable.CommonTextView_cLeftViewIsClickable, false);
+        mCenterViewIsClickable = typedArray.getBoolean(R.styleable.CommonTextView_cCenterViewIsClickable, false);
+        mRightViewIsClickable = typedArray.getBoolean(R.styleable.CommonTextView_cRightViewIsClickable, false);
+
         typedArray.recycle();
     }
 
@@ -307,13 +316,13 @@ public class CommonTextView extends RelativeLayout {
 //        if (mRight_IV_drawable!=null){
 //            initRightImageView();
 //        }
-        if (mLeftTextString != null||mLeft_drawableLeft!=null||mLeft_drawableRight!=null) {
+        if (mLeftTextString != null || mLeft_drawableLeft != null || mLeft_drawableRight != null) {
             initLeftText();
         }
         if (mCenterTextString != null) {
             initCenterText();
         }
-        if (mRightTextString != null||mRight_drawableLeft!=null||mRight_drawableRight!=null) {
+        if (mRightTextString != null || mRight_drawableLeft != null || mRight_drawableRight != null) {
             initRightText();
         }
 
@@ -487,14 +496,16 @@ public class CommonTextView extends RelativeLayout {
             leftTextView.setText(mLeftTextString);
             leftTextView.setLineSpacing(mLeftTextViewLineSpacingExtra, 1.0f);
             setTextViewGravity(leftTextView, mLeftTextViewGravity);
-            leftTextView.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (onCommonTextViewClickListener!=null){
-                        onCommonTextViewClickListener.onLeftViewClick();
+            if (mLeftViewIsClickable) {
+                leftTextView.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (onCommonTextViewClickListener != null) {
+                            onCommonTextViewClickListener.onLeftViewClick();
+                        }
                     }
-                }
-            });
+                });
+            }
         }
 
         setDrawable(leftTextView, mLeft_drawableLeft, mLeft_drawableTop, mLeft_drawableRight, mLeft_drawableBottom, mLeftIconDrawablePadding);
@@ -558,14 +569,16 @@ public class CommonTextView extends RelativeLayout {
             centerTextView.setText(mCenterTextString);
             centerTextView.setLineSpacing(mCenterTextViewLineSpacingExtra, 1.0f);
             setTextViewGravity(centerTextView, mCenterTextViewGravity);
-            centerTextView.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (onCommonTextViewClickListener!=null){
-                        onCommonTextViewClickListener.onCenterViewClick();
+            if (mCenterViewIsClickable) {
+                centerTextView.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (onCommonTextViewClickListener != null) {
+                            onCommonTextViewClickListener.onCenterViewClick();
+                        }
                     }
-                }
-            });
+                });
+            }
 
         }
         setDrawable(centerTextView, mCenter_drawableLeft, mCenter_drawableTop, mCenter_drawableRight, mCenter_drawableBottom, mCenterIconDrawablePadding);
@@ -631,14 +644,16 @@ public class CommonTextView extends RelativeLayout {
 //            rightTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.RIGHT);
             rightTextView.setLineSpacing(mRightTextViewLineSpacingExtra, 1.0f);
             setTextViewGravity(rightTextView, mRightTextViewGravity);
-            rightTextView.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (onCommonTextViewClickListener!=null){
-                        onCommonTextViewClickListener.onRightViewClick();
+            if (mRightViewIsClickable) {
+                rightTextView.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (onCommonTextViewClickListener != null) {
+                            onCommonTextViewClickListener.onRightViewClick();
+                        }
                     }
-                }
-            });
+                });
+            }
 
         }
         setDrawable(rightTextView, mRight_drawableLeft, mRight_drawableTop, mRight_drawableRight, mRight_drawableBottom, mRightIconDrawablePadding);
@@ -1291,6 +1306,72 @@ public class CommonTextView extends RelativeLayout {
      */
     public CommonTextView setOnCommonTextViewClickListener(OnCommonTextViewClickListener listener) {
         this.onCommonTextViewClickListener = listener;
+        return this;
+    }
+
+    /**
+     * 设置左边view可点击
+     *
+     * @param isClickable boolean类型
+     * @return 返回
+     */
+    public CommonTextView setLeftViewIsClickable(boolean isClickable) {
+        if (isClickable) {
+            if (leftTextView != null) {
+                leftTextView.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (onCommonTextViewClickListener != null) {
+                            onCommonTextViewClickListener.onLeftViewClick();
+                        }
+                    }
+                });
+            }
+        }
+        return this;
+    }
+
+    /**
+     * 设置中间view可点击
+     *
+     * @param isClickable boolean类型
+     * @return 返回
+     */
+    public CommonTextView setCenterViewIsClickable(boolean isClickable) {
+        if (isClickable) {
+            if (centerTextView != null) {
+                centerTextView.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (onCommonTextViewClickListener != null) {
+                            onCommonTextViewClickListener.onCenterViewClick();
+                        }
+                    }
+                });
+            }
+        }
+        return this;
+    }
+
+    /**
+     * 设置右边view可点击
+     *
+     * @param isClickable boolean类型
+     * @return 返回
+     */
+    public CommonTextView setRightViewIsClickable(boolean isClickable) {
+        if (isClickable) {
+            if (rightTextView != null) {
+                rightTextView.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (onCommonTextViewClickListener != null) {
+                            onCommonTextViewClickListener.onRightViewClick();
+                        }
+                    }
+                });
+            }
+        }
         return this;
     }
 
