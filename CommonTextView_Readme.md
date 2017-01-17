@@ -22,7 +22,7 @@
  
         dependencies {
         ...
-        compile 'com.github.lygttpod:SuperTextView:1.0.8'
+        compile 'com.github.lygttpod:SuperTextView:1.1'
         }
 
 ###2.布局中如何使用（列出所有属性使用方法）
@@ -89,6 +89,12 @@
                 ctv:cLeftTextViewGravity="left_center|center|right_center"
                 ctv:cCenterTextViewGravity="left_center|center|right_center"
                 ctv:cRightTextViewGravity="left_center|center|right_center"
+                
+                
+                //点击事件配合onClick事件使用
+                ctv:cLeftViewIsClickable="true"
+                ctv:cCenterViewIsClickable="true"
+                ctv:cRightViewIsClickable="true"
 
 
         注意：
@@ -176,6 +182,18 @@
                                });
           
 ###4.点击事件（可根据需求选择实现某个点击事件）
+
+          点击事件配合两种方法使用才有效果
+          
+          ①、xml配置使用
+                ctv:cLeftViewIsClickable="true"
+                ctv:cCenterViewIsClickable="true"
+                ctv:cRightViewIsClickable="true"
+               
+          ②、代码中设置
+               commonTextView.setLeftViewIsClickable(true)
+                       .setCenterViewIsClickable(true)
+                       .setRightViewIsClickable(true)   
         commonTextView.
         setOnCommonTextViewClickListener(new CommonTextView.OnCommonTextViewClickListener(){
                                                   @Override
@@ -286,6 +304,9 @@
                             <enum name="center" value="1" />
                             <enum name="right_center" value="2" />
                         </attr>
+                <attr name="cLeftViewIsClickable" format="boolean" />
+                <attr name="cCenterViewIsClickable" format="boolean" />
+                <attr name="cRightViewIsClickable" format="boolean" />
             </declare-styleable>
 
 #意见反馈
