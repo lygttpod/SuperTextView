@@ -214,6 +214,22 @@
          .into((ImageView) superTextView.getView(SuperTextView.leftImageViewId));
     
 #更新日志
+### V1.1.1
+* 	1、SuperTextview和CommonTextview新增点击时候自定义选中和默认背景效果
+
+                                sBackgroundDrawableRes="@drawable/selector_red"
+                                
+                                cBackgroundDrawableRes="@drawable/selector_red"
+
+                                
+*    2、CommonTextview新增中间布局左对齐属性
+
+                                两个属性配合使用
+                                ctv:cIsCenterAlignLeft="true"
+                                ctv:cCenterViewMarginLeft="200dp"
+               
+
+
 ### V1.1
 * 	修复SuperTextView和CommonTextView点击事件被子View消耗掉的bug（具体使用请参考文档）
 
