@@ -136,6 +136,38 @@
                 ctv:cRightTextString=""
                 ctv:cUseRipple="true" />
 
+            <com.allen.library.CommonTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                ctv:cBackgroundDrawableRes="@drawable/selector_red"
+                ctv:cCenterTextColor="@android:color/darker_gray"
+                ctv:cLeftTextString="自定义背景点击效果"
+                ctv:cRightIconResForDrawableRight="@drawable/arrow_right_red" />
+
+            <com.allen.library.CommonTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                ctv:cCenterTextString="张姐专业广场舞"
+                ctv:cCenterViewMarginLeft="200dp"
+                ctv:cIsCenterAlignLeft="true"
+                ctv:cLeftTextString="领队" />
+
+            <com.allen.library.CommonTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                ctv:cCenterTextString="九眼龙天天广场A座"
+                ctv:cCenterViewMarginLeft="200dp"
+                ctv:cIsCenterAlignLeft="true"
+                ctv:cLeftTextString="活动地点" />
+
+            <com.allen.library.CommonTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                ctv:cCenterTextString="唐古拉风暴"
+                ctv:cCenterViewMarginLeft="200dp"
+                ctv:cIsCenterAlignLeft="true"
+                ctv:cLeftTextString="舞动歌单" />
+
         </LinearLayout>
 
 

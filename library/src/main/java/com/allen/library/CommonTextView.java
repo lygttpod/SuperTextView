@@ -171,6 +171,9 @@ public class CommonTextView extends RelativeLayout {
 
     private OnCommonTextViewClickListener onCommonTextViewClickListener;
 
+    private Drawable mBackground_drawable;
+    private boolean mIsCenterAlignLeft = false;
+    private int mCenterViewMarginLeft;
 
     public CommonTextView(Context context) {
         this(context, null);
@@ -300,6 +303,11 @@ public class CommonTextView extends RelativeLayout {
         mCenterViewIsClickable = typedArray.getBoolean(R.styleable.CommonTextView_cCenterViewIsClickable, false);
         mRightViewIsClickable = typedArray.getBoolean(R.styleable.CommonTextView_cRightViewIsClickable, false);
 
+        mBackground_drawable = typedArray.getDrawable(R.styleable.CommonTextView_cBackgroundDrawableRes);
+
+        mIsCenterAlignLeft = typedArray.getBoolean(R.styleable.CommonTextView_cIsCenterAlignLeft, false);
+        mCenterViewMarginLeft = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cCenterViewMarginLeft, dip2px(mContext, 200));
+
         typedArray.recycle();
     }
 
@@ -364,6 +372,9 @@ public class CommonTextView extends RelativeLayout {
                 }
             }
         });
+        if (mBackground_drawable != null) {
+            this.setBackgroundDrawable(mBackground_drawable);
+        }
     }
 
     /**
@@ -558,17 +569,29 @@ public class CommonTextView extends RelativeLayout {
     private void initCenterText() {
         if (centerTextView == null) {
             if (centerTVParams == null) {
-                centerTVParams = getParams(centerTVParams);
+                if (mIsCenterAlignLeft) {
+                    centerTVParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+                } else {
+                    centerTVParams = getParams(centerTVParams);
+                }
             }
 
             centerTVParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
             centerTVParams.addRule(RelativeLayout.CENTER_IN_PARENT, TRUE);
-            centerTVParams.setMargins(mCenterViewPaddingLeft, 0, mCenterViewPaddingRight, 0);
 
-            centerTextView = initText(centerTextView, centerTVParams, R.id.cCenterTextId, mCenterTextColor, mCenterTextSize);
+            if (mIsCenterAlignLeft) {
+                centerTextView = initText(centerTextView, centerTVParams, R.id.cCenterTextId, mCenterTextColor, mCenterTextSize);
+                centerTVParams.setMargins(mCenterViewMarginLeft, 0, mCenterViewPaddingRight, 0);
+                setTextViewGravity(centerTextView, Gravity_Left_Center);
+            } else {
+                centerTextView = initText(centerTextView, centerTVParams, R.id.cCenterTextId, mCenterTextColor, mCenterTextSize);
+                centerTVParams.setMargins(mCenterViewPaddingLeft, 0, mCenterViewPaddingRight, 0);
+                setTextViewGravity(centerTextView, mCenterTextViewGravity);
+            }
+
             centerTextView.setText(mCenterTextString);
             centerTextView.setLineSpacing(mCenterTextViewLineSpacingExtra, 1.0f);
-            setTextViewGravity(centerTextView, mCenterTextViewGravity);
+
             if (mCenterViewIsClickable) {
                 centerTextView.setOnClickListener(new OnClickListener() {
                     @Override

@@ -101,6 +101,8 @@
         <attr name="sLeftBottomViewIsClickable" format="boolean" />
         <attr name="sLeftBottomView2IsClickable" format="boolean" />
 
+        <attr name="sBackgroundDrawableRes" format="reference" />
+
     </declare-styleable>
 
     <declare-styleable name="CommonTextView">
@@ -220,6 +222,10 @@
         <attr name="cLeftViewIsClickable" format="boolean" />
         <attr name="cCenterViewIsClickable" format="boolean" />
         <attr name="cRightViewIsClickable" format="boolean" />
+
+        <attr name="cBackgroundDrawableRes" format="reference" />
+        <attr name="cIsCenterAlignLeft" format="boolean" />
+        <attr name="cCenterViewMarginLeft" format="dimension" />
 
 
     </declare-styleable>

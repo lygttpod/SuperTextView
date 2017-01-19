@@ -82,13 +82,13 @@
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                stv:sLeftTextSize="14dip"
                 stv:sLeftTextString="客服热线"
                 stv:sRightTextColor="#ff0000"
                 stv:sRightTextSize="12dp"
-                stv:sLeftTextSize="14dip"
+                stv:sRightTextString="4006179999"
                 stv:sRightTextStringRightIconRes="@drawable/arrow_right_red"
                 stv:sRightTextStringRightIconResPadding="8dip"
-                stv:sRightTextString="4006179999"
                 stv:sUseRipple="true" />
 
             <com.allen.library.SuperTextView
@@ -108,20 +108,28 @@
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                stv:sLeftTextString="自定义图片大小"
-                stv:sRightTextString="20dp"
-                stv:sLeftIconWidth="25dp"
                 stv:sLeftIconHeight="25dp"
-                stv:sLeftIconRes="@drawable/ic_hint_music" />
+                stv:sLeftIconRes="@drawable/ic_hint_music"
+                stv:sLeftIconWidth="25dp"
+                stv:sLeftTextString="自定义图片大小"
+                stv:sRightTextString="20dp" />
 
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                stv:sLeftTextString="自定义图片大小"
-                stv:sRightTextString="30dp"
-                stv:sLeftIconWidth="30dp"
                 stv:sLeftIconHeight="30dp"
-                stv:sLeftIconRes="@drawable/ic_update_password" />
+                stv:sLeftIconRes="@drawable/ic_update_password"
+                stv:sLeftIconWidth="30dp"
+                stv:sLeftTextString="自定义图片大小"
+                stv:sRightTextString="30dp" />
+
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                stv:sBackgroundDrawableRes="@drawable/selector_red"
+                stv:sLeftTextString="自定义背景点击效果"
+                stv:sRightTextStringRightIconRes="@drawable/arrow_right_red" />
+
         </LinearLayout>
     </ScrollView>
 

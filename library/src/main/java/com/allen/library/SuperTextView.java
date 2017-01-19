@@ -136,6 +136,8 @@ public class SuperTextView extends RelativeLayout {
     private boolean mLeftBottomViewIsClickable = false;
     private boolean mLeftBottomView2IsClickable = false;
 
+    private Drawable mBackground_drawable;
+
     public SuperTextView(Context context) {
         super(context);
     }
@@ -235,6 +237,8 @@ public class SuperTextView extends RelativeLayout {
         mLeftTopViewIsClickable = typedArray.getBoolean(R.styleable.SuperTextView_sLeftTopViewIsClickable, false);
         mLeftBottomViewIsClickable = typedArray.getBoolean(R.styleable.SuperTextView_sLeftBottomViewIsClickable, false);
         mLeftBottomView2IsClickable = typedArray.getBoolean(R.styleable.SuperTextView_sLeftBottomView2IsClickable, false);
+
+        mBackground_drawable = typedArray.getDrawable(R.styleable.SuperTextView_sBackgroundDrawableRes);
 
         typedArray.recycle();
     }
@@ -336,6 +340,9 @@ public class SuperTextView extends RelativeLayout {
 
         if (useRipple) {
             this.setBackgroundResource(R.drawable.selector_white);
+        }
+        if (mBackground_drawable != null) {
+            this.setBackgroundDrawable(mBackground_drawable);
         }
     }
 
