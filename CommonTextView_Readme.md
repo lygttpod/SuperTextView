@@ -22,7 +22,7 @@
  
         dependencies {
         ...
-        compile 'com.github.lygttpod:SuperTextView:1.1'
+        compile 'com.github.lygttpod:SuperTextView:1.1.1'
         }
 
 ###2.布局中如何使用（列出所有属性使用方法）
@@ -95,6 +95,15 @@
                 ctv:cLeftViewIsClickable="true"
                 ctv:cCenterViewIsClickable="true"
                 ctv:cRightViewIsClickable="true"
+                
+                cBackgroundDrawableRes="@drawable/selector_red"
+                
+                ctv:cCenterViewMarginLeft="200dp"
+                ctv:cIsCenterAlignLeft="true"
+                
+                
+                                
+                                
 
 
         注意：
@@ -307,6 +316,12 @@
                 <attr name="cLeftViewIsClickable" format="boolean" />
                 <attr name="cCenterViewIsClickable" format="boolean" />
                 <attr name="cRightViewIsClickable" format="boolean" />
+                
+                <attr name="cBackgroundDrawableRes" format="reference" />
+                <attr name="cIsCenterAlignLeft" format="boolean" />
+                <attr name="cCenterViewMarginLeft" format="dimension" />
+                
+                
             </declare-styleable>
 
 #意见反馈
