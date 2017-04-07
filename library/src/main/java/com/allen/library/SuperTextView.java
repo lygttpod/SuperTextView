@@ -60,8 +60,16 @@ public class SuperTextView extends RelativeLayout {
     private int lineColor = 0xFFE8E8E8;//线的默认颜色
 
     private int topLineMargin;//上边线的左右边距
+    private int topLineMarginLeft;//上边线的左边距
+    private int topLineMarginRight;//上边线的右边距
+
     private int bottomLineMargin;//下边线的左右边距
+    private int bottomLineMarginLeft;//下边线的左边距
+    private int bottomLineMarginRight;//下边线的右边距
+
     private int bothLineMargin;//两条线的左右边距
+    private int bothLineMarginLeft;//两条线的左边距
+    private int bothLineMarginRight;//两条线的右边距
 
     private int leftIconMarginLeft;//左边图标的左边距
 
@@ -195,8 +203,16 @@ public class SuperTextView extends RelativeLayout {
         lineColor = typedArray.getColor(R.styleable.SuperTextView_sLineColor, lineColor);
 
         topLineMargin = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sTopLineMargin, defaultLinePadding);
+        topLineMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sTopLineMarginLeft, defaultLinePadding);
+        topLineMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sTopLineMarginRight, defaultLinePadding);
+
         bottomLineMargin = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sBottomLineMargin, defaultLinePadding);
+        bottomLineMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sBottomLineMarginLeft, defaultLinePadding);
+        bottomLineMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sBottomLineMarginRight, defaultLinePadding);
+
         bothLineMargin = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sBothLineMargin, defaultLinePadding);
+        bothLineMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sBothLineMarginLeft, defaultLinePadding);
+        bothLineMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sBothLineMarginRight, defaultLinePadding);
 
         leftIconMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconMarginLeft, defaultPadding);
         leftTVMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftTextMarginLeft, defaultPadding);
@@ -283,27 +299,53 @@ public class SuperTextView extends RelativeLayout {
             case NONE:
                 break;
             case TOP:
-                initTopLine(topLineMargin, topLineWidth);
+                setTopLineMargin();
                 break;
             case BOTTOM:
-                initBottomLine(bottomLineMargin, bottomLineWidth);
+                setBottomLineMargin();
                 break;
             case BOTH:
-                initTopLine(bothLineMargin, bothLineWidth);
-                initBottomLine(bothLineMargin, bothLineWidth);
+                setTopLineMargin();
+                setBottomLineMargin();
                 break;
         }
     }
 
 
     /**
+     * 设置顶部分割线的左右边距
+     */
+    private void setTopLineMargin() {
+        if (topLineMargin != 0) {
+            initTopLine(topLineMargin, topLineMargin, topLineWidth);
+        } else if (bothLineMarginLeft != 0 | bothLineMarginRight != 0) {
+            initTopLine(bothLineMarginLeft, bothLineMarginRight, topLineWidth);
+        } else {
+            initTopLine(topLineMarginLeft, topLineMarginRight, topLineWidth);
+        }
+    }
+
+    /**
+     * 设置底部分割线的左右边距
+     */
+    private void setBottomLineMargin() {
+        if (bottomLineMargin != 0) {
+            initBottomLine(bottomLineMargin, bottomLineMargin, bottomLineWidth);
+        } else if (bothLineMarginLeft != 0 | bothLineMarginRight != 0) {
+            initBottomLine(bothLineMarginLeft, bothLineMarginRight, topLineWidth);
+        } else {
+            initBottomLine(bottomLineMarginLeft, bottomLineMarginRight, topLineWidth);
+        }
+    }
+
+    /**
      * 初始化上边的线
      */
-    private void initTopLine(int lineMargin, int lineWidth) {
+    private void initTopLine(int lineMarginLeft, int lineMarginRight, int lineWidth) {
         View topLine = new View(mContext);
         topLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, lineWidth);
         topLineParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, TRUE);
-        topLineParams.setMargins(lineMargin, 0, lineMargin, 0);
+        topLineParams.setMargins(lineMarginLeft, 0, lineMarginRight, 0);
         topLine.setLayoutParams(topLineParams);
         topLine.setBackgroundColor(lineColor);
         addView(topLine);
@@ -312,14 +354,13 @@ public class SuperTextView extends RelativeLayout {
     /**
      * 初始化下边的线
      */
-    private void initBottomLine(int lineMargin, int lineWidth) {
+    private void initBottomLine(int lineMarginLeft, int lineMarginRight, int lineWidth) {
         View bottomLine = new View(mContext);
         bottomLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, lineWidth);
         bottomLineParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, TRUE);
-        bottomLineParams.setMargins(lineMargin, 0, lineMargin, 0);
+        bottomLineParams.setMargins(lineMarginLeft, 0, lineMarginRight, 0);
         bottomLine.setLayoutParams(bottomLineParams);
         bottomLine.setBackgroundColor(lineColor);
-
         addView(bottomLine);
     }
 

@@ -41,6 +41,7 @@
         }
 
 ###2.布局中如何使用
+
         <com.allen.supertextviewlibrary.SuperTextView
                 android:id="@+id/super_tv"
                 android:layout_width="match_parent"
@@ -64,6 +65,7 @@
        /**
      * 可以通过链式设置大部分常用的属性值
      */
+     
         superTextView.setLeftIcon(drawable)
                 .setLeftString("")
                 .setLeftTVColor(0)
@@ -147,23 +149,28 @@
                 });
 
 ###5.属性说明(以下属性全部可以通过xml文件配置和代码进行设置)
+
         <declare-styleable name="SuperTextView">
         <attr name="sLeftIconRes" format="reference"/>
         <attr name="sRightIconRes" format="reference"/>
         <attr name="sRightCheckBoxRes" format="reference"/>
-
         <attr name="sLeftTextString" format="string"/>
         <attr name="sCenterTextString" format="string"/>
         <attr name="sRightTextString" format="string"/>
-
         <attr name="sLeftTopTextString" format="string"/>
         <attr name="sLeftBottomTextString" format="string"/>
         <attr name="sLeftBottomTextString2" format="string"/>
+        <attr name="sTopLineMargin" format="dimension" />
+        <attr name="sTopLineMarginLeft" format="dimension" />
+        <attr name="sTopLineMarginRight" format="dimension" />
 
+        <attr name="sBottomLineMargin" format="dimension" />
+        <attr name="sBottomLineMarginLeft" format="dimension" />
+        <attr name="sBottomLineMarginRight" format="dimension" />
 
-        <attr name="sTopLineMargin" format="dimension"/>
-        <attr name="sBottomLineMargin" format="dimension"/>
-        <attr name="sBothLineMargin" format="dimension"/>
+        <attr name="sBothLineMargin" format="dimension" />
+        <attr name="sBothLineMarginLeft" format="dimension" />
+        <attr name="sBothLineMarginRight" format="dimension" />
 
         <attr name="sLeftIconMarginLeft" format="dimension"/>
         <attr name="sLeftTextMarginLeft" format="dimension"/>
@@ -208,12 +215,43 @@
     </declare-styleable> 
     
 ###6.使用第三方库(Picasso或者Glide)加载网络图片
+
          Picasso.with(this)
          .load(url)
          .placeholder(R.drawable.head_default)
          .into((ImageView) superTextView.getView(SuperTextView.leftImageViewId));
     
 #更新日志
+### V1.1.2
+*   上下分割线添加单独设置左右边距的参数
+
+                1、SuperTextVIew配置方法如下:下列两种方式都是单独使用
+                
+                //方法一
+                stv:sTopLineMarginLeft="10dp"
+                stv:sTopLineMarginRight="0dp"
+                 
+                stv:sBottomLineMarginLeft="10dp"
+                stv:sBottomLineMarginRight="0dp"
+                
+                //方法二
+                stv:sBothLineMarginLeft="10dp"
+                stv:sBothLineMarginRight="0dp"
+                                
+                2、CommonTextView配置方法如下：下列两种方式都是单独使用
+                
+                //方法一
+                ctv:cTopDividerLineMarginLeft="10dp"
+                ctv:cTopDividerLineMarginRight="0dp"
+
+                ctv:cBottomDividerLineMarginLeft="10dp"
+                ctv:cBottomDividerLineMarginRight="0dp"
+                
+                //方法二
+                ctv:cBothDividerLineMarginLeft="10dp"
+                ctv:cBothDividerLineMarginRight="0dp"
+                
+
 ### V1.1.1
 * 	1、SuperTextview和CommonTextview新增点击时候自定义选中和默认背景效果
 

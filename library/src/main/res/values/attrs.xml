@@ -43,8 +43,16 @@
 
 
         <attr name="sTopLineMargin" format="dimension" />
+        <attr name="sTopLineMarginLeft" format="dimension" />
+        <attr name="sTopLineMarginRight" format="dimension" />
+
         <attr name="sBottomLineMargin" format="dimension" />
+        <attr name="sBottomLineMarginLeft" format="dimension" />
+        <attr name="sBottomLineMarginRight" format="dimension" />
+
         <attr name="sBothLineMargin" format="dimension" />
+        <attr name="sBothLineMarginLeft" format="dimension" />
+        <attr name="sBothLineMarginRight" format="dimension" />
 
         <attr name="sCenterSpaceHeight" format="dimension" />
 
@@ -174,8 +182,16 @@
         <attr name="cRightViewPaddingRight" format="dimension" />
 
         <attr name="cTopDividerLineMarginLR" format="dimension" />
+        <attr name="cTopDividerLineMarginLeft" format="dimension" />
+        <attr name="cTopDividerLineMarginRight" format="dimension" />
+
         <attr name="cBottomDividerLineMarginLR" format="dimension" />
-        <attr name="cBothDividerLineMarginLR" format="dimension" />
+        <attr name="cBottomDividerLineMarginLeft" format="dimension" />
+        <attr name="cBottomDividerLineMarginRight" format="dimension" />
+
+        <attr name="cBothDividerLineMarginLeft" format="dimension" />
+        <attr name="cBothDividerLineMarginRight" format="dimension" />
+
 
         <attr name="cLeftTextViewLineSpacingExtra" format="dimension" />
         <attr name="cCenterTextViewLineSpacingExtra" format="dimension" />

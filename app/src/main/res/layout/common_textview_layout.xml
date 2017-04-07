@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ctv="http://schemas.android.com/apk/res-auto"
-    xmlns:wave="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -167,7 +166,6 @@
                 ctv:cCenterViewMarginLeft="200dp"
                 ctv:cIsCenterAlignLeft="true"
                 ctv:cLeftTextString="舞动歌单" />
-
         </LinearLayout>
 
 

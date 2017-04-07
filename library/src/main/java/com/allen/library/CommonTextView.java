@@ -100,8 +100,15 @@ public class CommonTextView extends RelativeLayout {
     private int mRightViewPaddingRight;
 
     private int mTopDividerLineMarginLR;
+    private int mTopDividerLineMarginLeft;
+    private int mTopDividerLineMarginRight;
+
     private int mBottomDividerLineMarginLR;
-    private int mBothDividerLineMarginLR;
+    private int mBottomDividerLineMarginLeft;
+    private int mBottomDividerLineMarginRight;
+
+    private int mBothDividerLineMarginLeft;
+    private int mBothDividerLineMarginRight;
 
     private int mCenterSpaceHeight;
 
@@ -268,9 +275,16 @@ public class CommonTextView extends RelativeLayout {
         mRightViewPaddingLeft = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightViewPaddingLeft, defaultPadding);
         mRightViewPaddingRight = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightViewPaddingRight, defaultPadding);
 
-        mBothDividerLineMarginLR = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cBothDividerLineMarginLR, 0);
+        mBothDividerLineMarginLeft = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cBothDividerLineMarginLeft, 0);
+        mBothDividerLineMarginRight = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cBothDividerLineMarginRight, 0);
+
         mTopDividerLineMarginLR = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cTopDividerLineMarginLR, 0);
+        mTopDividerLineMarginLeft = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cTopDividerLineMarginLeft, 0);
+        mTopDividerLineMarginRight = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cTopDividerLineMarginRight, 0);
+
         mBottomDividerLineMarginLR = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cBottomDividerLineMarginLR, 0);
+        mBottomDividerLineMarginLeft = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cBottomDividerLineMarginLeft, 0);
+        mBottomDividerLineMarginRight = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cBottomDividerLineMarginRight, 0);
 
         mLeftImageViewMarginLeft = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cLeftImageViewMarginLeft, defaultPadding);
 //        mRightImageViewMarginRight = typedArray.getDimensionPixelSize(R.styleable.CommonTextView_cRightImageViewMarginRight, defaultPadding);
@@ -402,31 +416,59 @@ public class CommonTextView extends RelativeLayout {
             case NONE:
                 break;
             case TOP:
-                initTopLineView(mTopDividerLineMarginLR);
+                setTopLineMargin();
                 break;
             case BOTTOM:
-                initBottomLineView(mBottomDividerLineMarginLR);
+                setBottomLineMargin();
                 break;
             case BOTH:
-                initTopLineView(mBothDividerLineMarginLR);
-                initBottomLineView(mBothDividerLineMarginLR);
+                setTopLineMargin();
+                setBottomLineMargin();
                 break;
         }
 
     }
 
     /**
+     * 设置顶部的分割线
+     */
+    private void setTopLineMargin() {
+        if (mTopDividerLineMarginLR != 0) {
+            initTopLineView(mTopDividerLineMarginLR, mTopDividerLineMarginLR);
+        } else if (mBothDividerLineMarginLeft != 0 | mBothDividerLineMarginRight != 0) {
+            initTopLineView(mBothDividerLineMarginLeft, mBothDividerLineMarginRight);
+        } else {
+            initTopLineView(mTopDividerLineMarginLeft, mTopDividerLineMarginRight);
+        }
+    }
+
+    /**
+     * 设置底部的分割线
+     */
+    private void setBottomLineMargin() {
+        if (mBottomDividerLineMarginLR != 0) {
+            initBottomLineView(mBottomDividerLineMarginLR, mBottomDividerLineMarginLR);
+        } else if (mBothDividerLineMarginRight != 0 | mBothDividerLineMarginRight != 0) {
+            initBottomLineView(mBothDividerLineMarginLeft, mBothDividerLineMarginRight);
+        } else {
+            initBottomLineView(mBottomDividerLineMarginLeft, mBottomDividerLineMarginRight);
+        }
+    }
+
+
+    /**
      * 设置上边分割线view
      *
-     * @param margin 左右间距
+     * @param marginLeft  左间距
+     * @param marginRight 右间距
      */
-    private void initTopLineView(int margin) {
+    private void initTopLineView(int marginLeft, int marginRight) {
         if (topLineView == null) {
             if (topLineParams == null) {
                 topLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, mDividerLineHeight);
             }
             topLineParams.addRule(ALIGN_PARENT_TOP, TRUE);
-            topLineParams.setMargins(margin, 0, margin, 0);
+            topLineParams.setMargins(marginLeft, 0, marginRight, 0);
             topLineView = new View(mContext);
             topLineView.setLayoutParams(topLineParams);
             topLineView.setBackgroundColor(mDividerLineColor);
@@ -437,15 +479,16 @@ public class CommonTextView extends RelativeLayout {
     /**
      * 设置底部分割线view
      *
-     * @param margin 左右间距
+     * @param marginLeft  左间距
+     * @param marginRight 右间距
      */
-    private void initBottomLineView(int margin) {
+    private void initBottomLineView(int marginLeft, int marginRight) {
         if (bottomLineView == null) {
             if (bottomLineParams == null) {
                 bottomLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, mDividerLineHeight);
             }
             bottomLineParams.addRule(ALIGN_PARENT_BOTTOM, TRUE);
-            bottomLineParams.setMargins(margin, 0, margin, 0);
+            bottomLineParams.setMargins(marginLeft, 0, marginRight, 0);
 
             bottomLineView = new View(mContext);
             bottomLineView.setLayoutParams(bottomLineParams);

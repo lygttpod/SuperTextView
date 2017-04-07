@@ -26,19 +26,20 @@
         }
 
 ###2.布局中如何使用（列出所有属性使用方法）
+
         <com.allen.library.CommonTextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-
                 //左边view的属性
                 ctv:cLeftIconDrawablePadding="10dp"
                 ctv:cLeftIconResForDrawableLeft="@drawable/uu"
                 ctv:cLeftTextColor="@color/colorAccent"
-                ctv:cLeftTextSize="15sp"
+                
+                ctv:cLeftTextSize="15sp"
                 ctv:cLeftTextString="左边文字"
                 ctv:cLeftViewPaddingLeft="10dp"
                 ctv:cLeftViewPaddingRight="10dp"
-
+                
                 //中间view的属性
                 ctv:cCenterIconDrawablePadding="10dp"
                 ctv:cCenterIconResForDrawableLeft="@drawable/uu"
@@ -273,9 +274,16 @@
                 <attr name="cRightViewPaddingLeft" format="dimension" />
                 <attr name="cRightViewPaddingRight" format="dimension" />
 
-                <attr name="cTopDividerLineMarginLR" format="dimension" />
+                attr name="cTopDividerLineMarginLR" format="dimension" />
+                <attr name="cTopDividerLineMarginLeft" format="dimension" />
+                <attr name="cTopDividerLineMarginRight" format="dimension" />
+                
                 <attr name="cBottomDividerLineMarginLR" format="dimension" />
-                <attr name="cBothDividerLineMarginLR" format="dimension" />
+                <attr name="cBottomDividerLineMarginLeft" format="dimension" />
+                <attr name="cBottomDividerLineMarginRight" format="dimension" />
+                
+                <attr name="cBothDividerLineMarginLeft" format="dimension" />
+                <attr name="cBothDividerLineMarginRight" format="dimension" />
 
                 <attr name="cLeftTextViewLineSpacingExtra" format="dimension" />
                 <attr name="cCenterTextViewLineSpacingExtra" format="dimension" />
