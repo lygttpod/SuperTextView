@@ -30,7 +30,7 @@
  
         dependencies {
         ...
-        compile 'com.github.lygttpod:SuperTextView:1.1.1'
+        compile 'com.github.lygttpod:SuperTextView:1.1.2'
         }
 
 以下依赖方式将在2016年11月16号之后停止使用（老用户请注意）
@@ -301,12 +301,12 @@
 ### V1.0.0
 * 功能强大的TextView
 
-#意见反馈
+# 意见反馈
 如果遇到问题或者好的建议，请反馈到我的邮箱：lygttpod@163.com 或者lygttpod@gmail.com 或者QQ：460605805
 
 如果觉得对你有用的话，点一下右上的星星赞一下吧!
 
-#License
+# License
          Copyright 2016 Allen
 
         Licensed under the Apache License, Version 2.0 (the "License");
