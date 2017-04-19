@@ -1,9 +1,9 @@
 # SuperTextView 以及简化版 [**CommonTextView**](https://github.com/lygttpod/SuperTextView/blob/master/CommonTextView_Readme.md)
 一个功能强大的TextView，可以满足日常大部分布局方式，开发者可已自行组合属性配置出属于自己风格的样式!如果觉得对你有用的话，点一下右上的星星赞一下吧!
 
-###使用过程中大家遇到什么问题欢迎在Issues或者发送邮件提出来，这边会尽快修改完善这个库，谢谢大家的支持！
+### 使用过程中大家遇到什么问题欢迎在Issues或者发送邮件提出来，这边会尽快修改完善这个库，谢谢大家的支持！
 
-#效果图
+# 效果图
 <div  align="center">    
 <img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/screenshot.png" width = "360" height = "640" alt="效果图" align=center /></div>
 <div  align="center">    
@@ -14,9 +14,9 @@
 <img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/type5.png" width = "270" height = "480" alt="效果图" align=center />
 <img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/type6.png" width = "270" height = "480" alt="效果图" align=center />
 </div>
-#基本使用
-##公告：由于Bintray试用期已到，穷屌丝无法支付起高昂的仓库管理费用(Bintrayr收费标准 $150/month）,故迁移库至JitPack，依赖方式有所改变，开发者在使用过程中请注意。
-###1.添加Gradle依赖 
+# 基本使用
+## 公告：由于Bintray试用期已到，穷屌丝无法支付起高昂的仓库管理费用(Bintrayr收费标准 $150/month）,故迁移库至JitPack，依赖方式有所改变，开发者在使用过程中请注意。
+### 1.添加Gradle依赖 
 先在项目根目录的 build.gradle 的 repositories 添加:
 
      allprojects {
@@ -40,7 +40,7 @@
         compile 'com.allen.supertextview:supertextview:1.0.3'
         }
 
-###2.布局中如何使用
+### 2.布局中如何使用
 
         <com.allen.supertextviewlibrary.SuperTextView
                 android:id="@+id/super_tv"
@@ -61,7 +61,7 @@
         注意：
                 1、上下的线可以通过   sLineShow 设置  有四种显示方式 none，top，bottom，both
                 2、通过设置 sUseRipple=true 开启水波效果
-###3.代码中如何使用
+### 3.代码中如何使用
        /**
      * 可以通过链式设置大部分常用的属性值
      */
@@ -109,7 +109,7 @@
                     }
                 });
           
-###4.点击事件（可根据需求选择实现某个点击事件）
+### 4.点击事件（可根据需求选择实现某个点击事件）
 
           点击事件配合两种方法使用才有效果
           
@@ -148,7 +148,7 @@
                     }
                 });
 
-###5.属性说明(以下属性全部可以通过xml文件配置和代码进行设置)
+### 5.属性说明(以下属性全部可以通过xml文件配置和代码进行设置)
 
         <declare-styleable name="SuperTextView">
         <attr name="sLeftIconRes" format="reference"/>
@@ -214,14 +214,14 @@
 
     </declare-styleable> 
     
-###6.使用第三方库(Picasso或者Glide)加载网络图片
+### 6.使用第三方库(Picasso或者Glide)加载网络图片
 
          Picasso.with(this)
          .load(url)
          .placeholder(R.drawable.head_default)
          .into((ImageView) superTextView.getView(SuperTextView.leftImageViewId));
     
-#更新日志
+# 更新日志
 ### V1.1.2
 *   上下分割线添加单独设置左右边距的参数
 
