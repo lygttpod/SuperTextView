@@ -14,6 +14,7 @@
 <img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/type5.png" width = "270" height = "480" alt="效果图" align=center />
 <img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/type6.png" width = "270" height = "480" alt="效果图" align=center />
 </div>
+
 # 基本使用
 
 ##  公告：由于Bintray试用期已到，穷屌丝无法支付起高昂的仓库管理费用(Bintrayr收费标准 $150/month）,故迁移库至JitPack，依赖方式有所改变，开发者在使用过程中请注意。
