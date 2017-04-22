@@ -1,4 +1,4 @@
-## 文章目录
+## 目录
 * 1、功能描述
 * 2、效果图
 * 3、如何使用
@@ -11,13 +11,24 @@
   - 4.1、需求分析
   - 4.2、代码封装
   - 4.3、总结
+* 5、更新记录
 
 ## 1、功能描述
 > [**SuperTextView**](https://github.com/lygttpod/SuperTextView)是一个功能强大的View，可以满足日常大部分布局样式，开发者可已自行组合属性配置出属于自己风格的样式!可能描述起来没有概念，还是直接看效果图吧！
 
 ## 2、 效果图
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/2057501-87c62fbe413a2dda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/480)
+<div  align="center">    
+<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/screenshot.png" width = "360" height = "640" alt="效果图" align=center /></div>
+<div  align="center">    
+<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/type1.png" width = "270" height = "480" alt="效果图" align=center />
+<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/type2.png" width = "270" height = "480" alt="效果图" align=center />
+<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/type3.png" width = "270" height = "480" alt="效果图" align=center />
+<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/type4.png" width = "270" height = "480" alt="效果图" align=center />
+<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/type5.png" width = "270" height = "480" alt="效果图" align=center />
+<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/type6.png" width = "270" height = "480" alt="效果图" align=center />
+</div>
+
 
 ## 3、如何使用
 > Android Studio导入方法，添加Gradle依赖
@@ -341,6 +352,88 @@ private void getAttr(AttributeSet attrs) {
 
 ##### 4.3、总结
 想必看到这里的小伙伴已经对这个库的源码实现方式了解了，这里只是把实现的流程给大家介绍了一下，我又对这个库做了一个简化版的处理，有兴趣的小伙伴可以去读读源码哦，发现哪里写的不妥的地方还请指正。
+
+##### 5、更新日志
+
+### V1.1.2
+*   上下分割线添加单独设置左右边距的参数
+```
+                1、SuperTextVIew配置方法如下:下列两种方式都是单独使用
+                
+                //方法一
+                stv:sTopLineMarginLeft="10dp"
+                stv:sTopLineMarginRight="0dp"
+                 
+                stv:sBottomLineMarginLeft="10dp"
+                stv:sBottomLineMarginRight="0dp"
+                
+                //方法二
+                stv:sBothLineMarginLeft="10dp"
+                stv:sBothLineMarginRight="0dp"
+                                
+                2、CommonTextView配置方法如下：下列两种方式都是单独使用
+                
+                //方法一
+                ctv:cTopDividerLineMarginLeft="10dp"
+                ctv:cTopDividerLineMarginRight="0dp"
+
+                ctv:cBottomDividerLineMarginLeft="10dp"
+                ctv:cBottomDividerLineMarginRight="0dp"
+                
+                //方法二
+                ctv:cBothDividerLineMarginLeft="10dp"
+                ctv:cBothDividerLineMarginRight="0dp"
+```            
+
+### V1.1.1
+* 	1、SuperTextview和CommonTextview新增点击时候自定义选中和默认背景效果
+```
+                                sBackgroundDrawableRes="@drawable/selector_red"
+                                
+                                cBackgroundDrawableRes="@drawable/selector_red"
+```
+                                
+*    2、CommonTextview新增中间布局左对齐属性
+```
+                                两个属性配合使用
+                                ctv:cIsCenterAlignLeft="true"
+                                ctv:cCenterViewMarginLeft="200dp"
+               
+```
+
+### V1.1
+* 	修复SuperTextView和CommonTextView点击事件被子View消耗掉的bug（具体使用请参考文档）
+
+### V1.0.9
+* 	SuperTextView新增左右图标可自定义大小的功能
+```
+                                stv:sRightIconWidth="30dp"
+                                stv:sRightIconHeight="30dp"
+                                stv:sLeftIconWidth="30dp"
+                                stv:slefticonHeight="30dp"
+ ```                               
+### V1.0.8
+* 	修复CommonTextView点击事件无效的bug
+
+### V1.0.7
+* 	CommonTextView新增支持加载网络图片
+
+### V1.0.6
+* 	新增设置分割线颜色和宽度的方法
+* 	新增简化版CommonTextView
+
+### V1.0.3
+* 	新增左右两边图片支持常用三方库加载网络图片
+
+### V1.0.2
+* 修复文字内容过多，超过1行的处理，导致两边的文字会引起重叠的bug
+
+### V1.0.1
+* 修复编译版本不同导致无法正常使用的bug
+
+### V1.0.0
+* 功能强大的TextView
+
 # 意见反馈
 
 如果遇到问题或者好的建议，请反馈到我的邮箱：[lygttpod@163.com](mailto:lygttpod@163.com) 或者[lygttpod@gmail.com](mailto:lygttpod@gmail.com)
