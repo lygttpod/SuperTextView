@@ -11,7 +11,7 @@
   - 4.1、需求分析
   - 4.2、代码封装
   - 4.3、总结
-* 5、更新记录
+* 5、更新日志
 
 ## 1、功能描述
 > [**SuperTextView**](https://github.com/lygttpod/SuperTextView)是一个功能强大的View，可以满足日常大部分布局样式，开发者可已自行组合属性配置出属于自己风格的样式!可能描述起来没有概念，还是直接看效果图吧！
@@ -125,6 +125,14 @@
                 sLeftBottomViewIsClickable= true
                 sLeftBottomView2IsClickable= true
 ```
+###### 使用第三方库(Picasso或者Glide)加载网络图片
+```
+         Picasso.with(this)
+         .load(url)
+         .placeholder(R.drawable.head_default)
+         .into((ImageView) superTextView.getView(SuperTextView.leftImageViewId));
+```
+
 ##### 3.2.3、属性说明(以下属性全部可以通过xml文件配置和代码进行设置)
 
 属性名 | 字段 | 描述
@@ -353,7 +361,7 @@ private void getAttr(AttributeSet attrs) {
 ##### 4.3、总结
 想必看到这里的小伙伴已经对这个库的源码实现方式了解了，这里只是把实现的流程给大家介绍了一下，我又对这个库做了一个简化版的处理，有兴趣的小伙伴可以去读读源码哦，发现哪里写的不妥的地方还请指正。
 
-##### 5、更新日志
+## 5、更新日志
 
 ### V1.1.2
 *   上下分割线添加单独设置左右边距的参数
