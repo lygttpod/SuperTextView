@@ -12,7 +12,7 @@
   - 4.2、代码封装
   - 4.3、总结
 
-##1、功能描述
+## 1、功能描述
 > [**SuperTextView**](https://github.com/lygttpod/SuperTextView)是一个功能强大的View，可以满足日常大部分布局样式，开发者可已自行组合属性配置出属于自己风格的样式!可能描述起来没有概念，还是直接看效果图吧！
 
 ## 2、 效果图
@@ -23,22 +23,24 @@
 > Android Studio导入方法，添加Gradle依赖
 
    先在项目根目录的 build.gradle 的 repositories 添加:
-
+```
      allprojects {
          repositories {
             ...
             maven { url "https://jitpack.io" }
         }
     }
-    
+```
  然后在dependencies添加:
- 
+```
         dependencies {
         ...
         compile 'com.github.lygttpod:SuperTextView:1.1.2'
         }
+```
 ### 3.2、项目中如何使用
 ##### 3.2.1、布局中如何使用（示例中只列出部分属性，开发者可根据具体需求使用其他属性）
+```
         <com.allen.supertextviewlibrary.SuperTextView
                 android:id="@+id/super_tv"
                 android:layout_width="match_parent"
@@ -55,7 +57,9 @@
         注意：
                 1、上下的线可以通过   sLineShow 设置  有四种显示方式 none，top，bottom，both
                 2、通过设置 sUseRipple=true 开启水波效果
+```
 ##### 3.2.2、代码中如何使用
+```
        /**
      * 可以通过链式设置大部分常用的属性值
      */
@@ -76,9 +80,9 @@
                 .setRightString("")
                 .setRightTVColor(0)
                 .setLeftString("")
-          
-
+```
 ###### 点击事件（可根据需求选择实现单个或者多个点击事件，需要配合xml添加是否允许点击的属性，详情见属性参数的意义）
+```
         superTextView.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
                     @Override
                     public void onSuperTextViewClick() {
@@ -109,7 +113,7 @@
                 sLeftTopViewIsClickable= true
                 sLeftBottomViewIsClickable= true
                 sLeftBottomView2IsClickable= true
-
+```
 ##### 3.2.3、属性说明(以下属性全部可以通过xml文件配置和代码进行设置)
 
 属性名 | 字段 | 描述
@@ -333,7 +337,6 @@ private void getAttr(AttributeSet attrs) {
             });
         }
 ```
-***
 > 以上只是源码中的部分方法拿出来供分析使用，看了之后是不是感觉实现其实很简单，赶紧自己着手实现一个吧！
 
 ##### 4.3、总结
