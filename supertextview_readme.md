@@ -16,6 +16,10 @@
 ## 1、功能描述
 > [**SuperTextView**](https://github.com/lygttpod/SuperTextView)是一个功能强大的View，可以满足日常大部分布局样式，开发者可已自行组合属性配置出属于自己风格的样式!可能描述起来没有概念，还是直接看效果图吧！
 
+> 简化版 [**CommonTextView**](https://github.com/lygttpod/SuperTextView/blob/master/CommonTextView_Readme.md)只是逻辑简化，其实功能并不差少哦，有兴趣的可以看看
+
+> 如果觉得对你有用的话，点一下右上的星星赞一下吧!
+
 ## 2、 效果图
 
 <div  align="center">    
@@ -31,7 +35,7 @@
 
 
 ## 3、如何使用
-> Android Studio导入方法，添加Gradle依赖
+### 3.1、Android Studio导入方法，添加Gradle依赖
 
    先在项目根目录的 build.gradle 的 repositories 添加:
 ```
@@ -448,5 +452,20 @@ private void getAttr(AttributeSet attrs) {
 
 如果觉得对你有用的话，点一下右上的星星赞一下吧!
 
-# [**传送门**](https://github.com/lygttpod/SuperTextView)
+# License
+```
+         Copyright 2016 Allen
 
+        Licensed under the Apache License, Version 2.0 (the "License");
+        you may not use this file except in compliance with the License.
+        You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.
+
+```
