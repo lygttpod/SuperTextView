@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.allen.library.SuperTextView
+        android:background="@color/colorAccent"
+        android:id="@+id/super_tv"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        stv:sCenterBottomTextString="中下"
+        stv:sCenterTextString="中"
+        stv:sCenterTopTextString="中上"
+        stv:sDividerLineType="both"
+        stv:sLeftBottomTextString="左下"
+        stv:sLeftTextString="左中文字"
+        stv:sLeftTopTextString="左上"
+        stv:sRightBottomTextString="右下"
+        stv:sRightTextString="右中"
+        stv:sRightTopTextString="右上" />
+</LinearLayout>

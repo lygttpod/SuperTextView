@@ -3,6 +3,7 @@ package com.allen.library;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -802,8 +803,9 @@ public class CommonTextView extends RelativeLayout {
 //            textView.setGravity(Gravity.CENTER);
             textView.setLines(mSetLines);
             textView.setSingleLine(mSetSingleLine);
-            textView.setMaxEms(mSetMaxEms);
-            textView.setEllipsize(TextUtils.TruncateAt.END);
+//            textView.setMaxEms(mSetMaxEms);
+//            textView.setEllipsize(TextUtils.TruncateAt.END);
+            textView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(mSetMaxEms) });
             addView(textView);
         }
         return textView;

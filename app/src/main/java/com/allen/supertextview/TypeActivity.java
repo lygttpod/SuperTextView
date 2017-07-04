@@ -2,9 +2,12 @@ package com.allen.supertextview;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
 
 import com.allen.library.SuperTextView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -13,10 +16,10 @@ import com.squareup.picasso.Picasso;
 public class TypeActivity extends AppCompatActivity {
 
     private int type;
-    private SuperTextView superTextView,superTextView2,superTextView3;
+    private SuperTextView superTextView, superTextView2, superTextView3;
 
     @Override
-    protected void onCreate( Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         type = getIntent().getIntExtra("type", 0);
         switch (type) {
@@ -42,25 +45,31 @@ public class TypeActivity extends AppCompatActivity {
             case 6:
                 setContentView(R.layout.layout6);
                 break;
+            case 7:
+                setContentView(R.layout.layout7);
+                break;
         }
-
-
 
     }
 
     private void setData() {
         superTextView = (SuperTextView) findViewById(R.id.super_tv1);
         superTextView2 = (SuperTextView) findViewById(R.id.super_tv2);
-
-        superTextView.setLeftTopString("姓名").setLeftBottomString("188********");
-        superTextView2.setLeftTopString("姓名").setLeftBottomString("181********");
-
+        superTextView3 = (SuperTextView) findViewById(R.id.super_tv3);
 
         Picasso.with(this).load("https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3860616424,1789830124&fm=80&w=179&h=119&img.PNG")
-                .placeholder(R.drawable.head_default).into((ImageView) superTextView.getView(SuperTextView.leftImageViewId));
-        Picasso.with(this).load("https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=219781665,3032880226&fm=80&w=179&h=119&img.JPEG")
-                .placeholder(R.drawable.head_default).into((ImageView) superTextView2.getView(SuperTextView.rightImageViewId));
+                .placeholder(R.drawable.head_default).into(superTextView.getLeftIconIV());
+        Glide.with(this).load("https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=219781665,3032880226&fm=80&w=179&h=119&img.JPEG")
+                .placeholder(R.drawable.head_default).fitCenter().into(superTextView2.getRightIconIV());
 
+        Glide.with(this).load("https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3860616424,1789830124&fm=80&w=179&h=119&img.PNG")
+                .placeholder(R.drawable.head_default)
+                .into(new SimpleTarget<GlideDrawable>() {
+                    @Override
+                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                        superTextView3.setRightTvDrawableRight(resource);
+                    }
+                });
     }
 
 

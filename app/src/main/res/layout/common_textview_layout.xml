@@ -166,6 +166,15 @@
                 ctv:cCenterViewMarginLeft="200dp"
                 ctv:cIsCenterAlignLeft="true"
                 ctv:cLeftTextString="舞动歌单" />
+
+            <com.allen.library.CommonTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                ctv:cSetMaxEms="16"
+                ctv:cCenterTextString="唐古拉风暴唐古拉风暴唐古拉风暴唐古拉风暴唐古拉风暴"
+                ctv:cCenterViewMarginLeft="100dp"
+                ctv:cIsCenterAlignLeft="true"
+                ctv:cLeftTextString="舞动歌单" />
         </LinearLayout>
 
 

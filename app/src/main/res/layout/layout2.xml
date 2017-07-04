@@ -5,44 +5,49 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        stv:sLeftIconRes="@drawable/uu"
-        stv:sBottomLineMargin="0dp"
-        stv:sLeftTextString="收货地址" />
+        stv:sLeftTextString="收货地址"
+        stv:sLeftIconRes="@drawable/uu" />
+
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        stv:sLeftIconRes="@drawable/uy"
-        stv:sBottomLineMargin="0dp"
-        stv:sLeftTextString="我的收藏" />
+        stv:sLeftTextString="我的收藏"
+        stv:sLeftIconRes="@drawable/uy" />
+
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        stv:sLeftIconRes="@drawable/uv"
-        stv:sBottomLineMargin="0dp"
-        stv:sLeftTextString="美食相册" />
+        stv:sLeftTextString="美食相册"
+        stv:sLeftIconRes="@drawable/uv" />
 
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
+        stv:sDividerLineType="both"
+        stv:sLeftTextString="积分商城"
         stv:sLeftIconRes="@drawable/v0"
-        stv:sBottomLineMargin="0dp"
-        stv:sLeftTextString="积分商城" />
+        stv:sRightTextColor="@color/gray_btn"
+        stv:sRightTextSize="10sp"
+        stv:sRightTextString="8888积分" />
+
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        stv:sLeftIconRes="@drawable/v1"
-        stv:sBottomLineMargin="0dp"
-        stv:sLeftTextString="会员中心" />
+        android:layout_marginTop="20dp"
+        stv:sDividerLineType="both"
+        stv:sLeftTextString="会员中心"
+        stv:sLeftIconRes="@drawable/v1" />
+
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        stv:sLeftIconRes="@drawable/v2"
-        stv:sBottomLineMargin="0dp"
-        stv:sLeftTextString="加盟合作" />
+        stv:sLeftTextString="加盟合作"
+        stv:sLeftIconRes="@drawable/v2" />
+
 
 </LinearLayout>

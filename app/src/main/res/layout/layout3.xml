@@ -5,39 +5,39 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        stv:sBottomLineMargin="0dp"
-        stv:sLeftIconRes="@drawable/scatter_time"
-        stv:sIsSingLines="true"
         stv:sLeftTextString="起息时间"
+        stv:sLeftIconRes="@drawable/scatter_time"
+        stv:sRightTextColor="@color/colorAccent"
         stv:sRightTextString="立即起息" />
 
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        stv:sBottomLineMargin="0dp"
-        stv:sLeftIconRes="@drawable/scatter_type"
         stv:sLeftTextString="还款方式"
+        stv:sLeftIconRes="@drawable/scatter_type"
+        stv:sRightTextColor="@color/colorAccent"
         stv:sRightTextString="等额本息" />
 
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        stv:sBottomLineMargin="0dp"
-        stv:sLeftIconRes="@drawable/scatter_use"
         stv:sLeftTextString="投标截止"
+        stv:sLeftIconRes="@drawable/scatter_use"
+        stv:sRightTextColor="@color/colorAccent"
         stv:sRightTextString="2016-10-19  08:00" />
 
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        stv:sBottomLineMargin="0dp"
-        stv:sLeftIconRes="@drawable/scatter_money"
         stv:sLeftTextString="提前还款费率"
-        stv:sRightTextString="0.00%" />
+        stv:sLeftIconRes="@drawable/scatter_money"
+        stv:sRightTextColor="@color/colorAccent"
+        stv:sRightTextString="80%" />
 
 
 </LinearLayout>

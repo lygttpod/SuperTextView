@@ -1,27 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="BaseTextView">
-        <attr name="sDrawableLeft" format="reference" />
-        <attr name="sDrawableTop" format="reference" />
-        <attr name="sDrawableRight" format="reference" />
-        <attr name="sDrawableBottom" format="reference" />
-
-        <attr name="sTextString" format="string" />
-        <attr name="sTextSize" format="dimension" />
-        <attr name="sTextColor" format="color" />
-
-        <attr name="sDrawablePadding" format="dimension" />
-
-        <attr name="sPadding" format="dimension" />
-        <attr name="sPaddingLeft" format="dimension" />
-        <attr name="sPaddingTop" format="dimension" />
-        <attr name="sPaddingBottom" format="dimension" />
-        <attr name="sPaddingRight" format="dimension" />
-
-
-    </declare-styleable>
 
     <declare-styleable name="SuperTextView">
+
+        <attr name="sLeftTextString" format="string" />
+        <attr name="sLeftTopTextString" format="string" />
+        <attr name="sLeftBottomTextString" format="string" />
+
+        <attr name="sCenterTextString" format="string" />
+        <attr name="sCenterTopTextString" format="string" />
+        <attr name="sCenterBottomTextString" format="string" />
+
+        <attr name="sRightTextString" format="string" />
+        <attr name="sRightTopTextString" format="string" />
+        <attr name="sRightBottomTextString" format="string" />
+
+        <!--  -->
+        <attr name="sLeftTextColor" format="color" />
+        <attr name="sLeftTopTextColor" format="color" />
+        <attr name="sLeftBottomTextColor" format="color" />
+
+        <attr name="sCenterTextColor" format="color" />
+        <attr name="sCenterTopTextColor" format="color" />
+        <attr name="sCenterBottomTextColor" format="color" />
+
+        <attr name="sRightTextColor" format="color" />
+        <attr name="sRightTopTextColor" format="color" />
+        <attr name="sRightBottomTextColor" format="color" />
+
+        <!--  -->
+
+        <attr name="sLeftTextSize" format="dimension" />
+        <attr name="sLeftTopTextSize" format="dimension" />
+        <attr name="sLeftBottomTextSize" format="dimension" />
+
+        <attr name="sCenterTextSize" format="dimension" />
+        <attr name="sCenterTopTextSize" format="dimension" />
+        <attr name="sCenterBottomTextSize" format="dimension" />
+
+        <attr name="sRightTextSize" format="dimension" />
+        <attr name="sRightTopTextSize" format="dimension" />
+        <attr name="sRightBottomTextSize" format="dimension" />
+
+        <!--  -->
+        <attr name="sLeftTopLines" format="integer" />
+        <attr name="sLeftLines" format="integer" />
+        <attr name="sLeftBottomLines" format="integer" />
+
+        <attr name="sCenterTopLines" format="integer" />
+        <attr name="sCenterLines" format="integer" />
+        <attr name="sCenterBottomLines" format="integer" />
+
+        <attr name="sRightTopLines" format="integer" />
+        <attr name="sRightLines" format="integer" />
+        <attr name="sRightBottomLines" format="integer" />
+        <!--  -->
+
+        <attr name="sLeftTopMaxEms" format="integer" />
+        <attr name="sLeftMaxEms" format="integer" />
+        <attr name="sLeftBottomMaxEms" format="integer" />
+
+        <attr name="sCenterTopMaxEms" format="integer" />
+        <attr name="sCenterMaxEms" format="integer" />
+        <attr name="sCenterBottomMaxEms" format="integer" />
+
+        <attr name="sRightTopMaxEms" format="integer" />
+        <attr name="sRightMaxEms" format="integer" />
+        <attr name="sRightBottomMaxEms" format="integer" />
+        <!--  -->
+        <attr name="sLeftViewGravity" format="enum">
+            <enum name="left_center" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right_center" value="2" />
+        </attr>
+        <attr name="sCenterViewGravity" format="enum">
+            <enum name="left_center" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right_center" value="2" />
+        </attr>
+        <attr name="sRightViewGravity" format="enum">
+            <enum name="left_center" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right_center" value="2" />
+        </attr>
+        <!--  -->
+        <attr name="sLeftTvDrawableLeft" format="reference" />
+        <attr name="sLeftTvDrawableRight" format="reference" />
+
+        <attr name="sCenterTvDrawableLeft" format="reference" />
+        <attr name="sCenterTvDrawableRight" format="reference" />
+
+        <attr name="sRightTvDrawableLeft" format="reference" />
+        <attr name="sRightTvDrawableRight" format="reference" />
+        <!--  -->
+        <attr name="sTextViewDrawablePadding" format="dimension" />
+        <!--  -->
+        <attr name="mLeftViewWidth" format="dimension" />
+        <!--  -->
+        <attr name="sTopDividerLineMarginLR" format="dimension" />
+        <attr name="sTopDividerLineMarginLeft" format="dimension" />
+        <attr name="sTopDividerLineMarginRight" format="dimension" />
+
+        <attr name="sBottomDividerLineMarginLR" format="dimension" />
+        <attr name="sBottomDividerLineMarginLeft" format="dimension" />
+        <attr name="sBottomDividerLineMarginRight" format="dimension" />
+        <!--  -->
+        <attr name="sDividerLineColor" format="color" />
+        <attr name="sDividerLineHeight" format="dimension" />
+        <attr name="sDividerLineType" format="enum">
+            <enum name="none" value="0" />
+            <enum name="top" value="1" />
+            <enum name="bottom" value="2" />
+            <enum name="both" value="3" />
+        </attr>
+        <!--  -->
+        <attr name="sLeftViewMarginLeft" format="dimension" />
+        <attr name="sLeftViewMarginRight" format="dimension" />
+        <attr name="sCenterViewMarginLeft" format="dimension" />
+        <attr name="sCenterViewMarginRight" format="dimension" />
+        <attr name="sRightViewMarginLeft" format="dimension" />
+        <attr name="sRightViewMarginRight" format="dimension" />
+        <!--  -->
+        <attr name="sLeftTopTextIsBold" format="boolean" />
+        <attr name="sLeftTextIsBold" format="boolean" />
+        <attr name="sLeftBottomTextIsBold" format="boolean" />
+
+        <attr name="sCenterTopTextIsBold" format="boolean" />
+        <attr name="sCenterTextIsBold" format="boolean" />
+        <attr name="sCenterBottomTextIsBold" format="boolean" />
+
+        <attr name="sRightTopTextIsBold" format="boolean" />
+        <attr name="sRightTextIsBold" format="boolean" />
+        <attr name="sRightBottomTextIsBold" format="boolean" />
+        <!--  -->
+
         <attr name="sLeftIconRes" format="reference" />
         <attr name="sRightIconRes" format="reference" />
 
@@ -31,83 +143,18 @@
         <attr name="sRightIconWidth" format="dimension" />
         <attr name="sRightIconHeight" format="dimension" />
 
-        <attr name="sRightCheckBoxRes" format="reference" />
-
-        <attr name="sLeftTextString" format="string" />
-        <attr name="sCenterTextString" format="string" />
-        <attr name="sRightTextString" format="string" />
-
-        <attr name="sLeftTopTextString" format="string" />
-        <attr name="sLeftBottomTextString" format="string" />
-        <attr name="sLeftBottomTextString2" format="string" />
-
-
-        <attr name="sTopLineMargin" format="dimension" />
-        <attr name="sTopLineMarginLeft" format="dimension" />
-        <attr name="sTopLineMarginRight" format="dimension" />
-
-        <attr name="sBottomLineMargin" format="dimension" />
-        <attr name="sBottomLineMarginLeft" format="dimension" />
-        <attr name="sBottomLineMarginRight" format="dimension" />
-
-        <attr name="sBothLineMargin" format="dimension" />
-        <attr name="sBothLineMarginLeft" format="dimension" />
-        <attr name="sBothLineMarginRight" format="dimension" />
 
         <attr name="sCenterSpaceHeight" format="dimension" />
 
         <attr name="sLeftIconMarginLeft" format="dimension" />
-        <attr name="sLeftTextMarginLeft" format="dimension" />
-
-        <attr name="sLeftTopTextMarginLeft" format="dimension" />
-        <attr name="sLeftBottomTextMarginLeft" format="dimension" />
-        <attr name="sLeftBottomTextMarginLeft2" format="dimension" />
-
-        <attr name="sRightTextStringRightIconRes" format="reference" />
-        <attr name="sRightTextStringRightIconResPadding" format="dimension" />
-
         <attr name="sRightIconMarginRight" format="dimension" />
-        <attr name="sRightTextMarginRight" format="dimension" />
+
+        <attr name="sRightCheckBoxRes" format="reference" />
         <attr name="sRightCheckBoxMarginRight" format="dimension" />
         <attr name="sRightCheckBoxShow" format="boolean" />
         <attr name="sIsChecked" format="boolean" />
+
         <attr name="sUseRipple" format="boolean" />
-
-        <attr name="sLeftTextSize" format="dimension" />
-        <attr name="sLeftTopTextSize" format="dimension" />
-        <attr name="sLeftBottomTextSize" format="dimension" />
-        <attr name="sLeftBottomTextSize2" format="dimension" />
-        <attr name="sRightTextSize" format="dimension" />
-        <attr name="sCenterTextSize" format="dimension" />
-
-
-        <attr name="sBackgroundColor" format="color" />
-        <attr name="sLeftTextColor" format="color" />
-        <attr name="sLeftTopTextColor" format="color" />
-        <attr name="sLeftBottomTextColor" format="color" />
-        <attr name="sLeftBottomTextColor2" format="color" />
-        <attr name="sRightTextColor" format="color" />
-        <attr name="sCenterTextColor" format="color" />
-
-        <attr name="sIsSingLines" format="boolean" />
-        <attr name="sMaxLines" format="integer" />
-        <attr name="sMaxEms" format="integer" />
-
-        <attr name="sLineShow" format="enum">
-            <enum name="none" value="0" />
-            <enum name="top" value="1" />
-            <enum name="bottom" value="2" />
-            <enum name="both" value="3" />
-        </attr>
-
-        <attr name="sBothLineWidth" format="dimension" />
-        <attr name="sTopLineWidth" format="dimension" />
-        <attr name="sBottomLineWidth" format="dimension" />
-        <attr name="sLineColor" format="color" />
-
-        <attr name="sLeftTopViewIsClickable" format="boolean" />
-        <attr name="sLeftBottomViewIsClickable" format="boolean" />
-        <attr name="sLeftBottomView2IsClickable" format="boolean" />
 
         <attr name="sBackgroundDrawableRes" format="reference" />
 

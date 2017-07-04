@@ -51,8 +51,8 @@ public class ListActivity extends AppCompatActivity {
         for (int i = 0; i < 10; i++) {
             NewsBean newsBean = new NewsBean();
             newsBean.setImgUrl(url[i]);
-            newsBean.setTitle("新闻标题----"+i);
-            newsBean.setTime("2016.10.31----"+i);
+            newsBean.setTitle("新闻标题"+i);
+            newsBean.setTime("哈佛有嘻哈教你如何用一个freestyle轻松毕业"+i);
             newsBeanList.add(newsBean);
         }
         return newsBeanList;

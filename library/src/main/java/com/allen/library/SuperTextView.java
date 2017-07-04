@@ -3,7 +3,6 @@ package com.allen.library;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -14,801 +13,1180 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
- * 万能的textView
- * Created by allen on 2016/10/14.
+ * Created by Allen on 2017/7/1.
+ * <p>
+ * 打造万能的TextView布局满足市面常见的布局样式
  */
 
 public class SuperTextView extends RelativeLayout {
 
     private Context mContext;
-    private int defaultBgColor = 0xFFFFFFFF;//默认背景颜色
-    private int defaultLineColor = 0xFFE8E8E8;//线的默认颜色
-    //private int defaultLineColor = 0xFF535353;//文字默认颜色
-    private int defaultLinePadding = 0;//线的左右边距
 
-    private ImageView leftIconIV;//左边图标
-    private ImageView rightIconIV;//右边图标
-    private CheckBox rightCheckBox;//右边checkbox
-    private Drawable rightCheckBoxBg;//checkBox的背景
+    private BaseTextView leftView, centerView, rightView;
+    private LayoutParams leftBaseViewParams, centerBaseViewParams, rightBaseViewParams;
 
-    private TextView leftTV;//左边textView
-    private TextView centerTV;//中间textView
-    private TextView rightTV;//右边textView
-
-    private TextView leftTopTV;//左上的textView
-    private TextView leftBottomTV;//左下的textView
-    private TextView leftBottomTV2;//左下第二个textView
-
-
-    private Drawable leftIconRes;//左边图标资源
-    private Drawable rightIconRes;//右边图标资源
-    private String leftTextString;//左边显示的文字
-    private String centerTextString;//中间显示的文字
-    private String rightTextString;//右边显示的文字
-    private String leftTopTextString;//左上显示的文字
-    private String leftBottomTextString;//左下显示的文字
-    private String leftBottomTextString2;//左下第二个显示的文字
-
-
-    private int defaultPadding = 0;//默认边距
-
-    private int centerSpaceHeight;//中间空间的高度
-
-    private int bothLineWidth;
-    private int topLineWidth;
-    private int bottomLineWidth;
-    private int lineColor = 0xFFE8E8E8;//线的默认颜色
-
-    private int topLineMargin;//上边线的左右边距
-    private int topLineMarginLeft;//上边线的左边距
-    private int topLineMarginRight;//上边线的右边距
-
-    private int bottomLineMargin;//下边线的左右边距
-    private int bottomLineMarginLeft;//下边线的左边距
-    private int bottomLineMarginRight;//下边线的右边距
-
-    private int bothLineMargin;//两条线的左右边距
-    private int bothLineMarginLeft;//两条线的左边距
-    private int bothLineMarginRight;//两条线的右边距
-
-    private int leftIconMarginLeft;//左边图标的左边距
-
-    private int leftTVMarginLeft;//左边文字的左边距
-
+    private ImageView leftIconIV, rightIconIV;
+    private LayoutParams leftImgParams, rightImgParams;
     private int leftIconWidth;//左边图标的宽
     private int leftIconHeight;//左边图标的高
 
     private int rightIconWidth;//右边图标的宽
     private int rightIconHeight;//右边图标的高
 
-    private int leftTopMarginLeft;//左上文字的左边距
-    private int leftBottomMarginLeft;//左下文字的左边距
-    private int leftBottomMarginLeft2;//左下第二个文字的左边距
-
-    private int rightTVMarginRight;//右边文字的右边距
+    private int leftIconMarginLeft;//左边图标的左边距
     private int rightIconMarginRight;//右边图标的右边距
-    private int rightCheckBoxMarginRight;//右边checkBox的右边距
-    private boolean showCheckBox;//是否显示右边选择框
-    private boolean isChecked;//是否默认选中
 
-    private int defaultSize = 0;//默认字体大小
-
-    private int leftTVSize;//左边文字字体大小
-    private int leftTopTVSize;//左上文字字体大小
-    private int leftBottomTVSize;//左下文字字体大小
-    private int leftBottomTVSize2;//左下第二个文字字体大小
-    private int rightTVSize;//右边文字字体大小
-    private int centerTVSize;//中间文字字体大小
+    private Drawable leftIconRes;//左边图标资源
+    private Drawable rightIconRes;//右边图标资源
 
 
     private int defaultColor = 0xFF373737;//文字默认颜色
+    private int defaultSize = 15;//默认字体大小
+    private int defaultMaxEms = 10;
 
-    private int backgroundColor;//背景颜色
-    private int leftTVColor;//左边文字颜色
-    private int leftTopTVColor;//左上文字颜色
-    private int leftBottomTVColor;//左下文字颜色
-    private int leftBottomTVColor2;//左下第二个文字颜色
-    private int rightTVColor;//右边文字颜色
-    private int centerTVColor;//中间文字颜色
 
-    private boolean isSingLines = true;//是否单行显示   默认单行
-    private int maxLines = 1;//最多几行    默认显示一行
-    private int maxEms = 10;//最多几个字    默认显示10个汉子
+    private String mLeftTextString;
+    private String mLeftTopTextString;
+    private String mLeftBottomTextString;
 
+    private String mRightTextString;
+    private String mRightTopTextString;
+    private String mRightBottomTextString;
+
+    private String mCenterTextString;
+    private String mCenterTopTextString;
+    private String mCenterBottomTextString;
+
+
+    private int mLeftTextColor;
+    private int mLeftTopTextColor;
+    private int mLeftBottomTextColor;
+
+    private int mCenterTextColor;
+    private int mCenterTopTextColor;
+    private int mCenterBottomTextColor;
+
+    private int mRightTextColor;
+    private int mRightTopTextColor;
+    private int mRightBottomTextColor;
+
+
+    private int mLeftTextSize;
+    private int mLeftTopTextSize;
+    private int mLeftBottomTextSize;
+
+    private int mRightTextSize;
+    private int mRightTopTextSize;
+    private int mRightBottomTextSize;
+
+    private int mCenterTextSize;
+    private int mCenterTopTextSize;
+    private int mCenterBottomTextSize;
+
+    private int mLeftTopLines;
+    private int mLeftLines;
+    private int mLeftBottomLines;
+
+    private int mCenterTopLines;
+    private int mCenterLines;
+    private int mCenterBottomLines;
+
+    private int mRightTopLines;
+    private int mRightLines;
+    private int mRightBottomLines;
+
+    private int mLeftTopMaxEms;
+    private int mLeftMaxEms;
+    private int mLeftBottomMaxEms;
+
+    private int mCenterTopMaxEms;
+    private int mCenterMaxEms;
+    private int mCenterBottomMaxEms;
+
+    private int mRightTopMaxEms;
+    private int mRightMaxEms;
+    private int mRightBottomMaxEms;
+
+    private boolean mLeftTopTextBold;
+    private boolean mLeftTextBold;
+    private boolean mLeftBottomTextBold;
+
+    private boolean mCenterTopTextBold;
+    private boolean mCenterTextBold;
+    private boolean mCenterBottomTextBold;
+
+    private boolean mRightTopTextBold;
+    private boolean mRightTextBold;
+    private boolean mRightBottomTextBold;
+
+    private Drawable mLeftTvDrawableLeft;
+    private Drawable mLeftTvDrawableRight;
+
+    private Drawable mCenterTvDrawableLeft;
+    private Drawable mCenterTvDrawableRight;
+
+    private Drawable mRightTvDrawableLeft;
+    private Drawable mRightTvDrawableRight;
+
+    private int mTextViewDrawablePadding;
+
+    private static final int gravity_Left_Center = 0;
+    private static final int gravity_Center = 1;
+    private static final int gravity_Right_Center = 2;
+
+    private static final int default_Gravity = 1;
+
+    private int mLeftGravity;
+    private int mCenterGravity;
+    private int mRightGravity;
+
+
+    private int mLeftViewWidth;
+
+    private View topDividerLineView, bottomDividerLineView;
+
+    private LayoutParams topDividerLineParams, bottomDividerLineParams;
+    private int mTopDividerLineMarginLR;
+    private int mTopDividerLineMarginLeft;
+    private int mTopDividerLineMarginRight;
+
+    private int mBottomDividerLineMarginLR;
+    private int mBottomDividerLineMarginLeft;
+    private int mBottomDividerLineMarginRight;
+
+    private int mDividerLineType;
+    private int mDividerLineColor;
+    private int mDividerLineHeight;
+
+    private int mDefaultDividerLineColor = 0xFFE8E8E8;//分割线默认颜色
+
+    /**
+     * 分割线的类型
+     */
     private static final int NONE = 0;
     private static final int TOP = 1;
     private static final int BOTTOM = 2;
     private static final int BOTH = 3;
-    private static final int DEFAULT = BOTTOM;
+    private static final int default_Divider = BOTTOM;
 
-    public static final int leftTextViewId = 0;
-    public static final int leftTopTextViewId = 1;
-    public static final int leftBottomTextViewId = 2;
-    public static final int leftBottomTextViewId2 = 3;
-    public static final int rightTextViewId = 4;
-    public static final int centerTextViewId = 5;
-    public static final int leftImageViewId = 6;
-    public static final int rightImageViewId = 7;
+    private int default_Margin = 10;
+
+    private int mLeftViewMarginLeft;
+    private int mLeftViewMarginRight;
+
+    private int mCenterViewMarginLeft;
+    private int mCenterViewMarginRight;
+
+    private int mRightViewMarginLeft;
+    private int mRightViewMarginRight;
+
 
     private boolean useRipple;
-
-    private int lineType;
-    private LayoutParams centerBaseLineParams, topLineParams, bottomLineParams, leftImgParams, leftTextParams, centerTextParams, leftTopTextParams, leftBottomParams,
-            leftBottomParams2, rightTextParams, rightImgParams, rightCheckBoxParams;
-
-    private OnSuperTextViewClickListener onSuperTextViewClickListener;
-    private Drawable rightTextStringRightIconRes;
-    private int rightTextStringRightIconPadding;
-
-    private boolean mLeftTopViewIsClickable = false;
-    private boolean mLeftBottomViewIsClickable = false;
-    private boolean mLeftBottomView2IsClickable = false;
-
     private Drawable mBackground_drawable;
 
+    private OnSuperTextViewClickListener onSuperTextViewClickListener;
+
+    private OnLeftTopTvClickListener leftTopTvClickListener;
+    private OnLeftTvClickListener leftTvClickListener;
+    private OnLeftBottomTvClickListener leftBottomTvClickListener;
+
+    private OnCenterTopTvClickListener centerTopTvClickListener;
+    private OnCenterTvClickListener centerTvClickListener;
+    private OnCenterBottomTvClickListener centerBottomTvClickListener;
+
+    private OnRightTopTvClickListener rightTopTvClickListener;
+    private OnRightTvClickListener rightTvClickListener;
+    private OnRightBottomTvClickListener rightBottomTvClickListener;
+
+
+    private CheckBox rightCheckBox;//右边checkbox
+    private LayoutParams rightCheckBoxParams;//右边checkbox
+    private Drawable rightCheckBoxBg;//checkBox的背景
+    private int rightCheckBoxMarginRight;//右边checkBox的右边距
+    private boolean isChecked;//是否默认选中
+    private boolean showCheckBox;//是否显示右边选择框
+
+
+    private int centerSpaceHeight;//中间空间的高度
+
     public SuperTextView(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public SuperTextView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        mContext = context;
-//        defaultLinePadding = dip2px(context, 16);
-        defaultPadding = dip2px(context, 16);
-        defaultSize = sp2px(context, 14);
-        centerSpaceHeight = dip2px(context, 10);
-        getAttr(attrs);
-
-        initLayout();
-
+        this(context, attrs, 0);
     }
 
-    /**
-     * 获取自定义属性值
-     *
-     * @param attrs
-     */
+    public SuperTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+
+        mContext = context;
+        defaultSize = sp2px(context, defaultSize);
+        default_Margin = dip2px(context, default_Margin);
+
+        getAttr(attrs);
+        initView();
+    }
+
     private void getAttr(AttributeSet attrs) {
         TypedArray typedArray = mContext.obtainStyledAttributes(attrs, R.styleable.SuperTextView);
 
-        ////////设置文字或者图片资源////////
-        leftIconRes = typedArray.getDrawable(R.styleable.SuperTextView_sLeftIconRes);
-        rightIconRes = typedArray.getDrawable(R.styleable.SuperTextView_sRightIconRes);
-        rightCheckBoxBg = typedArray.getDrawable(R.styleable.SuperTextView_sRightCheckBoxRes);
+        /////////////////////////////////////////////////
+        mLeftTextString = typedArray.getString(R.styleable.SuperTextView_sLeftTextString);
+        mLeftTopTextString = typedArray.getString(R.styleable.SuperTextView_sLeftTopTextString);
+        mLeftBottomTextString = typedArray.getString(R.styleable.SuperTextView_sLeftBottomTextString);
 
-        leftTextString = typedArray.getString(R.styleable.SuperTextView_sLeftTextString);
-        centerTextString = typedArray.getString(R.styleable.SuperTextView_sCenterTextString);
-        rightTextString = typedArray.getString(R.styleable.SuperTextView_sRightTextString);
+        mCenterTextString = typedArray.getString(R.styleable.SuperTextView_sCenterTextString);
+        mCenterTopTextString = typedArray.getString(R.styleable.SuperTextView_sCenterTopTextString);
+        mCenterBottomTextString = typedArray.getString(R.styleable.SuperTextView_sCenterBottomTextString);
 
-        rightTextStringRightIconRes = typedArray.getDrawable(R.styleable.SuperTextView_sRightTextStringRightIconRes);
-        rightTextStringRightIconPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTextStringRightIconResPadding, dip2px(mContext, 5));
+        mRightTextString = typedArray.getString(R.styleable.SuperTextView_sRightTextString);
+        mRightTopTextString = typedArray.getString(R.styleable.SuperTextView_sRightTopTextString);
+        mRightBottomTextString = typedArray.getString(R.styleable.SuperTextView_sRightBottomTextString);
 
-        leftTopTextString = typedArray.getString(R.styleable.SuperTextView_sLeftTopTextString);
-        leftBottomTextString = typedArray.getString(R.styleable.SuperTextView_sLeftBottomTextString);
-        leftBottomTextString2 = typedArray.getString(R.styleable.SuperTextView_sLeftBottomTextString2);
+        //////////////////////////////////////////////////
 
-        showCheckBox = typedArray.getBoolean(R.styleable.SuperTextView_sRightCheckBoxShow, false);
-        isChecked = typedArray.getBoolean(R.styleable.SuperTextView_sIsChecked, false);
-        useRipple = typedArray.getBoolean(R.styleable.SuperTextView_sUseRipple, false);
+        mLeftTextColor = typedArray.getColor(R.styleable.SuperTextView_sLeftTextColor, defaultColor);
+        mLeftTopTextColor = typedArray.getColor(R.styleable.SuperTextView_sLeftTopTextColor, defaultColor);
+        mLeftBottomTextColor = typedArray.getColor(R.styleable.SuperTextView_sLeftBottomTextColor, defaultColor);
 
-        lineType = typedArray.getInt(R.styleable.SuperTextView_sLineShow, DEFAULT);
+        mCenterTextColor = typedArray.getColor(R.styleable.SuperTextView_sCenterTextColor, defaultColor);
+        mCenterTopTextColor = typedArray.getColor(R.styleable.SuperTextView_sCenterTopTextColor, defaultColor);
+        mCenterBottomTextColor = typedArray.getColor(R.styleable.SuperTextView_sCenterBottomTextColor, defaultColor);
 
-        /////////设置view的边距////////
-        centerSpaceHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterSpaceHeight, centerSpaceHeight);
+        mRightTextColor = typedArray.getColor(R.styleable.SuperTextView_sRightTextColor, defaultColor);
+        mRightTopTextColor = typedArray.getColor(R.styleable.SuperTextView_sRightTopTextColor, defaultColor);
+        mRightBottomTextColor = typedArray.getColor(R.styleable.SuperTextView_sRightBottomTextColor, defaultColor);
 
-        bothLineWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sBothLineWidth, dip2px(mContext, 0.5f));
-        topLineWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sTopLineWidth, dip2px(mContext, 0.5f));
-        bottomLineWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sBottomLineWidth, dip2px(mContext, 0.5f));
+        //////////////////////////////////////////////////
 
-        lineColor = typedArray.getColor(R.styleable.SuperTextView_sLineColor, lineColor);
 
-        topLineMargin = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sTopLineMargin, defaultLinePadding);
-        topLineMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sTopLineMarginLeft, defaultLinePadding);
-        topLineMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sTopLineMarginRight, defaultLinePadding);
+        mLeftTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftTextSize, defaultSize);
+        mLeftTopTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftTopTextSize, defaultSize);
+        mLeftBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftBottomTextSize, defaultSize);
 
-        bottomLineMargin = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sBottomLineMargin, defaultLinePadding);
-        bottomLineMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sBottomLineMarginLeft, defaultLinePadding);
-        bottomLineMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sBottomLineMarginRight, defaultLinePadding);
+        mCenterTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterTextSize, defaultSize);
+        mCenterTopTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterTopTextSize, defaultSize);
+        mCenterBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterBottomTextSize, defaultSize);
 
-        bothLineMargin = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sBothLineMargin, defaultLinePadding);
-        bothLineMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sBothLineMarginLeft, defaultLinePadding);
-        bothLineMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sBothLineMarginRight, defaultLinePadding);
+        mRightTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTextSize, defaultSize);
+        mRightTopTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTopTextSize, defaultSize);
+        mRightBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightBottomTextSize, defaultSize);
 
-        leftIconMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconMarginLeft, defaultPadding);
-        leftTVMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftTextMarginLeft, defaultPadding);
+        //////////////////////////////////////////////////
+        mLeftTopLines = typedArray.getInt(R.styleable.SuperTextView_sLeftTopLines, 1);
+        mLeftLines = typedArray.getInt(R.styleable.SuperTextView_sLeftLines, 1);
+        mLeftBottomLines = typedArray.getInt(R.styleable.SuperTextView_sLeftBottomLines, 1);
 
-        leftTopMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftTopTextMarginLeft, defaultPadding);
-        leftBottomMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftBottomTextMarginLeft, defaultPadding);
-        leftBottomMarginLeft2 = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftBottomTextMarginLeft2, defaultPadding);
-        rightTVMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTextMarginRight, defaultPadding);
-        rightIconMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightIconMarginRight, defaultPadding);
-        rightCheckBoxMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightCheckBoxMarginRight, defaultPadding);
-        //////设置字体颜色////////
-        backgroundColor = typedArray.getColor(R.styleable.SuperTextView_sBackgroundColor, defaultBgColor);
-        leftTVColor = typedArray.getColor(R.styleable.SuperTextView_sLeftTextColor, defaultColor);
-        leftTopTVColor = typedArray.getColor(R.styleable.SuperTextView_sLeftTopTextColor, defaultColor);
-        leftBottomTVColor = typedArray.getColor(R.styleable.SuperTextView_sLeftBottomTextColor, defaultColor);
-        leftBottomTVColor2 = typedArray.getColor(R.styleable.SuperTextView_sLeftBottomTextColor2, defaultColor);
-        rightTVColor = typedArray.getColor(R.styleable.SuperTextView_sRightTextColor, defaultColor);
-        centerTVColor = typedArray.getColor(R.styleable.SuperTextView_sCenterTextColor, defaultColor);
-        //////设置字体大小////////
-        leftTVSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftTextSize, defaultSize);
-        leftTopTVSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftTopTextSize, defaultSize);
-        leftBottomTVSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftBottomTextSize, defaultSize);
-        leftBottomTVSize2 = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftBottomTextSize2, defaultSize);
-        rightTVSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTextSize, defaultSize);
-        centerTVSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterTextSize, defaultSize);
+        mCenterTopLines = typedArray.getInt(R.styleable.SuperTextView_sCenterTopLines, 1);
+        mCenterLines = typedArray.getInt(R.styleable.SuperTextView_sCenterLines, 1);
+        mCenterBottomLines = typedArray.getInt(R.styleable.SuperTextView_sCenterBottomLines, 1);
 
-        ///////设置textView的属性///////////SuperTextViewxEms
-        isSingLines = typedArray.getBoolean(R.styleable.SuperTextView_sIsSingLines, isSingLines);
-        maxLines = typedArray.getInt(R.styleable.SuperTextView_sMaxLines, maxLines);
-        maxEms = typedArray.getInt(R.styleable.SuperTextView_sMaxEms, maxEms);
+        mRightTopLines = typedArray.getInt(R.styleable.SuperTextView_sRightTopLines, 1);
+        mRightLines = typedArray.getInt(R.styleable.SuperTextView_sRightLines, 1);
+        mRightBottomLines = typedArray.getInt(R.styleable.SuperTextView_sRightBottomLines, 1);
 
+        //////////////////////////////////////////////////
+
+        mLeftTopMaxEms = typedArray.getInt(R.styleable.SuperTextView_sLeftTopMaxEms, defaultMaxEms);
+        mLeftMaxEms = typedArray.getInt(R.styleable.SuperTextView_sLeftMaxEms, defaultMaxEms);
+        mLeftBottomMaxEms = typedArray.getInt(R.styleable.SuperTextView_sLeftBottomMaxEms, defaultMaxEms);
+
+        mCenterTopMaxEms = typedArray.getInt(R.styleable.SuperTextView_sCenterTopMaxEms, defaultMaxEms);
+        mCenterMaxEms = typedArray.getInt(R.styleable.SuperTextView_sCenterMaxEms, defaultMaxEms);
+        mCenterBottomMaxEms = typedArray.getInt(R.styleable.SuperTextView_sCenterBottomMaxEms, defaultMaxEms);
+
+        mRightTopMaxEms = typedArray.getInt(R.styleable.SuperTextView_sRightTopMaxEms, defaultMaxEms);
+        mRightMaxEms = typedArray.getInt(R.styleable.SuperTextView_sRightMaxEms, defaultMaxEms);
+        mRightBottomMaxEms = typedArray.getInt(R.styleable.SuperTextView_sRightBottomMaxEms, defaultMaxEms);
+
+        ////////////////////////////////////////////////
+
+        mLeftGravity = typedArray.getInt(R.styleable.SuperTextView_sLeftViewGravity, default_Gravity);
+        mCenterGravity = typedArray.getInt(R.styleable.SuperTextView_sCenterViewGravity, default_Gravity);
+        mRightGravity = typedArray.getInt(R.styleable.SuperTextView_sRightViewGravity, default_Gravity);
+
+        ////////////////////////////////////////////////
+
+        mLeftTvDrawableLeft = typedArray.getDrawable(R.styleable.SuperTextView_sLeftTvDrawableLeft);
+        mLeftTvDrawableRight = typedArray.getDrawable(R.styleable.SuperTextView_sLeftTvDrawableRight);
+        mCenterTvDrawableLeft = typedArray.getDrawable(R.styleable.SuperTextView_sCenterTvDrawableLeft);
+        mCenterTvDrawableRight = typedArray.getDrawable(R.styleable.SuperTextView_sCenterTvDrawableRight);
+        mRightTvDrawableLeft = typedArray.getDrawable(R.styleable.SuperTextView_sRightTvDrawableLeft);
+        mRightTvDrawableRight = typedArray.getDrawable(R.styleable.SuperTextView_sRightTvDrawableRight);
+
+        mTextViewDrawablePadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sTextViewDrawablePadding, default_Margin);
+        ////////////////////////////////////////////////
+        mLeftViewWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_mLeftViewWidth, 0);
+        ///////////////////////////////////////////////
+        mTopDividerLineMarginLR = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sTopDividerLineMarginLR, 0);
+        mTopDividerLineMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sTopDividerLineMarginLeft, 0);
+        mTopDividerLineMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sTopDividerLineMarginRight, 0);
+
+        mBottomDividerLineMarginLR = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sBottomDividerLineMarginLR, 0);
+        mBottomDividerLineMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sBottomDividerLineMarginLeft, 0);
+        mBottomDividerLineMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sBottomDividerLineMarginRight, 0);
+        ///////////////////////////////////////////////
+        mDividerLineType = typedArray.getInt(R.styleable.SuperTextView_sDividerLineType, default_Divider);
+        mDividerLineColor = typedArray.getColor(R.styleable.SuperTextView_sDividerLineColor, mDefaultDividerLineColor);
+
+        mDividerLineHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sDividerLineHeight, dip2px(mContext, 0.5f));
+        ////////////////////////////////////////////////
+        mLeftViewMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftViewMarginLeft, default_Margin);
+        mLeftViewMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftViewMarginRight, default_Margin);
+        mCenterViewMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterViewMarginLeft, 0);
+        mCenterViewMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterViewMarginRight, 0);
+        mRightViewMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightViewMarginLeft, default_Margin);
+        mRightViewMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightViewMarginRight, default_Margin);
+        ///////////////////////////////////////////////
         leftIconWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconWidth, 0);
         leftIconHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconHeight, 0);
 
         rightIconWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightIconWidth, 0);
         rightIconHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightIconHeight, 0);
 
-        mLeftTopViewIsClickable = typedArray.getBoolean(R.styleable.SuperTextView_sLeftTopViewIsClickable, false);
-        mLeftBottomViewIsClickable = typedArray.getBoolean(R.styleable.SuperTextView_sLeftBottomViewIsClickable, false);
-        mLeftBottomView2IsClickable = typedArray.getBoolean(R.styleable.SuperTextView_sLeftBottomView2IsClickable, false);
+        leftIconMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftIconMarginLeft, default_Margin);
+        rightIconMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightIconMarginRight, default_Margin);
 
+        leftIconRes = typedArray.getDrawable(R.styleable.SuperTextView_sLeftIconRes);
+        rightIconRes = typedArray.getDrawable(R.styleable.SuperTextView_sRightIconRes);
+        //////////////////////////////////////////////
+        mLeftTopTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sLeftTopTextIsBold, false);
+        mLeftTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sLeftTextIsBold, false);
+        mLeftBottomTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sLeftBottomTextIsBold, false);
+
+        mCenterTopTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sCenterTopTextIsBold, false);
+        mCenterTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sCenterTextIsBold, false);
+        mCenterBottomTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sCenterBottomTextIsBold, false);
+
+        mRightTopTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sRightTopTextIsBold, false);
+        mRightTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sRightTextIsBold, false);
+        mRightBottomTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sRightBottomTextIsBold, false);
+        //////////////////////////////////////////////
+        useRipple = typedArray.getBoolean(R.styleable.SuperTextView_sUseRipple, true);
         mBackground_drawable = typedArray.getDrawable(R.styleable.SuperTextView_sBackgroundDrawableRes);
+        ///////////////////////////////////////////////
+        showCheckBox = typedArray.getBoolean(R.styleable.SuperTextView_sRightCheckBoxShow, false);
+        isChecked = typedArray.getBoolean(R.styleable.SuperTextView_sIsChecked, false);
+        rightCheckBoxMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightCheckBoxMarginRight, default_Margin);
+        rightCheckBoxBg = typedArray.getDrawable(R.styleable.SuperTextView_sRightCheckBoxRes);
+        //////////////////////////////////////////////////
+        centerSpaceHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterSpaceHeight, dip2px(mContext, 5));
 
         typedArray.recycle();
     }
 
     /**
-     * 初始化布局
+     * 初始化Params
+     *
+     * @param params params
+     * @return params
      */
-    private void initLayout() {
+    private LayoutParams getParams(LayoutParams params) {
+        if (params == null) {
+            params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        }
+        return params;
+    }
+
+    /**
+     * 初始化View
+     */
+    private void initView() {
 
         initSuperTextView();
-        initCenterBaseLine();
 
-        if (leftIconRes != null) {
-            initLeftIcon();
-        }
-        if (leftTopTextString != null) {
-            initLeftTopText();
-        }
-        if (leftBottomTextString != null) {
-            initLeftBottomText();
-        }
-        if (leftBottomTextString2 != null) {
-            initLeftBottomText2();
-        }
-        if (leftTextString != null) {
-            initLeftText();
-        }
-        if (centerTextString != null) {
-            initCenterText();
-        }
-        if (rightIconRes != null) {
-            initRightIcon();
-        }
-        if (rightTextString != null || rightTextStringRightIconRes != null) {
-            initRightText();
-        }
+        initLeftIcon();
+
         if (showCheckBox) {
             initRightCheckBox();
         }
 
-        switch (lineType) {
-            case NONE:
-                break;
-            case TOP:
-                setTopLineMargin();
-                break;
-            case BOTTOM:
-                setBottomLineMargin();
-                break;
-            case BOTH:
-                setTopLineMargin();
-                setBottomLineMargin();
-                break;
-        }
+        initRightIcon();
+
+        initLeftTextView();
+        initCenterTextView();
+        initRightTextView();
+
+        initDividerLineView();
+
     }
 
 
-    /**
-     * 设置顶部分割线的左右边距
-     */
-    private void setTopLineMargin() {
-        if (topLineMargin != 0) {
-            initTopLine(topLineMargin, topLineMargin, topLineWidth);
-        } else if (bothLineMarginLeft != 0 | bothLineMarginRight != 0) {
-            initTopLine(bothLineMarginLeft, bothLineMarginRight, topLineWidth);
-        } else {
-            initTopLine(topLineMarginLeft, topLineMarginRight, topLineWidth);
-        }
-    }
-
-    /**
-     * 设置底部分割线的左右边距
-     */
-    private void setBottomLineMargin() {
-        if (bottomLineMargin != 0) {
-            initBottomLine(bottomLineMargin, bottomLineMargin, bottomLineWidth);
-        } else if (bothLineMarginLeft != 0 | bothLineMarginRight != 0) {
-            initBottomLine(bothLineMarginLeft, bothLineMarginRight, topLineWidth);
-        } else {
-            initBottomLine(bottomLineMarginLeft, bottomLineMarginRight, topLineWidth);
-        }
-    }
-
-    /**
-     * 初始化上边的线
-     */
-    private void initTopLine(int lineMarginLeft, int lineMarginRight, int lineWidth) {
-        View topLine = new View(mContext);
-        topLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, lineWidth);
-        topLineParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, TRUE);
-        topLineParams.setMargins(lineMarginLeft, 0, lineMarginRight, 0);
-        topLine.setLayoutParams(topLineParams);
-        topLine.setBackgroundColor(lineColor);
-        addView(topLine);
-    }
-
-    /**
-     * 初始化下边的线
-     */
-    private void initBottomLine(int lineMarginLeft, int lineMarginRight, int lineWidth) {
-        View bottomLine = new View(mContext);
-        bottomLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, lineWidth);
-        bottomLineParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, TRUE);
-        bottomLineParams.setMargins(lineMarginLeft, 0, lineMarginRight, 0);
-        bottomLine.setLayoutParams(bottomLineParams);
-        bottomLine.setBackgroundColor(lineColor);
-        addView(bottomLine);
-    }
-
-    /**
-     * 初始化SuperTextView
-     */
     private void initSuperTextView() {
-
-        this.setBackgroundColor(backgroundColor);
+        if (useRipple) {
+            this.setBackgroundResource(R.drawable.selector_white);
+        }
         this.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 if (onSuperTextViewClickListener != null) {
-                    onSuperTextViewClickListener.onSuperTextViewClick();
+                    onSuperTextViewClickListener.onClickListener();
                 }
             }
         });
 
-        if (useRipple) {
-            this.setBackgroundResource(R.drawable.selector_white);
-        }
         if (mBackground_drawable != null) {
             this.setBackgroundDrawable(mBackground_drawable);
         }
     }
 
-
-    /**
-     * 为了设置上下两排文字居中对齐显示而需要设置的基准线
-     */
-    private void initCenterBaseLine() {
-        View view = new View(mContext);
-        centerBaseLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, centerSpaceHeight);
-        centerBaseLineParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
-        view.setId(R.id.sCenterBaseLineId);
-        view.setLayoutParams(centerBaseLineParams);
-        addView(view);
-    }
-
-
     /**
      * 初始化左边图标
      */
     private void initLeftIcon() {
-        leftIconIV = new ImageView(mContext);
+        if (leftIconIV == null) {
+            leftIconIV = new ImageView(mContext);
+        }
         leftImgParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        leftImgParams.addRule(ALIGN_PARENT_LEFT, TRUE);
+        leftImgParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT, TRUE);
         leftImgParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
         if (leftIconHeight != 0 && leftIconWidth != 0) {
             leftImgParams.width = leftIconWidth;
             leftImgParams.height = leftIconHeight;
         }
-        setMargin(leftImgParams, leftIconMarginLeft, 0, 0, 0);
         leftIconIV.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        leftIconIV.setId(R.id.sLeftIconId);
+        leftIconIV.setId(R.id.sLeftImgId);
         leftIconIV.setLayoutParams(leftImgParams);
         if (leftIconRes != null) {
+            leftImgParams.setMargins(leftIconMarginLeft, 0, 0, 0);
             leftIconIV.setImageDrawable(leftIconRes);
         }
         addView(leftIconIV);
     }
 
     /**
-     * 初始化左边文字
-     */
-    private void initLeftText() {
-        leftTV = new TextView(mContext);
-        leftTextParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        leftTextParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
-        leftTextParams.addRule(RelativeLayout.RIGHT_OF, R.id.sLeftIconId);
-        setMargin(leftTextParams, leftTVMarginLeft, 0, dip2px(mContext, 10), 0);
-        leftTV.setId(R.id.sLeftTextId);
-        leftTV.setLayoutParams(leftTextParams);
-        leftTV.setText(leftTextString);
-
-        setTextViewParams(leftTV, isSingLines, maxLines, maxEms);
-
-        setTextColor(leftTV, leftTVColor);
-        setTextSize(leftTV, leftTVSize);
-        addView(leftTV);
-    }
-
-    /**
-     * 设置通用的textView显示效果属性
-     *
-     * @param textView    view
-     * @param isSingLines 是否单行显示
-     * @param maxLines    显示最大行
-     * @param maxEms      最多显示多少个字
-     */
-    private void setTextViewParams(TextView textView, boolean isSingLines, int maxLines, int maxEms) {
-        textView.setSingleLine(isSingLines);
-        textView.setMaxLines(maxLines);
-        textView.setMaxEms(maxEms);
-        textView.setEllipsize(TextUtils.TruncateAt.END);
-    }
-
-    /**
-     * 初始化左上文字
-     */
-    private void initLeftTopText() {
-        leftTopTV = new TextView(mContext);
-        leftTopTextParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        leftTopTextParams.addRule(RelativeLayout.ABOVE, R.id.sCenterBaseLineId);
-        leftTopTextParams.addRule(RelativeLayout.RIGHT_OF, R.id.sLeftIconId);
-        setMargin(leftTopTextParams, leftTopMarginLeft, 0, 0, 0);
-        leftTopTV.setId(R.id.sLeftTopTextId);
-        leftTopTV.setLayoutParams(leftTopTextParams);
-        leftTopTV.setText(leftTopTextString);
-        setTextColor(leftTopTV, leftTopTVColor);
-        setTextSize(leftTopTV, leftTopTVSize);
-        if (mLeftTopViewIsClickable) {
-            leftTopTV.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (onSuperTextViewClickListener != null) {
-                        onSuperTextViewClickListener.onLeftTopClick();
-                    }
-                }
-            });
-        }
-        setTextViewParams(leftTopTV, isSingLines, maxLines, maxEms);
-        addView(leftTopTV);
-    }
-
-    /**
-     * 初始化左下文字
-     */
-    private void initLeftBottomText() {
-        leftBottomTV = new TextView(mContext);
-        leftBottomParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        leftBottomParams.addRule(RelativeLayout.BELOW, R.id.sCenterBaseLineId);
-        leftBottomParams.addRule(RelativeLayout.RIGHT_OF, R.id.sLeftIconId);
-        setMargin(leftBottomParams, leftBottomMarginLeft, 0, 0, 0);
-        leftBottomTV.setId(R.id.sLeftBottomTextId);
-        leftBottomTV.setLayoutParams(leftBottomParams);
-        leftBottomTV.setText(leftBottomTextString);
-        setTextColor(leftBottomTV, leftBottomTVColor);
-        setTextSize(leftBottomTV, leftBottomTVSize);
-        if (mLeftBottomViewIsClickable) {
-            leftBottomTV.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (onSuperTextViewClickListener != null) {
-                        onSuperTextViewClickListener.onLeftBottomClick();
-                    }
-                }
-            });
-        }
-        setTextViewParams(leftBottomTV, isSingLines, maxLines, maxEms);
-        addView(leftBottomTV);
-    }
-
-    /**
-     * 初始化左下第二个文字
-     */
-    private void initLeftBottomText2() {
-        leftBottomTV2 = new TextView(mContext);
-        leftBottomParams2 = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        leftBottomParams2.addRule(RelativeLayout.BELOW, R.id.sCenterBaseLineId);
-        leftBottomParams2.addRule(RelativeLayout.RIGHT_OF, R.id.sLeftBottomTextId);
-        setMargin(leftBottomParams2, leftBottomMarginLeft2, 0, 0, 0);
-        leftBottomTV2.setId(R.id.sLeftBottomTextId2);
-        leftBottomTV2.setLayoutParams(leftBottomParams2);
-        leftBottomTV2.setText(leftBottomTextString2);
-        setTextColor(leftBottomTV2, leftBottomTVColor2);
-        setTextSize(leftBottomTV2, leftBottomTVSize2);
-        if (mLeftBottomView2IsClickable) {
-            leftBottomTV2.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (onSuperTextViewClickListener != null) {
-                        onSuperTextViewClickListener.onLeftBottomClick2();
-                    }
-                }
-            });
-        }
-        setTextViewParams(leftBottomTV2, isSingLines, maxLines, maxEms);
-        addView(leftBottomTV2);
-    }
-
-    /**
-     * 初始化中间文字
-     */
-    private void initCenterText() {
-        centerTV = new TextView(mContext);
-        centerTextParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        centerTextParams.addRule(RelativeLayout.CENTER_IN_PARENT, TRUE);
-        centerTV.setId(R.id.sCenterTextId);
-        centerTV.setLayoutParams(centerTextParams);
-        centerTV.setText(centerTextString);
-        setTextColor(centerTV, centerTVColor);
-        setTextSize(centerTV, centerTVSize);
-        setTextViewParams(centerTV, isSingLines, maxLines, maxEms);
-        addView(centerTV);
-    }
-
-    /**
-     * 初始化右边文字
-     */
-    private void initRightText() {
-        rightTV = new TextView(mContext);
-        rightTextParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        rightTextParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
-        rightTextParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, TRUE);
-        rightTextParams.addRule(RelativeLayout.RIGHT_OF, R.id.sLeftTextId);
-        rightTextParams.addRule(RelativeLayout.LEFT_OF, R.id.sRightIconId);
-        setMargin(rightTextParams, 0, 0, rightTVMarginRight, 0);
-        rightTV.setId(R.id.sRightTextId);
-        rightTV.setLayoutParams(rightTextParams);
-        rightTV.setText(rightTextString);
-        setTextColor(rightTV, rightTVColor);
-        setTextSize(rightTV, rightTVSize);
-        setTextViewRightDrawble(rightTV, rightTextStringRightIconRes, rightTextStringRightIconPadding);
-        rightTV.setGravity(Gravity.RIGHT);
-        setTextViewParams(rightTV, isSingLines, maxLines, maxEms);
-        addView(rightTV);
-    }
-
-    /**
      * 初始化右边图标
      */
     private void initRightIcon() {
-        rightIconIV = new ImageView(mContext);
+        if (rightIconIV == null) {
+            rightIconIV = new ImageView(mContext);
+        }
         rightImgParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        rightImgParams.addRule(ALIGN_PARENT_RIGHT, TRUE);
         rightImgParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+
+        if (showCheckBox) {
+            rightImgParams.addRule(RelativeLayout.LEFT_OF, R.id.sRightCheckBoxId);
+        } else {
+            rightImgParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, TRUE);
+        }
         if (rightIconHeight != 0 && rightIconWidth != 0) {
             rightImgParams.width = rightIconWidth;
             rightImgParams.height = rightIconHeight;
         }
-        setMargin(rightImgParams, 0, 0, rightIconMarginRight, 0);
+
         rightIconIV.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        rightIconIV.setId(R.id.sRightIconId);
+        rightIconIV.setId(R.id.sRightImgId);
         rightIconIV.setLayoutParams(rightImgParams);
         if (rightIconRes != null) {
+            rightImgParams.setMargins(0, 0, rightIconMarginRight, 0);
             rightIconIV.setImageDrawable(rightIconRes);
         }
         addView(rightIconIV);
     }
 
     /**
-     * 初始化右边选择框
+     * 初始化LeftTextView
+     */
+    private void initLeftTextView() {
+        if (leftView == null) {
+            leftView = initBaseView(R.id.sLeftViewId);
+        }
+        leftBaseViewParams = getParams(leftBaseViewParams);
+        leftBaseViewParams.addRule(RelativeLayout.RIGHT_OF, R.id.sLeftImgId);
+        leftBaseViewParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+        if (mLeftViewWidth != 0) {
+            leftBaseViewParams.width = dip2px(mContext, mLeftViewWidth);
+        }
+        leftBaseViewParams.setMargins(mLeftViewMarginLeft, 0, mLeftViewMarginRight, 0);
+
+        leftView.setLayoutParams(leftBaseViewParams);
+
+        leftView.setCenterSpaceHeight(centerSpaceHeight);
+        setDefaultString(leftView, mLeftTopTextString, mLeftTextString, mLeftBottomTextString);
+        setDefaultColor(leftView, mLeftTopTextColor, mLeftTextColor, mLeftBottomTextColor);
+        setDefaultSize(leftView, mLeftTopTextSize, mLeftTextSize, mLeftBottomTextSize);
+        setDefaultLines(leftView, mLeftTopLines, mLeftLines, mLeftBottomLines);
+        setDefaultMaxEms(leftView, mLeftTopMaxEms, mLeftMaxEms, mLeftBottomMaxEms);
+        setDefaultTextIsBold(leftView, mLeftTopTextBold, mLeftTextBold, mLeftBottomTextBold);
+        setDefaultGravity(leftView, mLeftGravity);
+        setDefaultDrawable(leftView.getCenterTextView(), mLeftTvDrawableLeft, mLeftTvDrawableRight, mTextViewDrawablePadding);
+
+        addView(leftView);
+    }
+
+    /**
+     * 初始化CenterTextView
+     */
+    private void initCenterTextView() {
+        if (centerView == null) {
+            centerView = initBaseView(R.id.sCenterViewId);
+        }
+        centerBaseViewParams = getParams(centerBaseViewParams);
+        centerBaseViewParams.addRule(RelativeLayout.CENTER_IN_PARENT, TRUE);
+        centerBaseViewParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+
+        //默认情况下  中间的View整体剧中显示，设置左对齐或者右对齐的话使用下边属性
+        if (mCenterGravity != gravity_Center) {
+            centerBaseViewParams.addRule(RIGHT_OF, R.id.sLeftViewId);
+            centerBaseViewParams.addRule(LEFT_OF, R.id.sRightViewId);
+        }
+
+        centerBaseViewParams.setMargins(mCenterViewMarginLeft, 0, mCenterViewMarginRight, 0);
+
+        centerView.setLayoutParams(centerBaseViewParams);
+        centerView.setCenterSpaceHeight(centerSpaceHeight);
+
+        setDefaultString(centerView, mCenterTopTextString, mCenterTextString, mCenterBottomTextString);
+        setDefaultColor(centerView, mCenterTopTextColor, mCenterTextColor, mCenterBottomTextColor);
+        setDefaultSize(centerView, mCenterTopTextSize, mCenterTextSize, mCenterBottomTextSize);
+        setDefaultLines(centerView, mCenterTopLines, mCenterLines, mCenterBottomLines);
+        setDefaultMaxEms(centerView, mCenterTopMaxEms, mCenterMaxEms, mCenterBottomMaxEms);
+        setDefaultTextIsBold(centerView, mCenterTopTextBold, mCenterTextBold, mCenterBottomTextBold);
+        setDefaultGravity(centerView, mCenterGravity);
+        setDefaultDrawable(centerView.getCenterTextView(), mCenterTvDrawableLeft, mCenterTvDrawableRight, mTextViewDrawablePadding);
+        setDefaultCenterViewClickListener(centerView);
+
+        addView(centerView);
+    }
+
+    /**
+     * 初始化RightTextView
+     */
+    private void initRightTextView() {
+        if (rightView == null) {
+            rightView = initBaseView(R.id.sRightViewId);
+        }
+        rightBaseViewParams = getParams(rightBaseViewParams);
+        rightBaseViewParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+
+        rightBaseViewParams.addRule(RelativeLayout.LEFT_OF, R.id.sRightImgId);
+        rightBaseViewParams.setMargins(mRightViewMarginLeft, 0, mRightViewMarginRight, 0);
+
+        rightView.setLayoutParams(rightBaseViewParams);
+        rightView.setCenterSpaceHeight(centerSpaceHeight);
+
+        setDefaultString(rightView, mRightTopTextString, mRightTextString, mRightBottomTextString);
+        setDefaultColor(rightView, mRightTopTextColor, mRightTextColor, mRightBottomTextColor);
+        setDefaultSize(rightView, mRightTopTextSize, mRightTextSize, mRightBottomTextSize);
+        setDefaultLines(rightView, mRightTopLines, mRightLines, mRightBottomLines);
+        setDefaultMaxEms(rightView, mRightTopMaxEms, mRightMaxEms, mRightBottomMaxEms);
+        setDefaultTextIsBold(rightView, mRightTopTextBold, mRightTextBold, mRightBottomTextBold);
+        setDefaultGravity(rightView, mRightGravity);
+        setDefaultDrawable(rightView.getCenterTextView(), mRightTvDrawableLeft, mRightTvDrawableRight, mTextViewDrawablePadding);
+        setDefaultRightViewClickListener(rightView);
+
+        addView(rightView);
+    }
+
+
+    /**
+     * 初始化RightCheckBox
      */
     private void initRightCheckBox() {
-        rightCheckBox = new CheckBox(mContext);
+        if (rightCheckBox == null) {
+            rightCheckBox = new CheckBox(mContext);
+            rightCheckBoxParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
-        rightCheckBoxParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-
-        rightCheckBoxParams.addRule(ALIGN_PARENT_RIGHT, TRUE);
-        rightCheckBoxParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
-        setMargin(rightCheckBoxParams, 0, 0, rightCheckBoxMarginRight, 0);
-        rightCheckBox.setLayoutParams(rightCheckBoxParams);
-        if (rightCheckBoxBg != null) {
-            rightCheckBox.setGravity(CENTER_IN_PARENT);
-            rightCheckBox.setButtonDrawable(rightCheckBoxBg);
+            rightCheckBoxParams.addRule(ALIGN_PARENT_RIGHT, TRUE);
+            rightCheckBoxParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+            rightCheckBoxParams.setMargins(0, 0, rightCheckBoxMarginRight, 0);
+            rightCheckBox.setId(R.id.sRightCheckBoxId);
+            rightCheckBox.setLayoutParams(rightCheckBoxParams);
+            if (rightCheckBoxBg != null) {
+                rightCheckBox.setGravity(CENTER_IN_PARENT);
+                rightCheckBox.setButtonDrawable(rightCheckBoxBg);
+            }
+            rightCheckBox.setChecked(isChecked);
         }
-        rightCheckBox.setChecked(isChecked);
         addView(rightCheckBox);
     }
 
-    private void setMargin(LayoutParams params, int left, int top, int right, int bottom) {
-        params.setMargins(left, top, right, bottom);
+    /////////////////////////////////////默认属性设置----begin/////////////////////////////////
+
+    /**
+     * 初始化BaseTextView
+     *
+     * @param id id
+     * @return baseTextView
+     */
+    private BaseTextView initBaseView(int id) {
+        BaseTextView baseTextView = new BaseTextView(mContext);
+        baseTextView.setId(id);
+        return baseTextView;
     }
 
     /**
-     * 设置view的边距
+     * 设置默认值
      *
-     * @param view   view对象
-     * @param left   左边边距
-     * @param top    上边边距
-     * @param right  右边边距
-     * @param bottom 下边边距
+     * @param baseTextView     baseTextView
+     * @param topTextString    topTextString
+     * @param leftTextString   leftTextString
+     * @param bottomTextString bottomTextString
      */
-    private void setPadding(View view, int left, int top, int right, int bottom) {
-        view.setPadding(left, top, right, bottom);
+    private void setDefaultString(BaseTextView baseTextView, String topTextString, String leftTextString, String bottomTextString) {
+        if (baseTextView != null) {
+            baseTextView.setTopTextString(topTextString);
+            baseTextView.setCenterTextString(leftTextString);
+            baseTextView.setBottomTextString(bottomTextString);
+        }
     }
 
     /**
-     * 设置文字的字体大小
+     * 设置默认
      *
-     * @param textView textView对象
-     * @param size     文字大小
+     * @param baseTextView    baseTextView
+     * @param topTextColor    topTextColor
+     * @param textColor       textColor
+     * @param bottomTextColor bottomTextColor
      */
-    private void setTextSize(TextView textView, int size) {
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
+    private void setDefaultColor(BaseTextView baseTextView, int topTextColor, int textColor, int bottomTextColor) {
+        if (baseTextView != null) {
+            baseTextView.getTopTextView().setTextColor(topTextColor);
+            baseTextView.getCenterTextView().setTextColor(textColor);
+            baseTextView.getBottomTextView().setTextColor(bottomTextColor);
+        }
     }
 
     /**
-     * 设置文字的颜色
+     * 设置默认字体大小
      *
-     * @param textView textView对象
-     * @param color    文字颜色
+     * @param baseTextView   baseTextView
+     * @param leftTextSize   leftTextSize
+     * @param topTextSize    topTextSize
+     * @param bottomTextSize bottomTextSize
      */
-    private void setTextColor(TextView textView, int color) {
-        textView.setTextColor(color);
+    private void setDefaultSize(BaseTextView baseTextView, int topTextSize, int leftTextSize, int bottomTextSize) {
+        if (baseTextView != null) {
+            baseTextView.getTopTextView().setTextSize(TypedValue.COMPLEX_UNIT_PX, topTextSize);
+            baseTextView.getCenterTextView().setTextSize(TypedValue.COMPLEX_UNIT_PX, leftTextSize);
+            baseTextView.getBottomTextView().setTextSize(TypedValue.COMPLEX_UNIT_PX, bottomTextSize);
+        }
     }
 
-    //////////对外公布的方法///////////////
+    /**
+     * 设置默认maxEms
+     *
+     * @param baseTextView baseTextView
+     * @param topMaxEms    topMaxEms
+     * @param centerMaxEms centerMaxEms
+     * @param bottomMaxEms bottomMaxEms
+     */
+    private void setDefaultMaxEms(BaseTextView baseTextView, int topMaxEms, int centerMaxEms, int bottomMaxEms) {
+        if (baseTextView != null) {
+            baseTextView.setMaxEms(topMaxEms, centerMaxEms, bottomMaxEms);
+        }
+
+    }
 
     /**
-     * 设置左边图标
+     * 设置默认lines
      *
-     * @param leftIcon 左边图标
-     * @return 返回对象
+     * @param baseTextView baseTextView
+     * @param leftTopLines leftTopLines
+     * @param leftLines    leftLines
+     * @param bottomLines  bottomLines
      */
-    public SuperTextView setLeftIcon(Drawable leftIcon) {
-        leftIconRes = leftIcon;
-        if (leftIconIV == null) {
-            initLeftIcon();
+    private void setDefaultLines(BaseTextView baseTextView, int leftTopLines, int leftLines, int bottomLines) {
+        if (baseTextView != null) {
+            baseTextView.getTopTextView().setLines(leftTopLines);
+            baseTextView.getCenterTextView().setLines(leftLines);
+            baseTextView.getBottomTextView().setLines(bottomLines);
+        }
+
+    }
+
+    /**
+     * 设置文字对其方式
+     *
+     * @param baseTextView baseTextView
+     * @param gravity      对其方式
+     */
+    private void setDefaultGravity(BaseTextView baseTextView, int gravity) {
+        if (baseTextView != null) {
+            setGravity(baseTextView.getTopTextView(), gravity);
+            setGravity(baseTextView.getCenterTextView(), gravity);
+            setGravity(baseTextView.getBottomTextView(), gravity);
+        }
+    }
+
+    /**
+     * 文字对其方式
+     *
+     * @param textView textView
+     * @param gravity  对其方式
+     */
+    private void setGravity(TextView textView, int gravity) {
+        switch (gravity) {
+            case gravity_Left_Center:
+                textView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+                break;
+            case gravity_Center:
+                textView.setGravity(Gravity.CENTER);
+                break;
+            case gravity_Right_Center:
+                textView.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+                break;
+        }
+    }
+
+    /**
+     * 设置textView的drawable
+     *
+     * @param textView        对象
+     * @param drawableLeft    左边图标
+     * @param drawableRight   右边图标
+     * @param drawablePadding 图标距离文字的间距
+     */
+    public void setDefaultDrawable(TextView textView, Drawable drawableLeft, Drawable drawableRight, int drawablePadding) {
+        if (drawableLeft != null || drawableRight != null) {
+            textView.setVisibility(VISIBLE);
+        }
+        textView.setCompoundDrawablesWithIntrinsicBounds(drawableLeft, null, drawableRight, null);
+        textView.setCompoundDrawablePadding(drawablePadding);
+    }
+
+    /**
+     * 初始化分割线
+     */
+    private void initDividerLineView() {
+        switch (mDividerLineType) {
+            case NONE:
+                break;
+            case TOP:
+                setTopDividerLineView();
+                break;
+            case BOTTOM:
+                setTBottomDividerLineView();
+                break;
+            case BOTH:
+                setTopDividerLineView();
+                setTBottomDividerLineView();
+                break;
+        }
+
+    }
+
+    /**
+     * 设置上边的分割线
+     */
+    private void setTopDividerLineView() {
+        if (mTopDividerLineMarginLR != 0) {
+            initTopDividerLineView(mTopDividerLineMarginLR, mTopDividerLineMarginLR);
         } else {
-            leftIconIV.setImageDrawable(leftIcon);
+            initTopDividerLineView(mTopDividerLineMarginLeft, mTopDividerLineMarginRight);
+        }
+    }
+
+    /**
+     * 设置下边的分割线
+     */
+    private void setTBottomDividerLineView() {
+        if (mBottomDividerLineMarginLR != 0) {
+            initBottomDividerLineView(mBottomDividerLineMarginLR, mBottomDividerLineMarginLR);
+        } else {
+            initBottomDividerLineView(mBottomDividerLineMarginLeft, mBottomDividerLineMarginRight);
+        }
+    }
+
+
+    /**
+     * 初始化上边分割线view
+     *
+     * @param marginLeft  左间距
+     * @param marginRight 右间距
+     */
+    private void initTopDividerLineView(int marginLeft, int marginRight) {
+        if (topDividerLineView == null) {
+            if (topDividerLineParams == null) {
+                topDividerLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, mDividerLineHeight);
+            }
+            topDividerLineParams.addRule(ALIGN_PARENT_TOP, TRUE);
+            topDividerLineParams.setMargins(marginLeft, 0, marginRight, 0);
+            topDividerLineView = new View(mContext);
+            topDividerLineView.setLayoutParams(topDividerLineParams);
+            topDividerLineView.setBackgroundColor(mDividerLineColor);
+        }
+        addView(topDividerLineView);
+    }
+
+    /**
+     * 初始化底部分割线view
+     *
+     * @param marginLeft  左间距
+     * @param marginRight 右间距
+     */
+    private void initBottomDividerLineView(int marginLeft, int marginRight) {
+        if (bottomDividerLineView == null) {
+            if (bottomDividerLineParams == null) {
+                bottomDividerLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, mDividerLineHeight);
+            }
+            bottomDividerLineParams.addRule(ALIGN_PARENT_BOTTOM, TRUE);
+            bottomDividerLineParams.setMargins(marginLeft, 0, marginRight, 0);
+
+            bottomDividerLineView = new View(mContext);
+            bottomDividerLineView.setLayoutParams(bottomDividerLineParams);
+            bottomDividerLineView.setBackgroundColor(mDividerLineColor);
+        }
+        addView(bottomDividerLineView);
+    }
+
+
+    /**
+     * 左边点击事件
+     *
+     * @param baseTextView baseTextView
+     */
+    private void setDefaultLeftViewClickListener(BaseTextView baseTextView) {
+        if (baseTextView != null) {
+            if (leftTopTvClickListener != null) {
+                baseTextView.getTopTextView().setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        leftTopTvClickListener.onClickListener();
+                    }
+                });
+            }
+
+            if (leftTvClickListener != null) {
+                baseTextView.getCenterTextView().setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        leftTvClickListener.onClickListener();
+                    }
+                });
+            }
+            if (leftBottomTvClickListener != null) {
+                baseTextView.getBottomTextView().setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        leftBottomTvClickListener.onClickListener();
+                    }
+                });
+            }
+        }
+
+    }
+
+    /**
+     * 中间点击事件
+     *
+     * @param baseTextView baseTextView
+     */
+    private void setDefaultCenterViewClickListener(BaseTextView baseTextView) {
+        if (baseTextView != null) {
+            if (centerTopTvClickListener != null) {
+                baseTextView.getTopTextView().setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        centerTopTvClickListener.onClickListener();
+                    }
+                });
+            }
+
+            if (centerTvClickListener != null) {
+                baseTextView.getCenterTextView().setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        centerTvClickListener.onClickListener();
+                    }
+                });
+            }
+            if (centerBottomTvClickListener != null) {
+                baseTextView.getBottomTextView().setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        centerBottomTvClickListener.onClickListener();
+                    }
+                });
+            }
+        }
+
+    }
+
+
+    /**
+     * 右边点击事件
+     *
+     * @param baseTextView baseTextView
+     */
+    private void setDefaultRightViewClickListener(BaseTextView baseTextView) {
+        if (baseTextView != null) {
+            if (rightTopTvClickListener != null) {
+                baseTextView.getTopTextView().setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        rightTopTvClickListener.onClickListener();
+                    }
+                });
+            }
+
+            if (rightTvClickListener != null) {
+                baseTextView.getCenterTextView().setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        rightTvClickListener.onClickListener();
+                    }
+                });
+            }
+            if (rightBottomTvClickListener != null) {
+                baseTextView.getBottomTextView().setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        rightBottomTvClickListener.onClickListener();
+                    }
+                });
+            }
+        }
+
+    }
+
+
+    /**
+     * 字体是否加粗
+     *
+     * @param baseTextView   baseTextView
+     * @param topTextBold    上边字体加粗
+     * @param centerTextBold 中间字体加粗
+     * @param bottomTextBold 下边字体加粗
+     */
+    private void setDefaultTextIsBold(BaseTextView baseTextView, boolean topTextBold, boolean centerTextBold, boolean bottomTextBold) {
+        if (baseTextView != null) {
+            baseTextView.getTopTextView().getPaint().setFakeBoldText(topTextBold);
+            baseTextView.getCenterTextView().getPaint().setFakeBoldText(centerTextBold);
+            baseTextView.getBottomTextView().getPaint().setFakeBoldText(bottomTextBold);
+        }
+    }
+
+
+    /////////////////////////////////////默认属性设置----end/////////////////////////////////
+
+
+    /////////////////////////////////////对外暴露的方法---begin/////////////////////////////////
+
+    /**
+     * 设置左上字符串
+     *
+     * @param string 字符串
+     * @return 方便链式调用
+     */
+    public SuperTextView setLeftTopString(String string) {
+        if (leftView != null) {
+            leftView.setTopTextString(string);
         }
         return this;
     }
 
     /**
-     * 设置右边图标
+     * 设置左中字符串
      *
-     * @param rightIcon 右边图标
-     * @return 返回对象
+     * @param string 字符串
+     * @return 方便链式调用
      */
-    public SuperTextView setRightIcon(Drawable rightIcon) {
-        rightIconRes = rightIcon;
-        if (rightIconIV == null) {
-            initRightIcon();
-        } else {
-            rightIconIV.setImageDrawable(rightIcon);
+    public SuperTextView setLeftString(String string) {
+        if (leftView != null) {
+            leftView.setCenterTextString(string);
         }
         return this;
     }
 
     /**
-     * 设置左边显示文字
+     * 设置左下字符串
      *
-     * @param leftString 左边文字
-     * @return 返回对象
+     * @param string 字符串
+     * @return 方便链式调用
      */
-    public SuperTextView setLeftString(String leftString) {
-        leftTextString = leftString;
-        if (leftTV == null) {
-            initLeftText();
-        } else {
-            leftTV.setText(leftString);
-        }
-        return this;
-    }
-
-    /**
-     * 设置左上显示的文字
-     *
-     * @param leftTopString 左上文字
-     * @return 返回对象
-     */
-    public SuperTextView setLeftTopString(String leftTopString) {
-        leftTopTextString = leftTopString;
-        if (leftTopTV == null) {
-            initLeftTopText();
-        } else {
-            leftTopTV.setText(leftTopString);
-        }
-        return this;
-    }
-
-    /**
-     * 设置左下显示的文字
-     *
-     * @param leftBottomString 左下第一个文字
-     * @return 返回对象
-     */
-    public SuperTextView setLeftBottomString(String leftBottomString) {
-        leftBottomTextString = leftBottomString;
-        if (leftBottomTV == null) {
-            initLeftBottomText();
-        } else {
-            leftBottomTV.setText(leftBottomString);
-        }
-        return this;
-    }
-
-    /**
-     * 设置左下第二个显示的文字
-     *
-     * @param leftBottomString2 左下第二个文字
-     * @return 返回对象
-     */
-    public SuperTextView setLeftBottomString2(String leftBottomString2) {
-        leftBottomTextString2 = leftBottomString2;
-        if (leftBottomTV2 == null) {
-            initLeftBottomText2();
-        } else {
-            leftBottomTV2.setText(leftBottomString2);
-        }
-        return this;
-    }
-
-    /**
-     * 设置右边显示的文字
-     *
-     * @param rightString 右边文字
-     * @return 返回对象
-     */
-    public SuperTextView setRightString(String rightString) {
-        rightTextString = rightString;
-        if (rightTV == null) {
-            initRightText();
-        } else {
-            rightTV.setText(rightString);
-        }
-        return this;
-    }
-
-    /**
-     * 设置右边显示的文字和图片
-     *
-     * @param rightString     右边文字
-     * @param drawable        drawable
-     * @param drawablePadding drawablePadding
-     * @return
-     */
-    public SuperTextView setRightString(String rightString, Drawable drawable, int drawablePadding) {
-        rightTextString = rightString;
-        rightTextStringRightIconRes = drawable;
-        rightTextStringRightIconPadding = drawablePadding;
-        if (rightTV == null) {
-            initRightText();
-        } else {
-            rightTV.setText(rightString);
+    public SuperTextView setLeftBottomString(String string) {
+        if (leftView != null) {
+            leftView.setBottomTextString(string);
         }
         return this;
     }
 
 
     /**
-     * 设备中间文字
+     * 设置中上字符串
      *
-     * @param centerString 中间文字
-     * @return 返回对象
+     * @param string 字符串
+     * @return 方便链式调用
      */
-    public SuperTextView setCenterString(String centerString) {
-        centerTextString = centerString;
-        if (centerTV == null) {
-            initCenterText();
-        } else {
-            centerTV.setText(centerString);
+    public SuperTextView setCenterTopString(String string) {
+        if (centerView != null) {
+            centerView.setTopTextString(string);
         }
         return this;
     }
+
+    /**
+     * 设置中间字符串
+     *
+     * @param string 字符串
+     * @return 方便链式调用
+     */
+    public SuperTextView setCenterString(String string) {
+        if (centerView != null) {
+            centerView.setCenterTextString(string);
+        }
+        return this;
+    }
+
+    /**
+     * 设置中下字符串
+     *
+     * @param string 字符串
+     * @return 方便链式调用
+     */
+    public SuperTextView setCenterBottomString(String string) {
+        if (centerView != null) {
+            centerView.setBottomTextString(string);
+        }
+        return this;
+    }
+
+    /**
+     * 设置右上字符串
+     *
+     * @param string 字符串
+     * @return 方便链式调用
+     */
+    public SuperTextView setRightTopString(String string) {
+        if (rightView != null) {
+            rightView.setTopTextString(string);
+        }
+        return this;
+    }
+
+    /**
+     * 设置右中字符串
+     *
+     * @param string 字符串
+     * @return 方便链式调用
+     */
+    public SuperTextView setRightString(String string) {
+        if (rightView != null) {
+            rightView.setCenterTextString(string);
+        }
+        return this;
+    }
+
+    /**
+     * 设置右下字符串
+     *
+     * @param string 字符串
+     * @return 方便链式调用
+     */
+    public SuperTextView setRightBottomString(String string) {
+        if (rightView != null) {
+            rightView.setBottomTextString(string);
+        }
+        return this;
+    }
+
+
+    /**
+     * 获取左上字符串
+     *
+     * @return 返回字符串
+     */
+    public String getLeftTopString() {
+        return leftView != null ? leftView.getTopTextView().getText().toString().trim() : "";
+    }
+
+    /**
+     * 获取左中字符串
+     *
+     * @return 返回字符串
+     */
+    public String getLeftString() {
+        return leftView != null ? leftView.getCenterTextView().getText().toString().trim() : "";
+    }
+
+    /**
+     * 获取左下字符串
+     *
+     * @return 返回字符串
+     */
+    public String getLeftBottomString() {
+        return leftView != null ? leftView.getBottomTextView().getText().toString().trim() : "";
+    }
+
+    ////////////////////////////////////////////
+
+    /**
+     * 获取中上字符串
+     *
+     * @return 返回字符串
+     */
+    public String getCenterTopString() {
+        return centerView != null ? centerView.getTopTextView().getText().toString().trim() : "";
+    }
+
+    /**
+     * 获取中间字符串
+     *
+     * @return 返回字符串
+     */
+
+    public String getCenterString() {
+        return centerView != null ? centerView.getCenterTextView().getText().toString().trim() : "";
+    }
+
+    /**
+     * 获取中下字符串
+     *
+     * @return 返回字符串
+     */
+    public String getCenterBottomString() {
+        return centerView != null ? centerView.getBottomTextView().getText().toString().trim() : "";
+    }
+
+    /**
+     * 获取右上字符串
+     *
+     * @return 返回字符串
+     */
+    public String getRightTopString() {
+        return rightView != null ? rightView.getTopTextView().getText().toString().trim() : "";
+    }
+
+    /**
+     * 获取右中字符串
+     *
+     * @return 返回字符串
+     */
+    public String getRightString() {
+        return rightView != null ? rightView.getCenterTextView().getText().toString().trim() : "";
+    }
+
+    /**
+     * 获取右下字符串
+     *
+     * @return 返回字符串
+     */
+    public String getRightBottomString() {
+        return rightView != null ? rightView.getBottomTextView().getText().toString().trim() : "";
+    }
+
+    /**
+     * 获取左边ImageView
+     *
+     * @return ImageView
+     */
+    public ImageView getLeftIconIV() {
+        leftImgParams.setMargins(leftIconMarginLeft, 0, 0, 0);
+        return leftIconIV;
+    }
+
+    /**
+     * 获取右边ImageView
+     *
+     * @return ImageView
+     */
+    public ImageView getRightIconIV() {
+        rightImgParams.setMargins(0, 0, rightIconMarginRight, 0);
+        return rightIconIV;
+    }
+
 
     /**
      * @param checked 是否选中
@@ -816,9 +1194,7 @@ public class SuperTextView extends RelativeLayout {
      */
     public SuperTextView setCbChecked(boolean checked) {
         isChecked = checked;
-        if (rightCheckBox == null) {
-            initRightCheckBox();
-        } else {
+        if (rightCheckBox != null) {
             rightCheckBox.setChecked(checked);
         }
         return this;
@@ -832,9 +1208,7 @@ public class SuperTextView extends RelativeLayout {
      */
     public SuperTextView setCbBackground(Drawable drawable) {
         rightCheckBoxBg = drawable;
-        if (rightCheckBox == null) {
-            initRightCheckBox();
-        } else {
+        if (rightCheckBox != null) {
             rightCheckBox.setBackgroundDrawable(drawable);
         }
         return this;
@@ -854,291 +1228,210 @@ public class SuperTextView extends RelativeLayout {
     }
 
     /**
-     * 设置左边文字的颜色
+     * 设置右边tv的右侧图片
      *
-     * @param textColor 文字颜色值
+     * @param drawableRight
+     */
+    public SuperTextView setRightTvDrawableRight(Drawable drawableRight) {
+        setDefaultDrawable(rightView.getCenterTextView(), null, drawableRight, mTextViewDrawablePadding);
+        return this;
+    }
+
+    /**
+     * 设置右边tv的左侧图片
+     *
+     * @param drawableLeft
+     */
+    public SuperTextView setRightTvDrawableLeft(Drawable drawableLeft) {
+        setDefaultDrawable(rightView.getCenterTextView(), drawableLeft, null, mTextViewDrawablePadding);
+        return this;
+    }
+
+    /**
+     * 设置左边图标
+     *
+     * @param leftIcon 左边图标
      * @return 返回对象
      */
-    public SuperTextView setLeftTVColor(int textColor) {
-        leftTVColor = textColor;
-        if (leftTV == null) {
-            initLeftText();
-        } else {
-            leftTV.setTextColor(textColor);
+    public SuperTextView setLeftIcon(Drawable leftIcon) {
+        if (leftIconIV != null) {
+            leftImgParams.setMargins(leftIconMarginLeft, 0, 0, 0);
+            leftIconIV.setImageDrawable(leftIcon);
         }
         return this;
     }
 
     /**
-     * 设置右边文字的颜色
+     * 设置左边图标
      *
-     * @param textColor 文字颜色值
+     * @param resId 左边图标资源id
      * @return 返回对象
      */
-    public SuperTextView setRightTVColor(int textColor) {
-        rightTVColor = textColor;
-        if (rightTV == null) {
-            initRightText();
-        } else {
-            rightTV.setTextColor(textColor);
+    public SuperTextView setLeftIcon(int resId) {
+        if (leftIconIV != null) {
+            leftImgParams.setMargins(leftIconMarginLeft, 0, 0, 0);
+            leftIconIV.setImageResource(resId);
         }
         return this;
     }
 
     /**
-     * 设置左上边文字的颜色
+     * 设置右边图标
      *
-     * @param textColor 文字颜色值
+     * @param rightIcon 右边图标
      * @return 返回对象
      */
-    public SuperTextView setLeftTopTVColor(int textColor) {
-        leftTopTVColor = textColor;
-        if (leftTopTV == null) {
-            initLeftTopText();
-        } else {
-            leftTopTV.setTextColor(textColor);
+    public SuperTextView setRightIcon(Drawable rightIcon) {
+        if (rightIconIV != null) {
+            rightImgParams.setMargins(0, 0, rightIconMarginRight, 0);
+            rightIconIV.setImageDrawable(rightIcon);
         }
         return this;
     }
 
     /**
-     * 设置左下边文字的颜色
+     * 设置右边图标资源Id
      *
-     * @param textColor 文字颜色值
+     * @param resId 右边图标
      * @return 返回对象
      */
-    public SuperTextView setLeftBottomTVColor(int textColor) {
-        leftBottomTVColor = textColor;
-        if (leftBottomTV == null) {
-            initLeftBottomText();
-        } else {
-            leftBottomTV.setTextColor(textColor);
+    public SuperTextView setRightIcon(int resId) {
+        if (rightIconIV != null) {
+            rightImgParams.setMargins(0, 0, rightIconMarginRight, 0);
+            rightIconIV.setImageResource(resId);
         }
         return this;
     }
 
+    /////////////////////////////////////对外暴露的方法---begin/////////////////////////////////
+
     /**
-     * 设置左下第二个文字的颜色
+     * 单位转换工具类
      *
-     * @param textColor 文字颜色值
-     * @return 返回对象
+     * @param context 上下文对象
+     * @param spValue 值
+     * @return 返回值
      */
-    public SuperTextView setLeftBottomTVColor2(int textColor) {
-        leftBottomTVColor2 = textColor;
-        if (leftBottomTV2 == null) {
-            initLeftBottomText2();
-        } else {
-            leftBottomTV2.setTextColor(textColor);
-        }
-        return this;
-    }
-
-    //////////设置View的点击事件/////////////////
-
-    /**
-     * 点击事件
-     *
-     * @param listener listener对象
-     * @return 返回对象
-     */
-    public SuperTextView setOnSuperTextViewClickListener(OnSuperTextViewClickListener listener) {
-        onSuperTextViewClickListener = listener;
-        return this;
-    }
-
-    /**
-     * 点击事件接口
-     */
-    public static class OnSuperTextViewClickListener {
-        public void onSuperTextViewClick() {
-        }
-
-        public void onLeftTopClick() {
-        }
-
-        public void onLeftBottomClick() {
-        }
-
-        public void onLeftBottomClick2() {
-        }
-
-    }
-
-    /**
-     * 获取控件ID便于根据ID设置值
-     *
-     * @param viewName 需要的textViewName
-     * @return 返回ID
-     */
-    public int getViewId(int viewName) {
-        int viewId = 0;
-        switch (viewName) {
-            case leftTextViewId:
-                if (leftTV == null) {
-                    initLeftText();
-                }
-                viewId = R.id.sLeftTextId;
-                break;
-            case leftTopTextViewId:
-                if (leftTopTV == null) {
-                    initLeftTopText();
-                }
-                viewId = R.id.sLeftTopTextId;
-                break;
-            case leftBottomTextViewId:
-                if (leftBottomTV == null) {
-                    initLeftBottomText();
-                }
-                viewId = R.id.sLeftBottomTextId;
-                break;
-            case leftBottomTextViewId2:
-                if (leftBottomTV2 == null) {
-                    initLeftBottomText2();
-                }
-                viewId = R.id.sLeftBottomTextId2;
-                break;
-            case centerTextViewId:
-                if (centerTV == null) {
-                    initCenterText();
-                }
-                viewId = R.id.sCenterTextId;
-                break;
-            case rightTextViewId:
-                if (rightTV == null) {
-                    initRightText();
-                }
-                viewId = R.id.sRightTextId;
-                break;
-            case leftImageViewId:
-                if (leftIconIV == null) {
-                    initLeftIcon();
-                }
-                viewId = R.id.sLeftIconId;
-                break;
-            case rightImageViewId:
-                if (rightIconIV == null) {
-                    initRightIcon();
-                }
-                viewId = R.id.sRightIconId;
-                break;
-        }
-        return viewId;
-    }
-
-    /**
-     * 获取view对象
-     *
-     * @param viewName 传入viewName
-     * @return 返回view
-     */
-    public View getView(int viewName) {
-        View view = null;
-        switch (viewName) {
-
-            case leftImageViewId:
-                if (leftIconIV == null) {
-                    initLeftIcon();
-                }
-                view = leftIconIV;
-                break;
-            case rightImageViewId:
-                if (rightIconIV == null) {
-                    initRightIcon();
-                }
-                view = rightIconIV;
-                break;
-        }
-        return view;
-    }
-
-
-    public int dip2px(Context context, float dipValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dipValue * scale + 0.5f);
-    }
-
-    public int px2dip(Context context, float pxValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (pxValue / scale + 0.5f);
-    }
-
-    public int sp2px(Context context, float spValue) {
+    private int sp2px(Context context, float spValue) {
         final float scale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * scale + 0.5f);
     }
 
-    public static void setTextViewRightDrawble(TextView textView, Drawable drawable, int drawablePadding) {
-        if (drawable != null && textView != null) {
-            drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-            textView.setCompoundDrawables(null, null, drawable, null);
-            textView.setCompoundDrawablePadding(drawablePadding);
-        }
+    /**
+     * 单位转换工具类
+     *
+     * @param context  上下文对象
+     * @param dipValue 值
+     * @return 返回值
+     */
+    private int dip2px(Context context, float dipValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dipValue * scale + 0.5f);
     }
 
     /**
-     * 设置左上view可点击
+     * 点击事件
      *
-     * @param isClickable boolean类型
-     * @return 返回
+     * @param onSuperTextViewClickListener ClickListener
+     * @return SuperTextView
      */
-    public SuperTextView setLeftTopViewIsClickable(boolean isClickable) {
-        if (isClickable) {
-            if (leftTopTV != null) {
-                leftTopTV.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (onSuperTextViewClickListener != null) {
-                            onSuperTextViewClickListener.onLeftTopClick();
-                        }
-                    }
-                });
-            }
-        }
-
+    public SuperTextView setOnSuperTextViewClickListener(OnSuperTextViewClickListener onSuperTextViewClickListener) {
+        this.onSuperTextViewClickListener = onSuperTextViewClickListener;
         return this;
     }
 
-    /**
-     * 设置左下第一个view可点击
-     *
-     * @param isClickable boolean类型
-     * @return 返回
-     */
-    public SuperTextView setLeftBottomViewIsClickable(boolean isClickable) {
-        if (isClickable) {
-            if (leftBottomTV != null) {
-                leftBottomTV.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (onSuperTextViewClickListener != null) {
-                            onSuperTextViewClickListener.onLeftBottomClick();
-                        }
-                    }
-                });
-            }
-        }
+    public SuperTextView setLeftTopTvClickListener(OnLeftTopTvClickListener leftTopTvClickListener) {
+        this.leftTopTvClickListener = leftTopTvClickListener;
+        setDefaultLeftViewClickListener(leftView);
         return this;
     }
 
-    /**
-     * 设置左下第二个view可点击
-     *
-     * @param isClickable boolean类型
-     * @return 返回
-     */
-    public SuperTextView setLeftBottomView2IsClickable(boolean isClickable) {
-        if (isClickable) {
-            if (leftBottomTV2 != null) {
-                leftBottomTV2.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (onSuperTextViewClickListener != null) {
-                            onSuperTextViewClickListener.onLeftBottomClick2();
-                        }
-                    }
-                });
-            }
-        }
+    public SuperTextView setLeftTvClickListener(OnLeftTvClickListener leftTvClickListener) {
+        this.leftTvClickListener = leftTvClickListener;
+        setDefaultLeftViewClickListener(leftView);
         return this;
+    }
+
+    public SuperTextView setLeftBottomTvClickListener(OnLeftBottomTvClickListener leftBottomTvClickListener) {
+        this.leftBottomTvClickListener = leftBottomTvClickListener;
+        setDefaultLeftViewClickListener(leftView);
+        return this;
+    }
+
+    public SuperTextView setCenterTopTvClickListener(OnCenterTopTvClickListener centerTopTvClickListener) {
+        this.centerTopTvClickListener = centerTopTvClickListener;
+        setDefaultCenterViewClickListener(centerView);
+        return this;
+    }
+
+    public SuperTextView setCenterTvClickListener(OnCenterTvClickListener centerTvClickListener) {
+        this.centerTvClickListener = centerTvClickListener;
+        setDefaultCenterViewClickListener(centerView);
+        return this;
+    }
+
+    public SuperTextView setCenterBottomTvClickListener(OnCenterBottomTvClickListener centerBottomTvClickListener) {
+        this.centerBottomTvClickListener = centerBottomTvClickListener;
+        setDefaultCenterViewClickListener(centerView);
+        return this;
+    }
+
+    public SuperTextView setRightTopTvClickListener(OnRightTopTvClickListener rightTopTvClickListener) {
+        this.rightTopTvClickListener = rightTopTvClickListener;
+        setDefaultRightViewClickListener(rightView);
+        return this;
+    }
+
+    public SuperTextView setRightTvClickListener(OnRightTvClickListener rightTvClickListener) {
+        this.rightTvClickListener = rightTvClickListener;
+        setDefaultRightViewClickListener(rightView);
+        return this;
+    }
+
+    public SuperTextView setRightBottomTvClickListener(OnRightBottomTvClickListener rightBottomTvClickListener) {
+        this.rightBottomTvClickListener = rightBottomTvClickListener;
+        setDefaultRightViewClickListener(rightView);
+        return this;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    public interface OnSuperTextViewClickListener {
+        void onClickListener();
+    }
+
+    public interface OnLeftTopTvClickListener {
+        void onClickListener();
+    }
+
+    public interface OnLeftTvClickListener {
+        void onClickListener();
+    }
+
+    public interface OnLeftBottomTvClickListener {
+        void onClickListener();
+    }
+
+    public interface OnCenterTopTvClickListener {
+        void onClickListener();
+    }
+
+    public interface OnCenterTvClickListener {
+        void onClickListener();
+    }
+
+    public interface OnCenterBottomTvClickListener {
+        void onClickListener();
+    }
+
+    public interface OnRightTopTvClickListener {
+        void onClickListener();
+    }
+
+    public interface OnRightTvClickListener {
+        void onClickListener();
+    }
+
+    public interface OnRightBottomTvClickListener {
+        void onClickListener();
     }
 }

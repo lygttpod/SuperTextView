@@ -2,21 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
     <com.allen.library.SuperTextView
-        android:id="@+id/super_tv1"
         android:layout_width="match_parent"
-        android:layout_height="80dp" />
-    <com.allen.library.SuperTextView
-        android:id="@+id/super_tv2"
-        android:layout_width="match_parent"
-        android:layout_height="80dp" />
-    <com.allen.library.SuperTextView
-        android:id="@+id/super_tv3"
-        android:layout_width="match_parent"
-        android:layout_height="80dp" />
-    <com.allen.library.SuperTextView
-        android:id="@+id/super_tv4"
-        android:layout_width="match_parent"
-        android:layout_height="80dp" />
+        stv:sLeftTextString="账号与安全"
+        stv:sRightTextString="已保护"
+        stv:sRightTvDrawableLeft="@drawable/v1"
+        android:layout_height="50dp" />
+
+
 </LinearLayout>

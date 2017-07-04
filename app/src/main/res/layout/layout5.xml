@@ -10,7 +10,9 @@
         android:layout_height="80dp"
         stv:sLeftBottomTextString="188****8888"
         stv:sLeftIconRes="@drawable/head_default"
-        stv:sLeftTopTextString="张三" />
+        stv:sLeftTopTextString="张三"
+        stv:sLeftViewGravity="left_center"
+        stv:sRightTextString="已实名" />
 
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
@@ -21,22 +23,45 @@
 
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        stv:sLeftBottomTextString="188****8888"
-        stv:sLeftIconRes="@drawable/head_default"
-        stv:sLeftTopTextString="张三" />
+        android:layout_height="60dp"
+        stv:sLeftTopTextString="迪丽热巴"
+        stv:sLeftViewGravity="left_center"
+        stv:sRightIconRes="@drawable/arrow_right_red"
+        stv:sRightTvDrawableRight="@drawable/head_default" />
+
 
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
-        stv:sCenterTextString="下边展示使用网络图片的情况"
-        android:layout_height="50dp"/>
+        android:layout_height="50dp"
+        stv:sCenterTextString="下边展示使用网络图片的情况" />
+
     <com.allen.library.SuperTextView
         android:id="@+id/super_tv1"
         android:layout_width="match_parent"
-        android:layout_height="80dp" />
+        android:layout_height="80dp"
+        stv:sLeftBottomTextString="188****8888"
+        stv:sLeftIconRes="@drawable/head_default"
+        stv:sLeftTopTextString="张三"
+        stv:sLeftViewGravity="left_center"
+        stv:sRightTextString="已实名" />
+
     <com.allen.library.SuperTextView
         android:id="@+id/super_tv2"
         android:layout_width="match_parent"
-        android:layout_height="80dp" />
+        android:layout_height="80dp"
+        stv:sRightBottomTextString="188****8888"
+        stv:sRightIconHeight="60dp"
+        stv:sRightIconRes="@drawable/head_default"
+        stv:sRightIconWidth="60dp"
+        stv:sRightTopTextString="张三"
+        stv:sRightViewGravity="right_center" />
 
+    <com.allen.library.SuperTextView
+        android:id="@+id/super_tv3"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        stv:sLeftTopTextString="迪丽热巴"
+        stv:sLeftViewGravity="left_center"
+        stv:sRightIconRes="@drawable/arrow_right_red"
+        stv:sRightTvDrawableRight="@drawable/head_default" />
 </LinearLayout>

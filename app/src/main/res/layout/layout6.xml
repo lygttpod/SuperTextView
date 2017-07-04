@@ -8,32 +8,66 @@
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        stv:sLeftBottomTextColor2="@color/colorAccent"
-        stv:sLeftBottomTextString="招商银行（8888）"
-        stv:sLeftBottomTextString2="限额说明>>"
-        stv:sLeftIconRes="@drawable/bank_zhao_shang"
-        stv:sLeftTopTextString="银行卡支付"
-        stv:sRightCheckBoxRes="@drawable/circular_check_bg"
-        stv:sRightCheckBoxShow="true" />
-
-    <com.allen.library.SuperTextView
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        stv:sLeftBottomTextColor2="@color/colorAccent"
-        stv:sLeftBottomTextString="可用余额"
-        stv:sLeftBottomTextString2="8888元"
-        stv:sLeftIconRes="@drawable/balance_icon"
-        stv:sLeftTopTextString="余额支付"
-        stv:sRightCheckBoxRes="@drawable/circular_check_bg"
-        stv:sRightCheckBoxShow="true" />
-
-    <com.allen.library.SuperTextView
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="50dp"
+        stv:sCenterBottomTextColor="@color/colorAccent"
+        stv:sCenterBottomTextString="中下"
+        stv:sCenterTextColor="@color/colorAccent"
+        stv:sCenterTextString="中"
+        stv:sCenterTopTextColor="@color/colorAccent"
+        stv:sCenterTopTextString="中上"
         stv:sLeftBottomTextColor="@color/colorAccent"
-        stv:sLeftBottomTextString="限额说明>>"
-        stv:sLeftIconRes="@drawable/not_bank_card_icon"
-        stv:sLeftTopTextString="银行卡支付" />
+        stv:sLeftBottomTextString="左下"
+        stv:sLeftTextColor="@color/colorAccent"
+        stv:sLeftTextString="左中文字"
+        stv:sLeftTopTextColor="@color/colorAccent"
+        stv:sLeftTopTextString="左上"
+        stv:sRightBottomTextColor="@color/colorAccent"
+        stv:sRightBottomTextString="右"
+        stv:sRightTextColor="@color/colorAccent"
+        stv:sRightTextString="右中"
+        stv:sRightTopTextColor="@color/colorAccent"
+        stv:sRightTopTextString="右" />
+
+
+    <com.allen.library.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        stv:sCenterBottomTextString="测试文字"
+        stv:sCenterTopTextString="测试文字"
+        stv:sCenterViewGravity="center"
+        stv:sLeftBottomTextString="18888888888"
+        stv:sLeftTopTextString="张三"
+        stv:sLeftViewGravity="left_center"
+        stv:sRightBottomTextString="15555555555"
+        stv:sRightTopTextString="李四"
+        stv:sRightViewGravity="right_center" />
+
+
+    <com.allen.library.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        stv:mLeftViewWidth="30dp"
+        stv:sCenterTextString="张姐专业广场舞"
+        stv:sCenterViewGravity="left_center"
+        stv:sLeftTextString="领队"
+        stv:sLeftViewGravity="left_center" />
+
+    <com.allen.library.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        stv:mLeftViewWidth="30dp"
+        stv:sCenterTextString="九眼龙天天广场A座"
+        stv:sCenterViewGravity="left_center"
+        stv:sLeftTextString="活动地点"
+        stv:sLeftViewGravity="left_center" />
+
+    <com.allen.library.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        stv:mLeftViewWidth="30dp"
+        stv:sCenterTextString="123456789123456789123456789123456789"
+        stv:sCenterMaxEms="5"
+        stv:sCenterViewGravity="left_center"
+        stv:sLeftTextString="舞动歌单"
+        stv:sLeftViewGravity="left_center" />
 
 </LinearLayout>

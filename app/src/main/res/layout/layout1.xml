@@ -12,52 +12,54 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="20dp">
 
             <com.allen.library.SuperTextView
+                stv:sDividerLineType="both"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="60dp"
+                stv:sLeftIconRes="@drawable/head_default"
                 stv:sLeftTextString="帐号管理"
                 stv:sRightIconRes="@drawable/arrow_right_red" />
 
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="20dp"
                 stv:sLeftTextString="通知设置"
                 stv:sRightIconRes="@drawable/arrow_right_red" />
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                stv:sLeftTextString="账号与安全"
+                stv:sRightTextString="已保护"
+                stv:sRightIconRes="@drawable/arrow_right_red"
+                stv:sRightTvDrawableLeft="@drawable/v1"
+                android:layout_height="50dp" />
 
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                stv:sLeftTextString="通用设置"
-                stv:sRightIconRes="@drawable/arrow_right_red" />
-
-            <com.allen.library.SuperTextView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                stv:sLeftTextString="隐私与安全"
-                stv:sRightIconRes="@drawable/arrow_right_red" />
-
-            <com.allen.library.SuperTextView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
+                stv:sDividerLineType="bottom"
                 stv:sLeftTextString="设置中心"
                 stv:sRightIconRes="@drawable/arrow_right_red" />
 
+
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="50dp"
+                stv:sDividerLineType="both"
                 stv:sLeftTextString="意见反馈"
                 stv:sRightIconRes="@drawable/arrow_right_red" />
 
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                stv:sDividerLineType="both"
                 stv:sLeftTextString="关于微博"
                 stv:sRightIconRes="@drawable/arrow_right_red" />
+
         </LinearLayout>
     </ScrollView>
 

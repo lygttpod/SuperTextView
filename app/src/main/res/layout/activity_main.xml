@@ -35,48 +35,57 @@
                 android:id="@+id/button0"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="组合0" />
+                android:text="所有组合" />
 
             <Button
                 android:id="@+id/button1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="组合1" />
+                android:text="通用" />
 
             <Button
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="组合2" />
+                android:text="饿了么" />
 
             <Button
                 android:id="@+id/button3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="组合3" />
+                android:text="金融类" />
 
             <Button
                 android:id="@+id/button4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="组合4" />
+                android:text="左中右" />
 
             <Button
                 android:id="@+id/button5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="组合5" />
+                android:text="带头像类" />
 
             <Button
                 android:id="@+id/button6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="组合6" />
+                android:text="左对齐" />
+
+
             <Button
                 android:id="@+id/button7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CommonTextView" />
+                android:text="在列表中使用" />
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="点击事件使用" />
+
         </LinearLayout>
     </ScrollView>
 

@@ -9,4 +9,13 @@
     <item name="sLeftBottomTextId2" type="id" />
     <item name="sRightTextId" type="id" />
     <item name="sRightIconId" type="id" />
+
+
+    <item name="sLeftViewId" type="id" />
+    <item name="sCenterViewId" type="id" />
+    <item name="sRightViewId" type="id" />
+    <item name="sLeftImgId" type="id" />
+    <item name="sRightImgId" type="id" />
+    <item name="sRightCheckBoxId" type="id" />
+
 </resources>

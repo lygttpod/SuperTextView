@@ -8,53 +8,35 @@
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        stv:sBottomLineMargin="0dp"
-        stv:sCenterTextString="投资时间"
-        stv:sLeftTextString="投资人"
-        stv:sRightTextString="投资金额" />
-
-    <com.allen.library.SuperTextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        stv:sBottomLineMargin="0dp"
         stv:sCenterTextString="10:20"
-        stv:sLeftTextColor="@color/colorAccent"
         stv:sLeftTextString="188******8888"
+        stv:sRightTextColor="@color/colorAccent"
         stv:sRightTextString="100元" />
 
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        stv:sBottomLineMargin="0dp"
         stv:sCenterTextString="10:20"
-        stv:sLeftTextColor="@color/colorAccent"
+        stv:sCenterViewGravity="center"
         stv:sLeftTextString="188******8888"
+        stv:sRightTextColor="@color/colorAccent"
         stv:sRightTextString="100元" />
 
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        stv:sBottomLineMargin="0dp"
         stv:sCenterTextString="10:20"
-        stv:sLeftTextColor="@color/colorAccent"
         stv:sLeftTextString="188******8888"
+        stv:sRightTextColor="@color/colorAccent"
         stv:sRightTextString="100元" />
 
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        stv:sBottomLineMargin="0dp"
         stv:sCenterTextString="10:20"
-        stv:sLeftTextColor="@color/colorAccent"
         stv:sLeftTextString="188******8888"
+        stv:sRightTextColor="@color/colorAccent"
         stv:sRightTextString="100元" />
 
-    <com.allen.library.SuperTextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        stv:sBottomLineMargin="0dp"
-        stv:sCenterTextString="10:20"
-        stv:sLeftTextColor="@color/colorAccent"
-        stv:sLeftTextString="188******8888"
-        stv:sRightTextString="100元" />
+
 </LinearLayout>
