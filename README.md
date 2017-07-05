@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/lygttpod/SuperTextView.svg)](https://jitpack.io/#lygttpod/SuperTextView)
+
 ## 目录
 * 1、功能描述
 * 2、效果图
