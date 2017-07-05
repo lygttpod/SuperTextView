@@ -275,12 +275,12 @@ sUseRipple | boolean  | 是否开启点击出现水波效果 | 默认 true
 sBackgroundDrawableRes | reference  | SuperTextView的背景资源
 sRightViewType | enum  | 右边显示的特殊View<br>checkbox<br>switchBtn | 默认都不显示
 sRightSwitchMarginRight | dimension  | 右边SwitchBtn的MarginRight | 默认10dp
-sSwitchIsChecked | boolean  | 右边SwitchBtn是否选中 | 默认未选中
-sTextOff | string  | 右边SwitchBtn是否选中 | 默认""
-sTextOn | string  | 右边SwitchBtn是否选中 | 默认""
-sSwitchMinWidth | dimension  | 右边SwitchBtn是否选中 | 系统默认
-sSwitchPadding | dimension  | 右边SwitchBtn是否选中 | 系统默认
-sThumbTextPadding | dimension  | 右边SwitchBtn是否选中 | 系统默认
+sSwitchIsChecked | boolean  | 右边SwitchBtn是否选中 | 默认 false
+sTextOff | string  | TextOff | 默认""
+sTextOn | string  | TextOn | 默认""
+sSwitchMinWidth | dimension  | SwitchMinWidth | 系统默认
+sSwitchPadding | dimension  | SwitchPadding | 系统默认
+sThumbTextPadding | dimension  | ThumbTextPadding | 系统默认
 sThumbResource | reference  | 右边SwitchBtn自定义选中资源 | 系统默认
 sTrackResource | reference  | 右边SwitchBtn自定义未选中资源 | 系统默认
 
