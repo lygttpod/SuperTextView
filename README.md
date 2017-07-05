@@ -1,5 +1,6 @@
 [![](https://jitpack.io/v/lygttpod/SuperTextView.svg)](https://jitpack.io/#lygttpod/SuperTextView)
 
+
 # 重磅推出SuperTextView2.x版本，属性参数相比1.x有些变化，1.x的用户升级2.x的时候请注意
 
 ## 目录
@@ -41,7 +42,7 @@
 ```
         dependencies {
         ...
-        compile 'com.github.lygttpod:SuperTextView:2.0.0'
+        compile 'com.github.lygttpod:SuperTextView:2.0.1'
         }
 ```
 
