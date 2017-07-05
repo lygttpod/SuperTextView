@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -667,8 +668,12 @@ public class SuperTextView extends RelativeLayout {
         mSwitch.setLayoutParams(mSwitchParams);
 
         mSwitch.setChecked(switchIsChecked);
-        mSwitch.setTextOff(mTextOff);
-        mSwitch.setTextOn(mTextOn);
+        if (!TextUtils.isEmpty(mTextOff)){
+            mSwitch.setTextOff(mTextOff);
+        }
+        if (!TextUtils.isEmpty(mTextOn)){
+            mSwitch.setTextOn(mTextOn);
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             if (mSwitchMinWidth != 0) {
