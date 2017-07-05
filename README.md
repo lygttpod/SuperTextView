@@ -270,15 +270,36 @@ sRightIconMarginRight | dimension  | 右边图片资源的MarginLeft | 默认10d
 sCenterSpaceHeight | dimension  | 上中下三行文字的间距 | 默认5dp
 sRightCheckBoxRes | reference  | 右边CheckBox的资源
 sRightCheckBoxMarginRight | dimension  | 右边CheckBox的MarginRight | 默认10dp
-sRightCheckBoxShow | boolean  | 右边CheckBox是否显示 | 默认false
 sIsChecked | boolean  | 右边CheckBox是否选中 | 默认 false
 sUseRipple | boolean  | 是否开启点击出现水波效果 | 默认 true
 sBackgroundDrawableRes | reference  | SuperTextView的背景资源
+sRightViewType | enum  | 右边显示的特殊View<br>checkbox<br>switchBtn | 默认都不显示
+sRightSwitchMarginRight | dimension  | 右边SwitchBtn的MarginRight | 默认10dp
+sSwitchIsChecked | boolean  | 右边SwitchBtn是否选中 | 默认未选中
+sTextOff | string  | 右边SwitchBtn是否选中 | 默认""
+sTextOn | string  | 右边SwitchBtn是否选中 | 默认""
+sSwitchMinWidth | dimension  | 右边SwitchBtn是否选中 | 系统默认
+sSwitchPadding | dimension  | 右边SwitchBtn是否选中 | 系统默认
+sThumbTextPadding | dimension  | 右边SwitchBtn是否选中 | 系统默认
+sThumbResource | reference  | 右边SwitchBtn自定义选中资源 | 系统默认
+sTrackResource | reference  | 右边SwitchBtn自定义未选中资源 | 系统默认
+
+
+
 
 > 黑格尔曾说过：存在即合理。SuperTextView的出现应该就是某种需求下的产物。
 
 
 ## 4、更新日志
+
+### V2.0.1
+* 新增SwitchButton样式   
+
+目前有switchBtn和checkbox两种特殊view
+```
+stv:sRightViewType="switchBtn"  
+stv:sRightViewType="checkbox" 
+```
 
 ### V2.0.0
 * 	重写SuperTextView，功能更加全面，部分方法及属性有变更，使用者请注意
