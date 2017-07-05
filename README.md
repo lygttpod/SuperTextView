@@ -16,18 +16,9 @@
 
 > 如果觉得对你有用的话，点一下右上的星星赞一下吧!
 
-## 2、 效果图
+## 2、 效果
 
-<div  align="center">    
-<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/screenshot.png" width = "360" height = "640" alt="效果图" align=center /></div>
-<div  align="center">    
-<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/type1.png" width = "270" height = "480" alt="效果图" align=center />
-<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/type2.png" width = "270" height = "480" alt="效果图" align=center />
-<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/type3.png" width = "270" height = "480" alt="效果图" align=center />
-<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/type4.png" width = "270" height = "480" alt="效果图" align=center />
-<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/type5.png" width = "270" height = "480" alt="效果图" align=center />
-<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/type6.png" width = "270" height = "480" alt="效果图" align=center />
-</div>
+![demo.gif](https://github.com/lygttpod/SuperTextView/blob/master/screenshot/demo.gif)
 
 
 ## 3、如何使用
@@ -49,6 +40,9 @@
         compile 'com.github.lygttpod:SuperTextView:2.0.0'
         }
 ```
+
+> ## 重写SuperTextView，功能更加全面，部分方法及属性有变更，1.x版本的老用户请注意
+
 ### 3.2、项目中如何使用
 ##### 3.2.1、布局中如何使用（示例中只列出部分属性，开发者可根据具体需求使用其他属性）
 ```
@@ -179,70 +173,103 @@
 
 ##### 3.2.3、属性说明(以下属性全部可以通过xml文件配置和代码进行设置)
 
-属性名 | 字段 | 描述
-----|------|----
-sLeftIconRes | reference  | 左边图标资源
-sRightIconRes | reference  | 右边图标资源
-sLeftIconWidth | dimension  | 左边图标的宽度
-sLeftIconHeight | dimension  | 左边图标的高度
-sRightIconWidth | dimension  | 右边图标的高度
-sRightIconHeight | dimension  | 右边图标的高度
-sRightCheckBoxRes | reference  | 右边CheckBox图标资源
+属性名 | 字段 | 描述 | 默认值
+----|------|----| ----
 sLeftTextString | string  | 左边文字字符串
 sLeftTopTextString | string  | 左上文字字符串
 sLeftBottomTextString | string  | 左下文字字符串
-sLeftBottomTextString2 | string  | 左下第二个文字字符串
 sCenterTextString | string  | 中间文字字符串
+sCenterTopTextString | string  | 中上文字字符串
+sCenterBottomTextString | string  | 中下文字字符串
 sRightTextString | string  | 右边文字字符串
-sTopLineMargin| dimension | 顶部横线的Margin
-sTopLineMarginLeft | dimension | 顶部横线的MarginLeft
-sTopLineMarginRight | dimension | 顶部横线的MarginRight
-sBottomLineMargin | dimension | 底部横线的Margin
-sBottomLineMarginLeft | dimension | 底部横线的MarginLeft
-sBottomLineMarginRight | dimension | 底部横线的MarginRight
-sBothLineMargin | dimension | 上下两条横线的Margin
-sBothLineMarginLeft | dimension |  上下两条横线的MarginLeft
-sBothLineMarginRight | dimension | 上下两条横线的MarginRight
-sCenterSpaceHeight | dimension | top和bottom文字间的高度
-sLeftIconMarginLeft | dimension | 左边图标MarginLeft
-sLeftTextMarginLeft | dimension | 左边文字MarginLeft
-sLeftTopTextMarginLeft | dimension | 左上文字MarginLeft
-sLeftBottomTextMarginLeft | dimension | 左下文字MarginLeft
-sLeftBottomTextMarginLeft2 | dimension | 左下第二个文字MarginLeft
-sRightTextStringRightIconRes | reference | 右边文字的右边图标资源
-sRightTextStringRightIconResPadding | dimension | 右边文字的右边图标的Padding
-sRightIconMarginRight |dimension | 右边icon的MarginRight
-sRightTextMarginRight | dimension| 右边文字的MarginRight
-sRightCheckBoxMarginRight | dimension| 右边CheckBox的MarginRight
-sRightCheckBoxShow | boolean | 右边的CheckBox是否显示
-sIsChecked | boolean | 是否选中
-sUseRipple | boolean | 是否使用点击出现波纹效果
- sLeftTextSize | dimension |  左边文字的字体大小
- sLeftTopTextSize | dimension | 左上文字的字体大小
- sLeftBottomTextSize | dimension | 左下文字的字体大小   
- sLeftBottomTextSize2 | dimension | 左下第二个文字的字体大小   
- sRightTextSize | dimension |  右边文字的字体大小  
- sCenterTextSize | dimension |   中间文字的字体大小 
- sBackgroundColor | color | 背景颜色
- sLeftTextColor | color | 左边文字颜色
- sLeftTopTextColor | color | 左上文字颜色
- sLeftBottomTextColor | color | 左下文字颜色
- sLeftBottomTextColor2 | color | 左下第二个文字颜色
- sRightTextColor | color | 右边文字颜色
- sCenterTextColor | color | 中间文字颜色
- sIsSingLines | boolean | 是否单行显示
- sMaxLines | integer | 允许的最大行数
- sMaxEms | integer | 允许的最多字数
- sLineShow | enum | 分割线的显示方式none、top、bottom、both
- sBothLineWidth | dimension | 两条分割线的宽度
- sTopLineWidth | dimension | 上边分割线的宽度
- sBottomLineWidth | dimension | 下边分割线的宽度
- sLineColor | color | 分割线的颜色
- sLeftTopViewIsClickable | boolean | 左上view是否可点击
- sLeftBottomViewIsClickable | boolean | 左下view是否可点击
- sLeftBottomView2IsClickable | boolean | 左下第二个view是否可点击
- sBackgroundDrawableRes | reference | 背景资源
-   
+sRightTopTextString | string  | 右上文字字符串
+sRightBottomTextString | string  | 右下文字字符串
+sLeftTextColor | color  | 左边文字颜色 | 默认0xFF373737
+sLeftTopTextColor | color  | 左上文字颜色 | 默认0xFF373737
+sLeftBottomTextColor | color  | 左下文字颜色 | 默认0xFF373737
+sCenterTextColor | color  | 中间文字颜色 | 默认0xFF373737
+sCenterTopTextColor | color  | 中上文字颜色 | 默认0xFF373737
+sCenterBottomTextColor | color  | 中下文字颜色 | 默认0xFF373737
+sRightTextColor | color  | 左边文字颜色 | 默认0xFF373737
+sRightTopTextColor | color  | 右上文字颜色 | 默认0xFF373737
+sRightBottomTextColor | color  | 右下文字颜色 | 默认0xFF373737
+sLeftTextSize | dimension  | 左边字体大小 | 默认15sp
+sLeftTopTextSize | dimension  | 左上字体大小 | 默认15sp
+sLeftBottomTextSize | dimension  | 左下字体大小 | 默认15sp
+sCenterTextSize | dimension  | 中间字体大小 | 默认15sp
+sCenterTopTextSize | dimension  | 中上字体大小 | 默认15sp
+sCenterBottomTextSize | dimension  | 中下字体大小 | 默认15sp
+sRightTextSize | dimension  | 右边字体大小 | 默认15sp
+sRightTopTextSize | dimension  | 右上字体大小 | 默认15sp
+sRightBottomTextSize | dimension  | 右下字体大小 | 默认15sp
+sLeftLines | integer  | 左边文字显示行数 | 默认1
+sLeftTopLines | integer  | 左上文字显示行数 | 默认1
+sLeftBottomLines | integer  | 左下文字显示行数 | 默认1
+sCenterLines | integer  | 中间文字显示行数 | 默认1
+sCenterTopLines | integer  | 中上文字显示行数 | 默认1
+sCenterBottomLines | integer  | 中下文字显示行数 | 默认1
+sRightLines | integer  | 右边文字显示行数 | 默认1
+sRightTopLines | integer  | 右上文字显示行数 | 默认1
+sRightBottomLines | integer  | 右下文字显示行数 | 默认1
+sLeftMaxEms | integer  | 左边文字显示个数 | 默认10
+sLeftTopMaxEms | integer  | 左上文字显示个数 | 默认10
+sLeftBottomMaxEms | integer  | 左下文字显示个数 | 默认10
+sCenterMaxEms | integer  | 中间文字显示个数 | 默认10
+sCenterTopMaxEms | integer  | 中上文字显示个数 | 默认10
+sCenterBottomMaxEms | integer  | 中下文字显示个数 | 默认10
+sRightMaxEms | integer  | 右边文字显示个数 | 默认10
+sRightTopMaxEms | integer  | 右上文字显示个数 | 默认10
+sRightBottomMaxEms | integer  | 右下文字显示个数 | 默认10
+sLeftViewGravity | enum  | 左边文字对齐方式<br>left_center(左对齐)<br>center(居中)<br>right_center(右对齐) | 默认center
+sCenterViewGravity | enum  | 中间文字对齐方式<br>left_center(左对齐)<br>center(居中)<br>right_center(右对齐) | 默认center
+sRightViewGravity | enum  | 右边文字对齐方式<br>left_center(左对齐)<br>center(居中)<br>right_center(右对齐) | 默认center
+sLeftTvDrawableLeft | reference  | 左边TextView左侧的drawable
+sLeftTvDrawableRight | reference  | 左边TextView右侧的drawable
+sCenterTvDrawableLeft | reference  | 中间TextView左侧的drawable
+sCenterTvDrawableRight | reference  | 中间TextView右侧的drawable
+sRightTvDrawableLeft | reference  | 右边TextView左侧的drawable
+sRightTvDrawableRight | reference  | 右边TextView右侧的drawable
+sTextViewDrawablePadding | dimension  | TextView的drawable对应的Padding | 默认10dp
+mLeftViewWidth | dimension  | 左边textView的宽度  为了中间文字左对齐的时候使用
+sTopDividerLineMarginLR | dimension  | 上边分割线的MarginLeft和MarginRight | 默认0dp
+sTopDividerLineMarginLeft | dimension  | 上边分割线的MarginLeft | 默认0dp
+sTopDividerLineMarginRight | dimension  | 上边分割线的MarginRight | 默认0dp
+sBottomDividerLineMarginLR | dimension  | 下边分割线的MarginLeft和MarginRigh | 默认0dp
+sBottomDividerLineMarginLeft | dimension  | 下边分割线的MarginLeft | 默认0dp
+sBottomDividerLineMarginRight | dimension  | 下边分割线的MarginRight | 默认0dp
+sDividerLineColor | color  | 分割线的颜色 | 默认0xFFE8E8E8
+sDividerLineHeight | dimension  | 分割线的高度 | 默认0.5dp
+sDividerLineType | enum  | 分割线显示方式 <br>none(不显示分割线)<br>top(显示上边的分割线)<br>bottom(显示下边的分割线)<br>both(显示上下两条分割线) | 默认bottom
+sLeftViewMarginLeft | dimension  | 左边view的MarginLeft | 默认10dp
+sLeftViewMarginRight | dimension  | 左边view的MarginRight | 默认10dp
+sCenterViewMarginLeft | dimension  | 中间view的MarginLeft | 默认10dp
+sCenterViewMarginRight | dimension  | 中间view的MarginRight | 默认10dp
+sRightViewMarginLeft | dimension  | 中间view的MarginLeft | 默认10dp
+sRightViewMarginRight | dimension  | 中间view的MarginRight | 默认10dp
+sLeftTextIsBold | boolean  | 左边文字是否加粗 | 默认false
+sLeftTopTextIsBold | boolean  | 左上文字是否加粗 | 默认false
+sLeftBottomTextIsBold | boolean  | 左下文字是否加粗 | 默认false
+sCenterTextIsBold | boolean  | 中间文字是否加粗 | 默认false
+sCenterTopTextIsBold | boolean  | 中上文字是否加粗 | 默认false
+sCenterBottomTextIsBold | boolean  | 中下文字是否加粗 | 默认false
+sRightTextIsBold | boolean  | 右边文字是否加粗 | 默认false
+sRightTopTextIsBold | boolean  | 右上文字是否加粗 | 默认false
+sRightBottomTextIsBold | boolean  | 右下文字是否加粗 | 默认false
+sLeftIconRes | reference  | 左边图片资源  可以用来显示网络图片或者本地
+sRightIconRes | reference  | 右边图片资源  可以用来显示网络图片或者本地
+sLeftIconWidth | dimension  | 左边图片资源的宽度  用于固定图片大小的时候使用
+sLeftIconHeight | dimension  | 左边图片资源的高度  用于固定图片大小的时候使用
+sRightIconWidth | dimension  | 右边图片资源的宽度  用于固定图片大小的时候使用
+sRightIconHeight | dimension  | 右边图片资源的高度  用于固定图片大小的时候使用
+sLeftIconMarginLeft | dimension  | 左边图片资源的MarginLeft | 默认10dp
+sRightIconMarginRight | dimension  | 右边图片资源的MarginLeft | 默认10dp
+sCenterSpaceHeight | dimension  | 上中下三行文字的间距 | 默认5dp
+sRightCheckBoxRes | reference  | 右边CheckBox的资源
+sRightCheckBoxMarginRight | dimension  | 右边CheckBox的MarginRight | 默认10dp
+sRightCheckBoxShow | boolean  | 右边CheckBox是否显示 | 默认false
+sIsChecked | boolean  | 右边CheckBox是否选中 | 默认 false
+sUseRipple | boolean  | 是否开启点击出现水波效果 | 默认 true
+sBackgroundDrawableRes | reference  | SuperTextView的背景资源
 
 > 黑格尔曾说过：存在即合理。SuperTextView的出现应该就是某种需求下的产物。
 
@@ -250,7 +277,7 @@ sUseRipple | boolean | 是否使用点击出现波纹效果
 ## 4、更新日志
 
 ### V2.0.0
-* 	重写SuperTextView，功能更加全面
+* 	重写SuperTextView，功能更加全面，部分方法及属性有变更，使用者请注意
 
 ### V1.1.2
 *   上下分割线添加单独设置左右边距的参数
