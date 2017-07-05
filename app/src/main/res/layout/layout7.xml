@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:stv="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
-        stv:sLeftTextString="账号与安全"
-        stv:sRightTextString="已保护"
-        stv:sRightTvDrawableLeft="@drawable/v1"
-        android:layout_height="50dp" />
+        android:layout_height="50dp"
+        stv:sLeftTextString="系统默认"
+        stv:sRightViewType="switchBtn" />
+
+
+    <com.allen.library.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        stv:sLeftTextString="自己添加资源"
+        stv:sRightViewType="switchBtn"
+        stv:sSwitchIsChecked="true"
+        stv:sSwitchMinWidth="50dp"
+        stv:sThumbResource="@drawable/thumb"
+        stv:sTrackResource="@drawable/track" />
 
 
 </LinearLayout>

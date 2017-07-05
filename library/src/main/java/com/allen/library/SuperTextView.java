@@ -2,7 +2,9 @@ package com.allen.library;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 /**
@@ -198,16 +201,36 @@ public class SuperTextView extends RelativeLayout {
     private OnRightTvClickListener rightTvClickListener;
     private OnRightBottomTvClickListener rightBottomTvClickListener;
 
+    private static final int TYPE_CHECKBOX = 0;
+    private static final int TYPE_SWITCH = 1;
+
+    private static int mRightViewType;
 
     private CheckBox rightCheckBox;//右边checkbox
     private LayoutParams rightCheckBoxParams;//右边checkbox
     private Drawable rightCheckBoxBg;//checkBox的背景
     private int rightCheckBoxMarginRight;//右边checkBox的右边距
     private boolean isChecked;//是否默认选中
-    private boolean showCheckBox;//是否显示右边选择框
 
 
     private int centerSpaceHeight;//中间空间的高度
+
+
+    private Switch mSwitch;
+    private LayoutParams mSwitchParams;//右边switch
+    private int rightSwitchMarginRight;
+    private boolean switchIsChecked = true;
+
+    private String mTextOff;
+    private String mTextOn;
+
+    private int mSwitchMinWidth;
+    private int mSwitchPadding;
+
+    private int mThumbTextPadding;
+
+    private Drawable mThumbResource;
+    private Drawable mTrackResource;
 
     public SuperTextView(Context context) {
         this(context, null);
@@ -366,12 +389,26 @@ public class SuperTextView extends RelativeLayout {
         useRipple = typedArray.getBoolean(R.styleable.SuperTextView_sUseRipple, true);
         mBackground_drawable = typedArray.getDrawable(R.styleable.SuperTextView_sBackgroundDrawableRes);
         ///////////////////////////////////////////////
-        showCheckBox = typedArray.getBoolean(R.styleable.SuperTextView_sRightCheckBoxShow, false);
+        mRightViewType = typedArray.getInt(R.styleable.SuperTextView_sRightViewType, -1);
+        ////////////////////////////////////////////////
         isChecked = typedArray.getBoolean(R.styleable.SuperTextView_sIsChecked, false);
         rightCheckBoxMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightCheckBoxMarginRight, default_Margin);
         rightCheckBoxBg = typedArray.getDrawable(R.styleable.SuperTextView_sRightCheckBoxRes);
         //////////////////////////////////////////////////
+        rightSwitchMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightSwitchMarginRight, default_Margin);
+        switchIsChecked = typedArray.getBoolean(R.styleable.SuperTextView_sSwitchIsChecked, false);
+        mTextOff = typedArray.getString(R.styleable.SuperTextView_sTextOff);
+        mTextOn = typedArray.getString(R.styleable.SuperTextView_sTextOn);
+
+        mSwitchMinWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sSwitchMinWidth, 0);
+        mSwitchPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sSwitchPadding, 0);
+        mThumbTextPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sThumbTextPadding, 0);
+
+        mThumbResource = typedArray.getDrawable(R.styleable.SuperTextView_sThumbResource);
+        mTrackResource = typedArray.getDrawable(R.styleable.SuperTextView_sTrackResource);
+
         centerSpaceHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterSpaceHeight, dip2px(mContext, 5));
+
 
         typedArray.recycle();
     }
@@ -398,8 +435,13 @@ public class SuperTextView extends RelativeLayout {
 
         initLeftIcon();
 
-        if (showCheckBox) {
-            initRightCheckBox();
+        switch (mRightViewType) {
+            case TYPE_CHECKBOX:
+                initRightCheckBox();
+                break;
+            case TYPE_SWITCH:
+                initRightSwitch();
+                break;
         }
 
         initRightIcon();
@@ -465,11 +507,18 @@ public class SuperTextView extends RelativeLayout {
         rightImgParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         rightImgParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
 
-        if (showCheckBox) {
-            rightImgParams.addRule(RelativeLayout.LEFT_OF, R.id.sRightCheckBoxId);
-        } else {
-            rightImgParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, TRUE);
+        switch (mRightViewType) {
+            case TYPE_CHECKBOX:
+                rightImgParams.addRule(RelativeLayout.LEFT_OF, R.id.sRightCheckBoxId);
+                break;
+            case TYPE_SWITCH:
+                rightImgParams.addRule(RelativeLayout.LEFT_OF, R.id.sRightSwitchId);
+                break;
+            default:
+                rightImgParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, TRUE);
+
         }
+
         if (rightIconHeight != 0 && rightIconWidth != 0) {
             rightImgParams.width = rightIconWidth;
             rightImgParams.height = rightIconHeight;
@@ -600,6 +649,47 @@ public class SuperTextView extends RelativeLayout {
             rightCheckBox.setChecked(isChecked);
         }
         addView(rightCheckBox);
+    }
+
+    /**
+     * 初始化RightSwitch
+     */
+    private void initRightSwitch() {
+        if (mSwitch == null) {
+            mSwitch = new Switch(mContext);
+        }
+        mSwitchParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+
+        mSwitchParams.addRule(ALIGN_PARENT_RIGHT, TRUE);
+        mSwitchParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+        mSwitchParams.setMargins(0, 0, rightSwitchMarginRight, 0);
+        mSwitch.setId(R.id.sRightSwitchId);
+        mSwitch.setLayoutParams(mSwitchParams);
+
+        mSwitch.setChecked(switchIsChecked);
+        mSwitch.setTextOff(mTextOff);
+        mSwitch.setTextOn(mTextOn);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            if (mSwitchMinWidth != 0) {
+                mSwitch.setSwitchMinWidth(mSwitchMinWidth);
+            }
+            if (mSwitchPadding != 0) {
+                mSwitch.setSwitchPadding(mSwitchPadding);
+            }
+            if (mThumbResource != null) {
+                mSwitch.setThumbDrawable(mThumbResource);
+            }
+            if (mThumbResource != null) {
+                mSwitch.setTrackDrawable(mTrackResource);
+            }
+            if (mThumbTextPadding != 0) {
+                mSwitch.setThumbTextPadding(mThumbTextPadding);
+            }
+
+        }
+
+        addView(mSwitch);
     }
 
     /////////////////////////////////////默认属性设置----begin/////////////////////////////////
@@ -1226,6 +1316,19 @@ public class SuperTextView extends RelativeLayout {
         }
         return isChecked;
     }
+
+    /**
+     * @param checked Switch是否选中
+     * @return 返回值
+     */
+    public SuperTextView setSwitchIsChecked(boolean checked) {
+        switchIsChecked = checked;
+        if (mSwitch != null) {
+            mSwitch.setChecked(checked);
+        }
+        return this;
+    }
+
 
     /**
      * 设置右边tv的右侧图片

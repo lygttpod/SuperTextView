@@ -78,10 +78,16 @@
                 android:id="@+id/button7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="在列表中使用" />
+                android:text="滑动按钮" />
 
             <Button
                 android:id="@+id/button8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="在列表中使用" />
+
+            <Button
+                android:id="@+id/button9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="点击事件使用" />

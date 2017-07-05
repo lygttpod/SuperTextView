@@ -44,7 +44,7 @@
                 stv:sLeftTopTextString="银行卡支付"
                 stv:sLeftViewGravity="left_center"
                 stv:sRightCheckBoxRes="@drawable/circular_check_bg"
-                stv:sRightCheckBoxShow="true" />
+                stv:sRightViewType="checkbox" />
 
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
@@ -69,10 +69,27 @@
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                stv:sRightTvDrawableRight="@drawable/head_default"
                 stv:sLeftTopTextString="迪丽热巴"
+                stv:sLeftViewGravity="left_center"
                 stv:sRightIconRes="@drawable/arrow_right_red"
-                stv:sLeftViewGravity="left_center" />
+                stv:sRightTvDrawableRight="@drawable/head_default" />
+
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                stv:sLeftTopTextString="推送通知"
+                stv:sLeftViewGravity="left_center"
+                stv:sRightViewType="switchBtn" />
+
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                stv:sLeftTextString="声音"
+                stv:sRightViewType="switchBtn"
+                stv:sSwitchIsChecked="true"
+                stv:sSwitchMinWidth="40dp"
+                stv:sThumbResource="@drawable/thumb"
+                stv:sTrackResource="@drawable/track" />
 
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
@@ -100,17 +117,19 @@
                 android:layout_height="50dp"
                 stv:sLeftTextSize="14dip"
                 stv:sLeftTextString="客服热线"
+                stv:sRightIconRes="@drawable/arrow_right_red"
                 stv:sRightTextColor="#ff0000"
                 stv:sRightTextSize="12dp"
-                stv:sRightTextString="4006179999"
-                stv:sRightIconRes="@drawable/arrow_right_red" />
+                stv:sRightTextString="4006179999" />
+
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
+                android:layout_height="50dp"
                 stv:sLeftTextString="账号与安全"
-                stv:sRightTextString="已保护"
                 stv:sRightIconRes="@drawable/arrow_right_red"
-                stv:sRightTvDrawableLeft="@drawable/v1"
-                android:layout_height="50dp" />
+                stv:sRightTextString="已保护"
+                stv:sRightTvDrawableLeft="@drawable/v1" />
+
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"

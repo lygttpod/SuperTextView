@@ -149,10 +149,27 @@
         <attr name="sLeftIconMarginLeft" format="dimension" />
         <attr name="sRightIconMarginRight" format="dimension" />
 
+        <attr name="sRightViewType" format="enum">
+            <enum name="checkbox" value="0" />
+            <enum name="switchBtn" value="1" />
+        </attr>
+
         <attr name="sRightCheckBoxRes" format="reference" />
         <attr name="sRightCheckBoxMarginRight" format="dimension" />
-        <attr name="sRightCheckBoxShow" format="boolean" />
         <attr name="sIsChecked" format="boolean" />
+
+        <attr name="sRightSwitchMarginRight" format="dimension"/>
+        <attr name="sSwitchIsChecked" format="boolean" />
+
+        <attr name="sTextOff" format="string" />
+        <attr name="sTextOn" format="string" />
+
+        <attr name="sSwitchMinWidth" format="dimension" />
+        <attr name="sSwitchPadding" format="dimension" />
+        <attr name="sThumbTextPadding" format="dimension" />
+
+        <attr name="sThumbResource" format="reference" />
+        <attr name="sTrackResource" format="reference" />
 
         <attr name="sUseRipple" format="boolean" />
 

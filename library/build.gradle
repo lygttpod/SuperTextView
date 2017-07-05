@@ -8,9 +8,8 @@ group='com.github.lygttpod'
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
-
     defaultConfig {
-        minSdkVersion 11
+        minSdkVersion 14
         targetSdkVersion 24
         versionCode 200
         versionName "2.0.0"
@@ -26,6 +25,8 @@ android {
     }
     lintOptions {
         abortOnError false
+    }
+    productFlavors {
     }
 }
 
