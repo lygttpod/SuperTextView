@@ -1,5 +1,7 @@
 [![](https://jitpack.io/v/lygttpod/SuperTextView.svg)](https://jitpack.io/#lygttpod/SuperTextView)
 
+# 重磅推出SuperTextView2.x版本，属性参数相比1.x有些变化，1.x的用户升级2.x的时候请注意
+
 ## 目录
 * 1、功能描述
 * 2、效果图
@@ -18,7 +20,7 @@
 
 > 如果觉得对你有用的话，点一下右上的星星赞一下吧!
 
-## 2、 效果
+## 2、 效果 [**Demo下载地址**]( https://fir.im/eft1)
 
 ![demo.gif](https://github.com/lygttpod/SuperTextView/blob/master/screenshot/demo.gif)
 
