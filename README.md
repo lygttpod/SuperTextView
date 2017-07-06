@@ -17,10 +17,11 @@
 
 > 如果觉得对你有用的话，点一下右上的星星赞一下吧!
 
-## 2、 效果 [**Demo下载地址**]( https://fir.im/eft1) GIF录制有点不清晰，可以下载demo看效果哦
+## 2、 效果 [**Demo下载地址**]( https://fir.im/eft1)
 
-![demo.gif](https://github.com/lygttpod/SuperTextView/blob/master/screenshot/demo.gif)
-
+<p align="center">
+  <img src="http://osnoex6vf.bkt.clouddn.com/demo.jpg">
+</p>
 
 ## 3、如何使用
 ### 3.1、Android Studio导入方法，添加Gradle依赖
@@ -395,7 +396,7 @@ stv:sRightViewType="checkbox"
 
 
 <p align="center">
-  <img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/pay.png" width="450">
+  <img src="http://osnoex6vf.bkt.clouddn.com/pay.png" width="450">
 </p>
 
 

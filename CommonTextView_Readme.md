@@ -2,13 +2,14 @@
 
 是SuperTextView的精简版，但同样是一个功能强大的TextView，可以满足日常大部分布局方式，开发者可已自行组合属性配置出属于自己风格的样式!如果觉得对你有用的话，点一下右上的星星赞一下吧!
 
-#效果图
+# 效果图
 <div  align="center">    
-<img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/commontextview.jpg" width = "360" height = "640" alt="效果图" align=center /></div>
+<img src="http://osnoex6vf.bkt.clouddn.com/commontextview.jpg" width = "360" height = "640" alt="效果图" align=center /></div>
 </div>
-#基本使用
 
-###1.添加Gradle依赖 
+# 基本使用
+
+### 1.添加Gradle依赖 
 先在项目根目录的 build.gradle 的 repositories 添加:
 
      allprojects {
@@ -25,7 +26,7 @@
         compile 'com.github.lygttpod:SuperTextView:1.1.2'
         }
 
-###2.布局中如何使用（列出所有属性使用方法）
+### 2.布局中如何使用（列出所有属性使用方法）
 
         <com.allen.library.CommonTextView
                 android:layout_width="match_parent"
@@ -115,7 +116,7 @@
                                                    XXXIconResForDrawableTop
                                                    XXXIconResForDrawableRight
                                                    XXXIconResForDrawableBottom
-###3.代码中如何使用
+### 3.代码中如何使用
        /**
      * 可以通过链式设置大部分常用的属性值
      */
@@ -191,7 +192,7 @@
                                    }
                                });
           
-###4.点击事件（可根据需求选择实现某个点击事件）
+### 4.点击事件（可根据需求选择实现某个点击事件）
 
           点击事件配合两种方法使用才有效果
           
@@ -231,7 +232,7 @@
                                                   }
                                               });
 
-###5.属性说明(以下属性全部可以通过xml文件配置和代码进行设置)
+### 5.属性说明(以下属性全部可以通过xml文件配置和代码进行设置)
 
         <declare-styleable name="CommonTextView">
 
