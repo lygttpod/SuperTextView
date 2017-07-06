@@ -19,8 +19,9 @@
 
 ## 2、 效果 [**Demo下载地址**]( https://fir.im/eft1) GIF录制有点不清晰，可以下载demo看效果哦
 
-![demo.gif](http://osnoex6vf.bkt.clouddn.com/demo.gif)
-
+<p align="center">
+  <img src="http://osnoex6vf.bkt.clouddn.com/demo_img.jpg">
+</p>
 
 ## 3、如何使用
 ### 3.1、Android Studio导入方法，添加Gradle依赖
