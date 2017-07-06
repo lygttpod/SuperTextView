@@ -1,9 +1,8 @@
 # SuperTextView
-***
 
 [![](https://jitpack.io/v/lygttpod/SuperTextView.svg)](https://jitpack.io/#lygttpod/SuperTextView)
 [![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SuperTextView-green.svg?style=true)]()
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SuperTextView-green.svg?style=true)](https://github.com/lygttpod)
 [![](https://img.shields.io/github/stars/lygttpod/SuperTextView.svg)](https://github.com/lygttpod/SuperTextView/stargazers)
 [![](https://img.shields.io/github/forks/lygttpod/SuperTextView.svg)](https://github.com/lygttpod/SuperTextView/network)
 
@@ -18,7 +17,7 @@
 
 > 如果觉得对你有用的话，点一下右上的星星赞一下吧!
 
-## 2、 效果 [**Demo下载地址**]( https://fir.im/eft1)
+## 2、 效果 [**Demo下载地址**]( https://fir.im/eft1) GIF录制有点不清晰，可以下载demo看效果哦
 
 ![demo.gif](https://github.com/lygttpod/SuperTextView/blob/master/screenshot/demo.gif)
 
@@ -383,7 +382,7 @@ stv:sRightViewType="checkbox"
 
 # 意见反馈
 
-如果遇到问题或者好的建议，请反馈到我的邮箱：[lygttpod@163.com](mailto:lygttpod@163.com) 或者[lygttpod@gmail.com](mailto:lygttpod@gmail.com)
+如果遇到问题或者好的建议，请反馈到：[issue](https://github.com/lygttpod/RxHttpUtils/issues)、[lygttpod@163.com](mailto:lygttpod@163.com) 或者[lygttpod@gmail.com](mailto:lygttpod@gmail.com)
 
 如果觉得对你有用的话，点一下右上的星星赞一下吧!
 
