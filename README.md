@@ -1,18 +1,15 @@
+# SuperTextView
+***
+
 [![](https://jitpack.io/v/lygttpod/SuperTextView.svg)](https://jitpack.io/#lygttpod/SuperTextView)
 [![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SuperTextView-green.svg?style=true)]()
+[![](https://img.shields.io/github/stars/lygttpod/SuperTextView.svg)](https://github.com/lygttpod/SuperTextView/stargazers)
+[![](https://img.shields.io/github/forks/lygttpod/SuperTextView.svg)](https://github.com/lygttpod/SuperTextView/network)
 
-# 重磅推出SuperTextView2.x版本，属性参数相比1.x有些变化，1.x的用户升级2.x的时候请注意
 
-## 目录
-* 1、功能描述
-* 2、效果图
-* 3、如何使用
-  - 3.1、 Android Studio导入方法
-  - 3.2、 项目中如何使用
-    - 3.2.1、布局中使用
-    - 3.2.2、在代码中使用
-    - 3.2.3、属性介绍
-* 4、更新日志
+### 重磅推出SuperTextView2.x版本，属性参数相比1.x有些变化，1.x的用户升级2.x的时候请注意
+
 
 ## 1、功能描述
 > [**SuperTextView**](https://github.com/lygttpod/SuperTextView)是一个功能强大的View，可以满足日常大部分布局样式，开发者可已自行组合属性配置出属于自己风格的样式!可能描述起来没有概念，还是直接看效果图吧！
