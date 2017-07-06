@@ -17,7 +17,7 @@
 
 > 如果觉得对你有用的话，点一下右上的星星赞一下吧!
 
-## 2、 效果 [**Demo下载地址**]( https://fir.im/eft1) GIF录制有点不清晰，可以下载demo看效果哦
+## 2、 效果 [**Demo下载地址**]( https://fir.im/eft1)
 
 <p align="center">
   <img src="http://osnoex6vf.bkt.clouddn.com/demo_img.jpg">
