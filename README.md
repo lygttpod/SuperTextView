@@ -19,7 +19,7 @@
 
 ## 2、 效果 [**Demo下载地址**]( https://fir.im/eft1) GIF录制有点不清晰，可以下载demo看效果哦
 
-![demo.gif](https://github.com/lygttpod/SuperTextView/blob/master/screenshot/demo.gif)
+![demo.gif](http://osnoex6vf.bkt.clouddn.com/demo.gif)
 
 
 ## 3、如何使用
@@ -395,7 +395,7 @@ stv:sRightViewType="checkbox"
 
 
 <p align="center">
-  <img src="https://github.com/lygttpod/SuperTextView/blob/master/screenshot/pay.png" width="450">
+  <img src="http://osnoex6vf.bkt.clouddn.com/pay.png" width="450">
 </p>
 
 
