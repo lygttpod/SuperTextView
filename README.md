@@ -59,7 +59,7 @@
                 stv:sLeftTopTextString="银行卡支付"
                 stv:sLeftViewGravity="left_center"
                 stv:sRightCheckBoxRes="@drawable/circular_check_bg"
-                stv:sRightCheckBoxShow="true" />
+                stv:sRightViewType="checkbox" />
         注意：
                 1、上下的线可以通过   sDividerLineType 设置  有四种显示方式 none，top，bottom，both
                 2、通过设置 sUseRipple=true 开启水波效果
