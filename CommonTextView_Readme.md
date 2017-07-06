@@ -6,6 +6,7 @@
 <div  align="center">    
 <img src="http://osnoex6vf.bkt.clouddn.com/commontextview.jpg" width = "360" height = "640" alt="效果图" align=center /></div>
 </div>
+
 # 基本使用
 
 ### 1.添加Gradle依赖 
