@@ -158,7 +158,7 @@
         <attr name="sRightCheckBoxMarginRight" format="dimension" />
         <attr name="sIsChecked" format="boolean" />
 
-        <attr name="sRightSwitchMarginRight" format="dimension"/>
+        <attr name="sRightSwitchMarginRight" format="dimension" />
         <attr name="sSwitchIsChecked" format="boolean" />
 
         <attr name="sTextOff" format="string" />
@@ -176,6 +176,70 @@
         <attr name="sBackgroundDrawableRes" format="reference" />
 
     </declare-styleable>
+
+    <!--SuperButton-->
+    <declare-styleable name="SuperButton">
+        <attr name="sGravity" format="enum">
+            <enum name="center" value="0" />
+            <enum name="left" value="1" />
+            <enum name="right" value="2" />
+            <enum name="top" value="3" />
+            <enum name="bottom" value="4" />
+        </attr>
+
+        <attr name="sShapeType" format="enum">
+            <enum name="rectangle" value="0" />
+            <enum name="oval" value="1" />
+            <enum name="line" value="2" />
+            <enum name="ring" value="3" />
+        </attr>
+
+        <attr name="sSolidColor" format="color" />
+        <attr name="sSolidColorPressed" format="color" />
+
+        <attr name="sCornersRadius" format="dimension" />
+
+        <attr name="sCornersTopLeftRadius" format="dimension" />
+        <attr name="sCornersTopRightRadius" format="dimension" />
+        <attr name="sCornersBottomLeftRadius" format="dimension" />
+        <attr name="sCornersBottomRightRadius" format="dimension" />
+
+        <attr name="sStrokeWidth" format="dimension" />
+        <attr name="sStrokeDashWidth" format="dimension" />
+        <attr name="sStrokeDashGap" format="dimension" />
+        <attr name="sStrokeColor" format="color" />
+
+        <attr name="sSizeWidth" format="dimension" />
+        <attr name="sSizeHeight" format="dimension" />
+
+        <attr name="sGradientOrientation" format="enum">
+            <enum name="TOP_BOTTOM" value="0" />
+            <enum name="TR_BL" value="1" />
+            <enum name="RIGHT_LEFT" value="2" />
+            <enum name="BR_TL" value="3" />
+            <enum name="BOTTOM_TOP" value="4" />
+            <enum name="BL_TR" value="5" />
+            <enum name="LEFT_RIGHT" value="6" />
+            <enum name="TL_BR" value="7" />
+        </attr>
+
+        <attr name="sGradientAngle" format="dimension" />
+        <attr name="sGradientCenterX" format="dimension" />
+        <attr name="sGradientCenterY" format="dimension" />
+        <attr name="sGradientGradientRadius" format="dimension" />
+        <attr name="sGradientStartColor" format="color" />
+        <attr name="sGradientCenterColor" format="color" />
+        <attr name="sGradientEndColor" format="color" />
+        <attr name="sGradientUseLevel" format="boolean" />
+
+        <attr name="sGradientType" format="enum">
+            <enum name="linear" value="0" />
+            <enum name="radial" value="1" />
+            <enum name="sweep" value="2" />
+        </attr>
+
+    </declare-styleable>
+
 
     <declare-styleable name="CommonTextView">
 

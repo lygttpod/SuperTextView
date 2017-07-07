@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:stv="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -73,7 +72,6 @@
                 android:layout_height="wrap_content"
                 android:text="左对齐" />
 
-
             <Button
                 android:id="@+id/button7"
                 android:layout_width="match_parent"
@@ -91,6 +89,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="点击事件使用" />
+
+            <Button
+                android:id="@+id/button10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="超级按钮" />
 
         </LinearLayout>
     </ScrollView>
