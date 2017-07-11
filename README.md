@@ -11,9 +11,11 @@
 
 
 ## 1、功能描述
-> [**SuperTextView**](https://github.com/lygttpod/SuperTextView)是一个功能强大的View，可以满足日常大部分布局样式，开发者可已自行组合属性配置出属于自己风格的样式!可能描述起来没有概念，还是直接看效果图吧！
+>  [**SuperTextView**](https://github.com/lygttpod/SuperTextView)是一个功能强大的View，可以满足日常大部分布局样式，开发者可已自行组合属性配置出属于自己风格的样式!可能描述起来没有概念，还是直接看效果图吧！
 
-> 简化版 [**CommonTextView**](https://github.com/lygttpod/SuperTextView/blob/master/CommonTextView_Readme.md)只是逻辑简化，其实功能并不差少哦，有兴趣的可以看看
+>  [**SuperButton**](https://github.com/lygttpod/SuperTextView/blob/master/SuperButon_Readme.md)拥有shape文件的大部分属性，从此写shape属性变得非常简单
+
+>  [**CommonTextView**](https://github.com/lygttpod/SuperTextView/blob/master/CommonTextView_Readme.md)只是SuperTextView的逻辑简化，其实功能并不差少哦，有兴趣的可以看看
 
 > 如果觉得对你有用的话，点一下右上的星星赞一下吧!
 

@@ -215,7 +215,6 @@
 
         <attr name="sSolidColor" format="color" />
 
-        <attr name="sSelectorColor" format="color" />
         <attr name="sSelectorPressedColor" format="color" />
         <attr name="sSelectorDisableColor" format="color" />
         <attr name="sSelectorNormalColor" format="color" />
