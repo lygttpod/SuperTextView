@@ -4,7 +4,7 @@
 
 # 效果图
 <div  align="center">    
-<img src="http://osnoex6vf.bkt.clouddn.com/SuperButton.png" width = "360" height = "640" alt="效果图" align=center /></div>
+<img src="http://osnoex6vf.bkt.clouddn.com/SuperButton.png" alt="效果图" align=center /></div>
 </div>
 
 
