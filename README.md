@@ -20,7 +20,7 @@
 ## 2、 效果 [**Demo下载地址**]( https://fir.im/eft1)
 
 <p align="center">
-  <img src="http://osnoex6vf.bkt.clouddn.com/supertextview.png">
+  <img src="http://osnoex6vf.bkt.clouddn.com/main.png">
 </p>
 
 ## 3、如何使用
