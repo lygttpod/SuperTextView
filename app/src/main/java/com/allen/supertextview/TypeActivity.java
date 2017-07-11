@@ -49,8 +49,9 @@ public class TypeActivity extends AppCompatActivity {
                 setContentView(R.layout.layout7);
                 break;
             case 8:
-                setContentView(R.layout.super_button_layout);
+                setContentView(R.layout.layout8);
                 break;
+
         }
 
     }

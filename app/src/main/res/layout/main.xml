@@ -160,6 +160,20 @@
                 stv:sBackgroundDrawableRes="@drawable/selector_red"
                 stv:sLeftTextString="自定义背景点击效果"
                 stv:sRightIconRes="@drawable/arrow_right_red" />
+
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                stv:sLeftTextString="账号与安全"
+                stv:sRightIconRes="@drawable/arrow_right_red"
+                stv:sRightTextString="已保护"
+                stv:sRightTvDrawableLeft="@drawable/v1"
+                stv:sShapeCornersRadius="5dp"
+                stv:sShapeSelectorPressedColor="@color/gray"
+                stv:sShapeStrokeColor="@color/colorAccent"
+                stv:sShapeStrokeWidth="0.3dp"
+                stv:sUseShape="true" />
         </LinearLayout>
     </ScrollView>
 

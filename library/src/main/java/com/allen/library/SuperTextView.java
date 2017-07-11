@@ -2,8 +2,9 @@ package com.allen.library;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -188,7 +189,7 @@ public class SuperTextView extends RelativeLayout {
     private boolean useRipple;
     private Drawable mBackground_drawable;
 
-    private OnSuperTextViewClickListener onSuperTextViewClickListener;
+    private OnSuperTextViewClickListener superTextViewClickListener;
 
     private OnLeftTopTvClickListener leftTopTvClickListener;
     private OnLeftTvClickListener leftTvClickListener;
@@ -232,6 +233,30 @@ public class SuperTextView extends RelativeLayout {
 
     private Drawable mThumbResource;
     private Drawable mTrackResource;
+
+    /////////////////////一下是shape相关属性
+    private int defaultShapeColor = 0xffffffff;
+
+    private int selectorPressedColor;
+    private int selectorNormalColor;
+
+    private int solidColor;
+
+    private float cornersRadius;
+    private float cornersTopLeftRadius;
+    private float cornersTopRightRadius;
+    private float cornersBottomLeftRadius;
+    private float cornersBottomRightRadius;
+
+    private float strokeWidth;
+    private int strokeColor;
+
+    private float strokeDashWidth;
+    private float strokeDashGap;
+
+    private boolean useShape;
+
+    private GradientDrawable gradientDrawable;
 
     public SuperTextView(Context context) {
         this(context, null);
@@ -409,7 +434,25 @@ public class SuperTextView extends RelativeLayout {
         mTrackResource = typedArray.getDrawable(R.styleable.SuperTextView_sTrackResource);
 
         centerSpaceHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterSpaceHeight, dip2px(mContext, 5));
+        ////////////////////////////////////////////////////
+        selectorPressedColor = typedArray.getColor(R.styleable.SuperTextView_sShapeSelectorPressedColor, defaultShapeColor);
+        selectorNormalColor = typedArray.getColor(R.styleable.SuperTextView_sShapeSelectorNormalColor, defaultShapeColor);
 
+        solidColor = typedArray.getColor(R.styleable.SuperTextView_sShapeSolidColor, defaultShapeColor);
+
+        cornersRadius = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sShapeCornersRadius, 0);
+        cornersTopLeftRadius = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sShapeCornersTopLeftRadius, 0);
+        cornersTopRightRadius = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sShapeCornersTopRightRadius, 0);
+        cornersBottomLeftRadius = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sShapeCornersBottomLeftRadius, 0);
+        cornersBottomRightRadius = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sShapeCornersBottomRightRadius, 0);
+
+        strokeWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sShapeStrokeWidth, 0);
+        strokeDashWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sShapeStrokeDashWidth, 0);
+        strokeDashGap = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sShapeStrokeDashGap, 0);
+
+        strokeColor = typedArray.getColor(R.styleable.SuperTextView_sShapeStrokeColor, defaultShapeColor);
+
+        useShape = typedArray.getBoolean(R.styleable.SuperTextView_sUseShape, false);
 
         typedArray.recycle();
     }
@@ -459,18 +502,19 @@ public class SuperTextView extends RelativeLayout {
     private void initSuperTextView() {
         if (useRipple) {
             this.setBackgroundResource(R.drawable.selector_white);
+            this.setClickable(true);
         }
-        this.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onSuperTextViewClickListener != null) {
-                    onSuperTextViewClickListener.onClickListener();
-                }
-            }
-        });
 
         if (mBackground_drawable != null) {
             this.setBackgroundDrawable(mBackground_drawable);
+        }
+
+        if (useShape) {
+            if (Build.VERSION.SDK_INT < 16) {
+                setBackgroundDrawable(getSelector());
+            } else {
+                setBackground(getSelector());
+            }
         }
     }
 
@@ -668,10 +712,10 @@ public class SuperTextView extends RelativeLayout {
         mSwitch.setLayoutParams(mSwitchParams);
 
         mSwitch.setChecked(switchIsChecked);
-        if (!TextUtils.isEmpty(mTextOff)){
+        if (!TextUtils.isEmpty(mTextOff)) {
             mSwitch.setTextOff(mTextOff);
         }
-        if (!TextUtils.isEmpty(mTextOn)){
+        if (!TextUtils.isEmpty(mTextOn)) {
             mSwitch.setTextOn(mTextOn);
         }
 
@@ -845,19 +889,21 @@ public class SuperTextView extends RelativeLayout {
      * 初始化分割线
      */
     private void initDividerLineView() {
-        switch (mDividerLineType) {
-            case NONE:
-                break;
-            case TOP:
-                setTopDividerLineView();
-                break;
-            case BOTTOM:
-                setTBottomDividerLineView();
-                break;
-            case BOTH:
-                setTopDividerLineView();
-                setTBottomDividerLineView();
-                break;
+        if (!useShape) {
+            switch (mDividerLineType) {
+                case NONE:
+                    break;
+                case TOP:
+                    setTopDividerLineView();
+                    break;
+                case BOTTOM:
+                    setTBottomDividerLineView();
+                    break;
+                case BOTH:
+                    setTopDividerLineView();
+                    setTBottomDividerLineView();
+                    break;
+            }
         }
 
     }
@@ -1177,6 +1223,122 @@ public class SuperTextView extends RelativeLayout {
         return this;
     }
 
+    /**
+     * 设置左上文字颜色
+     *
+     * @param color 颜色值
+     * @return SuperTextView
+     */
+    public SuperTextView setLeftTopTextColor(int color) {
+        if (leftView != null) {
+            leftView.getTopTextView().setTextColor(color);
+        }
+        return this;
+    }
+
+    /**
+     * 设置左中文字颜色
+     *
+     * @param color 颜色值
+     * @return SuperTextView
+     */
+    public SuperTextView setLeftTextColor(int color) {
+        if (leftView != null) {
+            leftView.getCenterTextView().setTextColor(color);
+        }
+        return this;
+    }
+
+    /**
+     * 设置左下文字颜色
+     *
+     * @param color 颜色值
+     * @return SuperTextView
+     */
+    public SuperTextView setLeftBottomTextColor(int color) {
+        if (leftView != null) {
+            leftView.getBottomTextView().setTextColor(color);
+        }
+        return this;
+    }
+
+    /**
+     * 设置中上文字颜色
+     *
+     * @param color 颜色值
+     * @return SuperTextView
+     */
+    public SuperTextView setCenterTopTextColor(int color) {
+        if (centerView != null) {
+            centerView.getTopTextView().setTextColor(color);
+        }
+        return this;
+    }
+
+    /**
+     * 设置中间文字颜色
+     *
+     * @param color 颜色值
+     * @return SuperTextView
+     */
+    public SuperTextView setCenterTextColor(int color) {
+        if (centerView != null) {
+            centerView.getCenterTextView().setTextColor(color);
+        }
+        return this;
+    }
+
+    /**
+     * 设置中下文字颜色
+     *
+     * @param color 颜色值
+     * @return SuperTextView
+     */
+    public SuperTextView setCenterBottomTextColor(int color) {
+        if (centerView != null) {
+            centerView.getBottomTextView().setTextColor(color);
+        }
+        return this;
+    }
+
+    /**
+     * 设置右上文字颜色
+     *
+     * @param color 颜色值
+     * @return SuperTextView
+     */
+    public SuperTextView setRightTopTextColor(int color) {
+        if (rightView != null) {
+            rightView.getTopTextView().setTextColor(color);
+        }
+        return this;
+    }
+
+    /**
+     * 设置右中文字颜色
+     *
+     * @param color 颜色值
+     * @return SuperTextView
+     */
+    public SuperTextView setRightTextColor(int color) {
+        if (rightView != null) {
+            rightView.getCenterTextView().setTextColor(color);
+        }
+        return this;
+    }
+
+    /**
+     * 设置右下文字颜色
+     *
+     * @param color 颜色值
+     * @return SuperTextView
+     */
+    public SuperTextView setRightBottomTextColor(int color) {
+        if (rightView != null) {
+            rightView.getBottomTextView().setTextColor(color);
+        }
+        return this;
+    }
 
     /**
      * 获取左上字符串
@@ -1413,29 +1575,6 @@ public class SuperTextView extends RelativeLayout {
 
     /////////////////////////////////////对外暴露的方法---begin/////////////////////////////////
 
-    /**
-     * 单位转换工具类
-     *
-     * @param context 上下文对象
-     * @param spValue 值
-     * @return 返回值
-     */
-    private int sp2px(Context context, float spValue) {
-        final float scale = context.getResources().getDisplayMetrics().scaledDensity;
-        return (int) (spValue * scale + 0.5f);
-    }
-
-    /**
-     * 单位转换工具类
-     *
-     * @param context  上下文对象
-     * @param dipValue 值
-     * @return 返回值
-     */
-    private int dip2px(Context context, float dipValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dipValue * scale + 0.5f);
-    }
 
     /**
      * 点击事件
@@ -1444,7 +1583,15 @@ public class SuperTextView extends RelativeLayout {
      * @return SuperTextView
      */
     public SuperTextView setOnSuperTextViewClickListener(OnSuperTextViewClickListener onSuperTextViewClickListener) {
-        this.onSuperTextViewClickListener = onSuperTextViewClickListener;
+        this.superTextViewClickListener = onSuperTextViewClickListener;
+        if (superTextViewClickListener != null) {
+            this.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    superTextViewClickListener.onClickListener();
+                }
+            });
+        }
         return this;
     }
 
@@ -1541,5 +1688,98 @@ public class SuperTextView extends RelativeLayout {
 
     public interface OnRightBottomTvClickListener {
         void onClickListener();
+    }
+
+
+    // TODO: 2017/7/10 一下是shape相关属性方法
+
+    /**
+     * 获取设置之后的Selector
+     *
+     * @return stateListDrawable
+     */
+    public StateListDrawable getSelector() {
+
+        StateListDrawable stateListDrawable = new StateListDrawable();
+
+        //注意该处的顺序，只要有一个状态与之相配，背景就会被换掉
+        //所以不要把大范围放在前面了，如果sd.addState(new[]{},normal)放在第一个的话，就没有什么效果了
+        stateListDrawable.addState(new int[]{android.R.attr.state_pressed, android.R.attr.state_enabled}, getDrawable(android.R.attr.state_pressed));
+        stateListDrawable.addState(new int[]{}, getDrawable(android.R.attr.state_enabled));
+
+        return stateListDrawable;
+    }
+
+    public GradientDrawable getDrawable(int state) {
+        gradientDrawable = new GradientDrawable();
+        gradientDrawable.setShape(GradientDrawable.RECTANGLE);
+        switch (state) {
+            case android.R.attr.state_pressed:
+                gradientDrawable.setColor(selectorPressedColor);
+                break;
+            case android.R.attr.state_enabled:
+                gradientDrawable.setColor(selectorNormalColor);
+                break;
+            default:
+                gradientDrawable.setColor(solidColor);
+        }
+        setBorder();
+        setRadius();
+
+        return gradientDrawable;
+    }
+
+
+    /**
+     * 设置边框  宽度  颜色  虚线  间隙
+     */
+    private void setBorder() {
+        gradientDrawable.setStroke(dip2px(mContext, strokeWidth), strokeColor, strokeDashWidth, strokeDashGap);
+    }
+
+    /**
+     * 只有类型是矩形的时候设置圆角半径才有效
+     */
+    private void setRadius() {
+        if (cornersRadius != 0) {
+            gradientDrawable.setCornerRadius(dip2px(mContext, cornersRadius));//设置圆角的半径
+        } else {
+            //1、2两个参数表示左上角，3、4表示右上角，5、6表示右下角，7、8表示左下角
+            gradientDrawable.setCornerRadii(
+                    new float[]
+                            {
+                                    cornersTopLeftRadius, cornersTopLeftRadius,
+                                    cornersTopRightRadius, cornersTopRightRadius,
+                                    cornersBottomRightRadius, cornersBottomRightRadius,
+                                    cornersBottomLeftRadius, cornersBottomLeftRadius
+                            }
+            );
+        }
+
+    }
+
+
+    /**
+     * 单位转换工具类
+     *
+     * @param context 上下文对象
+     * @param spValue 值
+     * @return 返回值
+     */
+    private int sp2px(Context context, float spValue) {
+        final float scale = context.getResources().getDisplayMetrics().scaledDensity;
+        return (int) (spValue * scale + 0.5f);
+    }
+
+    /**
+     * 单位转换工具类
+     *
+     * @param context  上下文对象
+     * @param dipValue 值
+     * @return 返回值
+     */
+    private int dip2px(Context context, float dipValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dipValue * scale + 0.5f);
     }
 }

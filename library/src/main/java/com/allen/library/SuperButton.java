@@ -3,6 +3,7 @@ package com.allen.library;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -18,11 +19,13 @@ public class SuperButton extends Button {
 
     private Context mContext;
 
-    private int defaultColor = 0xffffffff;
-    private int defaultSolidColorPressed = 0x20000000;
+    private int defaultColor = 0x20000000;
+    private int defaultSelectorColor = 0x20000000;
 
     private int solidColor;
-    private int solidColorPressed;
+    private int selectorPressedColor;
+    private int selectorDisableColor;
+    private int selectorNormalColor;
 
     private float cornersRadius;
     private float cornersTopLeftRadius;
@@ -60,6 +63,8 @@ public class SuperButton extends Button {
     private static final int sweep = 2;
 
     private boolean gradientUseLevel;
+
+    private boolean useSelector;
 
 
     public static final int RECTANGLE = 0;
@@ -107,7 +112,10 @@ public class SuperButton extends Button {
         shapeType = typedArray.getInt(R.styleable.SuperButton_sShapeType, GradientDrawable.RECTANGLE);
 
         solidColor = typedArray.getColor(R.styleable.SuperButton_sSolidColor, defaultColor);
-        solidColorPressed = typedArray.getColor(R.styleable.SuperButton_sSolidColorPressed, defaultSolidColorPressed);
+
+        selectorPressedColor = typedArray.getColor(R.styleable.SuperButton_sSelectorPressedColor, defaultSelectorColor);
+        selectorDisableColor = typedArray.getColor(R.styleable.SuperButton_sSelectorDisableColor, defaultSelectorColor);
+        selectorNormalColor = typedArray.getColor(R.styleable.SuperButton_sSelectorNormalColor, defaultSelectorColor);
 
         cornersRadius = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sCornersRadius, 0);
         cornersTopLeftRadius = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sCornersTopLeftRadius, 0);
@@ -138,20 +146,64 @@ public class SuperButton extends Button {
         gradientType = typedArray.getInt(R.styleable.SuperButton_sGradientType, linear);
         gradientUseLevel = typedArray.getBoolean(R.styleable.SuperButton_sGradientUseLevel, false);
 
+        useSelector = typedArray.getBoolean(R.styleable.SuperButton_sUseSelector, false);
+
         typedArray.recycle();
     }
 
     void init() {
+        setClickable(true);
 
         if (Build.VERSION.SDK_INT < 16) {
-            setBackgroundDrawable(getDrawable());
+            setBackgroundDrawable(useSelector ? getSelector() : getDrawable(0));
         } else {
-            setBackground(getDrawable());
+            setBackground(useSelector ? getSelector() : getDrawable(0));
         }
 
         setSGravity();
     }
 
+
+    /**
+     * 获取设置之后的Selector
+     *
+     * @return stateListDrawable
+     */
+    public StateListDrawable getSelector() {
+
+        StateListDrawable stateListDrawable = new StateListDrawable();
+
+        //注意该处的顺序，只要有一个状态与之相配，背景就会被换掉
+        //所以不要把大范围放在前面了，如果sd.addState(new[]{},normal)放在第一个的话，就没有什么效果了
+        stateListDrawable.addState(new int[]{android.R.attr.state_pressed, android.R.attr.state_enabled}, getDrawable(android.R.attr.state_pressed));
+        stateListDrawable.addState(new int[]{-android.R.attr.state_enabled}, getDrawable(-android.R.attr.state_enabled));
+        stateListDrawable.addState(new int[]{}, getDrawable(android.R.attr.state_enabled));
+
+        return stateListDrawable;
+    }
+
+    /**
+     * 设置GradientDrawable
+     *
+     * @param state 按钮状态
+     * @return gradientDrawable
+     */
+    public GradientDrawable getDrawable(int state) {
+        gradientDrawable = new GradientDrawable();
+
+        setShape();
+        setOrientation();
+        setSize();
+        setBorder();
+        setRadius();
+        setSelectorColor(state);
+
+        return gradientDrawable;
+    }
+
+    /**
+     * 设置文字对其方式
+     */
     private void setSGravity() {
         switch (gravity) {
             case 0:
@@ -172,17 +224,26 @@ public class SuperButton extends Button {
         }
     }
 
+    /**
+     * 设置Selector的不同状态的颜色
+     *
+     * @param state 按钮状态
+     */
+    private void setSelectorColor(int state) {
+        if (gradientOrientation == -1) {
+            switch (state) {
+                case android.R.attr.state_pressed:
+                    gradientDrawable.setColor(selectorPressedColor);
+                    break;
+                case -android.R.attr.state_enabled:
+                    gradientDrawable.setColor(selectorDisableColor);
+                    break;
+                case android.R.attr.state_enabled:
+                    gradientDrawable.setColor(selectorNormalColor);
+                    break;
+            }
+        }
 
-    public GradientDrawable getDrawable() {
-        gradientDrawable = new GradientDrawable();
-
-        setShape();
-        setOrientation();
-        setSize();
-        setBorder();
-        setRadius();
-
-        return gradientDrawable;
     }
 
     /**
@@ -224,7 +285,6 @@ public class SuperButton extends Button {
             }
         } else {
             gradientDrawable.setColor(solidColor);
-
         }
     }
 

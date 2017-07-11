@@ -174,10 +174,29 @@
         <attr name="sUseRipple" format="boolean" />
 
         <attr name="sBackgroundDrawableRes" format="reference" />
+        <!--  -->
+
+        <attr name="sShapeSolidColor" format="color" />
+
+        <attr name="sShapeSelectorPressedColor" format="color" />
+        <attr name="sShapeSelectorNormalColor" format="color" />
+
+        <attr name="sShapeCornersRadius" format="dimension" />
+
+        <attr name="sShapeCornersTopLeftRadius" format="dimension" />
+        <attr name="sShapeCornersTopRightRadius" format="dimension" />
+        <attr name="sShapeCornersBottomLeftRadius" format="dimension" />
+        <attr name="sShapeCornersBottomRightRadius" format="dimension" />
+
+        <attr name="sShapeStrokeWidth" format="dimension" />
+        <attr name="sShapeStrokeDashWidth" format="dimension" />
+        <attr name="sShapeStrokeDashGap" format="dimension" />
+        <attr name="sShapeStrokeColor" format="color" />
+
+        <attr name="sUseShape" format="boolean" />
 
     </declare-styleable>
 
-    <!--SuperButton-->
     <declare-styleable name="SuperButton">
         <attr name="sGravity" format="enum">
             <enum name="center" value="0" />
@@ -195,7 +214,11 @@
         </attr>
 
         <attr name="sSolidColor" format="color" />
-        <attr name="sSolidColorPressed" format="color" />
+
+        <attr name="sSelectorColor" format="color" />
+        <attr name="sSelectorPressedColor" format="color" />
+        <attr name="sSelectorDisableColor" format="color" />
+        <attr name="sSelectorNormalColor" format="color" />
 
         <attr name="sCornersRadius" format="dimension" />
 
@@ -231,6 +254,8 @@
         <attr name="sGradientCenterColor" format="color" />
         <attr name="sGradientEndColor" format="color" />
         <attr name="sGradientUseLevel" format="boolean" />
+
+        <attr name="sUseSelector" format="boolean" />
 
         <attr name="sGradientType" format="enum">
             <enum name="linear" value="0" />

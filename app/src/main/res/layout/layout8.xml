@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <com.allen.library.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        stv:sLeftTextString="声音"
+        stv:sRightViewType="switchBtn"
+        stv:sShapeCornersRadius="10dp"
+        stv:sShapeSelectorPressedColor="@color/gray"
+        stv:sShapeStrokeColor="@color/colorAccent"
+        stv:sShapeStrokeWidth="0.3dp"
+        stv:sSwitchIsChecked="true"
+        stv:sSwitchMinWidth="40dp"
+        stv:sThumbResource="@drawable/thumb"
+        stv:sTrackResource="@drawable/track"
+        stv:sUseShape="true" />
+
+    <com.allen.library.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        stv:sLeftTextString="账号与安全"
+        stv:sRightIconRes="@drawable/arrow_right_red"
+        stv:sRightTextString="已保护"
+        stv:sRightTvDrawableLeft="@drawable/v1"
+        stv:sShapeCornersRadius="5dp"
+        stv:sShapeSelectorPressedColor="@color/gray"
+        stv:sShapeStrokeColor="@color/colorAccent"
+        stv:sShapeStrokeWidth="0.3dp"
+        stv:sUseShape="true" />
+
+
+    <com.allen.library.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        stv:sLeftTextString="上圆角"
+        stv:sRightIconRes="@drawable/arrow_right_red"
+        stv:sShapeCornersTopLeftRadius="10dp"
+        stv:sShapeCornersTopRightRadius="10dp"
+        stv:sShapeSelectorPressedColor="@color/gray"
+        stv:sShapeStrokeColor="@color/colorAccent"
+        stv:sShapeStrokeWidth="0.2dp"
+        stv:sUseShape="true" />
+
+    <com.allen.library.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        stv:sLeftTextString="下圆角"
+        stv:sRightIconRes="@drawable/arrow_right_red"
+        stv:sShapeCornersBottomLeftRadius="10dp"
+        stv:sShapeCornersBottomRightRadius="10dp"
+        stv:sShapeSelectorPressedColor="@color/gray"
+        stv:sShapeStrokeColor="@color/colorAccent"
+        stv:sShapeStrokeWidth="0.2dp"
+        stv:sUseShape="true" />
+
+    <com.allen.library.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        stv:sCenterTextColor="@color/white"
+        stv:sCenterTextString="填充色"
+        stv:sShapeCornersRadius="10dp"
+        stv:sShapeSelectorNormalColor="@color/red_btn"
+        stv:sShapeSelectorPressedColor="@color/gray"
+        stv:sUseShape="true" />
+
+</LinearLayout>

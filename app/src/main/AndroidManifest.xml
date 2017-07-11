@@ -18,11 +18,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".TypeActivity" />
-        <activity android:name=".ListActivity" />
+        <activity android:name=".ListActivity"
+            android:label="SuperTextView列表中使用" />
         <activity
             android:name=".CommonTextViewActivity"
             android:label="CommonTextView" />
-        <activity android:name=".ClickActivity"></activity>
+        <activity android:name=".ClickActivity"
+            android:label="SuperTextView点击事件"/>
+        <activity
+            android:name=".SuperButtonActivity"
+            android:label="SuperButton" />
+
     </application>
 
 </manifest>

@@ -20,14 +20,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="展示几种常见的显示方式" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:text="(更多组合方式可自行组合)"
+                android:text="demo是最好的老师"
                 android:textColor="@color/colorAccent" />
 
             <Button
@@ -82,19 +75,28 @@
                 android:id="@+id/button8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="圆角样式"
+                android:textColor="@color/colorAccent" />
+
+            <Button
+                android:id="@+id/list_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="在列表中使用" />
 
             <Button
-                android:id="@+id/button9"
+                android:id="@+id/click_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="点击事件使用" />
 
             <Button
-                android:id="@+id/button10"
+                android:id="@+id/super_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="超级按钮" />
+                android:background="@color/colorAccent"
+                android:text="超级按钮"
+                android:textColor="@color/white" />
 
         </LinearLayout>
     </ScrollView>
