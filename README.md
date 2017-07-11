@@ -39,7 +39,7 @@
 ```
         dependencies {
         ...
-        compile 'com.github.lygttpod:SuperTextView:2.0.1'
+        compile 'com.github.lygttpod:SuperTextView:2.0.2'
         }
 ```
 
@@ -281,105 +281,25 @@ sSwitchPadding | dimension  | SwitchPadding | 系统默认
 sThumbTextPadding | dimension  | ThumbTextPadding | 系统默认
 sThumbResource | reference  | 右边SwitchBtn自定义选中资源 | 系统默认
 sTrackResource | reference  | 右边SwitchBtn自定义未选中资源 | 系统默认
-
-
+sUseShape | boolean  | 是否使用shape设置圆角及触摸反馈<br>设为true之后才能使用一下属性 | 默认false
+sShapeSolidColor | color  | 填充色 | 默认false
+sShapeSelectorPressedColor | color  | 按下时候的颜色 | 默认0xffffffff
+sShapeSelectorNormalColor | color  | 正常显示的颜色 | 默认0xffffffff
+sShapeCornersRadius | dimension  | 四个角的圆角半径 | 默认0dp
+sShapeCornersTopLeftRadius | dimension  | 左上角的圆角半径 | 默认0dp
+sShapeCornersTopRightRadius | dimension  | 右上角的圆角半径 | 默认0dp
+sShapeCornersBottomLeftRadius | dimension  | 左下角的圆角半径 | 默认0dp
+sShapeCornersBottomRightRadius | dimension  | 右下角的圆角半径 | 默认0dp
+sShapeStrokeWidth | dimension  | 边框宽度 | 默认0dp
+sShapeStrokeDashWidth | dimension  | 虚线宽度 | 默认0dp
+sShapeStrokeDashGap | dimension  | 虚线间隙宽度 | 默认0dp
+sShapeStrokeColor | color  | 边框颜色 | 默认0dp
 
 
 > 黑格尔曾说过：存在即合理。SuperTextView的出现应该就是某种需求下的产物。
 
 
-## 4、更新日志
-
-### V2.0.1
-* 新增SwitchButton样式   
-
-目前有switchBtn和checkbox两种特殊view
-```
-stv:sRightViewType="switchBtn"  
-stv:sRightViewType="checkbox" 
-```
-
-### V2.0.0
-* 	重写SuperTextView，功能更加全面，部分方法及属性有变更，使用者请注意
-
-### V1.1.2
-*   上下分割线添加单独设置左右边距的参数
-```
-                1、SuperTextVIew配置方法如下:下列两种方式都是单独使用
-                
-                //方法一
-                stv:sTopLineMarginLeft="10dp"
-                stv:sTopLineMarginRight="0dp"
-                 
-                stv:sBottomLineMarginLeft="10dp"
-                stv:sBottomLineMarginRight="0dp"
-                
-                //方法二
-                stv:sBothLineMarginLeft="10dp"
-                stv:sBothLineMarginRight="0dp"
-                                
-                2、CommonTextView配置方法如下：下列两种方式都是单独使用
-                
-                //方法一
-                ctv:cTopDividerLineMarginLeft="10dp"
-                ctv:cTopDividerLineMarginRight="0dp"
-
-                ctv:cBottomDividerLineMarginLeft="10dp"
-                ctv:cBottomDividerLineMarginRight="0dp"
-                
-                //方法二
-                ctv:cBothDividerLineMarginLeft="10dp"
-                ctv:cBothDividerLineMarginRight="0dp"
-```            
-
-### V1.1.1
-* 	1、SuperTextview和CommonTextview新增点击时候自定义选中和默认背景效果
-```
-                                sBackgroundDrawableRes="@drawable/selector_red"
-                                
-                                cBackgroundDrawableRes="@drawable/selector_red"
-```
-                                
-*    2、CommonTextview新增中间布局左对齐属性
-```
-                                两个属性配合使用
-                                ctv:cIsCenterAlignLeft="true"
-                                ctv:cCenterViewMarginLeft="200dp"
-               
-```
-
-### V1.1
-* 	修复SuperTextView和CommonTextView点击事件被子View消耗掉的bug（具体使用请参考文档）
-
-### V1.0.9
-* 	SuperTextView新增左右图标可自定义大小的功能
-```
-                                stv:sRightIconWidth="30dp"
-                                stv:sRightIconHeight="30dp"
-                                stv:sLeftIconWidth="30dp"
-                                stv:slefticonHeight="30dp"
- ```                               
-### V1.0.8
-* 	修复CommonTextView点击事件无效的bug
-
-### V1.0.7
-* 	CommonTextView新增支持加载网络图片
-
-### V1.0.6
-* 	新增设置分割线颜色和宽度的方法
-* 	新增简化版CommonTextView
-
-### V1.0.3
-* 	新增左右两边图片支持常用三方库加载网络图片
-
-### V1.0.2
-* 修复文字内容过多，超过1行的处理，导致两边的文字会引起重叠的bug
-
-### V1.0.1
-* 修复编译版本不同导致无法正常使用的bug
-
-### V1.0.0
-* 功能强大的TextView
+## 4、[更新日志](https://github.com/lygttpod/SuperTextView/releases)
 
 # 意见反馈
 
