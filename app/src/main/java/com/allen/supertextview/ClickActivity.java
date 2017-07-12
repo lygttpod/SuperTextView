@@ -2,6 +2,7 @@ package com.allen.supertextview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import com.allen.library.SuperTextView;
@@ -81,6 +82,15 @@ public class ClickActivity extends AppCompatActivity {
             public void onClickListener() {
                 string = superTextView.getRightBottomString();
                 Toast.makeText(ClickActivity.this, string, Toast.LENGTH_SHORT).show();
+            }
+        }).setSwitchCheckedChangeListener(new SuperTextView.OnSwitchCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            }
+        }).setCheckBoxCheckedChangeListener(new SuperTextView.OnCheckBoxCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
             }
         });
 

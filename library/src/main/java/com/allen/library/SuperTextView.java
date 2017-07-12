@@ -12,6 +12,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
@@ -202,6 +203,9 @@ public class SuperTextView extends RelativeLayout {
     private OnRightTopTvClickListener rightTopTvClickListener;
     private OnRightTvClickListener rightTvClickListener;
     private OnRightBottomTvClickListener rightBottomTvClickListener;
+
+    private OnSwitchCheckedChangeListener switchCheckedChangeListener;
+    private OnCheckBoxCheckedChangeListener checkBoxCheckedChangeListener;
 
     private static final int TYPE_CHECKBOX = 0;
     private static final int TYPE_SWITCH = 1;
@@ -680,19 +684,27 @@ public class SuperTextView extends RelativeLayout {
     private void initRightCheckBox() {
         if (rightCheckBox == null) {
             rightCheckBox = new CheckBox(mContext);
-            rightCheckBoxParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-
-            rightCheckBoxParams.addRule(ALIGN_PARENT_RIGHT, TRUE);
-            rightCheckBoxParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
-            rightCheckBoxParams.setMargins(0, 0, rightCheckBoxMarginRight, 0);
-            rightCheckBox.setId(R.id.sRightCheckBoxId);
-            rightCheckBox.setLayoutParams(rightCheckBoxParams);
-            if (rightCheckBoxBg != null) {
-                rightCheckBox.setGravity(CENTER_IN_PARENT);
-                rightCheckBox.setButtonDrawable(rightCheckBoxBg);
-            }
-            rightCheckBox.setChecked(isChecked);
         }
+        rightCheckBoxParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+
+        rightCheckBoxParams.addRule(ALIGN_PARENT_RIGHT, TRUE);
+        rightCheckBoxParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+        rightCheckBoxParams.setMargins(0, 0, rightCheckBoxMarginRight, 0);
+        rightCheckBox.setId(R.id.sRightCheckBoxId);
+        rightCheckBox.setLayoutParams(rightCheckBoxParams);
+        if (rightCheckBoxBg != null) {
+            rightCheckBox.setGravity(CENTER_IN_PARENT);
+            rightCheckBox.setButtonDrawable(rightCheckBoxBg);
+        }
+        rightCheckBox.setChecked(isChecked);
+        rightCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (checkBoxCheckedChangeListener != null) {
+                    checkBoxCheckedChangeListener.onCheckedChanged(buttonView, isChecked);
+                }
+            }
+        });
         addView(rightCheckBox);
     }
 
@@ -737,6 +749,14 @@ public class SuperTextView extends RelativeLayout {
             }
 
         }
+        mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (switchCheckedChangeListener != null) {
+                    switchCheckedChangeListener.onCheckedChanged(buttonView, isChecked);
+                }
+            }
+        });
 
         addView(mSwitch);
     }
@@ -1649,6 +1669,16 @@ public class SuperTextView extends RelativeLayout {
         return this;
     }
 
+    public SuperTextView setSwitchCheckedChangeListener(OnSwitchCheckedChangeListener switchCheckedChangeListener) {
+        this.switchCheckedChangeListener = switchCheckedChangeListener;
+        return this;
+    }
+
+    public SuperTextView setCheckBoxCheckedChangeListener(OnCheckBoxCheckedChangeListener checkBoxCheckedChangeListener) {
+        this.checkBoxCheckedChangeListener = checkBoxCheckedChangeListener;
+        return this;
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////
     public interface OnSuperTextViewClickListener {
         void onClickListener();
@@ -1688,6 +1718,14 @@ public class SuperTextView extends RelativeLayout {
 
     public interface OnRightBottomTvClickListener {
         void onClickListener();
+    }
+
+    public interface OnSwitchCheckedChangeListener {
+        void onCheckedChanged(CompoundButton buttonView, boolean isChecked);
+    }
+
+    public interface OnCheckBoxCheckedChangeListener {
+        void onCheckedChanged(CompoundButton buttonView, boolean isChecked);
     }
 
 
