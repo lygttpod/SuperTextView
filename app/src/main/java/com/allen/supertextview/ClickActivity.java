@@ -2,6 +2,7 @@ package com.allen.supertextview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
@@ -90,6 +91,15 @@ public class ClickActivity extends AppCompatActivity {
         }).setCheckBoxCheckedChangeListener(new SuperTextView.OnCheckBoxCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+            }
+        }).setLeftImageViewClickListener(new SuperTextView.OnLeftImageViewClickListener() {
+            @Override
+            public void onClickListener() {
+            }
+        }).setRightImageViewClickListener(new SuperTextView.OnRightImageViewClickListener() {
+            @Override
+            public void onClickListener() {
 
             }
         });

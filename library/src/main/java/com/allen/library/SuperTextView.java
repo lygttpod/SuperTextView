@@ -207,6 +207,9 @@ public class SuperTextView extends RelativeLayout {
     private OnSwitchCheckedChangeListener switchCheckedChangeListener;
     private OnCheckBoxCheckedChangeListener checkBoxCheckedChangeListener;
 
+    private OnLeftImageViewClickListener leftImageViewClickListener;
+    private OnRightImageViewClickListener rightImageViewClickListener;
+
     private static final int TYPE_CHECKBOX = 0;
     private static final int TYPE_SWITCH = 1;
 
@@ -643,7 +646,6 @@ public class SuperTextView extends RelativeLayout {
         setDefaultTextIsBold(centerView, mCenterTopTextBold, mCenterTextBold, mCenterBottomTextBold);
         setDefaultGravity(centerView, mCenterGravity);
         setDefaultDrawable(centerView.getCenterTextView(), mCenterTvDrawableLeft, mCenterTvDrawableRight, mTextViewDrawablePadding);
-        setDefaultCenterViewClickListener(centerView);
 
         addView(centerView);
     }
@@ -672,7 +674,6 @@ public class SuperTextView extends RelativeLayout {
         setDefaultTextIsBold(rightView, mRightTopTextBold, mRightTextBold, mRightBottomTextBold);
         setDefaultGravity(rightView, mRightGravity);
         setDefaultDrawable(rightView.getCenterTextView(), mRightTvDrawableLeft, mRightTvDrawableRight, mTextViewDrawablePadding);
-        setDefaultRightViewClickListener(rightView);
 
         addView(rightView);
     }
@@ -1669,6 +1670,33 @@ public class SuperTextView extends RelativeLayout {
         return this;
     }
 
+    public SuperTextView setLeftImageViewClickListener(OnLeftImageViewClickListener listener) {
+        this.leftImageViewClickListener = listener;
+
+        if (leftIconIV != null) {
+            leftIconIV.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    leftImageViewClickListener.onClickListener();
+                }
+            });
+        }
+        return this;
+    }
+
+    public SuperTextView setRightImageViewClickListener(final OnRightImageViewClickListener listener) {
+        this.rightImageViewClickListener = listener;
+        if (rightIconIV != null) {
+            rightIconIV.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rightImageViewClickListener.onClickListener();
+                }
+            });
+        }
+        return this;
+    }
+
     public SuperTextView setSwitchCheckedChangeListener(OnSwitchCheckedChangeListener switchCheckedChangeListener) {
         this.switchCheckedChangeListener = switchCheckedChangeListener;
         return this;
@@ -1717,6 +1745,14 @@ public class SuperTextView extends RelativeLayout {
     }
 
     public interface OnRightBottomTvClickListener {
+        void onClickListener();
+    }
+
+    public interface OnLeftImageViewClickListener {
+        void onClickListener();
+    }
+
+    public interface OnRightImageViewClickListener {
         void onClickListener();
     }
 
