@@ -153,6 +153,22 @@
                 string = superTextView.getRightBottomString();
                 Toast.makeText(ClickActivity.this, string, Toast.LENGTH_SHORT).show();
             }
+        }).setSwitchCheckedChangeListener(new SuperTextView.OnSwitchCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            }
+        }).setCheckBoxCheckedChangeListener(new SuperTextView.OnCheckBoxCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            }
+        }).setLeftImageViewClickListener(new SuperTextView.OnLeftImageViewClickListener() {
+            @Override
+            public void onClickListener() {
+            }
+        }).setRightImageViewClickListener(new SuperTextView.OnRightImageViewClickListener() {
+            @Override
+            public void onClickListener() {
+            }
         });
 ```
 #### 3.2.4使用第三方库(Picasso或者Glide)加载网络图片
