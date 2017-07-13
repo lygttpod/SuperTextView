@@ -41,7 +41,7 @@
 ```
         dependencies {
         ...
-        compile 'com.github.lygttpod:SuperTextView:2.0.2'
+        compile 'com.github.lygttpod:SuperTextView:2.0.3'
         }
 ```
 
@@ -152,6 +152,22 @@
             public void onClickListener() {
                 string = superTextView.getRightBottomString();
                 Toast.makeText(ClickActivity.this, string, Toast.LENGTH_SHORT).show();
+            }
+        }).setSwitchCheckedChangeListener(new SuperTextView.OnSwitchCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            }
+        }).setCheckBoxCheckedChangeListener(new SuperTextView.OnCheckBoxCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            }
+        }).setLeftImageViewClickListener(new SuperTextView.OnLeftImageViewClickListener() {
+            @Override
+            public void onClickListener() {
+            }
+        }).setRightImageViewClickListener(new SuperTextView.OnRightImageViewClickListener() {
+            @Override
+            public void onClickListener() {
             }
         });
 ```
