@@ -42,6 +42,33 @@
         <attr name="sRightTopTextSize" format="dimension" />
         <attr name="sRightBottomTextSize" format="dimension" />
 
+        <!-- -->
+        <attr name="sLeftTopTextPadding" format="dimension" />
+        <attr name="sLeftTextPadding" format="dimension" />
+        <attr name="sLeftBottomTextPadding" format="dimension" />
+
+        <attr name="sCenterTopTextPadding" format="dimension" />
+        <attr name="sCenterTextPadding" format="dimension" />
+        <attr name="sCenterBottomTextPadding" format="dimension" />
+
+        <attr name="sRightTopTextPadding" format="dimension" />
+        <attr name="sRightTextPadding" format="dimension" />
+        <attr name="sRightBottomTextPadding" format="dimension" />
+
+        <!--  -->
+
+        <attr name="sLeftTopTextBg" format="color" />
+        <attr name="sLeftTextBg" format="color" />
+        <attr name="sLeftBottomTextBg" format="color" />
+
+        <attr name="sCenterTopTextBg" format="color" />
+        <attr name="sCenterTextBg" format="color" />
+        <attr name="sCenterBottomTextBg" format="color" />
+
+        <attr name="sRightTopTextBg" format="color" />
+        <attr name="sRightTextBg" format="color" />
+        <attr name="sRightBottomTextBg" format="color" />
+
         <!--  -->
         <attr name="sLeftTopLines" format="integer" />
         <attr name="sLeftLines" format="integer" />

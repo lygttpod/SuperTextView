@@ -63,7 +63,6 @@ public class SuperTextView extends RelativeLayout {
     private String mCenterTopTextString;
     private String mCenterBottomTextString;
 
-
     private int mLeftTextColor;
     private int mLeftTopTextColor;
     private int mLeftBottomTextColor;
@@ -88,6 +87,31 @@ public class SuperTextView extends RelativeLayout {
     private int mCenterTextSize;
     private int mCenterTopTextSize;
     private int mCenterBottomTextSize;
+
+    private int mLeftTextPadding;
+    private int mLeftTopTextPadding;
+    private int mLeftBottomTextPadding;
+
+    private int mCenterTextPadding;
+    private int mCenterTopTextPadding;
+    private int mCenterBottomTextPadding;
+
+    private int mRightTextPadding;
+    private int mRightTopTextPadding;
+    private int mRightBottomTextPadding;
+
+    private int mLeftTextBg;
+    private int mLeftTopTextBg;
+    private int mLeftBottomTextBg;
+
+    private int mCenterTextBg;
+    private int mCenterTopTextBg;
+    private int mCenterBottomTextBg;
+
+    private int mRightTextBg;
+    private int mRightTopTextBg;
+    private int mRightBottomTextBg;
+
 
     private int mLeftTopLines;
     private int mLeftLines;
@@ -328,6 +352,33 @@ public class SuperTextView extends RelativeLayout {
         mRightTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTextSize, defaultSize);
         mRightTopTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTopTextSize, defaultSize);
         mRightBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightBottomTextSize, defaultSize);
+
+        //////////////////////////////////////////////////
+        mLeftTopTextPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftTopTextPadding, 0);
+        mLeftTextPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftTextPadding, 0);
+        mLeftBottomTextPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftBottomTextPadding, 0);
+
+        mCenterTopTextPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterTopTextPadding, 0);
+        mCenterTextPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterTextPadding, 0);
+        mCenterBottomTextPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterBottomTextPadding, 0);
+
+        mRightTopTextPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTopTextPadding, 0);
+        mRightTextPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTextPadding, 0);
+        mRightBottomTextPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightBottomTextPadding, 0);
+
+        //////////////////////////////////////////////////
+
+        mLeftTopTextBg = typedArray.getResourceId(R.styleable.SuperTextView_sLeftTopTextBg, 0);
+        mLeftTextBg = typedArray.getResourceId(R.styleable.SuperTextView_sLeftTextBg, 0);
+        mLeftBottomTextBg = typedArray.getResourceId(R.styleable.SuperTextView_sLeftBottomTextBg, 0);
+
+        mCenterTopTextBg = typedArray.getResourceId(R.styleable.SuperTextView_sCenterTopTextBg, 0);
+        mCenterTextBg = typedArray.getResourceId(R.styleable.SuperTextView_sCenterTextBg, 0);
+        mCenterBottomTextBg = typedArray.getResourceId(R.styleable.SuperTextView_sCenterBottomTextBg, 0);
+
+        mRightTopTextBg = typedArray.getResourceId(R.styleable.SuperTextView_sRightTopTextBg, 0);
+        mRightTextBg = typedArray.getResourceId(R.styleable.SuperTextView_sRightTextBg, 0);
+        mRightBottomTextBg = typedArray.getResourceId(R.styleable.SuperTextView_sRightBottomTextBg, 0);
 
         //////////////////////////////////////////////////
         mLeftTopLines = typedArray.getInt(R.styleable.SuperTextView_sLeftTopLines, 1);
@@ -602,8 +653,8 @@ public class SuperTextView extends RelativeLayout {
         leftBaseViewParams.setMargins(mLeftViewMarginLeft, 0, mLeftViewMarginRight, 0);
 
         leftView.setLayoutParams(leftBaseViewParams);
-
         leftView.setCenterSpaceHeight(centerSpaceHeight);
+
         setDefaultString(leftView, mLeftTopTextString, mLeftTextString, mLeftBottomTextString);
         setDefaultColor(leftView, mLeftTopTextColor, mLeftTextColor, mLeftBottomTextColor);
         setDefaultSize(leftView, mLeftTopTextSize, mLeftTextSize, mLeftBottomTextSize);
@@ -612,9 +663,12 @@ public class SuperTextView extends RelativeLayout {
         setDefaultTextIsBold(leftView, mLeftTopTextBold, mLeftTextBold, mLeftBottomTextBold);
         setDefaultGravity(leftView, mLeftGravity);
         setDefaultDrawable(leftView.getCenterTextView(), mLeftTvDrawableLeft, mLeftTvDrawableRight, mTextViewDrawablePadding);
+        setDefaultBackgroundResource(leftView, mLeftTopTextBg, mLeftTextBg, mLeftBottomTextBg);
+        setDefaultPadding(leftView, mLeftTopTextPadding, mLeftTextPadding, mLeftBottomTextPadding);
 
         addView(leftView);
     }
+
 
     /**
      * 初始化CenterTextView
@@ -646,6 +700,8 @@ public class SuperTextView extends RelativeLayout {
         setDefaultTextIsBold(centerView, mCenterTopTextBold, mCenterTextBold, mCenterBottomTextBold);
         setDefaultGravity(centerView, mCenterGravity);
         setDefaultDrawable(centerView.getCenterTextView(), mCenterTvDrawableLeft, mCenterTvDrawableRight, mTextViewDrawablePadding);
+        setDefaultBackgroundResource(centerView, mCenterTopTextBg, mCenterTextBg, mCenterBottomTextBg);
+        setDefaultPadding(centerView, mCenterTopTextPadding, mCenterTextPadding, mCenterBottomTextPadding);
 
         addView(centerView);
     }
@@ -674,6 +730,8 @@ public class SuperTextView extends RelativeLayout {
         setDefaultTextIsBold(rightView, mRightTopTextBold, mRightTextBold, mRightBottomTextBold);
         setDefaultGravity(rightView, mRightGravity);
         setDefaultDrawable(rightView.getCenterTextView(), mRightTvDrawableLeft, mRightTvDrawableRight, mTextViewDrawablePadding);
+        setDefaultBackgroundResource(rightView, mRightTopTextBg, mRightTextBg, mRightBottomTextBg);
+        setDefaultPadding(rightView, mRightTopTextPadding, mRightTextPadding, mRightBottomTextPadding);
 
         addView(rightView);
     }
@@ -774,6 +832,44 @@ public class SuperTextView extends RelativeLayout {
         BaseTextView baseTextView = new BaseTextView(mContext);
         baseTextView.setId(id);
         return baseTextView;
+    }
+
+    /**
+     * 设置默认textView的padding
+     *
+     * @param baseTextView      textView
+     * @param topTextPadding    topTextPadding
+     * @param centerTextPadding centerTextPadding
+     * @param bottomTextPadding bottomTextPadding
+     */
+    private void setDefaultPadding(BaseTextView baseTextView, int topTextPadding, int centerTextPadding, int bottomTextPadding) {
+        if (baseTextView != null) {
+            baseTextView.getTopTextView().setPadding(topTextPadding, topTextPadding, topTextPadding, topTextPadding);
+            baseTextView.getCenterTextView().setPadding(centerTextPadding, centerTextPadding, centerTextPadding, centerTextPadding);
+            baseTextView.getBottomTextView().setPadding(bottomTextPadding, bottomTextPadding, bottomTextPadding, bottomTextPadding);
+        }
+    }
+
+    /**
+     * 设置单个textView背景
+     *
+     * @param baseTextView baseTextView
+     * @param topTextBg    topTextBg
+     * @param centerTextBg centerTextBg
+     * @param bottomTextBg bottomTextBg
+     */
+    private void setDefaultBackgroundResource(BaseTextView baseTextView, int topTextBg, int centerTextBg, int bottomTextBg) {
+        if (baseTextView != null) {
+            if (topTextBg != 0) {
+                baseTextView.getTopTextView().setBackgroundResource(topTextBg);
+            }
+            if (centerTextBg != 0) {
+                baseTextView.getCenterTextView().setBackgroundResource(centerTextBg);
+            }
+            if (bottomTextBg != 0) {
+                baseTextView.getBottomTextView().setBackgroundResource(bottomTextBg);
+            }
+        }
     }
 
     /**

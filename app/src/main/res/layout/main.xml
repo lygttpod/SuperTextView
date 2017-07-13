@@ -147,6 +147,16 @@
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                stv:sLeftTextString="设置"
+                stv:sRightTextBg="@color/colorAccent"
+                stv:sRightTextColor="@color/white"
+                stv:sRightTextPadding="5dp"
+                stv:sRightTextSize="10sp"
+                stv:sRightTextString="单个text背景颜色" />
+
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 stv:sLeftIconHeight="25dp"
                 stv:sLeftIconRes="@drawable/ic_hint_music"
                 stv:sLeftIconWidth="25dp"
