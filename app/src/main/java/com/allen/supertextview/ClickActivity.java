@@ -2,7 +2,6 @@ package com.allen.supertextview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
@@ -10,7 +9,7 @@ import com.allen.library.SuperTextView;
 
 public class ClickActivity extends AppCompatActivity {
 
-    private SuperTextView superTextView;
+    private SuperTextView superTextView, superTextView_cb, superTextView_switch;
 
     private String string;
 
@@ -20,6 +19,8 @@ public class ClickActivity extends AppCompatActivity {
         setContentView(R.layout.activity_click);
 
         superTextView = (SuperTextView) findViewById(R.id.super_tv);
+        superTextView_cb = (SuperTextView) findViewById(R.id.super_cb_tv);
+        superTextView_switch = (SuperTextView) findViewById(R.id.super_switch_tv);
 
         /**
          * 根据实际需求对需要的View设置点击事件
@@ -84,15 +85,6 @@ public class ClickActivity extends AppCompatActivity {
                 string = superTextView.getRightBottomString();
                 Toast.makeText(ClickActivity.this, string, Toast.LENGTH_SHORT).show();
             }
-        }).setSwitchCheckedChangeListener(new SuperTextView.OnSwitchCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            }
-        }).setCheckBoxCheckedChangeListener(new SuperTextView.OnCheckBoxCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-            }
         }).setLeftImageViewClickListener(new SuperTextView.OnLeftImageViewClickListener() {
             @Override
             public void onClickListener() {
@@ -104,5 +96,28 @@ public class ClickActivity extends AppCompatActivity {
             }
         });
 
+        superTextView_cb.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
+            @Override
+            public void onClickListener() {
+                superTextView_cb.setCbChecked(!superTextView_cb.getCbisChecked());
+            }
+        }).setCheckBoxCheckedChangeListener(new SuperTextView.OnCheckBoxCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Toast.makeText(ClickActivity.this, "" + isChecked, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        superTextView_switch.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
+            @Override
+            public void onClickListener() {
+                superTextView_switch.setSwitchIsChecked(!superTextView_switch.getSwitchIsChecked());
+            }
+        }).setSwitchCheckedChangeListener(new SuperTextView.OnSwitchCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Toast.makeText(ClickActivity.this, "" + isChecked, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

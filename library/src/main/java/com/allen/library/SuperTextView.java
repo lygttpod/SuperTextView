@@ -1613,6 +1613,19 @@ public class SuperTextView extends RelativeLayout {
         return this;
     }
 
+    /**
+     * 获取switch状态
+     *
+     * @return 返回switch当前选中状态
+     */
+    public boolean getSwitchIsChecked() {
+        boolean isChecked = false;
+        if (mSwitch != null) {
+            isChecked = mSwitch.isChecked();
+        }
+        return isChecked;
+    }
+
 
     /**
      * 设置右边tv的右侧图片

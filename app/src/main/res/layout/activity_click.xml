@@ -7,11 +7,11 @@
     android:orientation="vertical">
 
     <com.allen.library.SuperTextView
-        android:background="@color/colorAccent"
         android:id="@+id/super_tv"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_gravity="center"
+        android:background="@color/colorAccent"
         stv:sCenterBottomTextString="中下"
         stv:sCenterTextString="中"
         stv:sCenterTopTextString="中上"
@@ -22,4 +22,30 @@
         stv:sRightBottomTextString="右下"
         stv:sRightTextString="右中"
         stv:sRightTopTextString="右上" />
+
+    <com.allen.library.SuperTextView
+        android:id="@+id/super_cb_tv"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        stv:sCenterViewGravity="left_center"
+        stv:sDividerLineType="both"
+        stv:sLeftBottomTextString="招商银行（8888）"
+        stv:sLeftIconRes="@drawable/bank_zhao_shang"
+        stv:sLeftTopTextString="银行卡支付"
+        stv:sLeftViewGravity="left_center"
+        stv:sRightCheckBoxRes="@drawable/circular_check_bg"
+        stv:sRightViewType="checkbox" />
+
+    <com.allen.library.SuperTextView
+        android:id="@+id/super_switch_tv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        stv:sDividerLineType="both"
+        stv:sLeftTextString="声音"
+        stv:sRightViewType="switchBtn"
+        stv:sSwitchIsChecked="true"
+        stv:sThumbResource="@drawable/thumb"
+        stv:sTrackResource="@drawable/track" />
 </LinearLayout>
