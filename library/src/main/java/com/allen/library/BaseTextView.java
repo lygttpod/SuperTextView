@@ -154,6 +154,7 @@ public class BaseTextView extends LinearLayout {
         topTextView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(topMaxEms)});
         centerTextView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(centerMaxEms)});
         bottomTextView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(bottomMaxEms)});
+
     }
 
     public void setCenterSpaceHeight(int centerSpaceHeight) {

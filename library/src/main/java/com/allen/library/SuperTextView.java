@@ -655,7 +655,6 @@ public class SuperTextView extends RelativeLayout {
         leftView.setLayoutParams(leftBaseViewParams);
         leftView.setCenterSpaceHeight(centerSpaceHeight);
 
-        setDefaultString(leftView, mLeftTopTextString, mLeftTextString, mLeftBottomTextString);
         setDefaultColor(leftView, mLeftTopTextColor, mLeftTextColor, mLeftBottomTextColor);
         setDefaultSize(leftView, mLeftTopTextSize, mLeftTextSize, mLeftBottomTextSize);
         setDefaultLines(leftView, mLeftTopLines, mLeftLines, mLeftBottomLines);
@@ -665,6 +664,7 @@ public class SuperTextView extends RelativeLayout {
         setDefaultDrawable(leftView.getCenterTextView(), mLeftTvDrawableLeft, mLeftTvDrawableRight, mTextViewDrawablePadding);
         setDefaultBackgroundResource(leftView, mLeftTopTextBg, mLeftTextBg, mLeftBottomTextBg);
         setDefaultPadding(leftView, mLeftTopTextPadding, mLeftTextPadding, mLeftBottomTextPadding);
+        setDefaultString(leftView, mLeftTopTextString, mLeftTextString, mLeftBottomTextString);
 
         addView(leftView);
     }
@@ -692,7 +692,6 @@ public class SuperTextView extends RelativeLayout {
         centerView.setLayoutParams(centerBaseViewParams);
         centerView.setCenterSpaceHeight(centerSpaceHeight);
 
-        setDefaultString(centerView, mCenterTopTextString, mCenterTextString, mCenterBottomTextString);
         setDefaultColor(centerView, mCenterTopTextColor, mCenterTextColor, mCenterBottomTextColor);
         setDefaultSize(centerView, mCenterTopTextSize, mCenterTextSize, mCenterBottomTextSize);
         setDefaultLines(centerView, mCenterTopLines, mCenterLines, mCenterBottomLines);
@@ -702,6 +701,7 @@ public class SuperTextView extends RelativeLayout {
         setDefaultDrawable(centerView.getCenterTextView(), mCenterTvDrawableLeft, mCenterTvDrawableRight, mTextViewDrawablePadding);
         setDefaultBackgroundResource(centerView, mCenterTopTextBg, mCenterTextBg, mCenterBottomTextBg);
         setDefaultPadding(centerView, mCenterTopTextPadding, mCenterTextPadding, mCenterBottomTextPadding);
+        setDefaultString(centerView, mCenterTopTextString, mCenterTextString, mCenterBottomTextString);
 
         addView(centerView);
     }
@@ -722,7 +722,6 @@ public class SuperTextView extends RelativeLayout {
         rightView.setLayoutParams(rightBaseViewParams);
         rightView.setCenterSpaceHeight(centerSpaceHeight);
 
-        setDefaultString(rightView, mRightTopTextString, mRightTextString, mRightBottomTextString);
         setDefaultColor(rightView, mRightTopTextColor, mRightTextColor, mRightBottomTextColor);
         setDefaultSize(rightView, mRightTopTextSize, mRightTextSize, mRightBottomTextSize);
         setDefaultLines(rightView, mRightTopLines, mRightLines, mRightBottomLines);
@@ -732,6 +731,7 @@ public class SuperTextView extends RelativeLayout {
         setDefaultDrawable(rightView.getCenterTextView(), mRightTvDrawableLeft, mRightTvDrawableRight, mTextViewDrawablePadding);
         setDefaultBackgroundResource(rightView, mRightTopTextBg, mRightTextBg, mRightBottomTextBg);
         setDefaultPadding(rightView, mRightTopTextPadding, mRightTextPadding, mRightBottomTextPadding);
+        setDefaultString(rightView, mRightTopTextString, mRightTextString, mRightBottomTextString);
 
         addView(rightView);
     }

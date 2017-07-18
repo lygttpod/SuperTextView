@@ -64,8 +64,8 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         stv:mLeftViewWidth="30dp"
-        stv:sCenterTextString="123456789123456789123456789123456789"
-        stv:sCenterMaxEms="5"
+        stv:sCenterMaxEms="20"
+        stv:sCenterTextString="骑马舞骑马舞骑马舞骑马舞骑马舞骑马舞骑马舞骑马舞"
         stv:sCenterViewGravity="left_center"
         stv:sLeftTextString="舞动歌单"
         stv:sLeftViewGravity="left_center" />
