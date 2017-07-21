@@ -107,6 +107,7 @@ public class BaseTextView extends LinearLayout {
      */
     public LayoutParams getParams(LayoutParams params) {
         if (params == null) {
+            // TODO: 2017/7/21 问题记录 ：之前设置 MATCH_PARENT导致每次重新设置string的时候，textView的宽度都已第一次为准，在列表中使用的时候服用出现混乱，特此记录一下，以后处理好布局之间套用时候设置WRAP_CONTENT和MATCH_PARENT出现问题
             params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         }
         return params;
