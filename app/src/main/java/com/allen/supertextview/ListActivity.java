@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by allen on 2016/10/31.
+ * 列表中使用
  */
 
 public class ListActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
