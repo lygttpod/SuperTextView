@@ -368,17 +368,17 @@ public class SuperTextView extends RelativeLayout {
 
         //////////////////////////////////////////////////
 
-        mLeftTopTextBg = typedArray.getResourceId(R.styleable.SuperTextView_sLeftTopTextBg, 0);
-        mLeftTextBg = typedArray.getResourceId(R.styleable.SuperTextView_sLeftTextBg, 0);
-        mLeftBottomTextBg = typedArray.getResourceId(R.styleable.SuperTextView_sLeftBottomTextBg, 0);
+        mLeftTopTextBg = typedArray.getColor(R.styleable.SuperTextView_sLeftTopTextBg, 0);
+        mLeftTextBg = typedArray.getColor(R.styleable.SuperTextView_sLeftTextBg, 0);
+        mLeftBottomTextBg = typedArray.getColor(R.styleable.SuperTextView_sLeftBottomTextBg, 0);
 
-        mCenterTopTextBg = typedArray.getResourceId(R.styleable.SuperTextView_sCenterTopTextBg, 0);
-        mCenterTextBg = typedArray.getResourceId(R.styleable.SuperTextView_sCenterTextBg, 0);
-        mCenterBottomTextBg = typedArray.getResourceId(R.styleable.SuperTextView_sCenterBottomTextBg, 0);
+        mCenterTopTextBg = typedArray.getColor(R.styleable.SuperTextView_sCenterTopTextBg, 0);
+        mCenterTextBg = typedArray.getColor(R.styleable.SuperTextView_sCenterTextBg, 0);
+        mCenterBottomTextBg = typedArray.getColor(R.styleable.SuperTextView_sCenterBottomTextBg, 0);
 
-        mRightTopTextBg = typedArray.getResourceId(R.styleable.SuperTextView_sRightTopTextBg, 0);
-        mRightTextBg = typedArray.getResourceId(R.styleable.SuperTextView_sRightTextBg, 0);
-        mRightBottomTextBg = typedArray.getResourceId(R.styleable.SuperTextView_sRightBottomTextBg, 0);
+        mRightTopTextBg = typedArray.getColor(R.styleable.SuperTextView_sRightTopTextBg, 0);
+        mRightTextBg = typedArray.getColor(R.styleable.SuperTextView_sRightTextBg, 0);
+        mRightBottomTextBg = typedArray.getColor(R.styleable.SuperTextView_sRightBottomTextBg, 0);
 
         //////////////////////////////////////////////////
         mLeftTopLines = typedArray.getInt(R.styleable.SuperTextView_sLeftTopLines, 1);
@@ -861,13 +861,13 @@ public class SuperTextView extends RelativeLayout {
     private void setDefaultBackgroundResource(BaseTextView baseTextView, int topTextBg, int centerTextBg, int bottomTextBg) {
         if (baseTextView != null) {
             if (topTextBg != 0) {
-                baseTextView.getTopTextView().setBackgroundResource(topTextBg);
+                baseTextView.getTopTextView().setBackgroundColor(topTextBg);
             }
             if (centerTextBg != 0) {
-                baseTextView.getCenterTextView().setBackgroundResource(centerTextBg);
+                baseTextView.getCenterTextView().setBackgroundColor(centerTextBg);
             }
             if (bottomTextBg != 0) {
-                baseTextView.getBottomTextView().setBackgroundResource(bottomTextBg);
+                baseTextView.getBottomTextView().setBackgroundColor(bottomTextBg);
             }
         }
     }
