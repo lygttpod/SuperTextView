@@ -8,6 +8,7 @@ import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -368,17 +369,17 @@ public class SuperTextView extends RelativeLayout {
 
         //////////////////////////////////////////////////
 
-        mLeftTopTextBg = typedArray.getColor(R.styleable.SuperTextView_sLeftTopTextBg, 0);
-        mLeftTextBg = typedArray.getColor(R.styleable.SuperTextView_sLeftTextBg, 0);
-        mLeftBottomTextBg = typedArray.getColor(R.styleable.SuperTextView_sLeftBottomTextBg, 0);
+        mLeftTopTextBg = typedArray.getColor(R.styleable.SuperTextView_sLeftTopTextBg, defaultColor);
+        mLeftTextBg = typedArray.getColor(R.styleable.SuperTextView_sLeftTextBg, defaultColor);
+        mLeftBottomTextBg = typedArray.getColor(R.styleable.SuperTextView_sLeftBottomTextBg, defaultColor);
 
-        mCenterTopTextBg = typedArray.getColor(R.styleable.SuperTextView_sCenterTopTextBg, 0);
-        mCenterTextBg = typedArray.getColor(R.styleable.SuperTextView_sCenterTextBg, 0);
-        mCenterBottomTextBg = typedArray.getColor(R.styleable.SuperTextView_sCenterBottomTextBg, 0);
+        mCenterTopTextBg = typedArray.getColor(R.styleable.SuperTextView_sCenterTopTextBg, defaultColor);
+        mCenterTextBg = typedArray.getColor(R.styleable.SuperTextView_sCenterTextBg, defaultColor);
+        mCenterBottomTextBg = typedArray.getColor(R.styleable.SuperTextView_sCenterBottomTextBg, defaultColor);
 
-        mRightTopTextBg = typedArray.getColor(R.styleable.SuperTextView_sRightTopTextBg, 0);
-        mRightTextBg = typedArray.getColor(R.styleable.SuperTextView_sRightTextBg, 0);
-        mRightBottomTextBg = typedArray.getColor(R.styleable.SuperTextView_sRightBottomTextBg, 0);
+        mRightTopTextBg = typedArray.getColor(R.styleable.SuperTextView_sRightTopTextBg, defaultColor);
+        mRightTextBg = typedArray.getColor(R.styleable.SuperTextView_sRightTextBg, defaultColor);
+        mRightBottomTextBg = typedArray.getColor(R.styleable.SuperTextView_sRightBottomTextBg, defaultColor);
 
         //////////////////////////////////////////////////
         mLeftTopLines = typedArray.getInt(R.styleable.SuperTextView_sLeftTopLines, 1);
@@ -860,13 +861,13 @@ public class SuperTextView extends RelativeLayout {
      */
     private void setDefaultBackgroundResource(BaseTextView baseTextView, int topTextBg, int centerTextBg, int bottomTextBg) {
         if (baseTextView != null) {
-            if (topTextBg != 0) {
+            if (topTextBg != defaultColor) {
                 baseTextView.getTopTextView().setBackgroundColor(topTextBg);
             }
-            if (centerTextBg != 0) {
+            if (centerTextBg != defaultColor) {
                 baseTextView.getCenterTextView().setBackgroundColor(centerTextBg);
             }
-            if (bottomTextBg != 0) {
+            if (bottomTextBg != defaultColor) {
                 baseTextView.getBottomTextView().setBackgroundColor(bottomTextBg);
             }
         }
