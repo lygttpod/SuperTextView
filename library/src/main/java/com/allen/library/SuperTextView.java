@@ -864,28 +864,26 @@ public class SuperTextView extends RelativeLayout {
      */
     private void setDefaultGravity(BaseTextView baseTextView, int gravity) {
         if (baseTextView != null) {
-            setGravity(baseTextView.getTopTextView(), gravity);
-            setGravity(baseTextView.getCenterTextView(), gravity);
-            setGravity(baseTextView.getBottomTextView(), gravity);
+            setGravity(baseTextView, gravity);
         }
     }
 
     /**
      * 文字对其方式
      *
-     * @param textView textView
-     * @param gravity  对其方式
+     * @param baseTextView textView
+     * @param gravity      对其方式
      */
-    private void setGravity(TextView textView, int gravity) {
+    private void setGravity(BaseTextView baseTextView, int gravity) {
         switch (gravity) {
             case gravity_Left_Center:
-                textView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+                baseTextView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
                 break;
             case gravity_Center:
-                textView.setGravity(Gravity.CENTER);
+                baseTextView.setGravity(Gravity.CENTER);
                 break;
             case gravity_Right_Center:
-                textView.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+                baseTextView.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
                 break;
         }
     }
@@ -1515,6 +1513,19 @@ public class SuperTextView extends RelativeLayout {
             mSwitch.setChecked(checked);
         }
         return this;
+    }
+
+    /**
+     * 获取switch状态
+     *
+     * @return 返回switch当前选中状态
+     */
+    public boolean getSwitchIsChecked() {
+        boolean isChecked = false;
+        if (mSwitch != null) {
+            isChecked = mSwitch.isChecked();
+        }
+        return isChecked;
     }
 
 
