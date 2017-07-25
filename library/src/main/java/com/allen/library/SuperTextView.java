@@ -21,7 +21,7 @@ import android.widget.TextView;
 /**
  * Created by Allen on 2017/7/1.
  * <p>
- * 打造万能的TextView布局满足市面常见的布局样式
+ * 打造万能的布局满足市面常见的样式
  */
 
 public class SuperTextView extends RelativeLayout {
