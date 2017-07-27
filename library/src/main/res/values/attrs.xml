@@ -132,6 +132,11 @@
         <attr name="sRightTopTextIsBold" format="boolean" />
         <attr name="sRightTextIsBold" format="boolean" />
         <attr name="sRightBottomTextIsBold" format="boolean" />
+
+        <attr name="sLeftTextBackground" format="reference" />
+        <attr name="sCenterTextBackground" format="reference" />
+        <attr name="sRightTextBackground" format="reference" />
+
         <!--  -->
 
         <attr name="sLeftIconRes" format="reference" />

@@ -54,7 +54,6 @@
                 stv:sLeftIconRes="@drawable/not_bank_card_icon"
                 stv:sLeftTopTextString="银行卡支付"
                 stv:sLeftViewGravity="left_center"
-
                 stv:sRightCheckBoxRes="@drawable/circular_check_bg" />
 
 
@@ -65,6 +64,22 @@
                 stv:sLeftIconRes="@drawable/head_default"
                 stv:sLeftTopTextString="张三"
                 stv:sLeftViewGravity="left_center" />
+
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                stv:sCenterBottomTextColor="#979b9e"
+                stv:sCenterBottomTextString="关注"
+                stv:sCenterSpaceHeight="10dp"
+                stv:sCenterTopTextString="666666"
+                stv:sLeftBottomTextColor="#979b9e"
+                stv:sLeftBottomTextString="点赞"
+                stv:sLeftTopTextString="100000"
+                stv:sLeftViewMarginLeft="30dp"
+                stv:sRightBottomTextColor="#979b9e"
+                stv:sRightBottomTextString="粉丝"
+                stv:sRightTopTextString="888888"
+                stv:sRightViewMarginRight="30dp" />
 
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
@@ -90,6 +105,45 @@
                 stv:sSwitchMinWidth="40dp"
                 stv:sThumbResource="@drawable/thumb"
                 stv:sTrackResource="@drawable/track" />
+
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                stv:sCenterTextBackground="@drawable/shape_cycle"
+                stv:sCenterTextColor="@color/white"
+                stv:sCenterTextSize="13sp"
+                stv:sCenterTextString="6"
+                stv:sCenterViewGravity="left_center"
+                stv:sLeftTextString="功能介绍" />
+
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                stv:sCenterTextColor="@color/white"
+                stv:sCenterTvDrawableLeft="@mipmap/red_circle"
+                stv:sCenterViewGravity="left_center"
+                stv:sLeftIconRes="@drawable/uv"
+                stv:sLeftTextString="钱包" />
+
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                stv:sLeftTextString="特别关心"
+                stv:sRightIconRes="@drawable/arrow_right_red"
+                stv:sRightTextBackground="@drawable/shape_cycle_rectangle"
+                stv:sRightTextColor="@color/white"
+                stv:sRightTextSize="10sp"
+                stv:sRightTextString="NEW" />
+
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                stv:sLeftTextString="微信"
+                stv:sRightTextBackground="@drawable/shape_cycle_rectangle_download"
+                stv:sRightTextColor="@color/colorPrimary"
+                stv:sRightTextSize="10sp"
+                stv:sRightTextString="下载" />
+
 
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"

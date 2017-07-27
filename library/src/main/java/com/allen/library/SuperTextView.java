@@ -125,6 +125,10 @@ public class SuperTextView extends RelativeLayout {
     private boolean mRightTextBold;
     private boolean mRightBottomTextBold;
 
+    private Drawable mLeftTextBackground;
+    private Drawable mCenterTextBackground;
+    private Drawable mRightTextBackground;
+
     private Drawable mLeftTvDrawableLeft;
     private Drawable mLeftTvDrawableRight;
 
@@ -418,6 +422,11 @@ public class SuperTextView extends RelativeLayout {
         mRightTopTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sRightTopTextIsBold, false);
         mRightTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sRightTextIsBold, false);
         mRightBottomTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sRightBottomTextIsBold, false);
+
+        mLeftTextBackground = typedArray.getDrawable(R.styleable.SuperTextView_sLeftTextBackground);
+        mCenterTextBackground = typedArray.getDrawable(R.styleable.SuperTextView_sCenterTextBackground);
+        mRightTextBackground = typedArray.getDrawable(R.styleable.SuperTextView_sRightTextBackground);
+
         //////////////////////////////////////////////
         useRipple = typedArray.getBoolean(R.styleable.SuperTextView_sUseRipple, true);
         mBackground_drawable = typedArray.getDrawable(R.styleable.SuperTextView_sBackgroundDrawableRes);
@@ -612,9 +621,11 @@ public class SuperTextView extends RelativeLayout {
         setDefaultTextIsBold(leftView, mLeftTopTextBold, mLeftTextBold, mLeftBottomTextBold);
         setDefaultGravity(leftView, mLeftGravity);
         setDefaultDrawable(leftView.getCenterTextView(), mLeftTvDrawableLeft, mLeftTvDrawableRight, mTextViewDrawablePadding);
+        setDefaultBackground(leftView.getCenterTextView(), mLeftTextBackground);
 
         addView(leftView);
     }
+
 
     /**
      * 初始化CenterTextView
@@ -646,6 +657,7 @@ public class SuperTextView extends RelativeLayout {
         setDefaultTextIsBold(centerView, mCenterTopTextBold, mCenterTextBold, mCenterBottomTextBold);
         setDefaultGravity(centerView, mCenterGravity);
         setDefaultDrawable(centerView.getCenterTextView(), mCenterTvDrawableLeft, mCenterTvDrawableRight, mTextViewDrawablePadding);
+        setDefaultBackground(centerView.getCenterTextView(), mCenterTextBackground);
 
         addView(centerView);
     }
@@ -674,6 +686,7 @@ public class SuperTextView extends RelativeLayout {
         setDefaultTextIsBold(rightView, mRightTopTextBold, mRightTextBold, mRightBottomTextBold);
         setDefaultGravity(rightView, mRightGravity);
         setDefaultDrawable(rightView.getCenterTextView(), mRightTvDrawableLeft, mRightTvDrawableRight, mTextViewDrawablePadding);
+        setDefaultBackground(rightView.getCenterTextView(), mRightTextBackground);
 
         addView(rightView);
     }
@@ -902,6 +915,23 @@ public class SuperTextView extends RelativeLayout {
         }
         textView.setCompoundDrawablesWithIntrinsicBounds(drawableLeft, null, drawableRight, null);
         textView.setCompoundDrawablePadding(drawablePadding);
+    }
+
+    /**
+     * 设置textView的背景，用户传入drawable实现圆角之类的样式
+     *
+     * @param textView
+     * @param background
+     */
+    private void setDefaultBackground(TextView textView, Drawable background) {
+        if (background != null) {
+            textView.setVisibility(VISIBLE);
+            if (Build.VERSION.SDK_INT < 16) {
+                textView.setBackgroundDrawable(background);
+            } else {
+                textView.setBackground(background);
+            }
+        }
     }
 
     /**
