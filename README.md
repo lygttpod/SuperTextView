@@ -296,6 +296,9 @@ sShapeStrokeWidth | dimension  | 边框宽度 | 默认0dp
 sShapeStrokeDashWidth | dimension  | 虚线宽度 | 默认0dp
 sShapeStrokeDashGap | dimension  | 虚线间隙宽度 | 默认0dp
 sShapeStrokeColor | color  | 边框颜色 | 默认0dp
+sLeftTextBackground | reference  | 左边textView的背景
+sCenterTextBackground | reference  | 中间textView的背景
+sRightTextBackground | reference  | 右边textView的背景
 
 
 > 黑格尔曾说过：存在即合理。SuperTextView的出现应该就是某种需求下的产物。
