@@ -41,7 +41,7 @@
 ```
         dependencies {
         ...
-        compile 'com.github.lygttpod:SuperTextView:2.0.9'
+        compile 'com.github.lygttpod:SuperTextView:2.1.0'
         }
 ```
 
@@ -72,30 +72,37 @@
        /**
      * 可以通过链式设置大部分常用的属性值
      */
-         superTextView.setLeftTopString("")
-                 .setLeftString("")
-                 .setLeftBottomString("")
-                 .setCenterTopString("")
-                 .setCenterString("")
-                 .setCenterBottomString("")
-                 .setRightTopString("")
-                 .setRightString("")
-                 .setRightBottomString("")
-                 .setLeftIcon(0)
-                 .setRightIcon(0)
-                 .setRightTvDrawableLeft(null)
-                 .setRightTvDrawableRight(null)
-                 .setCbChecked(true)
-                 .setCbBackground(null);
+        superTextView.setLeftTopString("")
+                .setLeftString("")
+                .setLeftBottomString("")
+                .setCenterTopString("")
+                .setCenterString("")
+                .setCenterBottomString("")
+                .setRightTopString("")
+                .setRightString("")
+                .setRightBottomString("")
+                .setLeftIcon(0)
+                .setRightIcon(0)
+                .setCbChecked(true)
+                .setCbBackground(null)
+                .setLeftTvDrawableLeft(null)
+                .setLeftTvDrawableRight(null)
+                .setCenterTvDrawableLeft(null)
+                .setCenterTvDrawableRight(null)
+                .setRightTvDrawableLeft(null)
+                .setRightTvDrawableRight(null);
 ```
 #### 3.2.3点击事件（可根据需求选择实现单个或者多个点击事件）
 ```
         /**
          * 根据实际需求对需要的View设置点击事件
          */
+        /**
+         * 根据实际需求对需要的View设置点击事件
+         */
         superTextView.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
             @Override
-            public void onClickListener() {
+            public void onClickListener(SuperTextView superTextView) {
                 string = "整个item的点击事件";
                 Toast.makeText(ClickActivity.this, string, Toast.LENGTH_SHORT).show();
             }
@@ -153,19 +160,60 @@
                 string = superTextView.getRightBottomString();
                 Toast.makeText(ClickActivity.this, string, Toast.LENGTH_SHORT).show();
             }
+        }).setLeftImageViewClickListener(new SuperTextView.OnLeftImageViewClickListener() {
+            @Override
+            public void onClickListener(ImageView imageView) {
+                Toast.makeText(ClickActivity.this, "左边图片", Toast.LENGTH_SHORT).show();
+            }
+        }).setRightImageViewClickListener(new SuperTextView.OnRightImageViewClickListener() {
+            @Override
+            public void onClickListener(ImageView imageView) {
+                Toast.makeText(ClickActivity.this, "右边图片", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        superTextView_cb.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
+            @Override
+            public void onClickListener(SuperTextView superTextView) {
+                superTextView.setCbChecked(!superTextView.getCbisChecked());
+            }
+        }).setCheckBoxCheckedChangeListener(new SuperTextView.OnCheckBoxCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Toast.makeText(ClickActivity.this, "" + isChecked, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        superTextView_switch.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
+            @Override
+            public void onClickListener(SuperTextView superTextView) {
+                superTextView.setSwitchIsChecked(!superTextView.getSwitchIsChecked());
+            }
+        }).setSwitchCheckedChangeListener(new SuperTextView.OnSwitchCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Toast.makeText(ClickActivity.this, "" + isChecked, Toast.LENGTH_SHORT).show();
+            }
         });
 ```
 #### 3.2.4使用第三方库(Picasso或者Glide)加载网络图片
 ```
-        Picasso.with(this).load("https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3860616424,1789830124&fm=80&w=179&h=119&img.PNG")
-                .placeholder(R.drawable.head_default).into(superTextView.getLeftIconIV());
+        String url1 = "https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3860616424,1789830124&fm=80&w=179&h=119&img.PNG";
+        String url2 = "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=219781665,3032880226&fm=80&w=179&h=119&img.JPEG";
+        String url3 = "https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3860616424,1789830124&fm=80&w=179&h=119&img.PNG";
+        
+        Picasso.with(this)
+                .load(url1)
+                .placeholder(R.drawable.head_default)
+                .into(superTextView.getLeftIconIV());
+        Glide.with(this)
+                .load(url2)
+                .placeholder(R.drawable.head_default)
+                .fitCenter()
+                .into(superTextView2.getRightIconIV());
 
-
-        Glide.with(this).load("https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=219781665,3032880226&fm=80&w=179&h=119&img.JPEG")
-                .placeholder(R.drawable.head_default).fitCenter().into(superTextView2.getRightIconIV());
-
-
-        Glide.with(this).load("https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3860616424,1789830124&fm=80&w=179&h=119&img.PNG")
+        Glide.with(this)
+                .load(url3)
                 .placeholder(R.drawable.head_default)
                 .into(new SimpleTarget<GlideDrawable>() {
                     @Override
@@ -233,8 +281,10 @@ sCenterTvDrawableLeft | reference  | 中间TextView左侧的drawable
 sCenterTvDrawableRight | reference  | 中间TextView右侧的drawable
 sRightTvDrawableLeft | reference  | 右边TextView左侧的drawable
 sRightTvDrawableRight | reference  | 右边TextView右侧的drawable
+sRightTvDrawableRightWidth | dimension  | 右边TextView右侧的drawable的宽度
+sRightTvDrawableRightHeight | dimension  | 右边TextView右侧的drawable的高度
 sTextViewDrawablePadding | dimension  | TextView的drawable对应的Padding | 默认10dp
-mLeftViewWidth | dimension  | 左边textView的宽度  为了中间文字左对齐的时候使用
+sLeftViewWidth | dimension  | 左边textView的宽度  为了中间文字左对齐的时候使用
 sTopDividerLineMarginLR | dimension  | 上边分割线的MarginLeft和MarginRight | 默认0dp
 sTopDividerLineMarginLeft | dimension  | 上边分割线的MarginLeft | 默认0dp
 sTopDividerLineMarginRight | dimension  | 上边分割线的MarginRight | 默认0dp
