@@ -92,6 +92,10 @@
 
         <attr name="sRightTvDrawableLeft" format="reference" />
         <attr name="sRightTvDrawableRight" format="reference" />
+
+        <attr name="sRightTvDrawableRightWidth" format="dimension" />
+        <attr name="sRightTvDrawableRightHeight" format="dimension" />
+
         <!--  -->
         <attr name="sTextViewDrawablePadding" format="dimension" />
         <!--  -->
