@@ -60,8 +60,10 @@
         android:id="@+id/super_tv3"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        stv:sLeftTopTextString="迪丽热巴"
+        stv:sLeftTopTextString="自定义sRightTvDrawableRight的宽高"
         stv:sLeftViewGravity="left_center"
         stv:sRightIconRes="@drawable/arrow_right_red"
-        stv:sRightTvDrawableRight="@drawable/head_default" />
+        stv:sRightTvDrawableRight="@drawable/head_default"
+        stv:sRightTvDrawableRightHeight="40dp"
+        stv:sRightTvDrawableRightWidth="40dp" />
 </LinearLayout>

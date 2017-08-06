@@ -45,29 +45,39 @@
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        stv:sLeftViewWidth="30dp"
         stv:sCenterTextString="张姐专业广场舞"
         stv:sCenterViewGravity="left_center"
         stv:sLeftTextString="领队"
-        stv:sLeftViewGravity="left_center" />
+        stv:sLeftViewGravity="left_center"
+        stv:sLeftViewWidth="30dp" />
 
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        stv:sLeftViewWidth="30dp"
         stv:sCenterTextString="九眼龙天天广场A座"
         stv:sCenterViewGravity="left_center"
         stv:sLeftTextString="活动地点"
-        stv:sLeftViewGravity="left_center" />
+        stv:sLeftViewGravity="left_center"
+        stv:sLeftViewWidth="30dp" />
 
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        stv:sLeftViewWidth="30dp"
-        stv:sCenterTextString="123456789123456789123456789123456789"
-        stv:sCenterMaxEms="5"
+        stv:sCenterTextString="最炫民族风"
         stv:sCenterViewGravity="left_center"
         stv:sLeftTextString="舞动歌单"
-        stv:sLeftViewGravity="left_center" />
+        stv:sLeftViewGravity="left_center"
+        stv:sLeftViewWidth="30dp" />
+
+    <com.allen.library.SuperTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        stv:sCenterLines="3"
+        stv:sCenterTextString="测试换行对齐方式测试换行对齐方式测试换行对齐方式"
+        stv:sCenterViewGravity="left_center"
+        stv:sLeftTextString="换行对齐"
+        stv:sCenterMaxEms="40"
+        stv:sLeftViewGravity="left_center"
+        stv:sLeftViewWidth="30dp" />
 
 </LinearLayout>

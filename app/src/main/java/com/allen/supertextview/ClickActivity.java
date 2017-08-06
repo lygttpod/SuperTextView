@@ -3,6 +3,7 @@ package com.allen.supertextview;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.allen.library.SuperTextView;
@@ -27,9 +28,10 @@ public class ClickActivity extends AppCompatActivity {
          */
         superTextView.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
             @Override
-            public void onClickListener() {
+            public void onClickListener(SuperTextView superTextView) {
                 string = "整个item的点击事件";
                 Toast.makeText(ClickActivity.this, string, Toast.LENGTH_SHORT).show();
+                superTextView.setLeftBottomString("aa");
             }
         }).setLeftTopTvClickListener(new SuperTextView.OnLeftTopTvClickListener() {
             @Override
@@ -87,19 +89,18 @@ public class ClickActivity extends AppCompatActivity {
             }
         }).setLeftImageViewClickListener(new SuperTextView.OnLeftImageViewClickListener() {
             @Override
-            public void onClickListener() {
+            public void onClickListener(ImageView imageView) {
             }
         }).setRightImageViewClickListener(new SuperTextView.OnRightImageViewClickListener() {
             @Override
-            public void onClickListener() {
-
+            public void onClickListener(ImageView imageView) {
             }
         });
 
         superTextView_cb.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
             @Override
-            public void onClickListener() {
-                superTextView_cb.setCbChecked(!superTextView_cb.getCbisChecked());
+            public void onClickListener(SuperTextView superTextView) {
+                superTextView.setCbChecked(!superTextView.getCbisChecked());
             }
         }).setCheckBoxCheckedChangeListener(new SuperTextView.OnCheckBoxCheckedChangeListener() {
             @Override
@@ -110,8 +111,8 @@ public class ClickActivity extends AppCompatActivity {
 
         superTextView_switch.setOnSuperTextViewClickListener(new SuperTextView.OnSuperTextViewClickListener() {
             @Override
-            public void onClickListener() {
-                superTextView_switch.setSwitchIsChecked(!superTextView_switch.getSwitchIsChecked());
+            public void onClickListener(SuperTextView superTextView) {
+                superTextView.setSwitchIsChecked(!superTextView.getSwitchIsChecked());
             }
         }).setSwitchCheckedChangeListener(new SuperTextView.OnSwitchCheckedChangeListener() {
             @Override
