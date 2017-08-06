@@ -72,11 +72,12 @@
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:visibility="gone"
         stv:sCenterLines="3"
+        stv:sCenterMaxEms="40"
         stv:sCenterTextString="测试换行对齐方式测试换行对齐方式测试换行对齐方式"
         stv:sCenterViewGravity="left_center"
         stv:sLeftTextString="换行对齐"
-        stv:sCenterMaxEms="40"
         stv:sLeftViewGravity="left_center"
         stv:sLeftViewWidth="30dp" />
 

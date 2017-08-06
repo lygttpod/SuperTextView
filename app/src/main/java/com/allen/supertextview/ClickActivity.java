@@ -31,7 +31,6 @@ public class ClickActivity extends AppCompatActivity {
             public void onClickListener(SuperTextView superTextView) {
                 string = "整个item的点击事件";
                 Toast.makeText(ClickActivity.this, string, Toast.LENGTH_SHORT).show();
-                superTextView.setLeftBottomString("aa");
             }
         }).setLeftTopTvClickListener(new SuperTextView.OnLeftTopTvClickListener() {
             @Override

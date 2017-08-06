@@ -61,12 +61,22 @@ public class TypeActivity extends AppCompatActivity {
         superTextView2 = (SuperTextView) findViewById(R.id.super_tv2);
         superTextView3 = (SuperTextView) findViewById(R.id.super_tv3);
 
-        Picasso.with(this).load("https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3860616424,1789830124&fm=80&w=179&h=119&img.PNG")
-                .placeholder(R.drawable.head_default).into(superTextView.getLeftIconIV());
-        Glide.with(this).load("https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=219781665,3032880226&fm=80&w=179&h=119&img.JPEG")
-                .placeholder(R.drawable.head_default).fitCenter().into(superTextView2.getRightIconIV());
+        String url1 = "https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3860616424,1789830124&fm=80&w=179&h=119&img.PNG";
+        String url2 = "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=219781665,3032880226&fm=80&w=179&h=119&img.JPEG";
+        String url3 = "https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3860616424,1789830124&fm=80&w=179&h=119&img.PNG";
 
-        Glide.with(this).load("https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3860616424,1789830124&fm=80&w=179&h=119&img.PNG")
+        Picasso.with(this)
+                .load(url1)
+                .placeholder(R.drawable.head_default)
+                .into(superTextView.getLeftIconIV());
+        Glide.with(this)
+                .load(url2)
+                .placeholder(R.drawable.head_default)
+                .fitCenter()
+                .into(superTextView2.getRightIconIV());
+
+        Glide.with(this)
+                .load(url3)
                 .placeholder(R.drawable.head_default)
                 .into(new SimpleTarget<GlideDrawable>() {
                     @Override

@@ -3,12 +3,14 @@
     xmlns:stv="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/selector_white"
     android:orientation="vertical">
 
     <com.allen.library.SuperTextView
         android:id="@+id/super_tv"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        stv:sLeftBottomMaxEms="30"
         stv:sLeftViewGravity="left_center"
-        stv:sLeftBottomMaxEms="30" />
+        stv:sUseRipple="false" />
 </LinearLayout>
