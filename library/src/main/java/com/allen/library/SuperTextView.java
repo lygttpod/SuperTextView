@@ -377,7 +377,7 @@ public class SuperTextView extends RelativeLayout {
 
         mTextViewDrawablePadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sTextViewDrawablePadding, default_Margin);
         ////////////////////////////////////////////////
-        mLeftViewWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_mLeftViewWidth, 0);
+        mLeftViewWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftViewWidth, 0);
         ///////////////////////////////////////////////
         mTopDividerLineMarginLR = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sTopDividerLineMarginLR, 0);
         mTopDividerLineMarginLeft = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sTopDividerLineMarginLeft, 0);
