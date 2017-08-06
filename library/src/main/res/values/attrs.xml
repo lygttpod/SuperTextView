@@ -95,7 +95,7 @@
         <!--  -->
         <attr name="sTextViewDrawablePadding" format="dimension" />
         <!--  -->
-        <attr name="mLeftViewWidth" format="dimension" />
+        <attr name="sLeftViewWidth" format="dimension" />
         <!--  -->
         <attr name="sTopDividerLineMarginLR" format="dimension" />
         <attr name="sTopDividerLineMarginLeft" format="dimension" />
