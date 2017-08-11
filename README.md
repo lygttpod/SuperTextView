@@ -298,8 +298,8 @@ sLeftViewMarginLeft | dimension  | 左边view的MarginLeft | 默认10dp
 sLeftViewMarginRight | dimension  | 左边view的MarginRight | 默认10dp
 sCenterViewMarginLeft | dimension  | 中间view的MarginLeft | 默认10dp
 sCenterViewMarginRight | dimension  | 中间view的MarginRight | 默认10dp
-sRightViewMarginLeft | dimension  | 中间view的MarginLeft | 默认10dp
-sRightViewMarginRight | dimension  | 中间view的MarginRight | 默认10dp
+sRightViewMarginLeft | dimension  | 右边view的MarginLeft | 默认10dp
+sRightViewMarginRight | dimension  | 右边view的MarginRight | 默认10dp
 sLeftTextIsBold | boolean  | 左边文字是否加粗 | 默认false
 sLeftTopTextIsBold | boolean  | 左上文字是否加粗 | 默认false
 sLeftBottomTextIsBold | boolean  | 左下文字是否加粗 | 默认false
