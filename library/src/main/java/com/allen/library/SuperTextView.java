@@ -48,7 +48,7 @@ public class SuperTextView extends RelativeLayout {
 
     private int defaultColor = 0xFF373737;//文字默认颜色
     private int defaultSize = 15;//默认字体大小
-    private int defaultMaxEms = 10;
+    private int defaultMaxEms = 15;
 
 
     private String mLeftTextString;
@@ -262,7 +262,7 @@ public class SuperTextView extends RelativeLayout {
     private float cornersBottomLeftRadius;
     private float cornersBottomRightRadius;
 
-    private float strokeWidth;
+    private int strokeWidth;
     private int strokeColor;
 
     private float strokeDashWidth;
@@ -1189,7 +1189,7 @@ public class SuperTextView extends RelativeLayout {
      * @param string 字符串
      * @return 方便链式调用
      */
-    public SuperTextView setLeftTopString(String string) {
+    public SuperTextView setLeftTopString(CharSequence string) {
         if (leftView != null) {
             leftView.setTopTextString(string);
         }
@@ -1202,7 +1202,7 @@ public class SuperTextView extends RelativeLayout {
      * @param string 字符串
      * @return 方便链式调用
      */
-    public SuperTextView setLeftString(String string) {
+    public SuperTextView setLeftString(CharSequence string) {
         if (leftView != null) {
             leftView.setCenterTextString(string);
         }
@@ -1215,7 +1215,7 @@ public class SuperTextView extends RelativeLayout {
      * @param string 字符串
      * @return 方便链式调用
      */
-    public SuperTextView setLeftBottomString(String string) {
+    public SuperTextView setLeftBottomString(CharSequence string) {
         if (leftView != null) {
             leftView.setBottomTextString(string);
         }
@@ -1229,7 +1229,7 @@ public class SuperTextView extends RelativeLayout {
      * @param string 字符串
      * @return 方便链式调用
      */
-    public SuperTextView setCenterTopString(String string) {
+    public SuperTextView setCenterTopString(CharSequence string) {
         if (centerView != null) {
             centerView.setTopTextString(string);
         }
@@ -1242,7 +1242,7 @@ public class SuperTextView extends RelativeLayout {
      * @param string 字符串
      * @return 方便链式调用
      */
-    public SuperTextView setCenterString(String string) {
+    public SuperTextView setCenterString(CharSequence string) {
         if (centerView != null) {
             centerView.setCenterTextString(string);
         }
@@ -1255,7 +1255,7 @@ public class SuperTextView extends RelativeLayout {
      * @param string 字符串
      * @return 方便链式调用
      */
-    public SuperTextView setCenterBottomString(String string) {
+    public SuperTextView setCenterBottomString(CharSequence string) {
         if (centerView != null) {
             centerView.setBottomTextString(string);
         }
@@ -1268,7 +1268,7 @@ public class SuperTextView extends RelativeLayout {
      * @param string 字符串
      * @return 方便链式调用
      */
-    public SuperTextView setRightTopString(String string) {
+    public SuperTextView setRightTopString(CharSequence string) {
         if (rightView != null) {
             rightView.setTopTextString(string);
         }
@@ -1281,7 +1281,7 @@ public class SuperTextView extends RelativeLayout {
      * @param string 字符串
      * @return 方便链式调用
      */
-    public SuperTextView setRightString(String string) {
+    public SuperTextView setRightString(CharSequence string) {
         if (rightView != null) {
             rightView.setCenterTextString(string);
         }
@@ -1294,7 +1294,7 @@ public class SuperTextView extends RelativeLayout {
      * @param string 字符串
      * @return 方便链式调用
      */
-    public SuperTextView setRightBottomString(String string) {
+    public SuperTextView setRightBottomString(CharSequence string) {
         if (rightView != null) {
             rightView.setBottomTextString(string);
         }
@@ -1707,6 +1707,19 @@ public class SuperTextView extends RelativeLayout {
         return this;
     }
 
+    /**
+     * 设置背景
+     *
+     * @param drawable 背景资源
+     * @return 对象
+     */
+    public SuperTextView setSBackground(Drawable drawable) {
+        if (drawable != null) {
+            this.setBackgroundDrawable(drawable);
+        }
+        return this;
+    }
+
     /////////////////////////////////////对外暴露的方法---begin/////////////////////////////////
 
 
@@ -1921,7 +1934,7 @@ public class SuperTextView extends RelativeLayout {
      * 设置边框  宽度  颜色  虚线  间隙
      */
     private void setBorder() {
-        gradientDrawable.setStroke(dip2px(mContext, strokeWidth), strokeColor, strokeDashWidth, strokeDashGap);
+        gradientDrawable.setStroke(strokeWidth, strokeColor, strokeDashWidth, strokeDashGap);
     }
 
     /**
@@ -1929,7 +1942,7 @@ public class SuperTextView extends RelativeLayout {
      */
     private void setRadius() {
         if (cornersRadius != 0) {
-            gradientDrawable.setCornerRadius(dip2px(mContext, cornersRadius));//设置圆角的半径
+            gradientDrawable.setCornerRadius(cornersRadius);//设置圆角的半径
         } else {
             //1、2两个参数表示左上角，3、4表示右上角，5、6表示右下角，7、8表示左下角
             gradientDrawable.setCornerRadii(
@@ -1945,6 +1958,151 @@ public class SuperTextView extends RelativeLayout {
 
     }
 
+    /**
+     * 设置按下的颜色
+     *
+     * @param color 颜色
+     * @return 对象
+     */
+    public SuperTextView setShapeSelectorPressedColor(int color) {
+        this.selectorPressedColor = color;
+        return this;
+    }
+
+    /**
+     * 设置正常的颜色
+     *
+     * @param color 颜色
+     * @return 对象
+     */
+    public SuperTextView setShapeSelectorNormalColor(int color) {
+        this.selectorNormalColor = color;
+        return this;
+    }
+
+    /**
+     * 设置填充的颜色
+     *
+     * @param color 颜色
+     * @return 对象
+     */
+    public SuperTextView setShapeSolidColor(int color) {
+        this.solidColor = color;
+        return this;
+    }
+
+    /**
+     * 设置边框宽度
+     *
+     * @param strokeWidth 边框宽度值
+     * @return 对象
+     */
+    public SuperTextView setShapeStrokeWidth(int strokeWidth) {
+        this.strokeWidth = dip2px(mContext, strokeWidth);
+        return this;
+    }
+
+    /**
+     * 设置边框颜色
+     *
+     * @param strokeColor 边框颜色
+     * @return 对象
+     */
+    public SuperTextView setShapeStrokeColor(int strokeColor) {
+        this.strokeColor = strokeColor;
+        return this;
+    }
+
+    /**
+     * 设置边框虚线宽度
+     *
+     * @param strokeDashWidth 边框虚线宽度
+     * @return 对象
+     */
+    public SuperTextView setShapeSrokeDashWidth(float strokeDashWidth) {
+        this.strokeDashWidth = dip2px(mContext, strokeDashWidth);
+        return this;
+    }
+
+    /**
+     * 设置边框虚线间隙
+     *
+     * @param strokeDashGap 边框虚线间隙值
+     * @return 对象
+     */
+    public SuperTextView setShapeStrokeDashGap(float strokeDashGap) {
+        this.strokeDashGap = dip2px(mContext, strokeDashGap);
+        return this;
+    }
+
+    /**
+     * 设置圆角半径
+     *
+     * @param radius 半径
+     * @return 对象
+     */
+    public SuperTextView setShapeCornersRadius(float radius) {
+        this.cornersRadius = dip2px(mContext, radius);
+        return this;
+    }
+
+    /**
+     * 设置左上圆角半径
+     *
+     * @param radius 半径
+     * @return 对象
+     */
+    public SuperTextView setShapeCornersTopLeftRadius(float radius) {
+        this.cornersTopLeftRadius = dip2px(mContext, radius);
+        return this;
+    }
+
+    /**
+     * 设置右上圆角半径
+     *
+     * @param radius 半径
+     * @return 对象
+     */
+    public SuperTextView setShapeCornersTopRightRadius(float radius) {
+        this.cornersTopRightRadius = dip2px(mContext, radius);
+        return this;
+    }
+
+    /**
+     * 设置左下圆角半径
+     *
+     * @param radius 半径
+     * @return 对象
+     */
+    public SuperTextView setShapeCornersBottomLeftRadius(float radius) {
+        this.cornersBottomLeftRadius = dip2px(mContext, radius);
+        return this;
+    }
+
+    /**
+     * 设置右下圆角半径
+     *
+     * @param radius 半径
+     * @return 对象
+     */
+    public SuperTextView setShapeCornersBottomRightRadius(float radius) {
+        this.cornersBottomRightRadius = dip2px(mContext, radius);
+        return this;
+    }
+
+    /**
+     * 所有与shape相关的属性设置之后调用此方法才生效
+     *
+     * @return 对象
+     */
+    public SuperTextView useShape() {
+        if (Build.VERSION.SDK_INT < 16) {
+            setBackgroundDrawable(getSelector());
+        } else {
+            setBackground(getSelector());
+        }
+        return this;
+    }
 
     /**
      * 单位转换工具类

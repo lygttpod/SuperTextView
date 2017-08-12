@@ -114,23 +114,23 @@ public class BaseTextView extends LinearLayout {
     }
 
 
-    private void setTextString(TextView textView, String textString) {
+    private void setTextString(TextView textView, CharSequence textString) {
         textView.setText(textString);
         if (!TextUtils.isEmpty(textString)) {
             textView.setVisibility(VISIBLE);
         }
     }
 
-    public void setTopTextString(String s) {
+    public void setTopTextString(CharSequence s) {
         setTextString(topTextView, s);
     }
 
 
-    public void setCenterTextString(String s) {
+    public void setCenterTextString(CharSequence s) {
         setTextString(centerTextView, s);
     }
 
-    public void setBottomTextString(String s) {
+    public void setBottomTextString(CharSequence s) {
         setTextString(bottomTextView, s);
     }
 
