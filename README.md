@@ -41,7 +41,7 @@
 ```
         dependencies {
         ...
-        compile 'com.github.lygttpod:SuperTextView:2.1.0'
+        compile 'com.github.lygttpod:SuperTextView:2.1.1'
         }
 ```
 
@@ -72,7 +72,7 @@
        /**
      * 可以通过链式设置大部分常用的属性值
      */
-        superTextView.setLeftTopString("")
+   superTextView.setLeftTopString("")
                 .setLeftString("")
                 .setLeftBottomString("")
                 .setCenterTopString("")
@@ -91,6 +91,20 @@
                 .setCenterTvDrawableRight(null)
                 .setRightTvDrawableLeft(null)
                 .setRightTvDrawableRight(null);
+                
+   superTextView.setShapeCornersRadius(20)
+                .setShapeCornersTopLeftRadius(20)
+                .setShapeCornersBottomLeftRadius(20)
+                .setShapeCornersTopRightRadius(20)
+                .setShapeCornersBottomRightRadius(20)
+                .setShapeStrokeColor(getResources().getColor(R.color.colorPrimary))
+                .setShapeStrokeWidth(1)
+                .setShapeSrokeDashWidth(1)
+                .setShapeStrokeDashGap(5)
+                .setShapeSolidColor(getResources().getColor(R.color.white))
+                .setShapeSelectorNormalColor(getResources().getColor(R.color.red_btn))
+                .setShapeSelectorPressedColor(getResources().getColor(R.color.gray))
+                .useShape();//设置完各个参数之后这句调用才生效
 ```
 #### 3.2.3点击事件（可根据需求选择实现单个或者多个点击事件）
 ```
