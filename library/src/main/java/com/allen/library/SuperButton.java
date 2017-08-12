@@ -33,7 +33,7 @@ public class SuperButton extends Button {
     private float cornersBottomLeftRadius;
     private float cornersBottomRightRadius;
 
-    private float strokeWidth;
+    private int strokeWidth;
     private int strokeColor;
 
     private float strokeDashWidth;
@@ -67,12 +67,14 @@ public class SuperButton extends Button {
     private boolean useSelector;
 
 
+    //shape的样式
     public static final int RECTANGLE = 0;
     public static final int OVAL = 1;
     public static final int LINE = 2;
     public static final int RING = 3;
 
 
+    //渐变色的显示方式
     public static final int TOP_BOTTOM = 0;
     public static final int TR_BL = 1;
     public static final int RIGHT_LEFT = 2;
@@ -81,6 +83,14 @@ public class SuperButton extends Button {
     public static final int BL_TR = 5;
     public static final int LEFT_RIGHT = 6;
     public static final int TL_BR = 7;
+
+    //文字显示的位置方式
+    public static final int TEXT_GRAVITY_CENTER = 0;
+    public static final int TEXT_GRAVITY_LEFT = 1;
+    public static final int TEXT_GRAVITY_RIGHT = 2;
+    public static final int TEXT_GRAVITY_TOP = 3;
+    public static final int TEXT_GRAVITY_BOTTOM = 4;
+
 
     private int shapeType;
 
@@ -151,7 +161,7 @@ public class SuperButton extends Button {
         typedArray.recycle();
     }
 
-    void init() {
+    private void init() {
         setClickable(true);
 
         if (Build.VERSION.SDK_INT < 16) {
@@ -358,7 +368,7 @@ public class SuperButton extends Button {
      * 设置边框  宽度  颜色  虚线  间隙
      */
     private void setBorder() {
-        gradientDrawable.setStroke(dip2px(mContext, strokeWidth), strokeColor, strokeDashWidth, strokeDashGap);
+        gradientDrawable.setStroke(strokeWidth, strokeColor, strokeDashWidth, strokeDashGap);
     }
 
     /**
@@ -367,7 +377,7 @@ public class SuperButton extends Button {
     private void setRadius() {
         if (shapeType == GradientDrawable.RECTANGLE) {
             if (cornersRadius != 0) {
-                gradientDrawable.setCornerRadius(dip2px(mContext, cornersRadius));//设置圆角的半径
+                gradientDrawable.setCornerRadius(cornersRadius);//设置圆角的半径
             } else {
                 //1、2两个参数表示左上角，3、4表示右上角，5、6表示右下角，7、8表示左下角
                 gradientDrawable.setCornerRadii(
@@ -382,6 +392,315 @@ public class SuperButton extends Button {
             }
         }
     }
+
+
+    /////////////////对外暴露的方法//////////////
+
+    /**
+     * 设置Shape类型
+     *
+     * @param type 类型
+     * @return 对象
+     */
+    public SuperButton setShapeType(int type) {
+        this.shapeType = type;
+        return this;
+    }
+
+    /**
+     * 设置文字对其方式
+     *
+     * @param gravity 对齐方式
+     * @return 对象
+     */
+    public SuperButton setTextGravity(int gravity) {
+        this.gravity = gravity;
+        return this;
+    }
+
+    /**
+     * 设置按下的颜色
+     *
+     * @param color 颜色
+     * @return 对象
+     */
+    public SuperButton setShapeSelectorPressedColor(int color) {
+        this.selectorPressedColor = color;
+        return this;
+    }
+
+    /**
+     * 设置正常的颜色
+     *
+     * @param color 颜色
+     * @return 对象
+     */
+    public SuperButton setShapeSelectorNormalColor(int color) {
+        this.selectorNormalColor = color;
+        return this;
+    }
+
+    /**
+     * 设置不可点击的颜色
+     *
+     * @param color 颜色
+     * @return 对象
+     */
+    public SuperButton setShapeSelectorDisableColor(int color) {
+        this.selectorDisableColor = color;
+        return this;
+    }
+
+    /**
+     * 设置填充的颜色
+     *
+     * @param color 颜色
+     * @return 对象
+     */
+    public SuperButton setShapeSolidColor(int color) {
+        this.solidColor = color;
+        return this;
+    }
+
+    /**
+     * 设置边框宽度
+     *
+     * @param strokeWidth 边框宽度值
+     * @return 对象
+     */
+    public SuperButton setShapeStrokeWidth(int strokeWidth) {
+        this.strokeWidth = dip2px(mContext, strokeWidth);
+        return this;
+    }
+
+    /**
+     * 设置边框颜色
+     *
+     * @param strokeColor 边框颜色
+     * @return 对象
+     */
+    public SuperButton setShapeStrokeColor(int strokeColor) {
+        this.strokeColor = strokeColor;
+        return this;
+    }
+
+    /**
+     * 设置边框虚线宽度
+     *
+     * @param strokeDashWidth 边框虚线宽度
+     * @return 对象
+     */
+    public SuperButton setShapeSrokeDashWidth(float strokeDashWidth) {
+        this.strokeDashWidth = dip2px(mContext, strokeDashWidth);
+        return this;
+    }
+
+    /**
+     * 设置边框虚线间隙
+     *
+     * @param strokeDashGap 边框虚线间隙值
+     * @return 对象
+     */
+    public SuperButton setShapeStrokeDashGap(float strokeDashGap) {
+        this.strokeDashGap = dip2px(mContext, strokeDashGap);
+        return this;
+    }
+
+    /**
+     * 设置圆角半径
+     *
+     * @param radius 半径
+     * @return 对象
+     */
+    public SuperButton setShapeCornersRadius(float radius) {
+        this.cornersRadius = dip2px(mContext, radius);
+        return this;
+    }
+
+    /**
+     * 设置左上圆角半径
+     *
+     * @param radius 半径
+     * @return 对象
+     */
+    public SuperButton setShapeCornersTopLeftRadius(float radius) {
+        this.cornersTopLeftRadius = dip2px(mContext, radius);
+        return this;
+    }
+
+    /**
+     * 设置右上圆角半径
+     *
+     * @param radius 半径
+     * @return 对象
+     */
+    public SuperButton setShapeCornersTopRightRadius(float radius) {
+        this.cornersTopRightRadius = dip2px(mContext, radius);
+        return this;
+    }
+
+    /**
+     * 设置左下圆角半径
+     *
+     * @param radius 半径
+     * @return 对象
+     */
+    public SuperButton setShapeCornersBottomLeftRadius(float radius) {
+        this.cornersBottomLeftRadius = dip2px(mContext, radius);
+        return this;
+    }
+
+    /**
+     * 设置右下圆角半径
+     *
+     * @param radius 半径
+     * @return 对象
+     */
+    public SuperButton setShapeCornersBottomRightRadius(float radius) {
+        this.cornersBottomRightRadius = dip2px(mContext, radius);
+        return this;
+    }
+
+    /**
+     * 设置shape的宽度
+     *
+     * @param sizeWidth 宽
+     * @return 对象
+     */
+    public SuperButton setShapeSizeWidth(int sizeWidth) {
+        this.sizeWidth = sizeWidth;
+        return this;
+    }
+
+    /**
+     * 设置shape的高度
+     *
+     * @param sizeHeight 高
+     * @return 对象
+     */
+    public SuperButton setShapeSizeHeight(int sizeHeight) {
+        this.sizeHeight = sizeHeight;
+        return this;
+    }
+
+    /**
+     * 设置背景渐变方式
+     *
+     * @param gradientOrientation 渐变类型
+     * @return 对象
+     */
+    public SuperButton setShapeGradientOrientation(int gradientOrientation) {
+        this.gradientOrientation = gradientOrientation;
+        return this;
+    }
+
+    /**
+     * 设置渐变中心X
+     *
+     * @param gradientCenterX 中心x
+     * @return 对象
+     */
+    public SuperButton setShapeGradientCenterX(int gradientCenterX) {
+        this.gradientCenterX = gradientCenterX;
+        return this;
+    }
+
+    /**
+     * 设置渐变中心Y
+     *
+     * @param gradientCenterY 中心y
+     * @return 对象
+     */
+    public SuperButton setShapeGradientCenterY(int gradientCenterY) {
+        this.gradientCenterY = gradientCenterY;
+        return this;
+    }
+
+    /**
+     * 设置渐变半径
+     *
+     * @param gradientGradientRadius 渐变半径
+     * @return 对象
+     */
+    public SuperButton setShapeGradientGradientRadius(int gradientGradientRadius) {
+        this.gradientGradientRadius = gradientGradientRadius;
+        return this;
+    }
+
+    /**
+     * 设置渐变开始的颜色
+     *
+     * @param gradientStartColor 开始颜色
+     * @return 对象
+     */
+    public SuperButton setShapeGradientStartColor(int gradientStartColor) {
+        this.gradientStartColor = gradientStartColor;
+        return this;
+    }
+
+    /**
+     * 设置渐变中间的颜色
+     *
+     * @param gradientCenterColor 中间颜色
+     * @return 对象
+     */
+    public SuperButton setShapeGradientCenterColor(int gradientCenterColor) {
+        this.gradientCenterColor = gradientCenterColor;
+        return this;
+    }
+
+    /**
+     * 设置渐变结束的颜色
+     *
+     * @param gradientEndColor 结束颜色
+     * @return 对象
+     */
+    public SuperButton setShapeGradientEndColor(int gradientEndColor) {
+        this.gradientEndColor = gradientEndColor;
+        return this;
+    }
+
+    /**
+     * 设置渐变类型
+     *
+     * @param gradientType 类型
+     * @return 对象
+     */
+    public SuperButton setShapeGradientType(int gradientType) {
+        this.gradientType = gradientType;
+        return this;
+    }
+
+    /**
+     * 设置是否使用UseLevel
+     *
+     * @param gradientUseLevel true  or  false
+     * @return 对象
+     */
+    public SuperButton setShapeGradientUseLevel(boolean gradientUseLevel) {
+        this.gradientUseLevel = gradientUseLevel;
+        return this;
+    }
+
+    /**
+     * 是否使用selector
+     *
+     * @param useSelector true  or  false
+     * @return 对象
+     */
+    public SuperButton setShapeUseSelector(boolean useSelector) {
+        this.useSelector = useSelector;
+        return this;
+    }
+
+    /**
+     * 使用shape
+     * 所有与shape相关的属性设置之后调用此方法才生效
+     */
+    public void setUseShape() {
+        init();
+    }
+
 
     /**
      * 单位转换工具类
