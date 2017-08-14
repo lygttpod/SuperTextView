@@ -1720,7 +1720,124 @@ public class SuperTextView extends RelativeLayout {
         return this;
     }
 
-    /////////////////////////////////////对外暴露的方法---begin/////////////////////////////////
+    /**
+     * 获取左上的TextView
+     *
+     * @return textView
+     */
+    public TextView getLeftTopTextView() {
+        TextView textView = null;
+        if (leftView != null) {
+            textView = leftView.getTopTextView();
+        }
+        return textView;
+    }
+
+    /**
+     * 获取左中的TextView
+     *
+     * @return textView
+     */
+    public TextView getLeftTextView() {
+        TextView textView = null;
+        if (leftView != null) {
+            textView = leftView.getCenterTextView();
+        }
+        return textView;
+    }
+
+    /**
+     * 获取左下的TextView
+     *
+     * @return textView
+     */
+    public TextView getLeftBottomTextView() {
+        TextView textView = null;
+        if (leftView != null) {
+            textView = leftView.getBottomTextView();
+        }
+        return textView;
+    }
+
+    /**
+     * 获取中上的TextView
+     *
+     * @return textView
+     */
+    public TextView getCenterTopTextView() {
+        TextView textView = null;
+        if (centerView != null) {
+            textView = centerView.getTopTextView();
+        }
+        return textView;
+    }
+
+    /**
+     * 获取中中的TextView
+     *
+     * @return textView
+     */
+    public TextView getCenterTextView() {
+        TextView textView = null;
+        if (centerView != null) {
+            textView = centerView.getCenterTextView();
+        }
+        return textView;
+    }
+
+    /**
+     * 获取中下的TextView
+     *
+     * @return textView
+     */
+    public TextView getCenterBottomTextView() {
+        TextView textView = null;
+        if (centerView != null) {
+            textView = centerView.getBottomTextView();
+        }
+        return textView;
+    }
+
+    /**
+     * 获取右上的TextView
+     *
+     * @return textView
+     */
+    public TextView getRightTopTextView() {
+        TextView textView = null;
+        if (rightView != null) {
+            textView = rightView.getTopTextView();
+        }
+        return textView;
+    }
+
+    /**
+     * 获取右中的TextView
+     *
+     * @return textView
+     */
+    public TextView getRightTextView() {
+        TextView textView = null;
+        if (rightView != null) {
+            textView = rightView.getCenterTextView();
+        }
+        return textView;
+    }
+
+    /**
+     * 获取右下的TextView
+     *
+     * @return textView
+     */
+    public TextView getRightBottomTextView() {
+        TextView textView = null;
+        if (rightView != null) {
+            textView = rightView.getBottomTextView();
+        }
+        return textView;
+    }
+
+    /////////////////////////////////////对外暴露的方法---end/////////////////////////////////
 
 
     /**
