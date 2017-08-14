@@ -41,7 +41,7 @@
 ```
         dependencies {
         ...
-        compile 'com.github.lygttpod:SuperTextView:2.1.1'
+        compile 'com.github.lygttpod:SuperTextView:2.1.2'
         }
 ```
 
@@ -277,15 +277,15 @@ sCenterBottomLines | integer  | 中下文字显示行数 | 默认1
 sRightLines | integer  | 右边文字显示行数 | 默认1
 sRightTopLines | integer  | 右上文字显示行数 | 默认1
 sRightBottomLines | integer  | 右下文字显示行数 | 默认1
-sLeftMaxEms | integer  | 左边文字显示个数 | 默认10
-sLeftTopMaxEms | integer  | 左上文字显示个数 | 默认10
-sLeftBottomMaxEms | integer  | 左下文字显示个数 | 默认10
-sCenterMaxEms | integer  | 中间文字显示个数 | 默认10
-sCenterTopMaxEms | integer  | 中上文字显示个数 | 默认10
-sCenterBottomMaxEms | integer  | 中下文字显示个数 | 默认10
-sRightMaxEms | integer  | 右边文字显示个数 | 默认10
-sRightTopMaxEms | integer  | 右上文字显示个数 | 默认10
-sRightBottomMaxEms | integer  | 右下文字显示个数 | 默认10
+sLeftMaxEms | integer  | 左边文字显示个数 | 默认15
+sLeftTopMaxEms | integer  | 左上文字显示个数 | 默认15
+sLeftBottomMaxEms | integer  | 左下文字显示个数 | 默认15
+sCenterMaxEms | integer  | 中间文字显示个数 | 默认15
+sCenterTopMaxEms | integer  | 中上文字显示个数 | 默认15
+sCenterBottomMaxEms | integer  | 中下文字显示个数 | 默认15
+sRightMaxEms | integer  | 右边文字显示个数 | 默认15
+sRightTopMaxEms | integer  | 右上文字显示个数 | 默认15
+sRightBottomMaxEms | integer  | 右下文字显示个数 | 默认15
 sLeftViewGravity | enum  | 左边文字对齐方式<br>left_center(左对齐)<br>center(居中)<br>right_center(右对齐) | 默认center
 sCenterViewGravity | enum  | 中间文字对齐方式<br>left_center(左对齐)<br>center(居中)<br>right_center(右对齐) | 默认center
 sRightViewGravity | enum  | 右边文字对齐方式<br>left_center(左对齐)<br>center(居中)<br>right_center(右对齐) | 默认center
@@ -368,7 +368,7 @@ sRightTextBackground | reference  | 右边textView的背景
 > 黑格尔曾说过：存在即合理。SuperTextView的出现应该就是某种需求下的产物。
 
 
-## 4、[更新日志](https://github.com/lygttpod/SuperTextView/releases)
+# 4、[更新日志](https://github.com/lygttpod/SuperTextView/releases)
 
 # 意见反馈
 
