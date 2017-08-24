@@ -49,7 +49,7 @@
         stv:sCenterViewGravity="left_center"
         stv:sLeftTextString="领队"
         stv:sLeftViewGravity="left_center"
-        stv:sLeftViewWidth="30dp" />
+        stv:sLeftViewWidth="80dp" />
 
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
@@ -58,7 +58,7 @@
         stv:sCenterViewGravity="left_center"
         stv:sLeftTextString="活动地点"
         stv:sLeftViewGravity="left_center"
-        stv:sLeftViewWidth="30dp" />
+        stv:sLeftViewWidth="80dp" />
 
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
@@ -67,7 +67,7 @@
         stv:sCenterViewGravity="left_center"
         stv:sLeftTextString="舞动歌单"
         stv:sLeftViewGravity="left_center"
-        stv:sLeftViewWidth="30dp" />
+        stv:sLeftViewWidth="80dp" />
 
     <com.allen.library.SuperTextView
         android:layout_width="match_parent"
@@ -79,6 +79,6 @@
         stv:sCenterViewGravity="left_center"
         stv:sLeftTextString="换行对齐"
         stv:sLeftViewGravity="left_center"
-        stv:sLeftViewWidth="30dp" />
+        stv:sLeftViewWidth="80dp" />
 
 </LinearLayout>

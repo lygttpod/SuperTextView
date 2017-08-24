@@ -1,70 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:stv="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.allen.library.SuperTextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        stv:sLeftBottomTextString="188****8888"
-        stv:sLeftIconRes="@drawable/head_default"
-        stv:sLeftTopTextString="张三"
-        stv:sLeftViewGravity="left_center"
-        stv:sRightTextString="已实名" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <com.allen.library.SuperTextView
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        stv:sLeftBottomTextString="188****8888"
-        stv:sLeftIconRes="@drawable/head_default"
-        stv:sLeftTopTextString="张三" />
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            stv:sLeftBottomTextString="188****8888"
+            stv:sLeftIconRes="@drawable/head_default"
+            stv:sLeftTopTextString="张三"
+            stv:sLeftViewGravity="left_center"
+            stv:sRightTextString="已实名" />
 
-    <com.allen.library.SuperTextView
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        stv:sLeftTopTextString="迪丽热巴"
-        stv:sLeftViewGravity="left_center"
-        stv:sRightIconRes="@drawable/arrow_right_red"
-        stv:sRightTvDrawableRight="@drawable/head_default" />
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            stv:sLeftBottomTextString="188****8888"
+            stv:sLeftIconRes="@drawable/head_default"
+            stv:sLeftTopTextString="张三" />
+
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            stv:sLeftTopTextString="迪丽热巴"
+            stv:sLeftViewGravity="left_center"
+            stv:sRightIconRes="@drawable/arrow_right_red"
+            stv:sRightTvDrawableRight="@drawable/head_default" />
 
 
-    <com.allen.library.SuperTextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        stv:sCenterTextString="下边展示使用网络图片的情况" />
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            stv:sCenterTextString="下边展示使用网络图片的情况" />
 
-    <com.allen.library.SuperTextView
-        android:id="@+id/super_tv1"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        stv:sLeftBottomTextString="188****8888"
-        stv:sLeftIconRes="@drawable/head_default"
-        stv:sLeftTopTextString="张三"
-        stv:sLeftViewGravity="left_center"
-        stv:sRightTextString="已实名" />
+        <com.allen.library.SuperTextView
+            android:id="@+id/super_tv1"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            stv:sLeftBottomTextString="188****8888"
+            stv:sLeftIconRes="@drawable/head_default"
+            stv:sLeftTopTextString="张三"
+            stv:sLeftViewGravity="left_center"
+            stv:sRightTextString="已实名" />
 
-    <com.allen.library.SuperTextView
-        android:id="@+id/super_tv2"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        stv:sRightBottomTextString="188****8888"
-        stv:sRightIconHeight="60dp"
-        stv:sRightIconRes="@drawable/head_default"
-        stv:sRightIconWidth="60dp"
-        stv:sRightTopTextString="张三"
-        stv:sRightViewGravity="right_center" />
+        <com.allen.library.SuperTextView
+            android:id="@+id/super_tv2"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            stv:sRightBottomTextString="188****8888"
+            stv:sRightIconHeight="60dp"
+            stv:sRightIconRes="@drawable/head_default"
+            stv:sRightIconWidth="60dp"
+            stv:sRightTopTextString="张三"
+            stv:sRightViewGravity="right_center" />
 
-    <com.allen.library.SuperTextView
-        android:id="@+id/super_tv3"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        stv:sLeftMaxEms="30"
-        stv:sLeftTextString="自定义sRightTvDrawableRight的宽高"
-        stv:sLeftViewGravity="left_center"
-        stv:sRightIconRes="@drawable/arrow_right_red"
-        stv:sRightTvDrawableRight="@drawable/head_default"
-        stv:sRightTvDrawableRightHeight="40dp"
-        stv:sRightTvDrawableRightWidth="40dp" />
-</LinearLayout>
+        <com.allen.library.SuperTextView
+            android:id="@+id/super_tv3"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            stv:sLeftMaxEms="30"
+            stv:sLeftTextString="自定义sRightTvDrawableRight的宽高"
+            stv:sLeftViewGravity="left_center"
+            stv:sRightIconRes="@drawable/arrow_right_red"
+            stv:sRightTvDrawableHeight="40dp"
+            stv:sRightTvDrawableRight="@drawable/head_default"
+            stv:sRightTvDrawableWidth="40dp" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/alipay_stv"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            stv:sLeftBottomTextColor="@color/gray_btn"
+            stv:sLeftBottomTextSize="15sp"
+            stv:sLeftBottomTextString="数亿用户都在用，安全可托付"
+            stv:sLeftIconRes="@drawable/alipay_icon"
+            stv:sLeftTextColor="@android:color/black"
+            stv:sLeftTextSize="20sp"
+            stv:sLeftTextString="支付宝"
+            stv:sLeftTvDrawableHeight="15dp"
+            stv:sLeftTvDrawableRight="@drawable/original_label"
+            stv:sLeftTvDrawableWidth="30dp"
+            stv:sLeftViewGravity="left_center"
+            stv:sRightIconRes="@drawable/success_blue13" />
+
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            stv:sCenterTextString="支付宝"
+            stv:sCenterTvDrawableHeight="20dp"
+            stv:sCenterTvDrawableLeft="@drawable/uy"
+            stv:sCenterTvDrawableRight="@drawable/uy"
+            stv:sCenterTvDrawableWidth="20dp"
+            stv:sLeftTextString="支付宝"
+            stv:sLeftTvDrawableHeight="10dp"
+            stv:sLeftTvDrawableLeft="@drawable/uy"
+            stv:sLeftTvDrawableRight="@drawable/uy"
+            stv:sLeftTvDrawableWidth="10dp"
+            stv:sRightTextString="支付宝"
+            stv:sRightTvDrawableHeight="30dp"
+            stv:sRightTvDrawableLeft="@drawable/uy"
+            stv:sRightTvDrawableRight="@drawable/uy"
+            stv:sRightTvDrawableWidth="30dp"
+            stv:sTextViewDrawablePadding="3dp" />
+    </LinearLayout>
+
+</ScrollView>

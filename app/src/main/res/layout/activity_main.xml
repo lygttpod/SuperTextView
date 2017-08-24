@@ -57,7 +57,7 @@
                 android:id="@+id/button5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="带头像类" />
+                android:text="带图片类" />
 
             <Button
                 android:id="@+id/button6"

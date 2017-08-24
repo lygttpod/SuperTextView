@@ -93,8 +93,14 @@
         <attr name="sRightTvDrawableLeft" format="reference" />
         <attr name="sRightTvDrawableRight" format="reference" />
 
-        <attr name="sRightTvDrawableRightWidth" format="dimension" />
-        <attr name="sRightTvDrawableRightHeight" format="dimension" />
+        <attr name="sLeftTvDrawableWidth" format="dimension" />
+        <attr name="sLeftTvDrawableHeight" format="dimension" />
+
+        <attr name="sCenterTvDrawableWidth" format="dimension" />
+        <attr name="sCenterTvDrawableHeight" format="dimension" />
+
+        <attr name="sRightTvDrawableWidth" format="dimension" />
+        <attr name="sRightTvDrawableHeight" format="dimension" />
 
         <!--  -->
         <attr name="sTextViewDrawablePadding" format="dimension" />

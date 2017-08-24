@@ -138,8 +138,14 @@ public class SuperTextView extends RelativeLayout {
     private Drawable mRightTvDrawableLeft;
     private Drawable mRightTvDrawableRight;
 
-    private int mRightTvDrawableRightWidth;
-    private int mRightTvDrawableRightHeight;
+    private int mLeftTvDrawableWidth;
+    private int mLeftTvDrawableHeight;
+
+    private int mCenterTvDrawableWidth;
+    private int mCenterTvDrawableHeight;
+
+    private int mRightTvDrawableWidth;
+    private int mRightTvDrawableHeight;
 
     private int mTextViewDrawablePadding;
 
@@ -381,8 +387,14 @@ public class SuperTextView extends RelativeLayout {
         mTextViewDrawablePadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sTextViewDrawablePadding, default_Margin);
         ////////////////////////////////////////////////
 
-        mRightTvDrawableRightWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTvDrawableRightWidth, -1);
-        mRightTvDrawableRightHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTvDrawableRightHeight, -1);
+        mLeftTvDrawableWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftTvDrawableWidth, -1);
+        mLeftTvDrawableHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftTvDrawableHeight, -1);
+
+        mCenterTvDrawableWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterTvDrawableWidth, -1);
+        mCenterTvDrawableHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterTvDrawableHeight, -1);
+
+        mRightTvDrawableWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTvDrawableWidth, -1);
+        mRightTvDrawableHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightTvDrawableHeight, -1);
 
         mLeftViewWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sLeftViewWidth, 0);
         ///////////////////////////////////////////////
@@ -613,7 +625,7 @@ public class SuperTextView extends RelativeLayout {
         leftBaseViewParams.addRule(RelativeLayout.RIGHT_OF, R.id.sLeftImgId);
         leftBaseViewParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
         if (mLeftViewWidth != 0) {
-            leftBaseViewParams.width = dip2px(mContext, mLeftViewWidth);
+            leftBaseViewParams.width = mLeftViewWidth;
         }
         leftBaseViewParams.setMargins(mLeftViewMarginLeft, 0, mLeftViewMarginRight, 0);
 
@@ -626,7 +638,7 @@ public class SuperTextView extends RelativeLayout {
         setDefaultMaxEms(leftView, mLeftTopMaxEms, mLeftMaxEms, mLeftBottomMaxEms);
         setDefaultTextIsBold(leftView, mLeftTopTextBold, mLeftTextBold, mLeftBottomTextBold);
         setDefaultGravity(leftView, mLeftGravity);
-        setDefaultDrawable(leftView.getCenterTextView(), mLeftTvDrawableLeft, mLeftTvDrawableRight, mTextViewDrawablePadding);
+        setDefaultDrawable(leftView.getCenterTextView(), mLeftTvDrawableLeft, mLeftTvDrawableRight, mTextViewDrawablePadding, mLeftTvDrawableWidth, mLeftTvDrawableHeight);
         setDefaultBackground(leftView.getCenterTextView(), mLeftTextBackground);
         setDefaultString(leftView, mLeftTopTextString, mLeftTextString, mLeftBottomTextString);
 
@@ -662,7 +674,7 @@ public class SuperTextView extends RelativeLayout {
         setDefaultMaxEms(centerView, mCenterTopMaxEms, mCenterMaxEms, mCenterBottomMaxEms);
         setDefaultTextIsBold(centerView, mCenterTopTextBold, mCenterTextBold, mCenterBottomTextBold);
         setDefaultGravity(centerView, mCenterGravity);
-        setDefaultDrawable(centerView.getCenterTextView(), mCenterTvDrawableLeft, mCenterTvDrawableRight, mTextViewDrawablePadding);
+        setDefaultDrawable(centerView.getCenterTextView(), mCenterTvDrawableLeft, mCenterTvDrawableRight, mTextViewDrawablePadding, mCenterTvDrawableWidth, mCenterTvDrawableHeight);
         setDefaultBackground(centerView.getCenterTextView(), mCenterTextBackground);
         setDefaultString(centerView, mCenterTopTextString, mCenterTextString, mCenterBottomTextString);
 
@@ -691,7 +703,7 @@ public class SuperTextView extends RelativeLayout {
         setDefaultMaxEms(rightView, mRightTopMaxEms, mRightMaxEms, mRightBottomMaxEms);
         setDefaultTextIsBold(rightView, mRightTopTextBold, mRightTextBold, mRightBottomTextBold);
         setDefaultGravity(rightView, mRightGravity);
-        setDefaultRightTvDrawable(rightView.getCenterTextView(), mRightTvDrawableLeft, mRightTvDrawableRight, mTextViewDrawablePadding);
+        setDefaultDrawable(rightView.getCenterTextView(), mRightTvDrawableLeft, mRightTvDrawableRight, mTextViewDrawablePadding, mRightTvDrawableWidth, mRightTvDrawableHeight);
         setDefaultBackground(rightView.getCenterTextView(), mRightTextBackground);
         setDefaultString(rightView, mRightTopTextString, mRightTextString, mRightBottomTextString);
 
@@ -869,9 +881,9 @@ public class SuperTextView extends RelativeLayout {
      */
     private void setDefaultLines(BaseTextView baseTextView, int leftTopLines, int leftLines, int bottomLines) {
         if (baseTextView != null) {
-            baseTextView.getTopTextView().setLines(leftTopLines);
-            baseTextView.getCenterTextView().setLines(leftLines);
-            baseTextView.getBottomTextView().setLines(bottomLines);
+            baseTextView.getTopTextView().setMaxLines(leftTopLines);
+            baseTextView.getCenterTextView().setMaxLines(leftLines);
+            baseTextView.getBottomTextView().setMaxLines(bottomLines);
         }
 
     }
@@ -916,29 +928,18 @@ public class SuperTextView extends RelativeLayout {
      * @param drawableRight   右边图标
      * @param drawablePadding 图标距离文字的间距
      */
-    public void setDefaultDrawable(TextView textView, Drawable drawableLeft, Drawable drawableRight, int drawablePadding) {
-        if (drawableLeft != null || drawableRight != null) {
-            textView.setVisibility(VISIBLE);
-        }
-        textView.setCompoundDrawablesWithIntrinsicBounds(drawableLeft, null, drawableRight, null);
-        textView.setCompoundDrawablePadding(drawablePadding);
-    }
-
-    /**
-     * 设置右边textView的drawable   针对drawableRight单独处理支持设置图片的大小
-     *
-     * @param textView        对象
-     * @param drawableLeft    左边图标
-     * @param drawableRight   右边图标
-     * @param drawablePadding 图标距离文字的间距
-     */
-    public void setDefaultRightTvDrawable(TextView textView, Drawable drawableLeft, Drawable drawableRight, int drawablePadding) {
+    public void setDefaultDrawable(TextView textView, Drawable drawableLeft, Drawable drawableRight, int drawablePadding, int drawableWidth, int drawableHeight) {
         if (drawableLeft != null || drawableRight != null) {
             textView.setVisibility(VISIBLE);
         }
         //可以指定drawable的宽高
-        if (drawableRight != null && mRightTvDrawableRightWidth != -1 && mRightTvDrawableRightHeight != -1) {
-            drawableRight.setBounds(0, 0, mRightTvDrawableRightWidth, mRightTvDrawableRightHeight);
+        if (drawableWidth != -1 && drawableHeight != -1) {
+            if (drawableLeft != null) {
+                drawableLeft.setBounds(0, 0, drawableWidth, drawableHeight);
+            }
+            if (drawableRight != null) {
+                drawableRight.setBounds(0, 0, drawableWidth, drawableHeight);
+            }
             textView.setCompoundDrawables(drawableLeft, null, drawableRight, null);
         } else {
             textView.setCompoundDrawablesWithIntrinsicBounds(drawableLeft, null, drawableRight, null);
@@ -1593,7 +1594,7 @@ public class SuperTextView extends RelativeLayout {
      * @param drawableLeft 左边图片资源
      */
     public SuperTextView setLeftTvDrawableLeft(Drawable drawableLeft) {
-        setDefaultDrawable(leftView.getCenterTextView(), drawableLeft, null, mTextViewDrawablePadding);
+        setDefaultDrawable(leftView.getCenterTextView(), drawableLeft, null, mTextViewDrawablePadding, mLeftTvDrawableWidth, mLeftTvDrawableHeight);
         return this;
     }
 
@@ -1603,7 +1604,7 @@ public class SuperTextView extends RelativeLayout {
      * @param drawableRight 右边图片资源
      */
     public SuperTextView setLeftTvDrawableRight(Drawable drawableRight) {
-        setDefaultDrawable(leftView.getCenterTextView(), null, drawableRight, mTextViewDrawablePadding);
+        setDefaultDrawable(leftView.getCenterTextView(), null, drawableRight, mTextViewDrawablePadding, mLeftTvDrawableWidth, mLeftTvDrawableHeight);
         return this;
     }
 
@@ -1614,7 +1615,7 @@ public class SuperTextView extends RelativeLayout {
      * @param drawableLeft 左边图片资源
      */
     public SuperTextView setCenterTvDrawableLeft(Drawable drawableLeft) {
-        setDefaultDrawable(centerView.getCenterTextView(), drawableLeft, null, mTextViewDrawablePadding);
+        setDefaultDrawable(centerView.getCenterTextView(), drawableLeft, null, mTextViewDrawablePadding, mCenterTvDrawableWidth, mCenterTvDrawableHeight);
         return this;
     }
 
@@ -1625,7 +1626,7 @@ public class SuperTextView extends RelativeLayout {
      * @param drawableRight 右边图片资源
      */
     public SuperTextView setCenterTvDrawableRight(Drawable drawableRight) {
-        setDefaultDrawable(centerView.getCenterTextView(), null, drawableRight, mTextViewDrawablePadding);
+        setDefaultDrawable(centerView.getCenterTextView(), null, drawableRight, mTextViewDrawablePadding, mCenterTvDrawableWidth, mCenterTvDrawableHeight);
         return this;
     }
 
@@ -1636,7 +1637,7 @@ public class SuperTextView extends RelativeLayout {
      * @param drawableLeft 左边图片资源
      */
     public SuperTextView setRightTvDrawableLeft(Drawable drawableLeft) {
-        setDefaultDrawable(rightView.getCenterTextView(), drawableLeft, null, mTextViewDrawablePadding);
+        setDefaultDrawable(rightView.getCenterTextView(), drawableLeft, null, mTextViewDrawablePadding, mRightTvDrawableWidth, mRightTvDrawableHeight);
         return this;
     }
 
@@ -1646,8 +1647,7 @@ public class SuperTextView extends RelativeLayout {
      * @param drawableRight 右边图片资源
      */
     public SuperTextView setRightTvDrawableRight(Drawable drawableRight) {
-        setDefaultDrawable(rightView.getCenterTextView(), null, drawableRight, mTextViewDrawablePadding);
-        setDefaultRightTvDrawable(rightView.getCenterTextView(), null, drawableRight, mTextViewDrawablePadding);
+        setDefaultDrawable(rightView.getCenterTextView(), null, drawableRight, mTextViewDrawablePadding, mRightTvDrawableWidth, mRightTvDrawableHeight);
         return this;
     }
 

@@ -4,15 +4,15 @@ apply plugin: 'com.android.library'
 // JitPack Maven
 apply plugin: 'com.github.dcendents.android-maven'
 // Your Group
-group='com.github.lygttpod'
+group = 'com.github.lygttpod'
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 24
-        versionCode 212
-        versionName "2.1.2"
+        versionCode 213
+        versionName "2.1.3"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 

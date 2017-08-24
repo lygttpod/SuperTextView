@@ -56,6 +56,21 @@
                 stv:sLeftViewGravity="left_center"
                 stv:sRightCheckBoxRes="@drawable/circular_check_bg" />
 
+            <com.allen.library.SuperTextView
+                android:id="@+id/alipay_stv"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                stv:sLeftBottomTextColor="@color/gray_btn"
+                stv:sLeftBottomTextSize="15sp"
+                stv:sLeftBottomTextString="数亿用户都在用，安全可托付"
+                stv:sLeftIconRes="@drawable/alipay_icon"
+                stv:sLeftTextColor="@android:color/black"
+                stv:sLeftTextSize="20sp"
+                stv:sLeftTextString="支付宝"
+                stv:sLeftTvDrawableHeight="15dp"
+                stv:sLeftTvDrawableRight="@drawable/original_label"
+                stv:sLeftTvDrawableWidth="30dp"
+                stv:sLeftViewGravity="left_center" />
 
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
