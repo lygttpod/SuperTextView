@@ -41,7 +41,7 @@
 ```
         dependencies {
         ...
-        compile 'com.github.lygttpod:SuperTextView:2.1.2'
+        compile 'com.github.lygttpod:SuperTextView:2.1.3'
         }
 ```
 
@@ -295,8 +295,12 @@ sCenterTvDrawableLeft | reference  | 中间TextView左侧的drawable
 sCenterTvDrawableRight | reference  | 中间TextView右侧的drawable
 sRightTvDrawableLeft | reference  | 右边TextView左侧的drawable
 sRightTvDrawableRight | reference  | 右边TextView右侧的drawable
-sRightTvDrawableRightWidth | dimension  | 右边TextView右侧的drawable的宽度
-sRightTvDrawableRightHeight | dimension  | 右边TextView右侧的drawable的高度
+sLeftTvDrawableWidth | dimension  | 左边TextView的drawable的宽度
+sLeftTvDrawableHeight | dimension  | 左边TextView的drawable的高度
+sCenterTvDrawableWidth | dimension  | 中间TextView的drawable的宽度
+sCenterTvDrawableHeight | dimension  | 中间TextView的drawable的高度
+sRightTvDrawableWidth | dimension  | 右边TextView的drawable的宽度
+sRightTvDrawableHeight | dimension  | 右边TextView的drawable的高度
 sTextViewDrawablePadding | dimension  | TextView的drawable对应的Padding | 默认10dp
 sLeftViewWidth | dimension  | 左边textView的宽度  为了中间文字左对齐的时候使用
 sTopDividerLineMarginLR | dimension  | 上边分割线的MarginLeft和MarginRight | 默认0dp
