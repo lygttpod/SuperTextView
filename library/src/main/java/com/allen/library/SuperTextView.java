@@ -976,11 +976,11 @@ public class SuperTextView extends RelativeLayout {
                     setTopDividerLineView();
                     break;
                 case BOTTOM:
-                    setTBottomDividerLineView();
+                    setBottomDividerLineView();
                     break;
                 case BOTH:
                     setTopDividerLineView();
-                    setTBottomDividerLineView();
+                    setBottomDividerLineView();
                     break;
             }
         }
@@ -1001,7 +1001,7 @@ public class SuperTextView extends RelativeLayout {
     /**
      * 设置下边的分割线
      */
-    private void setTBottomDividerLineView() {
+    private void setBottomDividerLineView() {
         if (mBottomDividerLineMarginLR != 0) {
             initBottomDividerLineView(mBottomDividerLineMarginLR, mBottomDividerLineMarginLR);
         } else {
@@ -1835,6 +1835,79 @@ public class SuperTextView extends RelativeLayout {
             textView = rightView.getBottomTextView();
         }
         return textView;
+    }
+
+    /**
+     * 设置左边textView文字对齐方式
+     *
+     * @param gravity 对齐方式
+     * @return SuperTextView
+     */
+    public SuperTextView setLeftTextGravity(int gravity) {
+        setTextGravity(leftView, gravity);
+        return this;
+    }
+
+    /**
+     * 设置中间textView文字对齐方式
+     *
+     * @param gravity 对齐方式
+     * @return SuperTextView
+     */
+    public SuperTextView setCenterTextGravity(int gravity) {
+        setTextGravity(centerView, gravity);
+        return this;
+    }
+
+    /**
+     * 设置右边textView文字对齐方式
+     *
+     * @param gravity 对齐方式
+     * @return SuperTextView
+     */
+    public SuperTextView setRightTextGravity(int gravity) {
+        setTextGravity(rightView, gravity);
+        return this;
+    }
+
+    /**
+     * 文字对齐方式
+     *
+     * @param baseTextView view
+     * @param gravity      对齐方式
+     */
+    private void setTextGravity(BaseTextView baseTextView, int gravity) {
+        if (baseTextView != null) {
+            baseTextView.getCenterTextView().setGravity(gravity);
+        }
+    }
+
+    /**
+     * 设置上边分割线显示状态
+     *
+     * @param visibility visibility
+     * @return superTextView
+     */
+    public SuperTextView setTopDividerLineVisibility(int visibility) {
+        if (topDividerLineView == null) {
+            setTopDividerLineView();
+        }
+        topDividerLineView.setVisibility(visibility);
+        return this;
+    }
+
+    /**
+     * 设置下边分割线显示状态
+     *
+     * @param visibility visibility
+     * @return superTextView
+     */
+    public SuperTextView setBottomDividerLineVisibility(int visibility) {
+        if (bottomDividerLineView == null) {
+            setBottomDividerLineView();
+        }
+        bottomDividerLineView.setVisibility(visibility);
+        return this;
     }
 
     /////////////////////////////////////对外暴露的方法---end/////////////////////////////////

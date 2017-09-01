@@ -70,12 +70,13 @@
         stv:sLeftViewWidth="80dp" />
 
     <com.allen.library.SuperTextView
+        android:id="@+id/super_tv4"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:visibility="gone"
+        android:visibility="visible"
         stv:sCenterLines="3"
         stv:sCenterMaxEms="40"
-        stv:sCenterTextString="测试换行对齐方式测试换行对齐方式测试换行对齐方式"
+        stv:sCenterTextString="代码设置对齐效果代码设置对齐效果代码设置对齐效果"
         stv:sCenterViewGravity="left_center"
         stv:sLeftTextString="换行对齐"
         stv:sLeftViewGravity="left_center"

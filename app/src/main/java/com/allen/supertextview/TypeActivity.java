@@ -2,6 +2,7 @@ package com.allen.supertextview;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 
 import com.allen.library.SuperTextView;
 import com.bumptech.glide.Glide;
@@ -16,7 +17,7 @@ import com.squareup.picasso.Picasso;
 public class TypeActivity extends AppCompatActivity {
 
     private int type;
-    private SuperTextView superTextView, superTextView2, superTextView3, alipayStv;
+    private SuperTextView superTextView, superTextView2, superTextView3, alipayStv, superTextView4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,9 @@ public class TypeActivity extends AppCompatActivity {
                 break;
             case 6:
                 setContentView(R.layout.layout6);
+                superTextView4 = (SuperTextView) findViewById(R.id.super_tv4);
+                superTextView4.setCenterTextGravity(Gravity.LEFT);
+
                 break;
             case 7:
                 setContentView(R.layout.layout7);
