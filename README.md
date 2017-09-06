@@ -41,7 +41,7 @@
 ```
         dependencies {
         ...
-        compile 'com.github.lygttpod:SuperTextView:2.1.3'
+        compile 'com.github.lygttpod:SuperTextView:2.1.4'
         }
 ```
 
