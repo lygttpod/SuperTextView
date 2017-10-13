@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         stv:sCenterTextString="10:20"
+        stv:sCenterViewGravity="center"
         stv:sLeftTextString="188******8888"
         stv:sRightTextColor="@color/colorAccent"
         stv:sRightTextString="100元" />
@@ -26,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         stv:sCenterTextString="10:20"
+        stv:sCenterViewGravity="center"
         stv:sLeftTextString="188******8888"
         stv:sRightTextColor="@color/colorAccent"
         stv:sRightTextString="100元" />
@@ -34,6 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         stv:sCenterTextString="10:20"
+        stv:sCenterViewGravity="center"
         stv:sLeftTextString="188******8888"
         stv:sRightTextColor="@color/colorAccent"
         stv:sRightTextString="100元" />

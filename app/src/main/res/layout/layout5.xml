@@ -46,6 +46,7 @@
             android:layout_height="80dp"
             stv:sLeftBottomTextString="188****8888"
             stv:sLeftIconRes="@drawable/head_default"
+            stv:sLeftIconShowCircle="true"
             stv:sLeftTopTextString="张三"
             stv:sLeftViewGravity="left_center"
             stv:sRightTextString="已实名" />
@@ -57,6 +58,7 @@
             stv:sRightBottomTextString="188****8888"
             stv:sRightIconHeight="60dp"
             stv:sRightIconRes="@drawable/head_default"
+            stv:sRightIconShowCircle="true"
             stv:sRightIconWidth="60dp"
             stv:sRightTopTextString="张三"
             stv:sRightViewGravity="right_center" />

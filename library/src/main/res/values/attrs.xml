@@ -130,18 +130,18 @@
         <attr name="sCenterViewMarginRight" format="dimension" />
         <attr name="sRightViewMarginLeft" format="dimension" />
         <attr name="sRightViewMarginRight" format="dimension" />
-        <!--  -->
-        <attr name="sLeftTopTextIsBold" format="boolean" />
-        <attr name="sLeftTextIsBold" format="boolean" />
-        <attr name="sLeftBottomTextIsBold" format="boolean" />
+        <!-- 自定义属性超过128个导致布局无法预览，故暂时去除不重要的属性 -->
+        <!--<attr name="sLeftTopTextIsBold" format="boolean" />-->
+        <!--<attr name="sLeftTextIsBold" format="boolean" />-->
+        <!--<attr name="sLeftBottomTextIsBold" format="boolean" />-->
 
-        <attr name="sCenterTopTextIsBold" format="boolean" />
-        <attr name="sCenterTextIsBold" format="boolean" />
-        <attr name="sCenterBottomTextIsBold" format="boolean" />
+        <!--<attr name="sCenterTopTextIsBold" format="boolean" />-->
+        <!--<attr name="sCenterTextIsBold" format="boolean" />-->
+        <!--<attr name="sCenterBottomTextIsBold" format="boolean" />-->
 
-        <attr name="sRightTopTextIsBold" format="boolean" />
-        <attr name="sRightTextIsBold" format="boolean" />
-        <attr name="sRightBottomTextIsBold" format="boolean" />
+        <!--<attr name="sRightTopTextIsBold" format="boolean" />-->
+        <!--<attr name="sRightTextIsBold" format="boolean" />-->
+        <!--<attr name="sRightBottomTextIsBold" format="boolean" />-->
 
         <attr name="sLeftTextBackground" format="reference" />
         <attr name="sCenterTextBackground" format="reference" />
@@ -210,6 +210,23 @@
 
         <attr name="sUseShape" format="boolean" />
 
+        <attr name="sLeftTextGravity" format="enum">
+            <enum name="left" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+        <attr name="sCenterTextGravity" format="enum">
+            <enum name="left" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+        <attr name="sRightTextGravity" format="enum">
+            <enum name="left" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+        <attr name="sLeftIconShowCircle" format="boolean" />
+        <attr name="sRightIconShowCircle" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="SuperButton">
@@ -409,7 +426,14 @@
         <attr name="cBackgroundDrawableRes" format="reference" />
         <attr name="cIsCenterAlignLeft" format="boolean" />
         <attr name="cCenterViewMarginLeft" format="dimension" />
+    </declare-styleable>
 
-
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <!-- {@deprecated Use civ_circlebackground_color instead.} -->
+        <attr name="civ_fill_color" format="color" />
+        <attr name="civ_circle_background_color" format="color" />
     </declare-styleable>
 </resources>

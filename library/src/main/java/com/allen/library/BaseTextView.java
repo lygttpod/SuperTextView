@@ -77,7 +77,7 @@ public class BaseTextView extends LinearLayout {
     private TextView initTextView(LinearLayout.LayoutParams params, TextView textView) {
 
         textView = getTextView(textView, params);
-        textView.setGravity(Gravity.CENTER);
+//        textView.setGravity(Gravity.CENTER);
         addView(textView);
         return textView;
     }
@@ -148,13 +148,19 @@ public class BaseTextView extends LinearLayout {
 
     public void setMaxEms(int topMaxEms, int centerMaxEms, int bottomMaxEms) {
 
-        topTextView.setEllipsize(TextUtils.TruncateAt.END);
-        centerTextView.setEllipsize(TextUtils.TruncateAt.END);
-        bottomTextView.setEllipsize(TextUtils.TruncateAt.END);
+        if (topMaxEms != 0) {
+            topTextView.setEllipsize(TextUtils.TruncateAt.END);
+            topTextView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(topMaxEms)});
+        }
+        if (centerMaxEms != 0) {
+            centerTextView.setEllipsize(TextUtils.TruncateAt.END);
+            centerTextView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(centerMaxEms)});
+        }
+        if (bottomMaxEms != 0) {
+            bottomTextView.setEllipsize(TextUtils.TruncateAt.END);
+            bottomTextView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(bottomMaxEms)});
+        }
 
-        topTextView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(topMaxEms)});
-        centerTextView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(centerMaxEms)});
-        bottomTextView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(bottomMaxEms)});
     }
 
     public void setCenterSpaceHeight(int centerSpaceHeight) {

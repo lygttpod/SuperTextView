@@ -31,7 +31,7 @@ public class SuperTextView extends RelativeLayout {
     private BaseTextView leftView, centerView, rightView;
     private LayoutParams leftBaseViewParams, centerBaseViewParams, rightBaseViewParams;
 
-    private ImageView leftIconIV, rightIconIV;
+    private CircleImageView leftIconIV, rightIconIV;
     private LayoutParams leftImgParams, rightImgParams;
     private int leftIconWidth;//左边图标的宽
     private int leftIconHeight;//左边图标的高
@@ -48,7 +48,8 @@ public class SuperTextView extends RelativeLayout {
 
     private int defaultColor = 0xFF373737;//文字默认颜色
     private int defaultSize = 15;//默认字体大小
-    private int defaultMaxEms = 15;
+    private int defaultMaxEms = 0;
+    private int defaultMaxLines = 0;
 
 
     private String mLeftTextString;
@@ -113,17 +114,17 @@ public class SuperTextView extends RelativeLayout {
     private int mRightMaxEms;
     private int mRightBottomMaxEms;
 
-    private boolean mLeftTopTextBold;
-    private boolean mLeftTextBold;
-    private boolean mLeftBottomTextBold;
-
-    private boolean mCenterTopTextBold;
-    private boolean mCenterTextBold;
-    private boolean mCenterBottomTextBold;
-
-    private boolean mRightTopTextBold;
-    private boolean mRightTextBold;
-    private boolean mRightBottomTextBold;
+//    private boolean mLeftTopTextBold;
+//    private boolean mLeftTextBold;
+//    private boolean mLeftBottomTextBold;
+//
+//    private boolean mCenterTopTextBold;
+//    private boolean mCenterTextBold;
+//    private boolean mCenterBottomTextBold;
+//
+//    private boolean mRightTopTextBold;
+//    private boolean mRightTextBold;
+//    private boolean mRightBottomTextBold;
 
     private Drawable mLeftTextBackground;
     private Drawable mCenterTextBackground;
@@ -159,6 +160,15 @@ public class SuperTextView extends RelativeLayout {
     private int mCenterGravity;
     private int mRightGravity;
 
+    private int mLeftTextGravity;
+    private int mCenterTextGravity;
+    private int mRightTextGravity;
+
+    private static final int text_gravity_Left = 0;
+    private static final int text_gravity_center = 1;
+    private static final int text_gravity_right = 2;
+
+    private static final int default_text_gravity = -1;
 
     private int mLeftViewWidth;
 
@@ -276,6 +286,9 @@ public class SuperTextView extends RelativeLayout {
 
     private boolean useShape;
 
+    private boolean mLeftIconShowCircle;
+    private boolean mRightIconShowCircle;
+
     private GradientDrawable gradientDrawable;
 
     public SuperTextView(Context context) {
@@ -343,17 +356,17 @@ public class SuperTextView extends RelativeLayout {
         mRightBottomTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightBottomTextSize, defaultSize);
 
         //////////////////////////////////////////////////
-        mLeftTopLines = typedArray.getInt(R.styleable.SuperTextView_sLeftTopLines, 1);
-        mLeftLines = typedArray.getInt(R.styleable.SuperTextView_sLeftLines, 1);
-        mLeftBottomLines = typedArray.getInt(R.styleable.SuperTextView_sLeftBottomLines, 1);
+        mLeftTopLines = typedArray.getInt(R.styleable.SuperTextView_sLeftTopLines, defaultMaxLines);
+        mLeftLines = typedArray.getInt(R.styleable.SuperTextView_sLeftLines, defaultMaxLines);
+        mLeftBottomLines = typedArray.getInt(R.styleable.SuperTextView_sLeftBottomLines, defaultMaxLines);
 
-        mCenterTopLines = typedArray.getInt(R.styleable.SuperTextView_sCenterTopLines, 1);
-        mCenterLines = typedArray.getInt(R.styleable.SuperTextView_sCenterLines, 1);
-        mCenterBottomLines = typedArray.getInt(R.styleable.SuperTextView_sCenterBottomLines, 1);
+        mCenterTopLines = typedArray.getInt(R.styleable.SuperTextView_sCenterTopLines, defaultMaxLines);
+        mCenterLines = typedArray.getInt(R.styleable.SuperTextView_sCenterLines, defaultMaxLines);
+        mCenterBottomLines = typedArray.getInt(R.styleable.SuperTextView_sCenterBottomLines, defaultMaxLines);
 
-        mRightTopLines = typedArray.getInt(R.styleable.SuperTextView_sRightTopLines, 1);
-        mRightLines = typedArray.getInt(R.styleable.SuperTextView_sRightLines, 1);
-        mRightBottomLines = typedArray.getInt(R.styleable.SuperTextView_sRightBottomLines, 1);
+        mRightTopLines = typedArray.getInt(R.styleable.SuperTextView_sRightTopLines, defaultMaxLines);
+        mRightLines = typedArray.getInt(R.styleable.SuperTextView_sRightLines, defaultMaxLines);
+        mRightBottomLines = typedArray.getInt(R.styleable.SuperTextView_sRightBottomLines, defaultMaxLines);
 
         //////////////////////////////////////////////////
 
@@ -375,6 +388,9 @@ public class SuperTextView extends RelativeLayout {
         mCenterGravity = typedArray.getInt(R.styleable.SuperTextView_sCenterViewGravity, default_Gravity);
         mRightGravity = typedArray.getInt(R.styleable.SuperTextView_sRightViewGravity, default_Gravity);
 
+        mLeftTextGravity = typedArray.getInt(R.styleable.SuperTextView_sLeftTextGravity, default_text_gravity);
+        mCenterTextGravity = typedArray.getInt(R.styleable.SuperTextView_sCenterTextGravity, default_text_gravity);
+        mRightTextGravity = typedArray.getInt(R.styleable.SuperTextView_sRightTextGravity, default_text_gravity);
         ////////////////////////////////////////////////
 
         mLeftTvDrawableLeft = typedArray.getDrawable(R.styleable.SuperTextView_sLeftTvDrawableLeft);
@@ -429,18 +445,18 @@ public class SuperTextView extends RelativeLayout {
 
         leftIconRes = typedArray.getDrawable(R.styleable.SuperTextView_sLeftIconRes);
         rightIconRes = typedArray.getDrawable(R.styleable.SuperTextView_sRightIconRes);
-        //////////////////////////////////////////////
-        mLeftTopTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sLeftTopTextIsBold, false);
-        mLeftTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sLeftTextIsBold, false);
-        mLeftBottomTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sLeftBottomTextIsBold, false);
-
-        mCenterTopTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sCenterTopTextIsBold, false);
-        mCenterTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sCenterTextIsBold, false);
-        mCenterBottomTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sCenterBottomTextIsBold, false);
-
-        mRightTopTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sRightTopTextIsBold, false);
-        mRightTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sRightTextIsBold, false);
-        mRightBottomTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sRightBottomTextIsBold, false);
+        ////////////////////////由于自定义方法数达到最大限度128个，暂时关闭不常用属性改为代码控制//////////////////////
+//        mLeftTopTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sLeftTopTextIsBold, false);
+//        mLeftTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sLeftTextIsBold, false);
+//        mLeftBottomTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sLeftBottomTextIsBold, false);
+//
+//        mCenterTopTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sCenterTopTextIsBold, false);
+//        mCenterTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sCenterTextIsBold, false);
+//        mCenterBottomTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sCenterBottomTextIsBold, false);
+//
+//        mRightTopTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sRightTopTextIsBold, false);
+//        mRightTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sRightTextIsBold, false);
+//        mRightBottomTextBold = typedArray.getBoolean(R.styleable.SuperTextView_sRightBottomTextIsBold, false);
 
         mLeftTextBackground = typedArray.getDrawable(R.styleable.SuperTextView_sLeftTextBackground);
         mCenterTextBackground = typedArray.getDrawable(R.styleable.SuperTextView_sCenterTextBackground);
@@ -488,6 +504,8 @@ public class SuperTextView extends RelativeLayout {
         strokeColor = typedArray.getColor(R.styleable.SuperTextView_sShapeStrokeColor, defaultShapeColor);
 
         useShape = typedArray.getBoolean(R.styleable.SuperTextView_sUseShape, false);
+        mLeftIconShowCircle = typedArray.getBoolean(R.styleable.SuperTextView_sLeftIconShowCircle, false);
+        mRightIconShowCircle = typedArray.getBoolean(R.styleable.SuperTextView_sRightIconShowCircle, false);
 
         typedArray.recycle();
     }
@@ -558,7 +576,7 @@ public class SuperTextView extends RelativeLayout {
      */
     private void initLeftIcon() {
         if (leftIconIV == null) {
-            leftIconIV = new ImageView(mContext);
+            leftIconIV = new CircleImageView(mContext);
         }
         leftImgParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         leftImgParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT, TRUE);
@@ -567,13 +585,14 @@ public class SuperTextView extends RelativeLayout {
             leftImgParams.width = leftIconWidth;
             leftImgParams.height = leftIconHeight;
         }
-        leftIconIV.setScaleType(ImageView.ScaleType.FIT_CENTER);
+//        leftIconIV.setScaleType(ImageView.ScaleType.FIT_CENTER);
         leftIconIV.setId(R.id.sLeftImgId);
         leftIconIV.setLayoutParams(leftImgParams);
         if (leftIconRes != null) {
             leftImgParams.setMargins(leftIconMarginLeft, 0, 0, 0);
             leftIconIV.setImageDrawable(leftIconRes);
         }
+        setCircleImage(leftIconIV, mLeftIconShowCircle);
         addView(leftIconIV);
     }
 
@@ -582,7 +601,7 @@ public class SuperTextView extends RelativeLayout {
      */
     private void initRightIcon() {
         if (rightIconIV == null) {
-            rightIconIV = new ImageView(mContext);
+            rightIconIV = new CircleImageView(mContext);
         }
         rightImgParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         rightImgParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
@@ -604,13 +623,14 @@ public class SuperTextView extends RelativeLayout {
             rightImgParams.height = rightIconHeight;
         }
 
-        rightIconIV.setScaleType(ImageView.ScaleType.FIT_CENTER);
+//        rightIconIV.setScaleType(ImageView.ScaleType.FIT_CENTER);
         rightIconIV.setId(R.id.sRightImgId);
         rightIconIV.setLayoutParams(rightImgParams);
         if (rightIconRes != null) {
             rightImgParams.setMargins(0, 0, rightIconMarginRight, 0);
             rightIconIV.setImageDrawable(rightIconRes);
         }
+        setCircleImage(rightIconIV, mRightIconShowCircle);
         addView(rightIconIV);
     }
 
@@ -636,8 +656,9 @@ public class SuperTextView extends RelativeLayout {
         setDefaultSize(leftView, mLeftTopTextSize, mLeftTextSize, mLeftBottomTextSize);
         setDefaultLines(leftView, mLeftTopLines, mLeftLines, mLeftBottomLines);
         setDefaultMaxEms(leftView, mLeftTopMaxEms, mLeftMaxEms, mLeftBottomMaxEms);
-        setDefaultTextIsBold(leftView, mLeftTopTextBold, mLeftTextBold, mLeftBottomTextBold);
+//        setDefaultTextIsBold(leftView, mLeftTopTextBold, mLeftTextBold, mLeftBottomTextBold);
         setDefaultGravity(leftView, mLeftGravity);
+        setDefaultTextGravity(leftView, mLeftTextGravity);
         setDefaultDrawable(leftView.getCenterTextView(), mLeftTvDrawableLeft, mLeftTvDrawableRight, mTextViewDrawablePadding, mLeftTvDrawableWidth, mLeftTvDrawableHeight);
         setDefaultBackground(leftView.getCenterTextView(), mLeftTextBackground);
         setDefaultString(leftView, mLeftTopTextString, mLeftTextString, mLeftBottomTextString);
@@ -658,7 +679,7 @@ public class SuperTextView extends RelativeLayout {
         centerBaseViewParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
 
         //默认情况下  中间的View整体剧中显示，设置左对齐或者右对齐的话使用下边属性
-        if (mCenterGravity != gravity_Center) {
+        if (mCenterGravity != default_Gravity) {
             centerBaseViewParams.addRule(RIGHT_OF, R.id.sLeftViewId);
             centerBaseViewParams.addRule(LEFT_OF, R.id.sRightViewId);
         }
@@ -672,8 +693,9 @@ public class SuperTextView extends RelativeLayout {
         setDefaultSize(centerView, mCenterTopTextSize, mCenterTextSize, mCenterBottomTextSize);
         setDefaultLines(centerView, mCenterTopLines, mCenterLines, mCenterBottomLines);
         setDefaultMaxEms(centerView, mCenterTopMaxEms, mCenterMaxEms, mCenterBottomMaxEms);
-        setDefaultTextIsBold(centerView, mCenterTopTextBold, mCenterTextBold, mCenterBottomTextBold);
+//        setDefaultTextIsBold(centerView, mCenterTopTextBold, mCenterTextBold, mCenterBottomTextBold);
         setDefaultGravity(centerView, mCenterGravity);
+        setDefaultTextGravity(centerView, mCenterTextGravity);
         setDefaultDrawable(centerView.getCenterTextView(), mCenterTvDrawableLeft, mCenterTvDrawableRight, mTextViewDrawablePadding, mCenterTvDrawableWidth, mCenterTvDrawableHeight);
         setDefaultBackground(centerView.getCenterTextView(), mCenterTextBackground);
         setDefaultString(centerView, mCenterTopTextString, mCenterTextString, mCenterBottomTextString);
@@ -701,8 +723,9 @@ public class SuperTextView extends RelativeLayout {
         setDefaultSize(rightView, mRightTopTextSize, mRightTextSize, mRightBottomTextSize);
         setDefaultLines(rightView, mRightTopLines, mRightLines, mRightBottomLines);
         setDefaultMaxEms(rightView, mRightTopMaxEms, mRightMaxEms, mRightBottomMaxEms);
-        setDefaultTextIsBold(rightView, mRightTopTextBold, mRightTextBold, mRightBottomTextBold);
+//        setDefaultTextIsBold(rightView, mRightTopTextBold, mRightTextBold, mRightBottomTextBold);
         setDefaultGravity(rightView, mRightGravity);
+        setDefaultTextGravity(rightView, mRightTextGravity);
         setDefaultDrawable(rightView.getCenterTextView(), mRightTvDrawableLeft, mRightTvDrawableRight, mTextViewDrawablePadding, mRightTvDrawableWidth, mRightTvDrawableHeight);
         setDefaultBackground(rightView.getCenterTextView(), mRightTextBackground);
         setDefaultString(rightView, mRightTopTextString, mRightTextString, mRightBottomTextString);
@@ -797,6 +820,16 @@ public class SuperTextView extends RelativeLayout {
     /////////////////////////////////////默认属性设置----begin/////////////////////////////////
 
     /**
+     * 设置圆形ImageView属性
+     *
+     * @param circleImageView               view
+     * @param disableCircularTransformation 是否允许圆形转换  默认true
+     */
+    private void setCircleImage(CircleImageView circleImageView, boolean disableCircularTransformation) {
+        circleImageView.setDisableCircularTransformation(!disableCircularTransformation);
+    }
+
+    /**
      * 初始化BaseTextView
      *
      * @param id id
@@ -881,9 +914,15 @@ public class SuperTextView extends RelativeLayout {
      */
     private void setDefaultLines(BaseTextView baseTextView, int leftTopLines, int leftLines, int bottomLines) {
         if (baseTextView != null) {
-            baseTextView.getTopTextView().setMaxLines(leftTopLines);
-            baseTextView.getCenterTextView().setMaxLines(leftLines);
-            baseTextView.getBottomTextView().setMaxLines(bottomLines);
+            if (leftTopLines != 0) {
+                baseTextView.getTopTextView().setMaxLines(leftTopLines);
+            }
+            if (leftLines != 0) {
+                baseTextView.getCenterTextView().setMaxLines(leftLines);
+            }
+            if (bottomLines != 0) {
+                baseTextView.getBottomTextView().setMaxLines(bottomLines);
+            }
         }
 
     }
@@ -919,6 +958,29 @@ public class SuperTextView extends RelativeLayout {
                 break;
         }
     }
+
+    /**
+     * 设置文字对其方式
+     *
+     * @param baseTextView baseTextView
+     * @param gravity      对其方式
+     */
+    private void setDefaultTextGravity(BaseTextView baseTextView, int gravity) {
+        if (baseTextView != null) {
+            switch (gravity) {
+                case text_gravity_Left:
+                    setTextGravity(baseTextView, Gravity.LEFT);
+                    break;
+                case text_gravity_center:
+                    setTextGravity(baseTextView, Gravity.CENTER);
+                    break;
+                case text_gravity_right:
+                    setTextGravity(baseTextView, Gravity.RIGHT);
+                    break;
+            }
+        }
+    }
+
 
     /**
      * 设置textView的drawable
@@ -1420,6 +1482,114 @@ public class SuperTextView extends RelativeLayout {
     }
 
     /**
+     * 设置左上文字字体为粗体
+     *
+     * @return SuperTextView
+     */
+    public SuperTextView setLeftTopTextIsBold(boolean isBold) {
+        if (leftView != null) {
+            leftView.getTopTextView().getPaint().setFakeBoldText(isBold);
+        }
+        return this;
+    }
+
+    /**
+     * 设置左中文字字体为粗体
+     *
+     * @return SuperTextView
+     */
+    public SuperTextView setLeftTextIsBold(boolean isBold) {
+        if (leftView != null) {
+            leftView.getCenterTextView().getPaint().setFakeBoldText(isBold);
+        }
+        return this;
+    }
+
+    /**
+     * 设置左下文字字体为粗体
+     *
+     * @return SuperTextView
+     */
+    public SuperTextView setLeftBottomTextIsBold(boolean isBold) {
+        if (leftView != null) {
+            leftView.getBottomTextView().getPaint().setFakeBoldText(isBold);
+        }
+        return this;
+    }
+
+    /**
+     * 设置中上文字字体为粗体
+     *
+     * @return SuperTextView
+     */
+    public SuperTextView setCenterTopTextIsBold(boolean isBold) {
+        if (centerView != null) {
+            centerView.getTopTextView().getPaint().setFakeBoldText(isBold);
+        }
+        return this;
+    }
+
+    /**
+     * 设置中中文字字体为粗体
+     *
+     * @return SuperTextView
+     */
+    public SuperTextView setCenterTextIsBold(boolean isBold) {
+        if (centerView != null) {
+            centerView.getCenterTextView().getPaint().setFakeBoldText(isBold);
+        }
+        return this;
+    }
+
+    /**
+     * 设置中下文字字体为粗体
+     *
+     * @return SuperTextView
+     */
+    public SuperTextView setCenterBottomTextIsBold(boolean isBold) {
+        if (centerView != null) {
+            centerView.getBottomTextView().getPaint().setFakeBoldText(isBold);
+        }
+        return this;
+    }
+
+    /**
+     * 设置右上文字字体为粗体
+     *
+     * @return SuperTextView
+     */
+    public SuperTextView setRightTopTextIsBold(boolean isBold) {
+        if (rightView != null) {
+            rightView.getTopTextView().getPaint().setFakeBoldText(isBold);
+        }
+        return this;
+    }
+
+    /**
+     * 设置右中文字字体为粗体
+     *
+     * @return SuperTextView
+     */
+    public SuperTextView setRightTextIsBold(boolean isBold) {
+        if (rightView != null) {
+            rightView.getCenterTextView().getPaint().setFakeBoldText(isBold);
+        }
+        return this;
+    }
+
+    /**
+     * 设置右下文字字体为粗体
+     *
+     * @return SuperTextView
+     */
+    public SuperTextView setRightBottomTextIsBold(boolean isBold) {
+        if (rightView != null) {
+            rightView.getBottomTextView().getPaint().setFakeBoldText(isBold);
+        }
+        return this;
+    }
+
+    /**
      * 获取左上字符串
      *
      * @return 返回字符串
@@ -1523,6 +1693,15 @@ public class SuperTextView extends RelativeLayout {
         return rightIconIV;
     }
 
+
+    /**
+     * 获取rightCheckBox
+     *
+     * @return rightCheckBox
+     */
+    public CheckBox getCheckBox() {
+        return rightCheckBox;
+    }
 
     /**
      * @param checked 是否选中
@@ -1878,7 +2057,9 @@ public class SuperTextView extends RelativeLayout {
      */
     private void setTextGravity(BaseTextView baseTextView, int gravity) {
         if (baseTextView != null) {
+            baseTextView.getTopTextView().setGravity(gravity);
             baseTextView.getCenterTextView().setGravity(gravity);
+            baseTextView.getBottomTextView().setGravity(gravity);
         }
     }
 

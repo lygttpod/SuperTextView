@@ -75,9 +75,11 @@
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                stv:sLeftBottomTextString="188****8888"
-                stv:sLeftIconRes="@drawable/head_default"
-                stv:sLeftTopTextString="张三"
+                stv:sLeftIconHeight="50dp"
+                stv:sLeftIconRes="@drawable/name_icon"
+                stv:sLeftIconShowCircle="true"
+                stv:sLeftIconWidth="50dp"
+                stv:sLeftTextString="支持圆形图片"
                 stv:sLeftViewGravity="left_center" />
 
             <com.allen.library.SuperTextView
@@ -120,16 +122,6 @@
                 stv:sSwitchMinWidth="40dp"
                 stv:sThumbResource="@drawable/thumb"
                 stv:sTrackResource="@drawable/track" />
-
-            <com.allen.library.SuperTextView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                stv:sCenterTextBackground="@drawable/shape_cycle"
-                stv:sCenterTextColor="@color/white"
-                stv:sCenterTextSize="13sp"
-                stv:sCenterTextString="6"
-                stv:sCenterViewGravity="left_center"
-                stv:sLeftTextString="功能介绍" />
 
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
