@@ -41,7 +41,7 @@
 ```
         dependencies {
         ...
-        compile 'com.github.lygttpod:SuperTextView:2.1.4'
+        compile 'com.github.lygttpod:SuperTextView:2.1.5'
         }
 ```
 
@@ -268,24 +268,24 @@ sCenterBottomTextSize | dimension  | 中下字体大小 | 默认15sp
 sRightTextSize | dimension  | 右边字体大小 | 默认15sp
 sRightTopTextSize | dimension  | 右上字体大小 | 默认15sp
 sRightBottomTextSize | dimension  | 右下字体大小 | 默认15sp
-sLeftLines | integer  | 左边文字显示行数 | 默认1
-sLeftTopLines | integer  | 左上文字显示行数 | 默认1
-sLeftBottomLines | integer  | 左下文字显示行数 | 默认1
-sCenterLines | integer  | 中间文字显示行数 | 默认1
-sCenterTopLines | integer  | 中上文字显示行数 | 默认1
-sCenterBottomLines | integer  | 中下文字显示行数 | 默认1
-sRightLines | integer  | 右边文字显示行数 | 默认1
-sRightTopLines | integer  | 右上文字显示行数 | 默认1
-sRightBottomLines | integer  | 右下文字显示行数 | 默认1
-sLeftMaxEms | integer  | 左边文字显示个数 | 默认15
-sLeftTopMaxEms | integer  | 左上文字显示个数 | 默认15
-sLeftBottomMaxEms | integer  | 左下文字显示个数 | 默认15
-sCenterMaxEms | integer  | 中间文字显示个数 | 默认15
-sCenterTopMaxEms | integer  | 中上文字显示个数 | 默认15
-sCenterBottomMaxEms | integer  | 中下文字显示个数 | 默认15
-sRightMaxEms | integer  | 右边文字显示个数 | 默认15
-sRightTopMaxEms | integer  | 右上文字显示个数 | 默认15
-sRightBottomMaxEms | integer  | 右下文字显示个数 | 默认15
+sLeftLines | integer  | 左边文字显示行数 | 默认不设置
+sLeftTopLines | integer  | 左上文字显示行数 | 默认不设置
+sLeftBottomLines | integer  | 左下文字显示行数 | 默认不设置
+sCenterLines | integer  | 中间文字显示行数 | 默认不设置
+sCenterTopLines | integer  | 中上文字显示行数 | 默认不设置
+sCenterBottomLines | integer  | 中下文字显示行数 | 默认不设置
+sRightLines | integer  | 右边文字显示行数 | 默认不设置
+sRightTopLines | integer  | 右上文字显示行数 | 默认不设置
+sRightBottomLines | integer  | 右下文字显示行数 | 默认不设置
+sLeftMaxEms | integer  | 左边文字显示个数 | 默认不设置
+sLeftTopMaxEms | integer  | 左上文字显示个数 | 默认不设置
+sLeftBottomMaxEms | integer  | 左下文字显示个数 | 默认不设置
+sCenterMaxEms | integer  | 中间文字显示个数 | 默认不设置
+sCenterTopMaxEms | integer  | 中上文字显示个数 | 默认不设置
+sCenterBottomMaxEms | integer  | 中下文字显示个数 | 默认不设置
+sRightMaxEms | integer  | 右边文字显示个数 | 默认不设置
+sRightTopMaxEms | integer  | 右上文字显示个数 | 默认不设置
+sRightBottomMaxEms | integer  | 右下文字显示个数 | 默认不设置
 sLeftViewGravity | enum  | 左边文字对齐方式<br>left_center(左对齐)<br>center(居中)<br>right_center(右对齐) | 默认center
 sCenterViewGravity | enum  | 中间文字对齐方式<br>left_center(左对齐)<br>center(居中)<br>right_center(右对齐) | 默认center
 sRightViewGravity | enum  | 右边文字对齐方式<br>left_center(左对齐)<br>center(居中)<br>right_center(右对齐) | 默认center
@@ -319,14 +319,14 @@ sCenterViewMarginRight | dimension  | 中间view的MarginRight | 默认10dp
 sRightViewMarginLeft | dimension  | 右边view的MarginLeft | 默认10dp
 sRightViewMarginRight | dimension  | 右边view的MarginRight | 默认10dp
 sLeftTextIsBold | boolean  | 左边文字是否加粗 | 默认false
-sLeftTopTextIsBold | boolean  | 左上文字是否加粗 | 默认false
-sLeftBottomTextIsBold | boolean  | 左下文字是否加粗 | 默认false
-sCenterTextIsBold | boolean  | 中间文字是否加粗 | 默认false
-sCenterTopTextIsBold | boolean  | 中上文字是否加粗 | 默认false
-sCenterBottomTextIsBold | boolean  | 中下文字是否加粗 | 默认false
-sRightTextIsBold | boolean  | 右边文字是否加粗 | 默认false
-sRightTopTextIsBold | boolean  | 右上文字是否加粗 | 默认false
-sRightBottomTextIsBold | boolean  | 右下文字是否加粗 | 默认false
+sLeftTopTextIsBold | boolean  | 左上文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
+sLeftBottomTextIsBold | boolean  | 左下文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
+sCenterTextIsBold | boolean  | 中间文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
+sCenterTopTextIsBold | boolean  | 中上文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
+sCenterBottomTextIsBold | boolean  | 中下文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
+sRightTextIsBold | boolean  | 右边文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
+sRightTopTextIsBold | boolean  | 右上文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
+sRightBottomTextIsBold | boolean  | 右下文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
 sLeftIconRes | reference  | 左边图片资源  可以用来显示网络图片或者本地
 sRightIconRes | reference  | 右边图片资源  可以用来显示网络图片或者本地
 sLeftIconWidth | dimension  | 左边图片资源的宽度  用于固定图片大小的时候使用
@@ -367,7 +367,11 @@ sShapeStrokeColor | color  | 边框颜色 | 默认0dp
 sLeftTextBackground | reference  | 左边textView的背景
 sCenterTextBackground | reference  | 中间textView的背景
 sRightTextBackground | reference  | 右边textView的背景
-
+sLeftTextGravity | enum  | 左边TextView内文字对齐方式<br>left(左对齐)<br>center(居中)<br>right(右对齐) | 默认left
+sCenterTextGravity | enum  | 中间TextView内文字对齐方式<br>left(左对齐)<br>center(居中)<br>right(右对齐) | 默认left
+sRightTextGravity | enum  | 右边TextView内文字对齐方式<br>left(左对齐)<br>center(居中)<br>right(右对齐) | 默认left
+sLeftIconShowCircle | boolean  | 左边ImageView是否显示为圆形 | 默认false
+sRightIconShowCircle | boolean  | 左边ImageView是否显示为圆形 | 默认false
 
 > 黑格尔曾说过：存在即合理。SuperTextView的出现应该就是某种需求下的产物。
 
