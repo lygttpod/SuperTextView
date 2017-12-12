@@ -318,7 +318,7 @@ sCenterViewMarginLeft | dimension  | 中间view的MarginLeft | 默认10dp
 sCenterViewMarginRight | dimension  | 中间view的MarginRight | 默认10dp
 sRightViewMarginLeft | dimension  | 右边view的MarginLeft | 默认10dp
 sRightViewMarginRight | dimension  | 右边view的MarginRight | 默认10dp
-sLeftTextIsBold | boolean  | 左边文字是否加粗 | 默认false
+sLeftTextIsBold | boolean  | 左边文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
 sLeftTopTextIsBold | boolean  | 左上文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
 sLeftBottomTextIsBold | boolean  | 左下文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
 sCenterTextIsBold | boolean  | 中间文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
