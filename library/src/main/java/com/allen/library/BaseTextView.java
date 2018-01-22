@@ -164,9 +164,9 @@ public class BaseTextView extends LinearLayout {
     }
 
     public void setCenterSpaceHeight(int centerSpaceHeight) {
-        topTVParams.setMargins(0, 0, 0, centerSpaceHeight / 2);
-        centerTVParams.setMargins(0, centerSpaceHeight / 2, 0, centerSpaceHeight / 2);
-        bottomTVParams.setMargins(0, centerSpaceHeight / 2, 0, 0);
+        topTVParams.setMargins(0, 0, 0, centerSpaceHeight);
+        centerTVParams.setMargins(0, 0, 0, 0);
+        bottomTVParams.setMargins(0, centerSpaceHeight, 0, 0);
     }
 
 }
