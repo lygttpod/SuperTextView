@@ -380,6 +380,8 @@ sRightIconShowCircle | boolean  | 左边ImageView是否显示为圆形 | 默认f
 
 # 意见反馈
 
+可以加QQ群：688433795 讨论问题
+
 如果遇到问题或者好的建议，请反馈到：[issue](https://github.com/lygttpod/RxHttpUtils/issues)、[lygttpod@163.com](mailto:lygttpod@163.com) 或者[lygttpod@gmail.com](mailto:lygttpod@gmail.com)
 
 如果觉得对你有用的话，点一下右上的星星赞一下吧!
