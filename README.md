@@ -41,9 +41,10 @@
 ```
         dependencies {
         ...
-        compile 'com.github.lygttpod:SuperTextView:2.1.6'
+        compile 'com.github.lygttpod:SuperTextView:VERSION_CODE'
         }
 ```
+> ### 注意：VERSION_CODE为[![](https://jitpack.io/v/lygttpod/SuperTextView.svg)](https://jitpack.io/#lygttpod/SuperTextView)后面的数字，即最新的[release](https://github.com/lygttpod/SuperTextView/releases)版本号
 
 > ## 重写SuperTextView，功能更加全面，部分方法及属性有变更，1.x版本的老用户请注意
 
