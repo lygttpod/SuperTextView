@@ -26,6 +26,9 @@ public class TypeActivity extends AppCompatActivity {
         switch (type) {
             case 0:
                 setContentView(R.layout.main);
+                SuperTextView superTextView = (SuperTextView) findViewById(R.id.setDiv_stv);
+                superTextView.setTopDividerLineColor(getResources().getColor(R.color.colorAccent))
+                        .setBottomDividerLineColor(getResources().getColor(R.color.colorPrimary));
                 break;
             case 1:
                 setContentView(R.layout.layout1);

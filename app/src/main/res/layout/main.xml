@@ -235,6 +235,14 @@
                 stv:sShapeStrokeColor="@color/colorAccent"
                 stv:sShapeStrokeWidth="0.3dp"
                 stv:sUseShape="true" />
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/setDiv_stv"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                stv:sDividerLineType="both"
+                stv:sLeftTextString="代码动态设置上下分割线的颜色" />
         </LinearLayout>
     </ScrollView>
 

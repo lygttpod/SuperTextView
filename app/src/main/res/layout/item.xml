@@ -10,7 +10,8 @@
         android:id="@+id/super_tv"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        stv:sLeftBottomMaxEms="30"
+        stv:sLeftBottomLines="1"
+        stv:sLeftBottomMaxEms="100"
         stv:sLeftViewGravity="left_center"
         stv:sUseRipple="false" />
 </LinearLayout>

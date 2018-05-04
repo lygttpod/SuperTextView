@@ -2091,6 +2091,21 @@ public class SuperTextView extends RelativeLayout {
         return this;
     }
 
+    public SuperTextView setTopDividerLineColor(int lineColor) {
+        if (topDividerLineView == null) {
+            setTopDividerLineView();
+        }
+        topDividerLineView.setBackgroundColor(lineColor);
+        return this;
+    }
+
+    public SuperTextView setBottomDividerLineColor(int lineColor) {
+        if (bottomDividerLineView == null) {
+            setBottomDividerLineView();
+        }
+        bottomDividerLineView.setBackgroundColor(lineColor);
+        return this;
+    }
     /////////////////////////////////////对外暴露的方法---end/////////////////////////////////
 
 

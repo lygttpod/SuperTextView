@@ -72,18 +72,19 @@ public class ListActivity extends AppCompatActivity implements SwipeRefreshLayou
             NewsBean newsBean = new NewsBean();
             newsBean.setImgUrl(url[i]);
             newsBean.setTitle("新闻标题" + i);
-            newsBean.setTime("哈佛有嘻哈教你如何用一个freestyle轻松毕业" + i);
+            newsBean.setTime("在列表中使用的demo在列表中使用的demo在列表中使用的demo" + i);
             newsBeanList.add(newsBean);
         }
         return newsBeanList;
     }
 
     private List<NewsBean> getRefreshData() {
+        newsBeanList.clear();
         for (int i = 0; i < 10; i++) {
             NewsBean newsBean = new NewsBean();
             newsBean.setImgUrl(url[i]);
             newsBean.setTitle("新标" + i);
-            newsBean.setTime("哈佛有嘻哈教你如何用" + i);
+            newsBean.setTime("在列表中使用的demo" + i);
             newsBeanList.add(newsBean);
         }
         return newsBeanList;
