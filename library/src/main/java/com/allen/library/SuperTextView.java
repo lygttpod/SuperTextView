@@ -1,6 +1,7 @@
 package com.allen.library;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -65,17 +66,17 @@ public class SuperTextView extends RelativeLayout {
     private String mCenterBottomTextString;
 
 
-    private int mLeftTextColor;
-    private int mLeftTopTextColor;
-    private int mLeftBottomTextColor;
+    private ColorStateList mLeftTextColor;
+    private ColorStateList mLeftTopTextColor;
+    private ColorStateList mLeftBottomTextColor;
 
-    private int mCenterTextColor;
-    private int mCenterTopTextColor;
-    private int mCenterBottomTextColor;
+    private ColorStateList mCenterTextColor;
+    private ColorStateList mCenterTopTextColor;
+    private ColorStateList mCenterBottomTextColor;
 
-    private int mRightTextColor;
-    private int mRightTopTextColor;
-    private int mRightBottomTextColor;
+    private ColorStateList mRightTextColor;
+    private ColorStateList mRightTopTextColor;
+    private ColorStateList mRightBottomTextColor;
 
 
     private int mLeftTextSize;
@@ -328,17 +329,17 @@ public class SuperTextView extends RelativeLayout {
 
         //////////////////////////////////////////////////
 
-        mLeftTextColor = typedArray.getColor(R.styleable.SuperTextView_sLeftTextColor, defaultColor);
-        mLeftTopTextColor = typedArray.getColor(R.styleable.SuperTextView_sLeftTopTextColor, defaultColor);
-        mLeftBottomTextColor = typedArray.getColor(R.styleable.SuperTextView_sLeftBottomTextColor, defaultColor);
+        mLeftTextColor = typedArray.getColorStateList(R.styleable.SuperTextView_sLeftTextColor);
+        mLeftTopTextColor = typedArray.getColorStateList(R.styleable.SuperTextView_sLeftTopTextColor);
+        mLeftBottomTextColor = typedArray.getColorStateList(R.styleable.SuperTextView_sLeftBottomTextColor);
 
-        mCenterTextColor = typedArray.getColor(R.styleable.SuperTextView_sCenterTextColor, defaultColor);
-        mCenterTopTextColor = typedArray.getColor(R.styleable.SuperTextView_sCenterTopTextColor, defaultColor);
-        mCenterBottomTextColor = typedArray.getColor(R.styleable.SuperTextView_sCenterBottomTextColor, defaultColor);
+        mCenterTextColor = typedArray.getColorStateList(R.styleable.SuperTextView_sCenterTextColor);
+        mCenterTopTextColor = typedArray.getColorStateList(R.styleable.SuperTextView_sCenterTopTextColor);
+        mCenterBottomTextColor = typedArray.getColorStateList(R.styleable.SuperTextView_sCenterBottomTextColor);
 
-        mRightTextColor = typedArray.getColor(R.styleable.SuperTextView_sRightTextColor, defaultColor);
-        mRightTopTextColor = typedArray.getColor(R.styleable.SuperTextView_sRightTopTextColor, defaultColor);
-        mRightBottomTextColor = typedArray.getColor(R.styleable.SuperTextView_sRightBottomTextColor, defaultColor);
+        mRightTextColor = typedArray.getColorStateList(R.styleable.SuperTextView_sRightTextColor);
+        mRightTopTextColor = typedArray.getColorStateList(R.styleable.SuperTextView_sRightTopTextColor);
+        mRightBottomTextColor = typedArray.getColorStateList(R.styleable.SuperTextView_sRightBottomTextColor);
 
         //////////////////////////////////////////////////
 
@@ -865,8 +866,17 @@ public class SuperTextView extends RelativeLayout {
      * @param textColor       textColor
      * @param bottomTextColor bottomTextColor
      */
-    private void setDefaultColor(BaseTextView baseTextView, int topTextColor, int textColor, int bottomTextColor) {
+    private void setDefaultColor(BaseTextView baseTextView, ColorStateList topTextColor, ColorStateList textColor, ColorStateList bottomTextColor) {
         if (baseTextView != null) {
+            if (topTextColor == null) {
+                topTextColor = ColorStateList.valueOf(defaultColor);
+            }
+            if (textColor == null) {
+                textColor = ColorStateList.valueOf(defaultColor);
+            }
+            if (bottomTextColor == null) {
+                bottomTextColor = ColorStateList.valueOf(defaultColor);
+            }
             baseTextView.getTopTextView().setTextColor(topTextColor);
             baseTextView.getCenterTextView().setTextColor(textColor);
             baseTextView.getBottomTextView().setTextColor(bottomTextColor);
@@ -1371,7 +1381,22 @@ public class SuperTextView extends RelativeLayout {
      * @return SuperTextView
      */
     public SuperTextView setLeftTopTextColor(int color) {
+        ColorStateList colorStateList = ColorStateList.valueOf(color);
+        setLeftTopTextColor(colorStateList);
+        return this;
+    }
+
+    /**
+     * 设置左上文字颜色
+     *
+     * @param color 颜色值
+     * @return SuperTextView
+     */
+    public SuperTextView setLeftTopTextColor(ColorStateList color) {
         if (leftView != null) {
+            if (color == null) {
+                throw new NullPointerException();
+            }
             leftView.getTopTextView().setTextColor(color);
         }
         return this;
@@ -1384,9 +1409,37 @@ public class SuperTextView extends RelativeLayout {
      * @return SuperTextView
      */
     public SuperTextView setLeftTextColor(int color) {
+        ColorStateList colorStateList = ColorStateList.valueOf(color);
+        setLeftTextColor(colorStateList);
+        return this;
+    }
+
+    /**
+     * 设置左中文字颜色
+     *
+     * @param color 颜色值
+     * @return SuperTextView
+     */
+    public SuperTextView setLeftTextColor(ColorStateList color) {
         if (leftView != null) {
+            if (color == null) {
+                throw new NullPointerException();
+            }
             leftView.getCenterTextView().setTextColor(color);
         }
+        return this;
+    }
+
+
+    /**
+     * 设置左下文字颜色
+     *
+     * @param color 颜色值
+     * @return SuperTextView
+     */
+    public SuperTextView setLeftBottomTextColor(int color) {
+        ColorStateList colorStateList = ColorStateList.valueOf(color);
+        setLeftBottomTextColor(colorStateList);
         return this;
     }
 
@@ -1396,8 +1449,11 @@ public class SuperTextView extends RelativeLayout {
      * @param color 颜色值
      * @return SuperTextView
      */
-    public SuperTextView setLeftBottomTextColor(int color) {
+    public SuperTextView setLeftBottomTextColor(ColorStateList color) {
         if (leftView != null) {
+            if (color == null) {
+                throw new NullPointerException();
+            }
             leftView.getBottomTextView().setTextColor(color);
         }
         return this;
@@ -1410,7 +1466,22 @@ public class SuperTextView extends RelativeLayout {
      * @return SuperTextView
      */
     public SuperTextView setCenterTopTextColor(int color) {
+        ColorStateList colorStateList = ColorStateList.valueOf(color);
+        setCenterTopTextColor(colorStateList);
+        return this;
+    }
+
+    /**
+     * 设置中上文字颜色
+     *
+     * @param color 颜色值
+     * @return SuperTextView
+     */
+    public SuperTextView setCenterTopTextColor(ColorStateList color) {
         if (centerView != null) {
+            if (color == null) {
+                throw new NullPointerException();
+            }
             centerView.getTopTextView().setTextColor(color);
         }
         return this;
@@ -1423,7 +1494,22 @@ public class SuperTextView extends RelativeLayout {
      * @return SuperTextView
      */
     public SuperTextView setCenterTextColor(int color) {
+        ColorStateList colorStateList = ColorStateList.valueOf(color);
+        setCenterTextColor(colorStateList);
+        return this;
+    }
+
+    /**
+     * 设置中间文字颜色
+     *
+     * @param color 颜色值
+     * @return SuperTextView
+     */
+    public SuperTextView setCenterTextColor(ColorStateList color) {
         if (centerView != null) {
+            if (color == null) {
+                throw new NullPointerException();
+            }
             centerView.getCenterTextView().setTextColor(color);
         }
         return this;
@@ -1436,7 +1522,22 @@ public class SuperTextView extends RelativeLayout {
      * @return SuperTextView
      */
     public SuperTextView setCenterBottomTextColor(int color) {
+        ColorStateList colorStateList = ColorStateList.valueOf(color);
+        setCenterBottomTextColor(colorStateList);
+        return this;
+    }
+
+    /**
+     * 设置中下文字颜色
+     *
+     * @param color 颜色值
+     * @return SuperTextView
+     */
+    public SuperTextView setCenterBottomTextColor(ColorStateList color) {
         if (centerView != null) {
+            if (color == null) {
+                throw new NullPointerException();
+            }
             centerView.getBottomTextView().setTextColor(color);
         }
         return this;
@@ -1449,7 +1550,22 @@ public class SuperTextView extends RelativeLayout {
      * @return SuperTextView
      */
     public SuperTextView setRightTopTextColor(int color) {
+        ColorStateList colorStateList = ColorStateList.valueOf(color);
+        setRightTopTextColor(colorStateList);
+        return this;
+    }
+
+    /**
+     * 设置右上文字颜色
+     *
+     * @param color 颜色值
+     * @return SuperTextView
+     */
+    public SuperTextView setRightTopTextColor(ColorStateList color) {
         if (rightView != null) {
+            if (color == null) {
+                throw new NullPointerException();
+            }
             rightView.getTopTextView().setTextColor(color);
         }
         return this;
@@ -1462,7 +1578,22 @@ public class SuperTextView extends RelativeLayout {
      * @return SuperTextView
      */
     public SuperTextView setRightTextColor(int color) {
+        ColorStateList colorStateList = ColorStateList.valueOf(color);
+        setRightTextColor(colorStateList);
+        return this;
+    }
+
+    /**
+     * 设置右中文字颜色
+     *
+     * @param color 颜色值
+     * @return SuperTextView
+     */
+    public SuperTextView setRightTextColor(ColorStateList color) {
         if (rightView != null) {
+            if (color == null) {
+                throw new NullPointerException();
+            }
             rightView.getCenterTextView().setTextColor(color);
         }
         return this;
@@ -1475,7 +1606,22 @@ public class SuperTextView extends RelativeLayout {
      * @return SuperTextView
      */
     public SuperTextView setRightBottomTextColor(int color) {
+        ColorStateList colorStateList = ColorStateList.valueOf(color);
+        setRightBottomTextColor(colorStateList);
+        return this;
+    }
+
+    /**
+     * 设置右下文字颜色
+     *
+     * @param color 颜色值
+     * @return SuperTextView
+     */
+    public SuperTextView setRightBottomTextColor(ColorStateList color) {
         if (rightView != null) {
+            if (color == null) {
+                throw new NullPointerException();
+            }
             rightView.getBottomTextView().setTextColor(color);
         }
         return this;

@@ -226,6 +226,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="20dp"
+                stv:sLeftTextColor="@color/selector_stv_text_color"
                 stv:sLeftTextString="账号与安全"
                 stv:sRightIconRes="@drawable/arrow_right_red"
                 stv:sRightTextString="已保护"
