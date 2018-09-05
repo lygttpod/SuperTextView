@@ -3,6 +3,8 @@ package com.allen.library;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
@@ -173,9 +175,7 @@ public class SuperTextView extends RelativeLayout {
 
     private int mLeftViewWidth;
 
-    private View topDividerLineView, bottomDividerLineView;
 
-    private LayoutParams topDividerLineParams, bottomDividerLineParams;
     private int mTopDividerLineMarginLR;
     private int mTopDividerLineMarginLeft;
     private int mTopDividerLineMarginRight;
@@ -209,7 +209,6 @@ public class SuperTextView extends RelativeLayout {
 
     private int mRightViewMarginLeft;
     private int mRightViewMarginRight;
-
 
     private boolean useRipple;
     private Drawable mBackground_drawable;
@@ -292,6 +291,13 @@ public class SuperTextView extends RelativeLayout {
 
     private GradientDrawable gradientDrawable;
 
+    private Paint mTopDividerPaint;
+    private Paint mBottomDividerPaint;
+
+    private boolean mIsShowTopDivider;
+    private boolean mIsShowBottomDivider;
+
+
     public SuperTextView(Context context) {
         this(context, null);
     }
@@ -308,6 +314,7 @@ public class SuperTextView extends RelativeLayout {
         default_Margin = dip2px(context, default_Margin);
 
         getAttr(attrs);
+        initPaint();
         initView();
     }
 
@@ -548,8 +555,59 @@ public class SuperTextView extends RelativeLayout {
         initCenterTextView();
         initRightTextView();
 
-        initDividerLineView();
+    }
 
+    private void initPaint() {
+        mTopDividerPaint = new Paint();
+        mTopDividerPaint.setColor(mDividerLineColor);
+        mTopDividerPaint.setAntiAlias(true);
+        mTopDividerPaint.setStrokeWidth(mDividerLineHeight);
+
+
+        mBottomDividerPaint = new Paint();
+        mBottomDividerPaint.setColor(mDividerLineColor);
+        mBottomDividerPaint.setAntiAlias(true);
+        mBottomDividerPaint.setStrokeWidth(mDividerLineHeight);
+
+    }
+
+
+    /**
+     * onDraw和dispatchDraw的区别请自行google
+     * @param canvas 画笔
+     */
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        super.dispatchDraw(canvas);
+        if (!useShape) {
+            mIsShowTopDivider = (TOP == mDividerLineType || BOTH == mDividerLineType);
+            mIsShowBottomDivider = (BOTTOM == mDividerLineType || BOTH == mDividerLineType);
+            if (mIsShowTopDivider) {
+                drawTopDivider(canvas);
+            }
+            if (mIsShowBottomDivider) {
+                drawBottomDivider(canvas);
+            }
+        }
+    }
+
+
+    /**
+     * 绘制上边的分割线
+     *
+     * @param canvas 画笔
+     */
+    private void drawTopDivider(Canvas canvas) {
+        canvas.drawLine(mTopDividerLineMarginLR != 0 ? mTopDividerLineMarginLR : mTopDividerLineMarginLeft, 0, this.getWidth() - (mTopDividerLineMarginLR != 0 ? mTopDividerLineMarginLR : mTopDividerLineMarginRight), 0, mTopDividerPaint);
+    }
+
+    /**
+     * 绘制底部的分割线
+     *
+     * @param canvas 画笔
+     */
+    private void drawBottomDivider(Canvas canvas) {
+        canvas.drawLine(mBottomDividerLineMarginLR != 0 ? mBottomDividerLineMarginLR : mBottomDividerLineMarginLeft, this.getHeight(), this.getWidth() - (mBottomDividerLineMarginLR != 0 ? mBottomDividerLineMarginLR : mBottomDividerLineMarginRight), this.getHeight(), mBottomDividerPaint);
     }
 
 
@@ -1034,93 +1092,6 @@ public class SuperTextView extends RelativeLayout {
                 textView.setBackground(background);
             }
         }
-    }
-
-    /**
-     * 初始化分割线
-     */
-    private void initDividerLineView() {
-        if (!useShape) {
-            switch (mDividerLineType) {
-                case NONE:
-                    break;
-                case TOP:
-                    setTopDividerLineView();
-                    break;
-                case BOTTOM:
-                    setBottomDividerLineView();
-                    break;
-                case BOTH:
-                    setTopDividerLineView();
-                    setBottomDividerLineView();
-                    break;
-            }
-        }
-
-    }
-
-    /**
-     * 设置上边的分割线
-     */
-    private void setTopDividerLineView() {
-        if (mTopDividerLineMarginLR != 0) {
-            initTopDividerLineView(mTopDividerLineMarginLR, mTopDividerLineMarginLR);
-        } else {
-            initTopDividerLineView(mTopDividerLineMarginLeft, mTopDividerLineMarginRight);
-        }
-    }
-
-    /**
-     * 设置下边的分割线
-     */
-    private void setBottomDividerLineView() {
-        if (mBottomDividerLineMarginLR != 0) {
-            initBottomDividerLineView(mBottomDividerLineMarginLR, mBottomDividerLineMarginLR);
-        } else {
-            initBottomDividerLineView(mBottomDividerLineMarginLeft, mBottomDividerLineMarginRight);
-        }
-    }
-
-
-    /**
-     * 初始化上边分割线view
-     *
-     * @param marginLeft  左间距
-     * @param marginRight 右间距
-     */
-    private void initTopDividerLineView(int marginLeft, int marginRight) {
-        if (topDividerLineView == null) {
-            if (topDividerLineParams == null) {
-                topDividerLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, mDividerLineHeight);
-            }
-            topDividerLineParams.addRule(ALIGN_PARENT_TOP, TRUE);
-            topDividerLineParams.setMargins(marginLeft, 0, marginRight, 0);
-            topDividerLineView = new View(mContext);
-            topDividerLineView.setLayoutParams(topDividerLineParams);
-            topDividerLineView.setBackgroundColor(mDividerLineColor);
-        }
-        addView(topDividerLineView);
-    }
-
-    /**
-     * 初始化底部分割线view
-     *
-     * @param marginLeft  左间距
-     * @param marginRight 右间距
-     */
-    private void initBottomDividerLineView(int marginLeft, int marginRight) {
-        if (bottomDividerLineView == null) {
-            if (bottomDividerLineParams == null) {
-                bottomDividerLineParams = new LayoutParams(LayoutParams.MATCH_PARENT, mDividerLineHeight);
-            }
-            bottomDividerLineParams.addRule(ALIGN_PARENT_BOTTOM, TRUE);
-            bottomDividerLineParams.setMargins(marginLeft, 0, marginRight, 0);
-
-            bottomDividerLineView = new View(mContext);
-            bottomDividerLineView.setLayoutParams(bottomDividerLineParams);
-            bottomDividerLineView.setBackgroundColor(mDividerLineColor);
-        }
-        addView(bottomDividerLineView);
     }
 
 
@@ -2212,44 +2183,36 @@ public class SuperTextView extends RelativeLayout {
     /**
      * 设置上边分割线显示状态
      *
-     * @param visibility visibility
-     * @return superTextView
+     * @param isShow isShow
+     * @return this
      */
-    public SuperTextView setTopDividerLineVisibility(int visibility) {
-        if (topDividerLineView == null) {
-            setTopDividerLineView();
-        }
-        topDividerLineView.setVisibility(visibility);
+    public SuperTextView isShowTopDivider(boolean isShow) {
+        mIsShowTopDivider = isShow;
+        invalidate();
         return this;
     }
 
     /**
      * 设置下边分割线显示状态
      *
-     * @param visibility visibility
-     * @return superTextView
+     * @param isShow isShow
+     * @return this
      */
-    public SuperTextView setBottomDividerLineVisibility(int visibility) {
-        if (bottomDividerLineView == null) {
-            setBottomDividerLineView();
-        }
-        bottomDividerLineView.setVisibility(visibility);
+    public SuperTextView isShowBottomDivider(boolean isShow) {
+        mIsShowBottomDivider = isShow;
+        invalidate();
         return this;
     }
 
     public SuperTextView setTopDividerLineColor(int lineColor) {
-        if (topDividerLineView == null) {
-            setTopDividerLineView();
-        }
-        topDividerLineView.setBackgroundColor(lineColor);
+        mTopDividerPaint.setColor(lineColor);
+        invalidate();
         return this;
     }
 
     public SuperTextView setBottomDividerLineColor(int lineColor) {
-        if (bottomDividerLineView == null) {
-            setBottomDividerLineView();
-        }
-        bottomDividerLineView.setBackgroundColor(lineColor);
+        mBottomDividerPaint.setColor(lineColor);
+        invalidate();
         return this;
     }
     /////////////////////////////////////对外暴露的方法---end/////////////////////////////////
