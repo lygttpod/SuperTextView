@@ -574,6 +574,7 @@ public class SuperTextView extends RelativeLayout {
 
     /**
      * onDraw和dispatchDraw的区别请自行google
+     *
      * @param canvas 画笔
      */
     @Override
@@ -591,23 +592,39 @@ public class SuperTextView extends RelativeLayout {
         }
     }
 
-
     /**
      * 绘制上边的分割线
      *
-     * @param canvas 画笔
+     * @param canvas canvas
      */
     private void drawTopDivider(Canvas canvas) {
-        canvas.drawLine(mTopDividerLineMarginLR != 0 ? mTopDividerLineMarginLR : mTopDividerLineMarginLeft, 0, this.getWidth() - (mTopDividerLineMarginLR != 0 ? mTopDividerLineMarginLR : mTopDividerLineMarginRight), 0, mTopDividerPaint);
+        drawDivider(canvas, true, mTopDividerLineMarginLR, mTopDividerLineMarginLeft, mTopDividerLineMarginRight, mTopDividerPaint);
     }
 
     /**
      * 绘制底部的分割线
      *
-     * @param canvas 画笔
+     * @param canvas canvas
      */
     private void drawBottomDivider(Canvas canvas) {
-        canvas.drawLine(mBottomDividerLineMarginLR != 0 ? mBottomDividerLineMarginLR : mBottomDividerLineMarginLeft, this.getHeight(), this.getWidth() - (mBottomDividerLineMarginLR != 0 ? mBottomDividerLineMarginLR : mBottomDividerLineMarginRight), this.getHeight(), mBottomDividerPaint);
+        drawDivider(canvas, false, mBottomDividerLineMarginLR, mBottomDividerLineMarginLeft, mBottomDividerLineMarginRight, mBottomDividerPaint);
+    }
+
+    /**
+     * 绘制分割线
+     *
+     * @param canvas      canvas
+     * @param marginLR    左右间距
+     * @param marginLeft  左间距
+     * @param marginRight 右间距
+     * @param paint       画笔
+     */
+    private void drawDivider(Canvas canvas, boolean isTopDivider, int marginLR, int marginLeft, int marginRight, Paint paint) {
+
+        if (marginLR != 0) {
+            marginLeft = marginRight = marginLR;
+        }
+        canvas.drawLine(marginLeft, isTopDivider ? 0 : getHeight(), this.getWidth() - marginRight, isTopDivider ? 0 : getHeight(), paint);
     }
 
 
