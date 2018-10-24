@@ -372,7 +372,7 @@ sLeftTextGravity | enum  | 左边TextView内文字对齐方式<br>left(左对齐
 sCenterTextGravity | enum  | 中间TextView内文字对齐方式<br>left(左对齐)<br>center(居中)<br>right(右对齐) | 默认left
 sRightTextGravity | enum  | 右边TextView内文字对齐方式<br>left(左对齐)<br>center(居中)<br>right(右对齐) | 默认left
 sLeftIconShowCircle | boolean  | 左边ImageView是否显示为圆形 | 默认false
-sRightIconShowCircle | boolean  | 左边ImageView是否显示为圆形 | 默认false
+sRightIconShowCircle | boolean  | 右边ImageView是否显示为圆形 | 默认false
 
 > 黑格尔曾说过：存在即合理。SuperTextView的出现应该就是某种需求下的产物。
 
