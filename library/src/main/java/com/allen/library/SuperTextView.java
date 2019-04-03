@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
+import android.support.v7.widget.AppCompatTextView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -19,7 +20,6 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
-import android.widget.TextView;
 
 /**
  * Created by Allen on 2017/7/1.
@@ -1075,7 +1075,7 @@ public class SuperTextView extends RelativeLayout {
      * @param drawableRight   右边图标
      * @param drawablePadding 图标距离文字的间距
      */
-    public void setDefaultDrawable(TextView textView, Drawable drawableLeft, Drawable drawableRight, int drawablePadding, int drawableWidth, int drawableHeight) {
+    public void setDefaultDrawable(AppCompatTextView textView, Drawable drawableLeft, Drawable drawableRight, int drawablePadding, int drawableWidth, int drawableHeight) {
         if (drawableLeft != null || drawableRight != null) {
             textView.setVisibility(VISIBLE);
         }
@@ -1100,7 +1100,7 @@ public class SuperTextView extends RelativeLayout {
      * @param textView
      * @param background
      */
-    private void setDefaultBackground(TextView textView, Drawable background) {
+    private void setDefaultBackground(AppCompatTextView textView, Drawable background) {
         if (background != null) {
             textView.setVisibility(VISIBLE);
             if (Build.VERSION.SDK_INT < 16) {
@@ -2038,8 +2038,8 @@ public class SuperTextView extends RelativeLayout {
      *
      * @return textView
      */
-    public TextView getLeftTopTextView() {
-        TextView textView = null;
+    public AppCompatTextView getLeftTopTextView() {
+        AppCompatTextView textView = null;
         if (leftView != null) {
             textView = leftView.getTopTextView();
         }
@@ -2051,8 +2051,8 @@ public class SuperTextView extends RelativeLayout {
      *
      * @return textView
      */
-    public TextView getLeftTextView() {
-        TextView textView = null;
+    public AppCompatTextView getLeftTextView() {
+        AppCompatTextView textView = null;
         if (leftView != null) {
             textView = leftView.getCenterTextView();
         }
@@ -2064,8 +2064,8 @@ public class SuperTextView extends RelativeLayout {
      *
      * @return textView
      */
-    public TextView getLeftBottomTextView() {
-        TextView textView = null;
+    public AppCompatTextView getLeftBottomTextView() {
+        AppCompatTextView textView = null;
         if (leftView != null) {
             textView = leftView.getBottomTextView();
         }
@@ -2077,8 +2077,8 @@ public class SuperTextView extends RelativeLayout {
      *
      * @return textView
      */
-    public TextView getCenterTopTextView() {
-        TextView textView = null;
+    public AppCompatTextView getCenterTopTextView() {
+        AppCompatTextView textView = null;
         if (centerView != null) {
             textView = centerView.getTopTextView();
         }
@@ -2090,8 +2090,8 @@ public class SuperTextView extends RelativeLayout {
      *
      * @return textView
      */
-    public TextView getCenterTextView() {
-        TextView textView = null;
+    public AppCompatTextView getCenterTextView() {
+        AppCompatTextView textView = null;
         if (centerView != null) {
             textView = centerView.getCenterTextView();
         }
@@ -2103,8 +2103,8 @@ public class SuperTextView extends RelativeLayout {
      *
      * @return textView
      */
-    public TextView getCenterBottomTextView() {
-        TextView textView = null;
+    public AppCompatTextView getCenterBottomTextView() {
+        AppCompatTextView textView = null;
         if (centerView != null) {
             textView = centerView.getBottomTextView();
         }
@@ -2116,8 +2116,8 @@ public class SuperTextView extends RelativeLayout {
      *
      * @return textView
      */
-    public TextView getRightTopTextView() {
-        TextView textView = null;
+    public AppCompatTextView getRightTopTextView() {
+        AppCompatTextView textView = null;
         if (rightView != null) {
             textView = rightView.getTopTextView();
         }
@@ -2129,8 +2129,8 @@ public class SuperTextView extends RelativeLayout {
      *
      * @return textView
      */
-    public TextView getRightTextView() {
-        TextView textView = null;
+    public AppCompatTextView getRightTextView() {
+        AppCompatTextView textView = null;
         if (rightView != null) {
             textView = rightView.getCenterTextView();
         }
@@ -2142,8 +2142,8 @@ public class SuperTextView extends RelativeLayout {
      *
      * @return textView
      */
-    public TextView getRightBottomTextView() {
-        TextView textView = null;
+    public AppCompatTextView getRightBottomTextView() {
+        AppCompatTextView textView = null;
         if (rightView != null) {
             textView = rightView.getBottomTextView();
         }

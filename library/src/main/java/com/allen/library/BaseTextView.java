@@ -1,12 +1,11 @@
 package com.allen.library;
 
 import android.content.Context;
+import android.support.v7.widget.AppCompatTextView;
 import android.text.InputFilter;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 /**
  * Created by Allen on 2017/6/29.
@@ -18,7 +17,7 @@ public class BaseTextView extends LinearLayout {
 
     private Context mContext;
 
-    private TextView topTextView, centerTextView, bottomTextView;
+    private AppCompatTextView topTextView, centerTextView, bottomTextView;
 
     private LinearLayout.LayoutParams topTVParams, centerTVParams, bottomTVParams;
 
@@ -74,7 +73,7 @@ public class BaseTextView extends LinearLayout {
     }
 
 
-    private TextView initTextView(LinearLayout.LayoutParams params, TextView textView) {
+    private AppCompatTextView initTextView(LinearLayout.LayoutParams params, AppCompatTextView textView) {
 
         textView = getTextView(textView, params);
 //        textView.setGravity(Gravity.CENTER);
@@ -90,9 +89,9 @@ public class BaseTextView extends LinearLayout {
      * @param layoutParams 对象
      * @return 返回
      */
-    public TextView getTextView(TextView textView, LinearLayout.LayoutParams layoutParams) {
+    public AppCompatTextView getTextView(AppCompatTextView textView, LinearLayout.LayoutParams layoutParams) {
         if (textView == null) {
-            textView = new TextView(mContext);
+            textView = new AppCompatTextView(mContext);
             textView.setLayoutParams(layoutParams);
             textView.setVisibility(GONE);
         }
@@ -114,7 +113,7 @@ public class BaseTextView extends LinearLayout {
     }
 
 
-    private void setTextString(TextView textView, CharSequence textString) {
+    private void setTextString(AppCompatTextView textView, CharSequence textString) {
         textView.setText(textString);
         if (!TextUtils.isEmpty(textString)) {
             textView.setVisibility(VISIBLE);
@@ -134,15 +133,15 @@ public class BaseTextView extends LinearLayout {
         setTextString(bottomTextView, s);
     }
 
-    public TextView getTopTextView() {
+    public AppCompatTextView getTopTextView() {
         return topTextView;
     }
 
-    public TextView getCenterTextView() {
+    public AppCompatTextView getCenterTextView() {
         return centerTextView;
     }
 
-    public TextView getBottomTextView() {
+    public AppCompatTextView getBottomTextView() {
         return bottomTextView;
     }
 
