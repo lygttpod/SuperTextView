@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="@color/common_pressed">
-    <item android:drawable="@color/white" />
+    xmlns:tools="http://schemas.android.com/tools"
+    android:color="@color/common_pressed"
+    tools:ignore="NewApi">
+    <item
+        android:id="@android:id/mask"
+        android:drawable="@color/white" />
 </ripple>
