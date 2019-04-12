@@ -193,10 +193,10 @@ public class SuperTextView extends RelativeLayout {
     /**
      * 分割线的类型
      */
-    private static final int NONE = 0;
-    private static final int TOP = 1;
-    private static final int BOTTOM = 2;
-    private static final int BOTH = 3;
+    public static final int NONE = 0;
+    public static final int TOP = 1;
+    public static final int BOTTOM = 2;
+    public static final int BOTH = 3;
     private static final int default_Divider = BOTTOM;
 
     private int default_Margin = 10;
@@ -2198,25 +2198,12 @@ public class SuperTextView extends RelativeLayout {
     }
 
     /**
-     * 设置上边分割线显示状态
-     *
-     * @param isShow isShow
+     * 代码动态设置分割线显示类型
+     * @param dividerType TOP、BOTTOM、BOTH、NONE
      * @return this
      */
-    public SuperTextView isShowTopDivider(boolean isShow) {
-        mIsShowTopDivider = isShow;
-        invalidate();
-        return this;
-    }
-
-    /**
-     * 设置下边分割线显示状态
-     *
-     * @param isShow isShow
-     * @return this
-     */
-    public SuperTextView isShowBottomDivider(boolean isShow) {
-        mIsShowBottomDivider = isShow;
+    public SuperTextView setDividerLineType(int dividerType) {
+        mDividerLineType = dividerType;
         invalidate();
         return this;
     }
