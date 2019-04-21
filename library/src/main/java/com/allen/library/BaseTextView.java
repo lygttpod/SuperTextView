@@ -6,6 +6,7 @@ import android.text.InputFilter;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * Created by Allen on 2017/6/29.
@@ -160,6 +161,14 @@ public class BaseTextView extends LinearLayout {
             bottomTextView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(bottomMaxEms)});
         }
 
+    }
+
+    public void setFakeBoldText(TextView textView, boolean isBold) {
+        if (textView != null) {
+            textView.getPaint().setFakeBoldText(isBold);
+            //在点击事件里边设置setFakeBoldText是无效的，必须调用invalidate刷新一下view
+            textView.invalidate();
+        }
     }
 
     public void setCenterSpaceHeight(int centerSpaceHeight) {

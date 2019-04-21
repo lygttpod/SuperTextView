@@ -1622,7 +1622,7 @@ public class SuperTextView extends RelativeLayout {
      */
     public SuperTextView setLeftTopTextIsBold(boolean isBold) {
         if (leftView != null) {
-            leftView.getTopTextView().getPaint().setFakeBoldText(isBold);
+            leftView.setFakeBoldText(leftView.getTopTextView(), isBold);
         }
         return this;
     }
@@ -1634,7 +1634,7 @@ public class SuperTextView extends RelativeLayout {
      */
     public SuperTextView setLeftTextIsBold(boolean isBold) {
         if (leftView != null) {
-            leftView.getCenterTextView().getPaint().setFakeBoldText(isBold);
+            leftView.setFakeBoldText(leftView.getCenterTextView(), isBold);
         }
         return this;
     }
@@ -1646,7 +1646,7 @@ public class SuperTextView extends RelativeLayout {
      */
     public SuperTextView setLeftBottomTextIsBold(boolean isBold) {
         if (leftView != null) {
-            leftView.getBottomTextView().getPaint().setFakeBoldText(isBold);
+            leftView.setFakeBoldText(leftView.getBottomTextView(), isBold);
         }
         return this;
     }
@@ -1658,7 +1658,7 @@ public class SuperTextView extends RelativeLayout {
      */
     public SuperTextView setCenterTopTextIsBold(boolean isBold) {
         if (centerView != null) {
-            centerView.getTopTextView().getPaint().setFakeBoldText(isBold);
+            centerView.setFakeBoldText(centerView.getTopTextView(), isBold);
         }
         return this;
     }
@@ -1670,7 +1670,7 @@ public class SuperTextView extends RelativeLayout {
      */
     public SuperTextView setCenterTextIsBold(boolean isBold) {
         if (centerView != null) {
-            centerView.getCenterTextView().getPaint().setFakeBoldText(isBold);
+            centerView.setFakeBoldText(centerView.getCenterTextView(), isBold);
         }
         return this;
     }
@@ -1682,7 +1682,7 @@ public class SuperTextView extends RelativeLayout {
      */
     public SuperTextView setCenterBottomTextIsBold(boolean isBold) {
         if (centerView != null) {
-            centerView.getBottomTextView().getPaint().setFakeBoldText(isBold);
+            centerView.setFakeBoldText(centerView.getBottomTextView(), isBold);
         }
         return this;
     }
@@ -1694,7 +1694,7 @@ public class SuperTextView extends RelativeLayout {
      */
     public SuperTextView setRightTopTextIsBold(boolean isBold) {
         if (rightView != null) {
-            rightView.getTopTextView().getPaint().setFakeBoldText(isBold);
+            rightView.setFakeBoldText(rightView.getTopTextView(), isBold);
         }
         return this;
     }
@@ -1706,7 +1706,7 @@ public class SuperTextView extends RelativeLayout {
      */
     public SuperTextView setRightTextIsBold(boolean isBold) {
         if (rightView != null) {
-            rightView.getCenterTextView().getPaint().setFakeBoldText(isBold);
+            rightView.setFakeBoldText(rightView.getCenterTextView(), isBold);
         }
         return this;
     }
@@ -1718,7 +1718,7 @@ public class SuperTextView extends RelativeLayout {
      */
     public SuperTextView setRightBottomTextIsBold(boolean isBold) {
         if (rightView != null) {
-            rightView.getBottomTextView().getPaint().setFakeBoldText(isBold);
+            rightView.setFakeBoldText(rightView.getBottomTextView(), isBold);
         }
         return this;
     }
