@@ -1850,6 +1850,18 @@ public class SuperTextView extends RelativeLayout {
     }
 
     /**
+     * @param clickable 是否允许点击
+     * @return 返回值
+     */
+    public SuperTextView setCbClickable(boolean clickable) {
+        if (rightCheckBox != null) {
+            rightCheckBox.setClickable(clickable);
+        }
+        return this;
+    }
+
+
+    /**
      * 设置checkbox的背景图
      *
      * @param drawable drawable对象
@@ -1889,6 +1901,17 @@ public class SuperTextView extends RelativeLayout {
     }
 
     /**
+     * @param clickable Switch是否允许点击
+     * @return 返回值
+     */
+    public SuperTextView setSwitchClickable(boolean clickable) {
+        if (mSwitch != null) {
+            mSwitch.setClickable(clickable);
+        }
+        return this;
+    }
+
+    /**
      * 获取switch状态
      *
      * @return 返回switch当前选中状态
@@ -1899,6 +1922,15 @@ public class SuperTextView extends RelativeLayout {
             isChecked = mSwitch.isChecked();
         }
         return isChecked;
+    }
+
+    /**
+     * 获取switchView
+     *
+     * @return Switch
+     */
+    public Switch getSwitch() {
+        return mSwitch;
     }
 
     /**
@@ -2039,11 +2071,10 @@ public class SuperTextView extends RelativeLayout {
      * @return textView
      */
     public AppCompatTextView getLeftTopTextView() {
-        AppCompatTextView textView = null;
-        if (leftView != null) {
-            textView = leftView.getTopTextView();
+        if (leftView == null) {
+            initLeftTextView();
         }
-        return textView;
+        return leftView.getTopTextView();
     }
 
     /**
@@ -2052,11 +2083,10 @@ public class SuperTextView extends RelativeLayout {
      * @return textView
      */
     public AppCompatTextView getLeftTextView() {
-        AppCompatTextView textView = null;
-        if (leftView != null) {
-            textView = leftView.getCenterTextView();
+        if (leftView == null) {
+            initLeftTextView();
         }
-        return textView;
+        return leftView.getCenterTextView();
     }
 
     /**
@@ -2065,11 +2095,10 @@ public class SuperTextView extends RelativeLayout {
      * @return textView
      */
     public AppCompatTextView getLeftBottomTextView() {
-        AppCompatTextView textView = null;
-        if (leftView != null) {
-            textView = leftView.getBottomTextView();
+        if (leftView == null) {
+            initLeftTextView();
         }
-        return textView;
+        return leftView.getBottomTextView();
     }
 
     /**
@@ -2078,11 +2107,10 @@ public class SuperTextView extends RelativeLayout {
      * @return textView
      */
     public AppCompatTextView getCenterTopTextView() {
-        AppCompatTextView textView = null;
-        if (centerView != null) {
-            textView = centerView.getTopTextView();
+        if (centerView == null) {
+            initCenterTextView();
         }
-        return textView;
+        return centerView.getTopTextView();
     }
 
     /**
@@ -2091,11 +2119,10 @@ public class SuperTextView extends RelativeLayout {
      * @return textView
      */
     public AppCompatTextView getCenterTextView() {
-        AppCompatTextView textView = null;
-        if (centerView != null) {
-            textView = centerView.getCenterTextView();
+        if (centerView == null) {
+            initCenterTextView();
         }
-        return textView;
+        return centerView.getCenterTextView();
     }
 
     /**
@@ -2104,11 +2131,10 @@ public class SuperTextView extends RelativeLayout {
      * @return textView
      */
     public AppCompatTextView getCenterBottomTextView() {
-        AppCompatTextView textView = null;
-        if (centerView != null) {
-            textView = centerView.getBottomTextView();
+        if (centerView == null) {
+            initCenterTextView();
         }
-        return textView;
+        return centerView.getBottomTextView();
     }
 
     /**
@@ -2117,11 +2143,10 @@ public class SuperTextView extends RelativeLayout {
      * @return textView
      */
     public AppCompatTextView getRightTopTextView() {
-        AppCompatTextView textView = null;
-        if (rightView != null) {
-            textView = rightView.getTopTextView();
+        if (rightView == null) {
+            initRightTextView();
         }
-        return textView;
+        return rightView.getTopTextView();
     }
 
     /**
@@ -2130,11 +2155,10 @@ public class SuperTextView extends RelativeLayout {
      * @return textView
      */
     public AppCompatTextView getRightTextView() {
-        AppCompatTextView textView = null;
-        if (rightView != null) {
-            textView = rightView.getCenterTextView();
+        if (rightView == null) {
+            initRightTextView();
         }
-        return textView;
+        return rightView.getCenterTextView();
     }
 
     /**
@@ -2143,11 +2167,10 @@ public class SuperTextView extends RelativeLayout {
      * @return textView
      */
     public AppCompatTextView getRightBottomTextView() {
-        AppCompatTextView textView = null;
-        if (rightView != null) {
-            textView = rightView.getBottomTextView();
+        if (rightView == null) {
+            initRightTextView();
         }
-        return textView;
+        return rightView.getBottomTextView();
     }
 
     /**
@@ -2199,6 +2222,7 @@ public class SuperTextView extends RelativeLayout {
 
     /**
      * 代码动态设置分割线显示类型
+     *
      * @param dividerType TOP、BOTTOM、BOTH、NONE
      * @return this
      */
