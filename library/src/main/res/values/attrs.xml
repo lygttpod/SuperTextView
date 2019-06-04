@@ -266,18 +266,7 @@
         <attr name="sSizeWidth" format="dimension" />
         <attr name="sSizeHeight" format="dimension" />
 
-        <attr name="sGradientOrientation" format="enum">
-            <enum name="TOP_BOTTOM" value="0" />
-            <enum name="TR_BL" value="1" />
-            <enum name="RIGHT_LEFT" value="2" />
-            <enum name="BR_TL" value="3" />
-            <enum name="BOTTOM_TOP" value="4" />
-            <enum name="BL_TR" value="5" />
-            <enum name="LEFT_RIGHT" value="6" />
-            <enum name="TL_BR" value="7" />
-        </attr>
-
-        <attr name="sGradientAngle" format="dimension" />
+        <attr name="sGradientAngle" format="float" />
         <attr name="sGradientCenterX" format="dimension" />
         <attr name="sGradientCenterY" format="dimension" />
         <attr name="sGradientGradientRadius" format="dimension" />

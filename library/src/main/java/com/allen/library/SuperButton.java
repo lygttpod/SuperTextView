@@ -3,11 +3,11 @@ package com.allen.library;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.StateListDrawable;
-import android.os.Build;
+import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 import android.view.Gravity;
-import android.widget.Button;
+
+import com.allen.library.utils.ShapeBuilder;
 
 /**
  * Created by Allen on 2017/7/6.
@@ -15,7 +15,7 @@ import android.widget.Button;
  * 超级按钮  实现shape所有的属性
  */
 
-public class SuperButton extends Button {
+public class SuperButton extends AppCompatButton {
 
     private Context mContext;
 
@@ -41,8 +41,6 @@ public class SuperButton extends Button {
 
     private int sizeWidth;
     private int sizeHeight;
-
-    private int gradientOrientation;
 
     private int gradientAngle;
     private int gradientCenterX;
@@ -98,6 +96,7 @@ public class SuperButton extends Button {
 
     private GradientDrawable gradientDrawable;
 
+    private ShapeBuilder shapeBuilder;
 
     public SuperButton(Context context) {
         this(context, null);
@@ -142,9 +141,7 @@ public class SuperButton extends Button {
         sizeWidth = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sSizeWidth, 0);
         sizeHeight = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sSizeHeight, dip2px(mContext, 48));
 
-        gradientOrientation = typedArray.getInt(R.styleable.SuperButton_sGradientOrientation, -1);
-
-        gradientAngle = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sGradientAngle, 0);
+        gradientAngle = (int) typedArray.getFloat(R.styleable.SuperButton_sGradientAngle, -1);
         gradientCenterX = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sGradientCenterX, 0);
         gradientCenterY = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sGradientCenterY, 0);
         gradientGradientRadius = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sGradientGradientRadius, 0);
@@ -163,53 +160,37 @@ public class SuperButton extends Button {
 
     private void init() {
         setClickable(true);
-
-        if (Build.VERSION.SDK_INT < 16) {
-            setBackgroundDrawable(useSelector ? getSelector() : getDrawable(0));
-        } else {
-            setBackground(useSelector ? getSelector() : getDrawable(0));
-        }
-
+        shapeBuilder = new ShapeBuilder();
+        shapeBuilder
+                .setShapeType(shapeType)
+                .setShapeCornersRadius(cornersRadius)
+                .setShapeCornersTopLeftRadius(cornersTopLeftRadius)
+                .setShapeCornersTopRightRadius(cornersTopRightRadius)
+                .setShapeCornersBottomRightRadius(cornersBottomRightRadius)
+                .setShapeCornersBottomLeftRadius(cornersBottomLeftRadius)
+                .setShapeSolidColor(solidColor)
+                .setShapeStrokeColor(strokeColor)
+                .setShapeStrokeWidth(strokeWidth)
+                .setShapeStrokeDashWidth(strokeDashWidth)
+                .setShapeStrokeDashGap(strokeDashGap)
+                .setShapeUseSelector(useSelector)
+                .setShapeSelectorNormalColor(selectorNormalColor)
+                .setShapeSelectorPressedColor(selectorPressedColor)
+                .setShapeSelectorDisableColor(selectorDisableColor)
+                .setShapeSizeWidth(sizeWidth)
+                .setShapeSizeHeight(sizeHeight)
+                .setShapeGradientType(gradientType)
+                .setShapeGradientAngle(gradientAngle)
+                .setShapeGradientUseLevel(gradientUseLevel)
+                .setShapeGradientCenterX(gradientCenterX)
+                .setShapeGradientCenterY(gradientCenterY)
+                .setShapeGradientStartColor(gradientStartColor)
+                .setShapeGradientCenterColor(gradientCenterColor)
+                .setShapeGradientEndColor(gradientEndColor)
+                .into(this);
         setSGravity();
     }
 
-
-    /**
-     * 获取设置之后的Selector
-     *
-     * @return stateListDrawable
-     */
-    public StateListDrawable getSelector() {
-
-        StateListDrawable stateListDrawable = new StateListDrawable();
-
-        //注意该处的顺序，只要有一个状态与之相配，背景就会被换掉
-        //所以不要把大范围放在前面了，如果sd.addState(new[]{},normal)放在第一个的话，就没有什么效果了
-        stateListDrawable.addState(new int[]{android.R.attr.state_pressed, android.R.attr.state_enabled}, getDrawable(android.R.attr.state_pressed));
-        stateListDrawable.addState(new int[]{-android.R.attr.state_enabled}, getDrawable(-android.R.attr.state_enabled));
-        stateListDrawable.addState(new int[]{}, getDrawable(android.R.attr.state_enabled));
-
-        return stateListDrawable;
-    }
-
-    /**
-     * 设置GradientDrawable
-     *
-     * @param state 按钮状态
-     * @return gradientDrawable
-     */
-    public GradientDrawable getDrawable(int state) {
-        gradientDrawable = new GradientDrawable();
-
-        setShape();
-        setOrientation();
-        setSize();
-        setBorder();
-        setRadius();
-        setSelectorColor(state);
-
-        return gradientDrawable;
-    }
 
     /**
      * 设置文字对其方式
@@ -231,165 +212,6 @@ public class SuperButton extends Button {
             case 4:
                 setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
                 break;
-        }
-    }
-
-    /**
-     * 设置Selector的不同状态的颜色
-     *
-     * @param state 按钮状态
-     */
-    private void setSelectorColor(int state) {
-        if (gradientOrientation == -1) {
-            switch (state) {
-                case android.R.attr.state_pressed:
-                    gradientDrawable.setColor(selectorPressedColor);
-                    break;
-                case -android.R.attr.state_enabled:
-                    gradientDrawable.setColor(selectorDisableColor);
-                    break;
-                case android.R.attr.state_enabled:
-                    gradientDrawable.setColor(selectorNormalColor);
-                    break;
-            }
-        }
-
-    }
-
-    /**
-     * 设置背景颜色
-     * 如果设定的有Orientation 就默认为是渐变色的Button，否则就是纯色的Button
-     */
-    private void setOrientation() {
-        if (gradientOrientation != -1) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                gradientDrawable.setOrientation(getOrientation(gradientOrientation));
-
-                if (gradientCenterColor == -1) {
-                    gradientDrawable.setColors(new int[]{gradientStartColor, gradientEndColor});
-                } else {
-                    gradientDrawable.setColors(new int[]{gradientStartColor, gradientCenterColor, gradientEndColor});
-                }
-
-                switch (gradientType) {
-                    case linear:
-                        gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
-                        break;
-                    case radial:
-                        gradientDrawable.setGradientType(GradientDrawable.RADIAL_GRADIENT);
-                        gradientDrawable.setGradientRadius(gradientGradientRadius);
-
-                        break;
-                    case sweep:
-                        gradientDrawable.setGradientType(GradientDrawable.SWEEP_GRADIENT);
-                        break;
-                }
-
-
-                gradientDrawable.setUseLevel(gradientUseLevel);
-
-                if (gradientCenterX != 0 && gradientCenterY != 0) {
-                    gradientDrawable.setGradientCenter(gradientCenterX, gradientCenterY);
-                }
-
-            }
-        } else {
-            gradientDrawable.setColor(solidColor);
-        }
-    }
-
-
-    /**
-     * 设置颜色渐变类型
-     *
-     * @param gradientOrientation gradientOrientation
-     * @return Orientation
-     */
-    private GradientDrawable.Orientation getOrientation(int gradientOrientation) {
-        GradientDrawable.Orientation orientation = null;
-        switch (gradientOrientation) {
-            case TOP_BOTTOM:
-                orientation = GradientDrawable.Orientation.TOP_BOTTOM;
-                break;
-            case TR_BL:
-                orientation = GradientDrawable.Orientation.TR_BL;
-                break;
-            case RIGHT_LEFT:
-                orientation = GradientDrawable.Orientation.RIGHT_LEFT;
-                break;
-            case BR_TL:
-                orientation = GradientDrawable.Orientation.BR_TL;
-                break;
-            case BOTTOM_TOP:
-                orientation = GradientDrawable.Orientation.BOTTOM_TOP;
-                break;
-            case BL_TR:
-                orientation = GradientDrawable.Orientation.BL_TR;
-                break;
-            case LEFT_RIGHT:
-                orientation = GradientDrawable.Orientation.LEFT_RIGHT;
-                break;
-            case TL_BR:
-                orientation = GradientDrawable.Orientation.TL_BR;
-                break;
-        }
-        return orientation;
-    }
-
-    /**
-     * 设置shape类型
-     */
-    private void setShape() {
-
-        switch (shapeType) {
-            case RECTANGLE:
-                gradientDrawable.setShape(GradientDrawable.RECTANGLE);
-                break;
-            case OVAL:
-                gradientDrawable.setShape(GradientDrawable.OVAL);
-                break;
-            case LINE:
-                gradientDrawable.setShape(GradientDrawable.LINE);
-                break;
-            case RING:
-                gradientDrawable.setShape(GradientDrawable.RING);
-                break;
-        }
-    }
-
-
-    private void setSize() {
-        if (shapeType == RECTANGLE) {
-            gradientDrawable.setSize(sizeWidth, sizeHeight);
-        }
-    }
-
-    /**
-     * 设置边框  宽度  颜色  虚线  间隙
-     */
-    private void setBorder() {
-        gradientDrawable.setStroke(strokeWidth, strokeColor, strokeDashWidth, strokeDashGap);
-    }
-
-    /**
-     * 只有类型是矩形的时候设置圆角半径才有效
-     */
-    private void setRadius() {
-        if (shapeType == GradientDrawable.RECTANGLE) {
-            if (cornersRadius != 0) {
-                gradientDrawable.setCornerRadius(cornersRadius);//设置圆角的半径
-            } else {
-                //1、2两个参数表示左上角，3、4表示右上角，5、6表示右下角，7、8表示左下角
-                gradientDrawable.setCornerRadii(
-                        new float[]
-                                {
-                                        cornersTopLeftRadius, cornersTopLeftRadius,
-                                        cornersTopRightRadius, cornersTopRightRadius,
-                                        cornersBottomRightRadius, cornersBottomRightRadius,
-                                        cornersBottomLeftRadius, cornersBottomLeftRadius
-                                }
-                );
-            }
         }
     }
 
@@ -425,7 +247,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeSelectorPressedColor(int color) {
-        this.selectorPressedColor = color;
+        this.shapeBuilder.setShapeSelectorPressedColor(color);
         return this;
     }
 
@@ -436,7 +258,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeSelectorNormalColor(int color) {
-        this.selectorNormalColor = color;
+        this.shapeBuilder.setShapeSelectorNormalColor(color);
         return this;
     }
 
@@ -447,7 +269,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeSelectorDisableColor(int color) {
-        this.selectorDisableColor = color;
+        this.shapeBuilder.setShapeSelectorDisableColor(color);
         return this;
     }
 
@@ -458,7 +280,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeSolidColor(int color) {
-        this.solidColor = color;
+        this.shapeBuilder.setShapeSolidColor(color);
         return this;
     }
 
@@ -469,7 +291,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeStrokeWidth(int strokeWidth) {
-        this.strokeWidth = dip2px(mContext, strokeWidth);
+        this.shapeBuilder.setShapeStrokeWidth(dip2px(mContext, strokeWidth));
         return this;
     }
 
@@ -480,7 +302,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeStrokeColor(int strokeColor) {
-        this.strokeColor = strokeColor;
+        this.shapeBuilder.setShapeStrokeColor(strokeColor);
         return this;
     }
 
@@ -490,8 +312,8 @@ public class SuperButton extends Button {
      * @param strokeDashWidth 边框虚线宽度
      * @return 对象
      */
-    public SuperButton setShapeSrokeDashWidth(float strokeDashWidth) {
-        this.strokeDashWidth = dip2px(mContext, strokeDashWidth);
+    public SuperButton setShapeStrokeDashWidth(float strokeDashWidth) {
+        this.shapeBuilder.setShapeStrokeDashWidth(dip2px(mContext, strokeDashWidth));
         return this;
     }
 
@@ -502,7 +324,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeStrokeDashGap(float strokeDashGap) {
-        this.strokeDashGap = dip2px(mContext, strokeDashGap);
+        this.shapeBuilder.setShapeStrokeDashGap(dip2px(mContext, strokeDashGap));
         return this;
     }
 
@@ -513,7 +335,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeCornersRadius(float radius) {
-        this.cornersRadius = dip2px(mContext, radius);
+        this.shapeBuilder.setShapeCornersRadius(dip2px(mContext, radius));
         return this;
     }
 
@@ -524,7 +346,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeCornersTopLeftRadius(float radius) {
-        this.cornersTopLeftRadius = dip2px(mContext, radius);
+        this.shapeBuilder.setShapeCornersTopLeftRadius(dip2px(mContext, radius));
         return this;
     }
 
@@ -535,7 +357,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeCornersTopRightRadius(float radius) {
-        this.cornersTopRightRadius = dip2px(mContext, radius);
+        this.shapeBuilder.setShapeCornersTopRightRadius(dip2px(mContext, radius));
         return this;
     }
 
@@ -546,7 +368,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeCornersBottomLeftRadius(float radius) {
-        this.cornersBottomLeftRadius = dip2px(mContext, radius);
+        this.shapeBuilder.setShapeCornersBottomLeftRadius(dip2px(mContext, radius));
         return this;
     }
 
@@ -557,7 +379,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeCornersBottomRightRadius(float radius) {
-        this.cornersBottomRightRadius = dip2px(mContext, radius);
+        this.shapeBuilder.setShapeCornersBottomRightRadius(dip2px(mContext, radius));
         return this;
     }
 
@@ -568,7 +390,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeSizeWidth(int sizeWidth) {
-        this.sizeWidth = sizeWidth;
+        this.shapeBuilder.setShapeSizeWidth(dip2px(mContext, sizeWidth));
         return this;
     }
 
@@ -579,18 +401,18 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeSizeHeight(int sizeHeight) {
-        this.sizeHeight = sizeHeight;
+        this.shapeBuilder.setShapeSizeHeight(dip2px(mContext, sizeHeight));
         return this;
     }
 
     /**
      * 设置背景渐变方式
      *
-     * @param gradientOrientation 渐变类型
+     * @param gradientAngle 渐变类型
      * @return 对象
      */
-    public SuperButton setShapeGradientOrientation(int gradientOrientation) {
-        this.gradientOrientation = gradientOrientation;
+    public SuperButton setShapeGradientAngle(int gradientAngle) {
+        this.shapeBuilder.setShapeGradientAngle(gradientAngle);
         return this;
     }
 
@@ -601,7 +423,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeGradientCenterX(int gradientCenterX) {
-        this.gradientCenterX = gradientCenterX;
+        this.shapeBuilder.setShapeGradientCenterX(gradientCenterX);
         return this;
     }
 
@@ -612,7 +434,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeGradientCenterY(int gradientCenterY) {
-        this.gradientCenterY = gradientCenterY;
+        this.shapeBuilder.setShapeGradientCenterY(gradientCenterY);
         return this;
     }
 
@@ -623,7 +445,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeGradientGradientRadius(int gradientGradientRadius) {
-        this.gradientGradientRadius = gradientGradientRadius;
+        this.shapeBuilder.setShapeGradientGradientRadius(gradientGradientRadius);
         return this;
     }
 
@@ -634,7 +456,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeGradientStartColor(int gradientStartColor) {
-        this.gradientStartColor = gradientStartColor;
+        this.shapeBuilder.setShapeGradientStartColor(gradientStartColor);
         return this;
     }
 
@@ -645,7 +467,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeGradientCenterColor(int gradientCenterColor) {
-        this.gradientCenterColor = gradientCenterColor;
+        this.shapeBuilder.setShapeGradientCenterColor(gradientCenterColor);
         return this;
     }
 
@@ -656,7 +478,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeGradientEndColor(int gradientEndColor) {
-        this.gradientEndColor = gradientEndColor;
+        this.shapeBuilder.setShapeGradientEndColor(gradientEndColor);
         return this;
     }
 
@@ -667,7 +489,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeGradientType(int gradientType) {
-        this.gradientType = gradientType;
+        this.shapeBuilder.setShapeGradientType(gradientType);
         return this;
     }
 
@@ -678,7 +500,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeGradientUseLevel(boolean gradientUseLevel) {
-        this.gradientUseLevel = gradientUseLevel;
+        this.shapeBuilder.setShapeGradientUseLevel(gradientUseLevel);
         return this;
     }
 
@@ -689,7 +511,7 @@ public class SuperButton extends Button {
      * @return 对象
      */
     public SuperButton setShapeUseSelector(boolean useSelector) {
-        this.useSelector = useSelector;
+        this.shapeBuilder.setShapeUseSelector(useSelector);
         return this;
     }
 
@@ -698,7 +520,7 @@ public class SuperButton extends Button {
      * 所有与shape相关的属性设置之后调用此方法才生效
      */
     public void setUseShape() {
-        init();
+        this.shapeBuilder.into(this);
     }
 
 
