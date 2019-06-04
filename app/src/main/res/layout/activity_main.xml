@@ -17,8 +17,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
                 android:gravity="center"
                 android:text="demo是最好的老师"
                 android:textColor="@color/colorAccent" />
@@ -102,8 +102,8 @@
                 android:id="@+id/super_shape"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="超级shape"
-                android:textColor="@color/white" />
+                android:text="ShapeBuilder"
+                android:textAllCaps="false" />
 
         </LinearLayout>
     </ScrollView>
