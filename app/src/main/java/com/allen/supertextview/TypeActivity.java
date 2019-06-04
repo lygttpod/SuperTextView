@@ -1,10 +1,13 @@
 package com.allen.supertextview;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 
 import com.allen.library.SuperTextView;
+import com.allen.library.utils.ShapeBuilder;
+import com.allen.supertextview.utils.DisplayUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -26,9 +29,13 @@ public class TypeActivity extends AppCompatActivity {
         switch (type) {
             case 0:
                 setContentView(R.layout.main);
-                SuperTextView superTextView = (SuperTextView) findViewById(R.id.setDiv_stv);
+                SuperTextView superTextView = findViewById(R.id.setDiv_stv);
+                SuperTextView superTextView2 = findViewById(R.id.setShape_stv);
+                SuperTextView superTextView3 = findViewById(R.id.setShape_stv2);
                 superTextView.setTopDividerLineColor(getResources().getColor(R.color.colorAccent))
                         .setBottomDividerLineColor(getResources().getColor(R.color.colorPrimary));
+                setShape1(superTextView2);
+                setShape2(superTextView3);
                 break;
             case 1:
                 setContentView(R.layout.layout1);
@@ -61,6 +68,31 @@ public class TypeActivity extends AppCompatActivity {
 
         }
 
+    }
+
+
+    private void setShape1(SuperTextView stv) {
+        stv
+                .getShapeBuilder()
+                .setShapeGradientAngle(45)
+                .setShapeGradientStartColor(getResources().getColor(R.color.colorPrimary))
+                .setShapeGradientEndColor(getResources().getColor(R.color.colorAccent))
+                .into(stv);
+    }
+
+    private void setShape2(SuperTextView stv) {
+        ShapeBuilder shapeBuilder = new ShapeBuilder();
+        shapeBuilder
+                .setShapeType(ShapeBuilder.RECTANGLE)
+                .setShapeCornersRadius(DisplayUtils.dip2px(this,25f))
+                .setShapeStrokeWidth(DisplayUtils.dip2px(this,2f))
+                .setShapeStrokeColor(Color.YELLOW)
+                .setShapeStrokeDashWidth(DisplayUtils.dip2px(this,5f))
+                .setShapeStrokeDashGap(DisplayUtils.dip2px(this,2f))
+                .setShapeGradientAngle(90)
+                .setShapeGradientStartColor(getResources().getColor(R.color.colorPrimary))
+                .setShapeGradientEndColor(getResources().getColor(R.color.colorAccent))
+                .into(stv);
     }
 
     private void setData() {

@@ -98,6 +98,13 @@
                 android:text="超级按钮"
                 android:textColor="@color/white" />
 
+            <Button
+                android:id="@+id/super_shape"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="超级shape"
+                android:textColor="@color/white" />
+
         </LinearLayout>
     </ScrollView>
 

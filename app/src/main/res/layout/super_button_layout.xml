@@ -127,8 +127,8 @@
                 android:id="@+id/super_btn1"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
                 android:text="左上圆角"
                 stv:sCornersTopLeftRadius="20dp"
                 stv:sStrokeColor="@color/colorPrimary"
@@ -150,8 +150,8 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/super_btn1"
-                android:layout_marginBottom="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
                 android:text="左下圆角"
                 stv:sCornersBottomLeftRadius="20dp"
                 stv:sStrokeColor="@color/colorPrimary"
@@ -297,32 +297,32 @@
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                stv:sGradientAngle="0"
                 stv:sGradientEndColor="@color/colorPrimary"
-                stv:sGradientOrientation="TOP_BOTTOM"
                 stv:sGradientStartColor="@color/colorAccent" />
 
             <com.allen.library.SuperButton
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                stv:sGradientAngle="45"
                 stv:sGradientEndColor="@color/colorPrimary"
-                stv:sGradientOrientation="BOTTOM_TOP"
                 stv:sGradientStartColor="@color/colorAccent" />
 
             <com.allen.library.SuperButton
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                stv:sGradientAngle="90"
                 stv:sGradientEndColor="@color/colorPrimary"
-                stv:sGradientOrientation="RIGHT_LEFT"
                 stv:sGradientStartColor="@color/colorAccent" />
 
             <com.allen.library.SuperButton
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                stv:sGradientAngle="135"
                 stv:sGradientEndColor="@color/colorPrimary"
-                stv:sGradientOrientation="LEFT_RIGHT"
                 stv:sGradientStartColor="@color/colorAccent" />
         </LinearLayout>
 

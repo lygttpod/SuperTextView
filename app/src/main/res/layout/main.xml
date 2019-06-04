@@ -18,8 +18,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
                 android:gravity="center"
                 android:text="展示几种常见的显示方式" />
 
@@ -105,6 +105,13 @@
                 stv:sLeftViewGravity="left_center"
                 stv:sRightIconRes="@drawable/arrow_right_red"
                 stv:sRightTvDrawableRight="@drawable/head_default" />
+
+            <com.allen.library.SuperTextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                stv:sCenterTextString="这里是标题"
+                stv:sLeftIconRes="@drawable/app_back_icon_3x"
+                stv:sLeftViewGravity="left_center" />
 
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
@@ -248,13 +255,26 @@
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:paddingBottom="10dp"
+                android:layout_marginBottom="10dp"
                 android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 stv:sDividerLineType="both"
                 stv:sLeftTextString="stv的高度自适应stv的高度自适应stv的高度自适应stv的高度自适应stv的高度自适应stv的高度自适应stv的高度自适应stv的高度自适应stv的高度自适应stv的高度自适应" />
 
+            <com.allen.library.SuperTextView
+                android:id="@+id/setShape_stv"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                stv:sLeftTextString="使用ShapeBuilder设置shape1" />
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/setShape_stv2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                stv:sLeftTextString="使用ShapeBuilder设置shape2" />
         </LinearLayout>
     </ScrollView>
 

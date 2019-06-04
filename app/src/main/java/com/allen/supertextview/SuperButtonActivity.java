@@ -27,7 +27,7 @@ public class SuperButtonActivity extends AppCompatActivity {
                 .setShapeSolidColor(getResources().getColor(R.color.colorAccent))
                 .setShapeStrokeColor(getResources().getColor(R.color.colorPrimary))
                 .setShapeStrokeWidth(1)
-                .setShapeSrokeDashWidth(2)
+                .setShapeStrokeDashWidth(2)
                 .setShapeStrokeDashGap(5)
                 .setTextGravity(SuperButton.TEXT_GRAVITY_RIGHT)
                 .setShapeUseSelector(true)

@@ -10,7 +10,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private Button button0, button1, button2, button3,
-            button4, button5, button6, button7,button8, list_button, click_button,super_button;
+            button4, button5, button6, button7,button8, list_button, click_button,super_button,super_shape;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         list_button = (Button) findViewById(R.id.list_button);
         click_button = (Button) findViewById(R.id.click_button);
         super_button = (Button) findViewById(R.id.super_button);
+        super_shape = (Button) findViewById(R.id.super_shape);
 
         button0.setOnClickListener(this);
         button1.setOnClickListener(this);
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         list_button.setOnClickListener(this);
         click_button.setOnClickListener(this);
         super_button.setOnClickListener(this);
+        super_shape.setOnClickListener(this);
     }
 
     @Override
@@ -103,6 +105,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.super_button:
                 intent.setClass(this, SuperButtonActivity.class);
+                startActivity(intent);
+                break;
+                case R.id.super_shape:
+                intent.setClass(this, ShapeActivity.class);
                 startActivity(intent);
                 break;
         }

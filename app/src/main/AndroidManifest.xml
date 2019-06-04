@@ -28,6 +28,7 @@
         <activity
             android:name=".SuperButtonActivity"
             android:label="SuperButton" />
+        <activity android:name=".ShapeActivity" />
 
     </application>
 
