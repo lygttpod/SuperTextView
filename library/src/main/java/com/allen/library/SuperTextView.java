@@ -7,7 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.TextUtils;
@@ -20,6 +19,8 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
+
+import com.allen.library.utils.ShapeBuilder;
 
 /**
  * Created by Allen on 2017/7/1.
@@ -297,6 +298,7 @@ public class SuperTextView extends RelativeLayout {
     private boolean mIsShowTopDivider;
     private boolean mIsShowBottomDivider;
 
+    private ShapeBuilder shapeBuilder;
 
     public SuperTextView(Context context) {
         this(context, null);
@@ -312,6 +314,7 @@ public class SuperTextView extends RelativeLayout {
         mContext = context;
         defaultSize = sp2px(context, defaultSize);
         default_Margin = dip2px(context, default_Margin);
+        shapeBuilder = new ShapeBuilder();
 
         getAttr(attrs);
         initPaint();
@@ -538,6 +541,7 @@ public class SuperTextView extends RelativeLayout {
 
         initSuperTextView();
 
+        initShape();
         initLeftIcon();
 
         switch (mRightViewType) {
@@ -555,6 +559,27 @@ public class SuperTextView extends RelativeLayout {
         initCenterTextView();
         initRightTextView();
 
+    }
+
+    private void initShape() {
+        if (useShape) {
+            shapeBuilder
+                    .setShapeType(ShapeBuilder.RECTANGLE)
+                    .setShapeCornersRadius(cornersRadius)
+                    .setShapeCornersTopLeftRadius(cornersTopLeftRadius)
+                    .setShapeCornersTopRightRadius(cornersTopRightRadius)
+                    .setShapeCornersBottomRightRadius(cornersBottomRightRadius)
+                    .setShapeCornersBottomLeftRadius(cornersBottomLeftRadius)
+                    .setShapeSolidColor(solidColor)
+                    .setShapeStrokeColor(strokeColor)
+                    .setShapeStrokeWidth(strokeWidth)
+                    .setShapeStrokeDashWidth(strokeDashWidth)
+                    .setShapeStrokeDashGap(strokeDashGap)
+                    .setShapeUseSelector(true)
+                    .setShapeSelectorNormalColor(selectorNormalColor)
+                    .setShapeSelectorPressedColor(selectorPressedColor)
+                    .into(this);
+        }
     }
 
     private void initPaint() {
@@ -636,14 +661,6 @@ public class SuperTextView extends RelativeLayout {
 
         if (mBackground_drawable != null) {
             this.setBackgroundDrawable(mBackground_drawable);
-        }
-
-        if (useShape) {
-            if (Build.VERSION.SDK_INT < 16) {
-                setBackgroundDrawable(getSelector());
-            } else {
-                setBackground(getSelector());
-            }
         }
     }
 
@@ -2414,217 +2431,15 @@ public class SuperTextView extends RelativeLayout {
     }
 
 
-    // TODO: 2017/7/10 一下是shape相关属性方法
+    // TODO: 2019/6/4 以下是获取shapeBuilder进行相关shape属性的配置
 
     /**
-     * 获取设置之后的Selector
+     * 获取shapeBuilder进行配置
      *
-     * @return stateListDrawable
+     * @return ShapeBuilder
      */
-    public StateListDrawable getSelector() {
-
-        StateListDrawable stateListDrawable = new StateListDrawable();
-
-        //注意该处的顺序，只要有一个状态与之相配，背景就会被换掉
-        //所以不要把大范围放在前面了，如果sd.addState(new[]{},normal)放在第一个的话，就没有什么效果了
-        stateListDrawable.addState(new int[]{android.R.attr.state_pressed, android.R.attr.state_enabled}, getDrawable(android.R.attr.state_pressed));
-        stateListDrawable.addState(new int[]{}, getDrawable(android.R.attr.state_enabled));
-
-        return stateListDrawable;
-    }
-
-    public GradientDrawable getDrawable(int state) {
-        gradientDrawable = new GradientDrawable();
-        gradientDrawable.setShape(GradientDrawable.RECTANGLE);
-        switch (state) {
-            case android.R.attr.state_pressed:
-                gradientDrawable.setColor(selectorPressedColor);
-                break;
-            case android.R.attr.state_enabled:
-                gradientDrawable.setColor(selectorNormalColor);
-                break;
-            default:
-                gradientDrawable.setColor(solidColor);
-        }
-        setBorder();
-        setRadius();
-
-        return gradientDrawable;
-    }
-
-
-    /**
-     * 设置边框  宽度  颜色  虚线  间隙
-     */
-    private void setBorder() {
-        gradientDrawable.setStroke(strokeWidth, strokeColor, strokeDashWidth, strokeDashGap);
-    }
-
-    /**
-     * 只有类型是矩形的时候设置圆角半径才有效
-     */
-    private void setRadius() {
-        if (cornersRadius != 0) {
-            gradientDrawable.setCornerRadius(cornersRadius);//设置圆角的半径
-        } else {
-            //1、2两个参数表示左上角，3、4表示右上角，5、6表示右下角，7、8表示左下角
-            gradientDrawable.setCornerRadii(
-                    new float[]
-                            {
-                                    cornersTopLeftRadius, cornersTopLeftRadius,
-                                    cornersTopRightRadius, cornersTopRightRadius,
-                                    cornersBottomRightRadius, cornersBottomRightRadius,
-                                    cornersBottomLeftRadius, cornersBottomLeftRadius
-                            }
-            );
-        }
-
-    }
-
-    /**
-     * 设置按下的颜色
-     *
-     * @param color 颜色
-     * @return 对象
-     */
-    public SuperTextView setShapeSelectorPressedColor(int color) {
-        this.selectorPressedColor = color;
-        return this;
-    }
-
-    /**
-     * 设置正常的颜色
-     *
-     * @param color 颜色
-     * @return 对象
-     */
-    public SuperTextView setShapeSelectorNormalColor(int color) {
-        this.selectorNormalColor = color;
-        return this;
-    }
-
-    /**
-     * 设置填充的颜色
-     *
-     * @param color 颜色
-     * @return 对象
-     */
-    public SuperTextView setShapeSolidColor(int color) {
-        this.solidColor = color;
-        return this;
-    }
-
-    /**
-     * 设置边框宽度
-     *
-     * @param strokeWidth 边框宽度值
-     * @return 对象
-     */
-    public SuperTextView setShapeStrokeWidth(int strokeWidth) {
-        this.strokeWidth = dip2px(mContext, strokeWidth);
-        return this;
-    }
-
-    /**
-     * 设置边框颜色
-     *
-     * @param strokeColor 边框颜色
-     * @return 对象
-     */
-    public SuperTextView setShapeStrokeColor(int strokeColor) {
-        this.strokeColor = strokeColor;
-        return this;
-    }
-
-    /**
-     * 设置边框虚线宽度
-     *
-     * @param strokeDashWidth 边框虚线宽度
-     * @return 对象
-     */
-    public SuperTextView setShapeSrokeDashWidth(float strokeDashWidth) {
-        this.strokeDashWidth = dip2px(mContext, strokeDashWidth);
-        return this;
-    }
-
-    /**
-     * 设置边框虚线间隙
-     *
-     * @param strokeDashGap 边框虚线间隙值
-     * @return 对象
-     */
-    public SuperTextView setShapeStrokeDashGap(float strokeDashGap) {
-        this.strokeDashGap = dip2px(mContext, strokeDashGap);
-        return this;
-    }
-
-    /**
-     * 设置圆角半径
-     *
-     * @param radius 半径
-     * @return 对象
-     */
-    public SuperTextView setShapeCornersRadius(float radius) {
-        this.cornersRadius = dip2px(mContext, radius);
-        return this;
-    }
-
-    /**
-     * 设置左上圆角半径
-     *
-     * @param radius 半径
-     * @return 对象
-     */
-    public SuperTextView setShapeCornersTopLeftRadius(float radius) {
-        this.cornersTopLeftRadius = dip2px(mContext, radius);
-        return this;
-    }
-
-    /**
-     * 设置右上圆角半径
-     *
-     * @param radius 半径
-     * @return 对象
-     */
-    public SuperTextView setShapeCornersTopRightRadius(float radius) {
-        this.cornersTopRightRadius = dip2px(mContext, radius);
-        return this;
-    }
-
-    /**
-     * 设置左下圆角半径
-     *
-     * @param radius 半径
-     * @return 对象
-     */
-    public SuperTextView setShapeCornersBottomLeftRadius(float radius) {
-        this.cornersBottomLeftRadius = dip2px(mContext, radius);
-        return this;
-    }
-
-    /**
-     * 设置右下圆角半径
-     *
-     * @param radius 半径
-     * @return 对象
-     */
-    public SuperTextView setShapeCornersBottomRightRadius(float radius) {
-        this.cornersBottomRightRadius = dip2px(mContext, radius);
-        return this;
-    }
-
-    /**
-     * 所有与shape相关的属性设置之后调用此方法才生效
-     *
-     * @return 对象
-     */
-    public SuperTextView useShape() {
-        if (Build.VERSION.SDK_INT < 16) {
-            setBackgroundDrawable(getSelector());
-        } else {
-            setBackground(getSelector());
-        }
-        return this;
+    public ShapeBuilder getShapeBuilder() {
+        return shapeBuilder;
     }
 
     /**
