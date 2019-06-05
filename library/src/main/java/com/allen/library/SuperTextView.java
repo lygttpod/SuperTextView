@@ -2373,6 +2373,42 @@ public class SuperTextView extends RelativeLayout {
         return this;
     }
 
+    public SuperTextView setLeftTextGroupClickListener(final OnLeftTextGroupClickListener leftTextGroupClickListener) {
+        if (leftTextGroupClickListener != null) {
+            leftView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    leftTextGroupClickListener.onClickListener(v);
+                }
+            });
+        }
+        return this;
+    }
+
+    public SuperTextView setCenterTextGroupClickListener(final OnCenterTextGroupClickListener centerTextGroupClickListener) {
+        if (centerTextGroupClickListener != null) {
+            centerView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    centerTextGroupClickListener.onClickListener(v);
+                }
+            });
+        }
+        return this;
+    }
+
+    public SuperTextView setRightTextGroupClickListener(final OnRightTextGroupClickListener rightTextGroupClickListener) {
+        if (rightTextGroupClickListener != null) {
+            rightView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rightTextGroupClickListener.onClickListener(v);
+                }
+            });
+        }
+        return this;
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////
     public interface OnSuperTextViewClickListener {
         void onClickListener(SuperTextView superTextView);
@@ -2428,6 +2464,18 @@ public class SuperTextView extends RelativeLayout {
 
     public interface OnCheckBoxCheckedChangeListener {
         void onCheckedChanged(CompoundButton buttonView, boolean isChecked);
+    }
+
+    public interface OnLeftTextGroupClickListener {
+        void onClickListener(View view);
+    }
+
+    public interface OnCenterTextGroupClickListener {
+        void onClickListener(View view);
+    }
+
+    public interface OnRightTextGroupClickListener {
+        void onClickListener(View view);
     }
 
 
