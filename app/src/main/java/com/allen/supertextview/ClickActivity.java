@@ -2,6 +2,7 @@ package com.allen.supertextview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -93,6 +94,21 @@ public class ClickActivity extends AppCompatActivity {
         }).setRightImageViewClickListener(new SuperTextView.OnRightImageViewClickListener() {
             @Override
             public void onClickListener(ImageView imageView) {
+            }
+        }).setLeftTextGroupClickListener(new SuperTextView.OnLeftTextGroupClickListener() {
+            @Override
+            public void onClickListener(View view) {
+                Toast.makeText(ClickActivity.this, "点击左边text区域", Toast.LENGTH_SHORT).show();
+            }
+        }).setCenterTextGroupClickListener(new SuperTextView.OnCenterTextGroupClickListener() {
+            @Override
+            public void onClickListener(View view) {
+                Toast.makeText(ClickActivity.this, "点击中间text区域", Toast.LENGTH_SHORT).show();
+            }
+        }).setRightTextGroupClickListener(new SuperTextView.OnRightTextGroupClickListener() {
+            @Override
+            public void onClickListener(View view) {
+                Toast.makeText(ClickActivity.this, "点击右边text区域", Toast.LENGTH_SHORT).show();
             }
         });
 
