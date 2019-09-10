@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 
 import com.allen.library.SuperTextView;
-import com.allen.library.utils.ShapeBuilder;
+import com.allen.library.helper.ShapeBuilder;
 import com.allen.supertextview.utils.DisplayUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
