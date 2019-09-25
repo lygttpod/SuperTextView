@@ -473,6 +473,21 @@
             <enum name="sweep" value="2" />
         </attr>
 
+        <attr name="showShadow" format="boolean" />
+
+        <attr name="shadowColor" format="color" />
+
+        <attr name="shadowLeftWidth" format="dimension" />
+        <attr name="shadowTopWidth" format="dimension" />
+        <attr name="shadowBottomWidth" format="dimension" />
+        <attr name="shadowRightWidth" format="dimension" />
+
+        <attr name="shadowCornersRadius" format="dimension" />
+        <attr name="shadowCornersTopLeftRadius" format="dimension" />
+        <attr name="shadowCornersTopRightRadius" format="dimension" />
+        <attr name="shadowCornersBottomLeftRadius" format="dimension" />
+        <attr name="shadowCornersBottomRightRadius" format="dimension" />
+
     </declare-styleable>
 
     <declare-styleable name="ShapeTextView">
@@ -502,6 +517,18 @@
         <attr name="shapeGradientUseLevel" />
         <attr name="shapeUseSelector" />
         <attr name="shapeGradientType" />
+
+        <attr name="showShadow" />
+        <attr name="shadowColor" />
+        <attr name="shadowLeftWidth" />
+        <attr name="shadowTopWidth" />
+        <attr name="shadowBottomWidth" />
+        <attr name="shadowRightWidth" />
+        <attr name="shadowCornersRadius" />
+        <attr name="shadowCornersTopLeftRadius" />
+        <attr name="shadowCornersTopRightRadius" />
+        <attr name="shadowCornersBottomLeftRadius" />
+        <attr name="shadowCornersBottomRightRadius" />
     </declare-styleable>
 
     <declare-styleable name="ShapeButton">
@@ -531,6 +558,18 @@
         <attr name="shapeGradientUseLevel" />
         <attr name="shapeUseSelector" />
         <attr name="shapeGradientType" />
+
+        <attr name="showShadow" />
+        <attr name="shadowColor" />
+        <attr name="shadowLeftWidth" />
+        <attr name="shadowTopWidth" />
+        <attr name="shadowBottomWidth" />
+        <attr name="shadowRightWidth" />
+        <attr name="shadowCornersRadius" />
+        <attr name="shadowCornersTopLeftRadius" />
+        <attr name="shadowCornersTopRightRadius" />
+        <attr name="shadowCornersBottomLeftRadius" />
+        <attr name="shadowCornersBottomRightRadius" />
     </declare-styleable>
 
     <declare-styleable name="ShapeCardView">
@@ -560,6 +599,18 @@
         <attr name="shapeGradientUseLevel" />
         <attr name="shapeUseSelector" />
         <attr name="shapeGradientType" />
+
+        <attr name="showShadow" />
+        <attr name="shadowColor" />
+        <attr name="shadowLeftWidth" />
+        <attr name="shadowTopWidth" />
+        <attr name="shadowBottomWidth" />
+        <attr name="shadowRightWidth" />
+        <attr name="shadowCornersRadius" />
+        <attr name="shadowCornersTopLeftRadius" />
+        <attr name="shadowCornersTopRightRadius" />
+        <attr name="shadowCornersBottomLeftRadius" />
+        <attr name="shadowCornersBottomRightRadius" />
     </declare-styleable>
 
     <declare-styleable name="ShapeConstraintLayout">
@@ -589,6 +640,18 @@
         <attr name="shapeGradientUseLevel" />
         <attr name="shapeUseSelector" />
         <attr name="shapeGradientType" />
+
+        <attr name="showShadow" />
+        <attr name="shadowColor" />
+        <attr name="shadowLeftWidth" />
+        <attr name="shadowTopWidth" />
+        <attr name="shadowBottomWidth" />
+        <attr name="shadowRightWidth" />
+        <attr name="shadowCornersRadius" />
+        <attr name="shadowCornersTopLeftRadius" />
+        <attr name="shadowCornersTopRightRadius" />
+        <attr name="shadowCornersBottomLeftRadius" />
+        <attr name="shadowCornersBottomRightRadius" />
     </declare-styleable>
 
     <declare-styleable name="ShapeLinearLayout">
@@ -618,6 +681,18 @@
         <attr name="shapeGradientUseLevel" />
         <attr name="shapeUseSelector" />
         <attr name="shapeGradientType" />
+
+        <attr name="showShadow" />
+        <attr name="shadowColor" />
+        <attr name="shadowLeftWidth" />
+        <attr name="shadowTopWidth" />
+        <attr name="shadowBottomWidth" />
+        <attr name="shadowRightWidth" />
+        <attr name="shadowCornersRadius" />
+        <attr name="shadowCornersTopLeftRadius" />
+        <attr name="shadowCornersTopRightRadius" />
+        <attr name="shadowCornersBottomLeftRadius" />
+        <attr name="shadowCornersBottomRightRadius" />
     </declare-styleable>
 
     <declare-styleable name="ShapeRelativeLayout">
@@ -647,6 +722,18 @@
         <attr name="shapeGradientUseLevel" />
         <attr name="shapeUseSelector" />
         <attr name="shapeGradientType" />
+
+        <attr name="showShadow" />
+        <attr name="shadowColor" />
+        <attr name="shadowLeftWidth" />
+        <attr name="shadowTopWidth" />
+        <attr name="shadowBottomWidth" />
+        <attr name="shadowRightWidth" />
+        <attr name="shadowCornersRadius" />
+        <attr name="shadowCornersTopLeftRadius" />
+        <attr name="shadowCornersTopRightRadius" />
+        <attr name="shadowCornersBottomLeftRadius" />
+        <attr name="shadowCornersBottomRightRadius" />
     </declare-styleable>
 
     <declare-styleable name="ShapeFrameLayout">
@@ -676,6 +763,18 @@
         <attr name="shapeGradientUseLevel" />
         <attr name="shapeUseSelector" />
         <attr name="shapeGradientType" />
+
+        <attr name="showShadow" />
+        <attr name="shadowColor" />
+        <attr name="shadowLeftWidth" />
+        <attr name="shadowTopWidth" />
+        <attr name="shadowBottomWidth" />
+        <attr name="shadowRightWidth" />
+        <attr name="shadowCornersRadius" />
+        <attr name="shadowCornersTopLeftRadius" />
+        <attr name="shadowCornersTopRightRadius" />
+        <attr name="shadowCornersBottomLeftRadius" />
+        <attr name="shadowCornersBottomRightRadius" />
     </declare-styleable>
 
 </resources>
