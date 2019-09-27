@@ -1,10 +1,8 @@
 package com.allen.supertextview.adapter;
 
 import android.content.Context;
-import android.widget.TextView;
 
 import com.allen.library.SuperTextView;
-import com.allen.library.shape.ShapeTextView;
 import com.allen.supertextview.R;
 import com.allen.supertextview.bean.NewsBean;
 import com.squareup.picasso.Picasso;
@@ -28,10 +26,9 @@ public class NewsAdapter extends CommonAdapter<NewsBean> {
     @Override
     protected void convert(ViewHolder holder, NewsBean newsBean, int position) {
 
-//        ((SuperTextView) holder.getView(R.id.super_tv)).setLeftTopString(newsBean.getTitle()).setLeftBottomString(newsBean.getTime());
-//        Picasso.with(mContext).load(newsBean.getImgUrl()).placeholder(R.drawable.head_default
-//        ).into(((SuperTextView) holder.getView(R.id.super_tv))
-//                .getLeftIconIV());
-        ((ShapeTextView)(holder.getView(R.id.shape_text_view))).setText(newsBean.getTitle());
+        ((SuperTextView) holder.getView(R.id.super_tv)).setLeftTopString(newsBean.getTitle()).setLeftBottomString(newsBean.getTime());
+        Picasso.with(mContext).load(newsBean.getImgUrl()).placeholder(R.drawable.head_default
+        ).into(((SuperTextView) holder.getView(R.id.super_tv))
+                .getLeftIconIV());
     }
 }

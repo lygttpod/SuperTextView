@@ -34,6 +34,15 @@ class ShadowActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
         shadow_all_radius_sb.setOnSeekBarChangeListener(this)
 
+        shape_view.shadowHelper?.let {
+            it.setShadowAllRadius(10f)
+                    .setShadowLeftWidth(20f)
+                    .setShadowTopWidth(10f)
+                    .setShadowBottomWidth(20f)
+                    .setShadowRightWidth(10f)
+                    .applyToView()
+        }
+
     }
 
     private fun setShadowColor() {

@@ -125,35 +125,6 @@
             android:gravity="center"
             android:text="下边是阴影效果的展示" />
 
-        <com.allen.library.shape.ShapeTextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="ShapeTextView实现的阴影效果"
-            shape:shadowBottomWidth="5dp"
-            shape:shadowColor="@color/colorAccent"
-            shape:shadowCornersRadius="20dp"
-            shape:shadowLeftWidth="5dp"
-            shape:shadowRightWidth="3dp"
-            shape:shadowTopWidth="3dp"
-            shape:showShadow="true" />
-
-        <com.allen.library.shape.ShapeButton
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="ShapeButton实现的阴影效果"
-            shape:shadowBottomWidth="5dp"
-            shape:shadowColor="@color/colorAccent"
-            shape:shadowCornersBottomRightRadius="20dp"
-            shape:shadowCornersTopLeftRadius="20dp"
-            shape:shadowLeftWidth="5dp"
-            shape:shadowRightWidth="3dp"
-            shape:shadowTopWidth="3dp"
-            shape:showShadow="true" />
-
         <com.allen.library.shape.ShapeFrameLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
