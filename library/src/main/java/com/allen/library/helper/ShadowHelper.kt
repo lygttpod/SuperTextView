@@ -41,9 +41,9 @@ class ShadowHelper {
     private var shadowTopWidth: Float = 0f
     private var shadowBottomWidth: Float = 0f
 
-    private var roundArcRectF: RectF = RectF()
+    private var contentCornersArcRectF: RectF = RectF()
 
-    private var roundColor: Int = Color.WHITE
+    private var contentCornersColor: Int = Color.WHITE
     private var paint: Paint = Paint()
 
     private var shadowStrokeWidth = 1f
@@ -77,6 +77,9 @@ class ShadowHelper {
     fun init(targetView: View?, attributeSetData: AttributeSetData) {
         this.attributeSetData = attributeSetData
         this.targetView = targetView
+        //设置软件渲染类型(不设置的话在列表中使用会卡顿)
+        //硬件加速详细介绍请参考 https://hencoder.com/ui-1-8/
+        targetView?.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
         initParams()
     }
 
@@ -109,7 +112,7 @@ class ShadowHelper {
 
 
     private fun initPaint() {
-        paint.color = roundColor
+        paint.color = contentCornersColor
         paint.isAntiAlias = true
         paint.strokeWidth = 0f
         paint.style = Paint.Style.FILL
@@ -167,33 +170,33 @@ class ShadowHelper {
 
     private fun setCornersPath() {
         cornersPathList.clear()
-
+        contentCornersArcRectF.setEmpty()
         if (leftTopRadius > 0) {
             leftTopCornersPath.reset()
             leftTopCornersPath.moveTo(shadowLeftWidth, shadowTopWidth)
-            roundArcRectF.set(shadowLeftWidth, shadowTopWidth, shadowLeftWidth + leftTopRadius * 2, shadowTopWidth + leftTopRadius * 2)
-            leftTopCornersPath.arcTo(roundArcRectF, 270f, -90f)
+            contentCornersArcRectF.set(shadowLeftWidth, shadowTopWidth, shadowLeftWidth + leftTopRadius * 2, shadowTopWidth + leftTopRadius * 2)
+            leftTopCornersPath.arcTo(contentCornersArcRectF, 270f, -90f)
             cornersPathList.add(leftTopCornersPath)
         }
         if (leftBottomRadius > 0) {
             leftBottomCornersPath.reset()
             leftBottomCornersPath.moveTo(shadowLeftWidth, height - shadowBottomWidth)
-            roundArcRectF.set(shadowLeftWidth, height - shadowBottomWidth - leftBottomRadius * 2, shadowLeftWidth + leftBottomRadius * 2, height - shadowBottomWidth)
-            leftBottomCornersPath.arcTo(roundArcRectF, 180f, -90f)
+            contentCornersArcRectF.set(shadowLeftWidth, height - shadowBottomWidth - leftBottomRadius * 2, shadowLeftWidth + leftBottomRadius * 2, height - shadowBottomWidth)
+            leftBottomCornersPath.arcTo(contentCornersArcRectF, 180f, -90f)
             cornersPathList.add(leftBottomCornersPath)
         }
         if (rightTopRadius > 0) {
             rightTopCornersPath.reset()
             rightTopCornersPath.moveTo(width - shadowRightWidth, shadowTopWidth)
-            roundArcRectF.set(width - shadowRightWidth - rightTopRadius * 2, shadowTopWidth, width - shadowRightWidth, shadowTopWidth + rightTopRadius * 2)
-            rightTopCornersPath.arcTo(roundArcRectF, 0f, -90f)
+            contentCornersArcRectF.set(width - shadowRightWidth - rightTopRadius * 2, shadowTopWidth, width - shadowRightWidth, shadowTopWidth + rightTopRadius * 2)
+            rightTopCornersPath.arcTo(contentCornersArcRectF, 0f, -90f)
             cornersPathList.add(rightTopCornersPath)
         }
         if (rightBottomRadius > 0) {
             rightBottomCornersPath.reset()
             rightBottomCornersPath.moveTo(width - shadowRightWidth, height - shadowBottomWidth)
-            roundArcRectF.set(width - shadowRightWidth - rightBottomRadius * 2, height - shadowBottomWidth - rightBottomRadius * 2, width - shadowRightWidth, height - shadowBottomWidth)
-            rightBottomCornersPath.arcTo(roundArcRectF, 90f, -90f)
+            contentCornersArcRectF.set(width - shadowRightWidth - rightBottomRadius * 2, height - shadowBottomWidth - rightBottomRadius * 2, width - shadowRightWidth, height - shadowBottomWidth)
+            rightBottomCornersPath.arcTo(contentCornersArcRectF, 90f, -90f)
             cornersPathList.add(rightBottomCornersPath)
         }
     }
@@ -241,7 +244,7 @@ class ShadowHelper {
      * draw content corners
      */
     private fun drawContent(canvas: Canvas) {
-        paint.color = roundColor
+        paint.color = contentCornersColor
         paint.style = Paint.Style.FILL
         paint.strokeWidth = 0f
         paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_OUT)
@@ -249,7 +252,6 @@ class ShadowHelper {
             canvas.drawPath(path, paint)
         }
         canvas.restore()
-        //TODO("调用restore就特么卡顿")
         paint.xfermode = null
     }
 
