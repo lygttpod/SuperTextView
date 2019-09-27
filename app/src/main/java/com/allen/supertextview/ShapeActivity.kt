@@ -20,12 +20,14 @@ class ShapeActivity : AppCompatActivity() {
         setContentView(R.layout.activiy_shape)
 
         shape_text_view.setOnClickListener {
-            shape_text_view.shapeBuilder.setShapeType(ShapeBuilder.RECTANGLE)
-                    .setShapeSolidColor(resources.getColor(R.color.colorAccent))
-                    .setShapeStrokeColor(resources.getColor(R.color.colorPrimary))
-                    .setShapeStrokeWidth(2)
-                    .setShapeCornersRadius(30f)
-                    .into(shape_text_view)
+            shape_text_view.shapeBuilder?.let {
+                it.setShapeType(ShapeBuilder.RECTANGLE)
+                        .setShapeSolidColor(resources.getColor(R.color.colorAccent))
+                        .setShapeStrokeColor(resources.getColor(R.color.colorPrimary))
+                        .setShapeStrokeWidth(2)
+                        .setShapeCornersRadius(30f)
+                        .into(shape_text_view)
+            }
         }
 
     }

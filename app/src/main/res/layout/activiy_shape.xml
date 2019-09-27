@@ -1,115 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:shape="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:orientation="vertical">
 
-    <com.allen.library.shape.ShapeTextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="ShapeTextView"
-        shape:shapeCornersRadius="20dp"
-        shape:shapeSolidColor="@color/colorAccent"
-        shape:shapeStrokeColor="@color/colorPrimary"
-        shape:shapeStrokeDashGap="10dp"
-        shape:shapeStrokeDashWidth="10dp"
-        shape:shapeStrokeWidth="2dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <com.allen.library.shape.ShapeButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="ShapeButton"
-        shape:shapeCornersRadius="10dp"
-        shape:shapeStrokeColor="@color/colorPrimaryDark"
-        shape:shapeStrokeWidth="1dp" />
-
-    <com.allen.library.shape.ShapeLinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        shape:shapeCornersBottomLeftRadius="25dp"
-        shape:shapeCornersTopLeftRadius="25dp"
-        shape:shapeGradientAngle="0"
-        shape:shapeGradientEndColor="@color/colorPrimary"
-        shape:shapeGradientStartColor="@color/colorAccent"
-        shape:shapeGradientType="linear">
-
-        <TextView
-            android:layout_width="wrap_content"
+        <com.allen.library.shape.ShapeTextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ShapeLinearLayout" />
-    </com.allen.library.shape.ShapeLinearLayout>
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text="ShapeTextView"
+            shape:shapeCornersRadius="20dp"
+            shape:shapeSolidColor="@color/colorAccent"
+            shape:shapeStrokeColor="@color/colorPrimary"
+            shape:shapeStrokeDashGap="10dp"
+            shape:shapeStrokeDashWidth="10dp"
+            shape:shapeStrokeWidth="2dp" />
 
-    <com.allen.library.shape.ShapeRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        shape:shapeCornersBottomRightRadius="25dp"
-        shape:shapeCornersTopRightRadius="25dp"
-        shape:shapeGradientEndColor="@color/colorPrimary"
-        shape:shapeGradientStartColor="@color/colorAccent"
-        shape:shapeGradientType="linear">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="ShapeRelativeLayout" />
-    </com.allen.library.shape.ShapeRelativeLayout>
-
-    <com.allen.library.shape.ShapeFrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        shape:shapeCornersBottomLeftRadius="25dp"
-        shape:shapeCornersTopRightRadius="25dp"
-        shape:shapeStrokeColor="@color/colorAccent"
-        shape:shapeStrokeWidth="1dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="ShapeFrameLayout" />
-    </com.allen.library.shape.ShapeFrameLayout>
-
-    <com.allen.library.shape.ShapeConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        shape:shapeCornersBottomRightRadius="25dp"
-        shape:shapeCornersTopLeftRadius="25dp"
-        shape:shapeStrokeColor="@color/colorAccent"
-        shape:shapeStrokeDashGap="2dp"
-        shape:shapeStrokeDashWidth="2dp"
-        shape:shapeStrokeWidth="1dp">
-
-        <TextView
-            android:layout_width="wrap_content"
+        <com.allen.library.shape.ShapeButton
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:text="ShapeConstraintLayout"
-            shape:layout_constraintBottom_toBottomOf="parent"
-            shape:layout_constraintLeft_toLeftOf="parent"
-            shape:layout_constraintRight_toRightOf="parent"
-            shape:layout_constraintTop_toTopOf="parent" />
-    </com.allen.library.shape.ShapeConstraintLayout>
+            android:text="ShapeButton"
+            shape:shapeCornersRadius="10dp"
+            shape:shapeStrokeColor="@color/colorPrimaryDark"
+            shape:shapeStrokeWidth="1dp" />
 
-    <com.allen.library.shape.ShapeTextView
-        android:id="@+id/shape_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="点击代码动态修改shape属性"
-        shape:shapeCornersRadius="20dp" />
+        <com.allen.library.shape.ShapeLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            shape:shapeCornersBottomLeftRadius="25dp"
+            shape:shapeCornersTopLeftRadius="25dp"
+            shape:shapeGradientAngle="0"
+            shape:shapeGradientEndColor="@color/colorPrimary"
+            shape:shapeGradientStartColor="@color/colorAccent"
+            shape:shapeGradientType="linear">
 
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ShapeLinearLayout" />
+        </com.allen.library.shape.ShapeLinearLayout>
+
+        <com.allen.library.shape.ShapeRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            shape:shapeCornersBottomRightRadius="25dp"
+            shape:shapeCornersTopRightRadius="25dp"
+            shape:shapeGradientEndColor="@color/colorPrimary"
+            shape:shapeGradientStartColor="@color/colorAccent"
+            shape:shapeGradientType="linear">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="ShapeRelativeLayout" />
+        </com.allen.library.shape.ShapeRelativeLayout>
+
+        <com.allen.library.shape.ShapeFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            shape:shapeCornersBottomLeftRadius="25dp"
+            shape:shapeCornersTopRightRadius="25dp"
+            shape:shapeStrokeColor="@color/colorAccent"
+            shape:shapeStrokeWidth="1dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="ShapeFrameLayout" />
+        </com.allen.library.shape.ShapeFrameLayout>
+
+        <com.allen.library.shape.ShapeConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            shape:shapeCornersBottomRightRadius="25dp"
+            shape:shapeCornersTopLeftRadius="25dp"
+            shape:shapeStrokeColor="@color/colorAccent"
+            shape:shapeStrokeDashGap="2dp"
+            shape:shapeStrokeDashWidth="2dp"
+            shape:shapeStrokeWidth="1dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="ShapeConstraintLayout"
+                shape:layout_constraintBottom_toBottomOf="parent"
+                shape:layout_constraintLeft_toLeftOf="parent"
+                shape:layout_constraintRight_toRightOf="parent"
+                shape:layout_constraintTop_toTopOf="parent" />
+        </com.allen.library.shape.ShapeConstraintLayout>
+
+        <com.allen.library.shape.ShapeTextView
+            android:id="@+id/shape_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="点击代码动态修改shape属性"
+            shape:shapeCornersRadius="20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="下边是阴影效果的展示" />
+
+        <com.allen.library.shape.ShapeTextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="ShapeTextView实现的阴影效果"
+            shape:shadowBottomWidth="5dp"
+            shape:shadowColor="@color/colorAccent"
+            shape:shadowCornersRadius="20dp"
+            shape:shadowLeftWidth="5dp"
+            shape:shadowRightWidth="3dp"
+            shape:shadowTopWidth="3dp"
+            shape:showShadow="true" />
+
+        <com.allen.library.shape.ShapeButton
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="ShapeButton实现的阴影效果"
+            shape:shadowBottomWidth="5dp"
+            shape:shadowColor="@color/colorAccent"
+            shape:shadowCornersBottomRightRadius="20dp"
+            shape:shadowCornersTopLeftRadius="20dp"
+            shape:shadowLeftWidth="5dp"
+            shape:shadowRightWidth="3dp"
+            shape:shadowTopWidth="3dp"
+            shape:showShadow="true" />
+
+        <com.allen.library.shape.ShapeFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            shape:shadowBottomWidth="5dp"
+            shape:shadowColor="@color/colorAccent"
+            shape:shadowCornersBottomLeftRadius="20dp"
+            shape:shadowCornersTopLeftRadius="20dp"
+            shape:shadowLeftWidth="5dp"
+            shape:shadowRightWidth="3dp"
+            shape:shadowTopWidth="3dp"
+            shape:showShadow="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="ShapeFrameLayout实现的阴影效果" />
+        </com.allen.library.shape.ShapeFrameLayout>
+
+        <com.allen.library.shape.ShapeRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            shape:shadowBottomWidth="5dp"
+            shape:shadowColor="@color/colorAccent"
+            shape:shadowCornersBottomRightRadius="20dp"
+            shape:shadowCornersTopRightRadius="20dp"
+            shape:shadowLeftWidth="5dp"
+            shape:shadowRightWidth="3dp"
+            shape:shadowTopWidth="3dp"
+            shape:showShadow="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="ShapeRelativeLayout实现的阴影效果" />
+        </com.allen.library.shape.ShapeRelativeLayout>
+
+        <com.allen.library.shape.ShapeLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            shape:shadowBottomWidth="5dp"
+            shape:shadowColor="@color/colorAccent"
+            shape:shadowLeftWidth="5dp"
+            shape:shadowRightWidth="3dp"
+            shape:shadowTopWidth="3dp"
+            shape:showShadow="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="ShapeLinearLayout实现的阴影效果" />
+        </com.allen.library.shape.ShapeLinearLayout>
+
+        <com.allen.library.shape.ShapeConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            shape:shadowBottomWidth="5dp"
+            shape:shadowColor="@color/colorAccent"
+            shape:shadowCornersRadius="8dp"
+            shape:shadowLeftWidth="5dp"
+            shape:shadowRightWidth="3dp"
+            shape:shadowTopWidth="3dp"
+            shape:shapeCornersRadius="5dp"
+            shape:showShadow="true">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:text="ShapeConstraintLayout实现的阴影效果"
+                shape:layout_constraintBottom_toBottomOf="parent"
+                shape:layout_constraintLeft_toLeftOf="parent"
+                shape:layout_constraintRight_toRightOf="parent"
+                shape:layout_constraintTop_toTopOf="parent" />
+        </com.allen.library.shape.ShapeConstraintLayout>
+    </LinearLayout>
+
+</ScrollView>

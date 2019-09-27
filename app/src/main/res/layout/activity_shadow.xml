@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <com.allen.library.shape.ShapeFrameLayout
+        android:id="@+id/shape_view"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shadowBottomWidth="10dp"
+        app:shadowColor="@color/colorAccent"
+        app:shadowCornersRadius="30dp"
+        app:shadowLeftWidth="10dp"
+        app:shadowRightWidth="5dp"
+        app:shadowTopWidth="5dp"
+        app:showShadow="true">
+
+        <TextView
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+<!--        <ImageView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:src="@drawable/icon_iv_bg" />-->
+    </com.allen.library.shape.ShapeFrameLayout>
+
+    <EditText
+        android:id="@+id/shadow_color_et"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="阴影颜色"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shape_view" />
+
+    <com.allen.library.shape.ShapeButton
+        android:id="@+id/change_shadow_color_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="修改阴影颜色"
+        app:layout_constraintBottom_toBottomOf="@+id/shadow_color_et"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/shadow_color_et"
+        app:shapeCornersRadius="15dp" />
+
+    <TextView
+        android:id="@+id/shadow_padding_left_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="阴影距离左边间距"
+        app:layout_constraintLeft_toLeftOf="@+id/shadow_color_et"
+        app:layout_constraintTop_toBottomOf="@+id/shadow_color_et" />
+
+    <SeekBar
+        android:id="@+id/shadow_padding_left_sb"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/shadow_padding_left_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shadow_padding_left_tv"
+        app:layout_constraintTop_toTopOf="@+id/shadow_padding_left_tv" />
+
+    <TextView
+        android:id="@+id/shadow_padding_top_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="阴影距离上边间距"
+        app:layout_constraintLeft_toLeftOf="@+id/shadow_color_et"
+        app:layout_constraintTop_toBottomOf="@+id/shadow_padding_left_tv" />
+
+    <SeekBar
+        android:id="@+id/shadow_padding_top_sb"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/shadow_padding_top_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shadow_padding_top_tv"
+        app:layout_constraintTop_toTopOf="@+id/shadow_padding_top_tv" />
+
+    <TextView
+        android:id="@+id/shadow_padding_right_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="阴影距离右边间距"
+        app:layout_constraintLeft_toLeftOf="@+id/shadow_color_et"
+        app:layout_constraintTop_toBottomOf="@+id/shadow_padding_top_tv" />
+
+    <SeekBar
+        android:id="@+id/shadow_padding_right_sb"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/shadow_padding_right_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shadow_padding_right_tv"
+        app:layout_constraintTop_toTopOf="@+id/shadow_padding_right_tv" />
+
+    <TextView
+        android:id="@+id/shadow_padding_bottom_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="阴影距离下边间距"
+        app:layout_constraintLeft_toLeftOf="@+id/shadow_color_et"
+        app:layout_constraintTop_toBottomOf="@+id/shadow_padding_right_tv" />
+
+    <SeekBar
+        android:id="@+id/shadow_padding_bottom_sb"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/shadow_padding_bottom_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shadow_padding_bottom_tv"
+        app:layout_constraintTop_toTopOf="@+id/shadow_padding_bottom_tv" />
+
+
+    <TextView
+        android:id="@+id/shadow_left_top_radius_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="阴影左上圆角半径"
+        app:layout_constraintLeft_toLeftOf="@+id/shadow_color_et"
+        app:layout_constraintTop_toBottomOf="@+id/shadow_padding_bottom_tv" />
+
+    <SeekBar
+        android:id="@+id/shadow_left_top_radius_sb"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/shadow_left_top_radius_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shadow_left_top_radius_tv"
+        app:layout_constraintTop_toTopOf="@+id/shadow_left_top_radius_tv" />
+
+
+    <TextView
+        android:id="@+id/shadow_left_bottom_radius_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="阴影左下圆角半径"
+        app:layout_constraintLeft_toLeftOf="@+id/shadow_color_et"
+        app:layout_constraintTop_toBottomOf="@+id/shadow_left_top_radius_tv" />
+
+    <SeekBar
+        android:id="@+id/shadow_left_bottom_radius_sb"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/shadow_left_bottom_radius_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shadow_left_bottom_radius_tv"
+        app:layout_constraintTop_toTopOf="@+id/shadow_left_bottom_radius_tv" />
+
+
+    <TextView
+        android:id="@+id/shadow_right_top_radius_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="阴影右上圆角半径"
+        app:layout_constraintLeft_toLeftOf="@+id/shadow_color_et"
+        app:layout_constraintTop_toBottomOf="@+id/shadow_left_bottom_radius_tv" />
+
+    <SeekBar
+        android:id="@+id/shadow_right_top_radius_sb"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/shadow_right_top_radius_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shadow_right_top_radius_tv"
+        app:layout_constraintTop_toTopOf="@+id/shadow_right_top_radius_tv" />
+
+
+    <TextView
+        android:id="@+id/shadow_right_bottom_radius_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="阴影右下圆角半径"
+        app:layout_constraintLeft_toLeftOf="@+id/shadow_color_et"
+        app:layout_constraintTop_toBottomOf="@+id/shadow_right_top_radius_tv" />
+
+    <SeekBar
+        android:id="@+id/shadow_right_bottom_radius_sb"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/shadow_right_bottom_radius_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shadow_right_bottom_radius_tv"
+        app:layout_constraintTop_toTopOf="@+id/shadow_right_bottom_radius_tv" />
+
+    <TextView
+        android:id="@+id/shadow_all_radius_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="阴影所有圆角半径"
+        app:layout_constraintLeft_toLeftOf="@+id/shadow_color_et"
+        app:layout_constraintTop_toBottomOf="@+id/shadow_right_bottom_radius_tv" />
+
+    <SeekBar
+        android:id="@+id/shadow_all_radius_sb"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/shadow_all_radius_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shadow_all_radius_tv"
+        app:layout_constraintTop_toTopOf="@+id/shadow_all_radius_tv" />
+
+</android.support.constraint.ConstraintLayout>
