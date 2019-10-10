@@ -67,6 +67,7 @@ class AttributeSetHelper {
 
         attributeSetData.showShadow = typedArray.getBoolean(R.styleable.ShapeView_showShadow, false)
         attributeSetData.shadowColor = typedArray.getColor(R.styleable.ShapeView_shadowColor, Color.GRAY)
+        attributeSetData.shadowColorAlpha = typedArray.getFloat(R.styleable.ShapeView_shadowColorAlpha, 0.2f)
         attributeSetData.shadowLeftWidth = typedArray.getDimensionPixelSize(R.styleable.ShapeView_shadowLeftWidth, 0).toFloat()
         attributeSetData.shadowTopWidth = typedArray.getDimensionPixelSize(R.styleable.ShapeView_shadowTopWidth, 0).toFloat()
         attributeSetData.shadowRightWidth = typedArray.getDimensionPixelSize(R.styleable.ShapeView_shadowRightWidth, 0).toFloat()

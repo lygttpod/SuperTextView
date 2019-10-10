@@ -47,6 +47,7 @@ class AttributeSetData {
     //////////阴影相关////////
     var showShadow: Boolean = false
     var shadowColor: Int = Color.GRAY
+    var shadowColorAlpha: Float = 0.2f
     var shadowLeftWidth: Float = 0f
     var shadowTopWidth: Float = 0f
     var shadowRightWidth: Float = 0f

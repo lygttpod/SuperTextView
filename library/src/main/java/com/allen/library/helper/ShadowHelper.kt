@@ -61,7 +61,7 @@ class ShadowHelper {
 
     private var shadowColor = Color.GRAY
 
-    private var shadowColorAlpha = 0
+    private var shadowColorAlpha = 0f
 
     private var shadowColorAlphaList: MutableList<Int> = mutableListOf()
 
@@ -70,9 +70,6 @@ class ShadowHelper {
 
     private var maxRadius = 0f
 
-    companion object {
-        private const val DEFAULT_SHADOW_COLOR_ALPHA = 0.2
-    }
 
     fun init(targetView: View?, attributeSetData: AttributeSetData) {
         this.attributeSetData = attributeSetData
@@ -119,9 +116,11 @@ class ShadowHelper {
     }
 
     private fun setShadowColor() {
-        shadowColorAlpha = Color.alpha(shadowColor)
-        if (shadowColorAlpha == 255) {
-            shadowColorAlpha = (DEFAULT_SHADOW_COLOR_ALPHA * 255).toInt()
+        shadowColorAlpha = attributeSetData.shadowColorAlpha
+
+        val colorAlpha = Color.alpha(shadowColor)
+        if (colorAlpha != 255) {
+            shadowColorAlpha = colorAlpha / 255f
         }
     }
 
@@ -218,7 +217,7 @@ class ShadowHelper {
             shadowColorRect.set(i + fixBorder, i + fixBorder, width - i - fixBorder, height - i - fixBorder)
             shadowColorPath.addRoundRect(shadowColorRect, shadowRadii, Path.Direction.CW)
             shadowColorPathList.add(shadowColorPath)
-            shadowColorAlphaList.add((shadowColorAlpha * i / shadowMaxWidth).toInt())
+            shadowColorAlphaList.add((shadowColorAlpha * 255 * i / shadowMaxWidth).toInt())
         }
     }
 
@@ -328,11 +327,11 @@ class ShadowHelper {
     /**
      * set the alpha component [0..1]
      */
-    fun setShadowColorAlpha(shadowColorAlphaPercent: Double): ShadowHelper {
+    fun setShadowColorAlpha(shadowColorAlphaPercent: Float): ShadowHelper {
         when {
-            shadowColorAlpha < 0 -> this.shadowColorAlpha = 0
-            shadowColorAlpha > 1 -> this.shadowColorAlpha = 255
-            else -> this.shadowColorAlpha = (shadowColorAlphaPercent * 255).toInt()
+            shadowColorAlpha < 0 -> this.shadowColorAlpha = 0f
+            shadowColorAlpha > 1 -> this.shadowColorAlpha = 1f
+            else -> this.shadowColorAlpha = shadowColorAlphaPercent
         }
         return this
     }
