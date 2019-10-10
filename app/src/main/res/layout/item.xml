@@ -11,6 +11,7 @@
         android:layout_margin="5dp"
         shape:shadowBottomWidth="5dp"
         shape:shadowColor="@color/colorAccent"
+        shape:shadowColorAlpha="0.2"
         shape:shadowCornersRadius="9dp"
         shape:shadowLeftWidth="5dp"
         shape:shadowRightWidth="3dp"

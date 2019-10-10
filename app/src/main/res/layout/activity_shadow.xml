@@ -6,13 +6,23 @@
     android:orientation="vertical"
     android:padding="20dp">
 
+    <TextView
+        android:id="@+id/tv_tip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="注意：阴影部分占布局大小"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.allen.library.shape.ShapeFrameLayout
         android:id="@+id/shape_view"
         android:layout_width="300dp"
         android:layout_height="100dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tip"
         app:shadowBottomWidth="0dp"
         app:shadowColor="@color/colorAccent"
         app:shadowCornersRadius="0dp"
@@ -64,6 +74,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:max="50"
         app:layout_constraintBottom_toBottomOf="@+id/shadow_padding_left_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/shadow_padding_left_tv"
@@ -83,6 +94,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:max="50"
         app:layout_constraintBottom_toBottomOf="@+id/shadow_padding_top_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/shadow_padding_top_tv"
@@ -102,6 +114,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:max="50"
         app:layout_constraintBottom_toBottomOf="@+id/shadow_padding_right_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/shadow_padding_right_tv"
@@ -121,6 +134,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:max="50"
         app:layout_constraintBottom_toBottomOf="@+id/shadow_padding_bottom_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/shadow_padding_bottom_tv"
