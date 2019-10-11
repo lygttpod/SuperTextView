@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.SwitchCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -249,7 +250,7 @@ public class SuperTextView extends RelativeLayout {
     private int centerSpaceHeight;//中间空间的高度
 
 
-    private Switch mSwitch;
+    private SwitchCompat mSwitch;
     private LayoutParams mSwitchParams;//右边switch
     private int rightSwitchMarginRight;
     private boolean switchIsChecked = true;
@@ -862,7 +863,7 @@ public class SuperTextView extends RelativeLayout {
      */
     private void initRightSwitch() {
         if (mSwitch == null) {
-            mSwitch = new Switch(mContext);
+            mSwitch = new SwitchCompat(mContext);
         }
         mSwitchParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
@@ -1946,7 +1947,7 @@ public class SuperTextView extends RelativeLayout {
      *
      * @return Switch
      */
-    public Switch getSwitch() {
+    public SwitchCompat getSwitch() {
         return mSwitch;
     }
 
