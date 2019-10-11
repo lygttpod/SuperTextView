@@ -89,6 +89,7 @@ class ShadowHelper {
 
     private fun initColor() {
         shadowColor = attributeSetData.shadowColor
+        shadowColorAlpha = attributeSetData.shadowColorAlpha
         setShadowColor()
     }
 
@@ -116,11 +117,9 @@ class ShadowHelper {
     }
 
     private fun setShadowColor() {
-        shadowColorAlpha = attributeSetData.shadowColorAlpha
-
         val colorAlpha = Color.alpha(shadowColor)
         if (colorAlpha != 255) {
-            shadowColorAlpha = colorAlpha / 255f
+            shadowColorAlpha = colorAlpha / 255.0f
         }
     }
 
