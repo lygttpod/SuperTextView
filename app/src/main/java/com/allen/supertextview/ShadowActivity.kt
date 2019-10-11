@@ -22,6 +22,8 @@ class ShadowActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         setContentView(R.layout.activity_shadow)
         setShadowColor()
 
+        shadow_color_alpha_sb.setOnSeekBarChangeListener(this)
+
         shadow_padding_left_sb.setOnSeekBarChangeListener(this)
         shadow_padding_top_sb.setOnSeekBarChangeListener(this)
         shadow_padding_right_sb.setOnSeekBarChangeListener(this)
@@ -62,6 +64,9 @@ class ShadowActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
         val size = progress.toFloat()
         when (seekBar.id) {
+            R.id.shadow_color_alpha_sb -> {
+                shape_view.shadowHelper?.setShadowColorAlpha(size / 100)
+            }
             R.id.shadow_padding_left_sb -> {
                 shape_view.shadowHelper?.setShadowLeftWidth(size)
             }

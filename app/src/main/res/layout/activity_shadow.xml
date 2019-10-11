@@ -25,6 +25,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_tip"
         app:shadowBottomWidth="0dp"
         app:shadowColor="@color/colorAccent"
+        app:shadowColorAlpha="0.1"
         app:shadowCornersRadius="0dp"
         app:shadowLeftWidth="0dp"
         app:shadowRightWidth="0dp"
@@ -61,13 +62,33 @@
         app:shapeCornersRadius="15dp" />
 
     <TextView
+        android:id="@+id/shadow_color_alpha_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="阴影颜色的透明度"
+        app:layout_constraintLeft_toLeftOf="@+id/shadow_color_et"
+        app:layout_constraintTop_toBottomOf="@+id/shadow_color_et" />
+
+    <SeekBar
+        android:id="@+id/shadow_color_alpha_sb"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:max="30"
+        app:layout_constraintBottom_toBottomOf="@+id/shadow_color_alpha_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shadow_color_alpha_tv"
+        app:layout_constraintTop_toTopOf="@+id/shadow_color_alpha_tv" />
+
+    <TextView
         android:id="@+id/shadow_padding_left_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="阴影距离左边间距"
         app:layout_constraintLeft_toLeftOf="@+id/shadow_color_et"
-        app:layout_constraintTop_toBottomOf="@+id/shadow_color_et" />
+        app:layout_constraintTop_toBottomOf="@+id/shadow_color_alpha_tv" />
 
     <SeekBar
         android:id="@+id/shadow_padding_left_sb"
