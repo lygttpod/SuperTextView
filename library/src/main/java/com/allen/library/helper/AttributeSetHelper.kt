@@ -17,7 +17,7 @@ import com.allen.library.data.AttributeSetData
  */
 class AttributeSetHelper {
 
-    private val defaultColor = 0x20000000
+    private val defaultColor = 0xffffff
     private val defaultSelectorColor = 0x20000000
 
     fun loadFromAttributeSet(context: Context, attrs: AttributeSet?): AttributeSetData {
