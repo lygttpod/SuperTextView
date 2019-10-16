@@ -116,7 +116,9 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="点击代码动态修改shape属性"
-            shape:shapeCornersRadius="20dp" />
+            shape:shapeCornersRadius="20dp"
+            shape:shapeStrokeColor="@color/colorAccent"
+            shape:shapeStrokeWidth="0.5dp" />
 
         <TextView
             android:layout_width="match_parent"
