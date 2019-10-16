@@ -324,7 +324,7 @@ class ShapeBuilder {
 
 
     private fun setSolidColor(gradientDrawable: GradientDrawable) {
-        if (solidColor != -1 && gradientStartColor == -1 && gradientEndColor == -1) {
+        if (gradientStartColor == -1 && gradientEndColor == -1) {
             gradientDrawable.setColor(solidColor)
         }
     }
