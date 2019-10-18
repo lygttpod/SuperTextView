@@ -22,7 +22,7 @@
 ## 2、 效果 [**Demo下载地址**]( https://fir.im/eft1)
 
 <p align="center">
-  <img src="http://osnoex6vf.bkt.clouddn.com/supertextview.jpg">
+  <img src="https://github.com/lygttpod/SuperTextView/blob/master/screen/supertextview_demo.png">
 </p>
 
 ## 3、如何使用
@@ -390,17 +390,6 @@ sRightIconShowCircle | boolean  | 右边ImageView是否显示为圆形 | 默认f
 如果觉得对你有用的话，点一下右上的星星赞一下吧!
 
 ## 代码是最好的老师，更多详细用法请查看 [demo](https://github.com/lygttpod/SuperTextView/tree/master/app):feet:
-
-
-## 打赏支持
-
-如果您觉得 SuperTextView 开源库帮你节省了大量的开发时间，请扫描下方的二维码随意打赏，要是能打赏个 10.24 :monkey_face:就太:thumbsup:了。您的支持将鼓励我继续创作:octocat:
-
-
-<p align="center">
-  <img src="http://osnoex6vf.bkt.clouddn.com/pay.png" width="450">
-</p>
-
 
 
 # License
