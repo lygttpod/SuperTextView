@@ -44,9 +44,9 @@
         compile 'com.github.lygttpod:SuperTextView:VERSION_CODE'
         }
 ```
-> ### 注意：VERSION_CODE为[![](https://jitpack.io/v/lygttpod/SuperTextView.svg)](https://jitpack.io/#lygttpod/SuperTextView)后面的数字，即最新的[release](https://github.com/lygttpod/SuperTextView/releases)版本号
+> ## 温馨提示：项目中部分代码使用kotlin写的，所以你的项目需要支持kotlin
 
-> ## 重写SuperTextView，功能更加全面，部分方法及属性有变更，1.x版本的老用户请注意
+> ### 注意：VERSION_CODE为[![](https://jitpack.io/v/lygttpod/SuperTextView.svg)](https://jitpack.io/#lygttpod/SuperTextView)后面的数字，即最新的[release](https://github.com/lygttpod/SuperTextView/releases)版本号
 
 ### 3.2、项目中如何使用
 #### 3.2.1、布局中如何使用（示例中只列出部分属性，开发者可根据具体需求使用其他属性）
