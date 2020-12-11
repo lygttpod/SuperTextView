@@ -8,5 +8,6 @@
     <item name="sRightImgId" type="id" />
     <item name="sRightCheckBoxId" type="id" />
     <item name="sRightSwitchId" type="id" />
+    <item name="sRightEditTextId" type="id" />
 
 </resources>

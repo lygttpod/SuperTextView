@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -127,6 +128,7 @@
                 stv:sRightViewType="switchBtn"
                 stv:sSwitchIsChecked="true"
                 stv:sSwitchMinWidth="40dp"
+                android:imeOptions="actionDone"
                 stv:sThumbResource="@drawable/thumb"
                 stv:sTrackResource="@drawable/track" />
 
@@ -138,6 +140,19 @@
                 stv:sCenterViewGravity="left_center"
                 stv:sLeftIconRes="@drawable/uv"
                 stv:sLeftTextString="钱包" />
+
+            <com.allen.library.SuperTextView
+                android:id="@+id/edit_stv"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                stv:sLeftTextString="文本框"
+                stv:sRightViewType="edittext"
+                stv:sEditMinWidth="200dp"
+                android:inputType="textPassword"
+                android:imeOptions="actionDone"
+                stv:sRightIconRes="@drawable/uv"
+                />
+
 
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"

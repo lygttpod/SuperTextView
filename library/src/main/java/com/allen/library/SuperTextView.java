@@ -8,13 +8,17 @@ import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
+import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.SwitchCompat;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -231,12 +235,14 @@ public class SuperTextView extends RelativeLayout {
 
     private OnSwitchCheckedChangeListener switchCheckedChangeListener;
     private OnCheckBoxCheckedChangeListener checkBoxCheckedChangeListener;
+    private OnEditTextChangeListener editTextChangeListener;
 
     private OnLeftImageViewClickListener leftImageViewClickListener;
     private OnRightImageViewClickListener rightImageViewClickListener;
 
     private static final int TYPE_CHECKBOX = 0;
     private static final int TYPE_SWITCH = 1;
+    private static final int TYPE_EDIT = 2;
 
     private static int mRightViewType;
 
@@ -254,6 +260,13 @@ public class SuperTextView extends RelativeLayout {
     private LayoutParams mSwitchParams;//右边switch
     private int rightSwitchMarginRight;
     private boolean switchIsChecked = true;
+
+    private AppCompatEditText mEditText;
+    private LayoutParams mEditParams;
+    private int mEditMinWidth;
+    private int mEditImeOption;
+    private int mEditInputType;
+    private int rightEditMarginRight;
 
     private String mTextOff;
     private String mTextOn;
@@ -495,6 +508,11 @@ public class SuperTextView extends RelativeLayout {
 
         mThumbResource = typedArray.getDrawable(R.styleable.SuperTextView_sThumbResource);
         mTrackResource = typedArray.getDrawable(R.styleable.SuperTextView_sTrackResource);
+        ////////////////////////////////////////////////////
+        rightEditMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sEditMarginRight, 0);
+        mEditMinWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sEditMinWidth, 0);
+        mEditImeOption = typedArray.getInt(R.styleable.SuperTextView_android_imeOptions, EditorInfo.IME_NULL);
+        mEditInputType = typedArray.getInt(R.styleable.SuperTextView_android_inputType, EditorInfo.TYPE_NULL);
 
         centerSpaceHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterSpaceHeight, dip2px(mContext, 5));
         ////////////////////////////////////////////////////
@@ -518,6 +536,7 @@ public class SuperTextView extends RelativeLayout {
         useShape = typedArray.getBoolean(R.styleable.SuperTextView_sUseShape, false);
         mLeftIconShowCircle = typedArray.getBoolean(R.styleable.SuperTextView_sLeftIconShowCircle, false);
         mRightIconShowCircle = typedArray.getBoolean(R.styleable.SuperTextView_sRightIconShowCircle, false);
+
 
         typedArray.recycle();
     }
@@ -556,11 +575,17 @@ public class SuperTextView extends RelativeLayout {
 
         initRightIcon();
 
+        if(mRightViewType == TYPE_EDIT){
+            initRightEditText();
+        }
+
         initLeftTextView();
         initCenterTextView();
         initRightTextView();
 
     }
+
+
 
     private void initShape() {
         if (useShape) {
@@ -909,6 +934,58 @@ public class SuperTextView extends RelativeLayout {
         });
 
         addView(mSwitch);
+    }
+
+
+    private void initRightEditText() {
+        if (mEditText == null) {
+            mEditText = new AppCompatEditText(mContext);
+            mEditText.setSingleLine(true);
+            mEditText.setGravity(Gravity.END);
+            mEditText.setImeOptions(mEditImeOption);
+            mEditText.setInputType(mEditInputType);
+        }
+        if(mEditMinWidth==0){
+            mEditParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        }else{
+            mEditText.setMinWidth(mEditMinWidth);
+            mEditParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        }
+
+
+        mEditParams.addRule(RelativeLayout.LEFT_OF, R.id.sRightImgId);
+        mEditParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
+        mEditParams.setMargins(0, 0, rightEditMarginRight, 0);
+//        mEditParams.width = 200;
+        mEditText.setId(R.id.sRightEditTextId);
+        mEditText.setLayoutParams(mEditParams);
+
+
+        mEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if (editTextChangeListener != null) {
+                    editTextChangeListener.beforeTextChanged(s,start,count,after);
+                }
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (editTextChangeListener != null) {
+                    editTextChangeListener.onTextChanged(s,start,before,count);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (editTextChangeListener != null) {
+                    editTextChangeListener.afterTextChanged(s);
+                }
+            }
+        });
+
+
+        addView(mEditText);
     }
 
     /////////////////////////////////////默认属性设置----begin/////////////////////////////////
@@ -2374,6 +2451,11 @@ public class SuperTextView extends RelativeLayout {
         return this;
     }
 
+    public SuperTextView setEditTextChangeListener(OnEditTextChangeListener editTextChangeListener) {
+        this.editTextChangeListener = editTextChangeListener;
+        return this;
+    }
+
     public SuperTextView setLeftTextGroupClickListener(final OnLeftTextGroupClickListener leftTextGroupClickListener) {
         if (leftTextGroupClickListener != null) {
             leftView.setOnClickListener(new OnClickListener() {
@@ -2465,6 +2547,15 @@ public class SuperTextView extends RelativeLayout {
 
     public interface OnCheckBoxCheckedChangeListener {
         void onCheckedChanged(CompoundButton buttonView, boolean isChecked);
+    }
+
+    public interface OnEditTextChangeListener{
+
+        void beforeTextChanged(CharSequence s, int start, int count, int after);
+
+        void onTextChanged(CharSequence s, int start, int before, int count);
+
+        void afterTextChanged(Editable s);
     }
 
     public interface OnLeftTextGroupClickListener {
