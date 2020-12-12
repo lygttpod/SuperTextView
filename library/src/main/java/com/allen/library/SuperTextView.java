@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
+
+import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.SwitchCompat;
@@ -84,6 +87,9 @@ public class SuperTextView extends RelativeLayout {
     private ColorStateList mRightTextColor;
     private ColorStateList mRightTopTextColor;
     private ColorStateList mRightBottomTextColor;
+
+    private ColorStateList mRightEditHintTextColor;
+    private ColorStateList mRightEditTextColor;
 
 
     private int mLeftTextSize;
@@ -245,7 +251,7 @@ public class SuperTextView extends RelativeLayout {
 
     private static int mRightViewType;
 
-    private CheckBox rightCheckBox;//右边checkbox
+    private AppCompatCheckBox rightCheckBox;//右边checkbox
     private LayoutParams rightCheckBoxParams;//右边checkbox
     private Drawable rightCheckBoxBg;//checkBox的背景
     private int rightCheckBoxMarginRight;//右边checkBox的右边距
@@ -266,9 +272,12 @@ public class SuperTextView extends RelativeLayout {
     private int mEditImeOption;
     private int mEditInputType;
     private int rightEditMarginRight;
+    private int editActiveLineColor = -1;
 
+    private String mEditHintText;
     private String mTextOff;
     private String mTextOn;
+
 
     private int mSwitchMinWidth;
     private int mSwitchPadding;
@@ -512,6 +521,10 @@ public class SuperTextView extends RelativeLayout {
         mEditMinWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sEditMinWidth, 0);
         mEditImeOption = typedArray.getInt(R.styleable.SuperTextView_android_imeOptions, EditorInfo.IME_NULL);
         mEditInputType = typedArray.getInt(R.styleable.SuperTextView_android_inputType, EditorInfo.TYPE_NULL);
+        mRightEditTextColor = typedArray.getColorStateList(R.styleable.SuperTextView_sEditTextColor);
+        mRightEditHintTextColor = typedArray.getColorStateList(R.styleable.SuperTextView_sEditHintTextColor);
+        mEditHintText = typedArray.getString(R.styleable.SuperTextView_sEditHint);
+        editActiveLineColor = typedArray.getColor(R.styleable.SuperTextView_sEditActiveLineColor, editActiveLineColor);
 
         centerSpaceHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterSpaceHeight, dip2px(mContext, 5));
         ////////////////////////////////////////////////////
@@ -857,7 +870,7 @@ public class SuperTextView extends RelativeLayout {
      */
     private void initRightCheckBox() {
         if (rightCheckBox == null) {
-            rightCheckBox = new CheckBox(mContext);
+            rightCheckBox = new AppCompatCheckBox(mContext);
         }
         rightCheckBoxParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 
@@ -943,7 +956,22 @@ public class SuperTextView extends RelativeLayout {
             mEditText.setGravity(Gravity.END);
             mEditText.setImeOptions(mEditImeOption);
             mEditText.setInputType(mEditInputType);
+            mEditText.setBackgroundDrawable(null);
+
+            setFocusable(true);
+            setFocusableInTouchMode(true);
         }
+
+        if(mRightEditHintTextColor!=null){
+            mEditText.setHintTextColor(mRightEditHintTextColor);
+        }
+        if(mRightEditTextColor!=null){
+            mEditText.setTextColor(mRightEditTextColor);
+        }
+        if(mEditHintText!=null){
+            mEditText.setHint(mEditHintText);
+        }
+
         if(mEditMinWidth==0){
             mEditParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         }else{
@@ -982,6 +1010,19 @@ public class SuperTextView extends RelativeLayout {
                 }
             }
         });
+
+        if(editActiveLineColor!=-1){
+            mEditText.setOnFocusChangeListener(new OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if(hasFocus){
+                        setBottomDividerLineColor(editActiveLineColor);
+                    }else{
+                        setBottomDividerLineColor(mDividerLineColor);
+                    }
+                }
+            });
+        }
 
 
         addView(mEditText);
@@ -2026,6 +2067,73 @@ public class SuperTextView extends RelativeLayout {
     public SwitchCompat getSwitch() {
         return mSwitch;
     }
+
+    /**
+     * 获取Edittext View
+     *
+     * @return AppCompatEditText
+     */
+    public AppCompatEditText getEditText(){
+        return mEditText;
+    }
+
+    public SuperTextView setEditImeOptions(int option){
+        if (mEditText != null) {
+            mEditText.setImeOptions(option);
+        }
+        return this;
+    }
+
+    public SuperTextView setEditInputType(int inputType){
+        if (mEditText != null) {
+            mEditText.setInputType(inputType);
+        }
+        return this;
+    }
+
+    public SuperTextView setEditHintText(String hintText){
+        if (mEditText != null) {
+            mEditText.setHint(hintText);
+        }
+        return this;
+    }
+
+
+    public SuperTextView setEditHintTextColor(int color){
+        if (mEditText != null) {
+            setEditHintTextColor(ColorStateList.valueOf(color));
+        }
+        return this;
+    }
+
+    public SuperTextView setEditHintTextColor(ColorStateList color){
+        if (mEditText != null) {
+            if (color == null) {
+                throw new NullPointerException();
+            }
+            mEditText.setHintTextColor(color);
+        }
+        return this;
+    }
+
+
+    public SuperTextView setEditTextColor(int color){
+        if (mEditText != null) {
+            setEditTextColor(ColorStateList.valueOf(color));
+        }
+        return this;
+    }
+
+    public SuperTextView setEditTextColor(ColorStateList color){
+        if (mEditText != null) {
+            if (color == null) {
+                throw new NullPointerException();
+            }
+            mEditText.setTextColor(color);
+        }
+        return this;
+    }
+
 
     /**
      * 设置左边tv的左侧图片

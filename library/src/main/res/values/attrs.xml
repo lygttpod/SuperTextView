@@ -233,6 +233,10 @@
         <attr name="sEditMarginRight" format="dimension" />
         <attr name="android:imeOptions"/>
         <attr name="android:inputType"/>
+        <attr name="sEditHint" format="string"/>
+        <attr name="sEditHintTextColor" format="color"/>
+        <attr name="sEditTextColor" format="color"/>
+        <attr name="sEditActiveLineColor" format="color" />
     </declare-styleable>
 
     <declare-styleable name="SuperButton">

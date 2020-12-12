@@ -128,9 +128,9 @@
                 stv:sRightViewType="switchBtn"
                 stv:sSwitchIsChecked="true"
                 stv:sSwitchMinWidth="40dp"
-                android:imeOptions="actionDone"
                 stv:sThumbResource="@drawable/thumb"
                 stv:sTrackResource="@drawable/track" />
+
 
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
@@ -148,11 +148,14 @@
                 stv:sLeftTextString="文本框"
                 stv:sRightViewType="edittext"
                 stv:sEditMinWidth="200dp"
-                android:inputType="textPassword"
+                stv:sEditHint="请输入账号"
+                stv:sEditHintTextColor="#f00"
+                stv:sEditTextColor="#0f0"
+                stv:sEditActiveLineColor="#00f"
+                android:inputType="text"
                 android:imeOptions="actionDone"
                 stv:sRightIconRes="@drawable/uv"
                 />
-
 
             <com.allen.library.SuperTextView
                 android:layout_width="match_parent"
