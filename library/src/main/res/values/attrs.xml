@@ -233,9 +233,12 @@
         <attr name="sEditMarginRight" format="dimension" />
         <attr name="android:imeOptions"/>
         <attr name="android:inputType"/>
+        <attr name="sEditCursorDrawable" format="reference"/>
+        <attr name="sEditCursorVisible" format="boolean"/>
         <attr name="sEditHint" format="string"/>
         <attr name="sEditHintTextColor" format="color"/>
         <attr name="sEditTextColor" format="color"/>
+        <attr name="sEditTextSize" format="dimension"/>
         <attr name="sEditActiveLineColor" format="color" />
     </declare-styleable>
 

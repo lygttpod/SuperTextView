@@ -151,8 +151,11 @@
                 stv:sEditHint="请输入账号"
                 stv:sEditHintTextColor="#f00"
                 stv:sEditTextColor="#0f0"
+                stv:sEditTextSize="15sp"
                 stv:sEditActiveLineColor="#00f"
-                android:inputType="text"
+                stv:sEditCursorDrawable="@drawable/edit_cursor"
+                stv:sEditCursorVisible="true"
+                android:inputType="number"
                 android:imeOptions="actionDone"
                 stv:sRightIconRes="@drawable/uv"
                 />

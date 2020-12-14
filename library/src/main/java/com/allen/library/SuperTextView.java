@@ -4,16 +4,10 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
-
-import androidx.appcompat.widget.AppCompatCheckBox;
-import androidx.appcompat.widget.AppCompatEditText;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.appcompat.widget.SwitchCompat;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -27,6 +21,13 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import androidx.annotation.DrawableRes;
+import androidx.appcompat.widget.AppCompatCheckBox;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.SwitchCompat;
+
+import com.allen.library.helper.EditTextHelper;
 import com.allen.library.helper.ShapeBuilder;
 
 /**
@@ -273,6 +274,9 @@ public class SuperTextView extends RelativeLayout {
     private int mEditInputType;
     private int rightEditMarginRight;
     private int editActiveLineColor = -1;
+    private int mEditTextSize;
+    private int mEditCusorDrawableRes;
+    private boolean mEditCusorVisible;
 
     private String mEditHintText;
     private String mTextOff;
@@ -501,30 +505,39 @@ public class SuperTextView extends RelativeLayout {
         ///////////////////////////////////////////////
         mRightViewType = typedArray.getInt(R.styleable.SuperTextView_sRightViewType, -1);
         ////////////////////////////////////////////////
-        isChecked = typedArray.getBoolean(R.styleable.SuperTextView_sIsChecked, false);
-        rightCheckBoxMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightCheckBoxMarginRight, default_Margin);
-        rightCheckBoxBg = typedArray.getDrawable(R.styleable.SuperTextView_sRightCheckBoxRes);
-        //////////////////////////////////////////////////
-        rightSwitchMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightSwitchMarginRight, default_Margin);
-        switchIsChecked = typedArray.getBoolean(R.styleable.SuperTextView_sSwitchIsChecked, false);
-        mTextOff = typedArray.getString(R.styleable.SuperTextView_sTextOff);
-        mTextOn = typedArray.getString(R.styleable.SuperTextView_sTextOn);
+        switch (mRightViewType){
+            case TYPE_CHECKBOX:{
+                isChecked = typedArray.getBoolean(R.styleable.SuperTextView_sIsChecked, false);
+                rightCheckBoxMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightCheckBoxMarginRight, default_Margin);
+                rightCheckBoxBg = typedArray.getDrawable(R.styleable.SuperTextView_sRightCheckBoxRes);
+            }break;
+            case TYPE_SWITCH:{
+                rightSwitchMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sRightSwitchMarginRight, default_Margin);
+                switchIsChecked = typedArray.getBoolean(R.styleable.SuperTextView_sSwitchIsChecked, false);
+                mTextOff = typedArray.getString(R.styleable.SuperTextView_sTextOff);
+                mTextOn = typedArray.getString(R.styleable.SuperTextView_sTextOn);
 
-        mSwitchMinWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sSwitchMinWidth, 0);
-        mSwitchPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sSwitchPadding, 0);
-        mThumbTextPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sThumbTextPadding, 0);
+                mSwitchMinWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sSwitchMinWidth, 0);
+                mSwitchPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sSwitchPadding, 0);
+                mThumbTextPadding = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sThumbTextPadding, 0);
 
-        mThumbResource = typedArray.getDrawable(R.styleable.SuperTextView_sThumbResource);
-        mTrackResource = typedArray.getDrawable(R.styleable.SuperTextView_sTrackResource);
-        ////////////////////////////////////////////////////
-        rightEditMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sEditMarginRight, 0);
-        mEditMinWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sEditMinWidth, 0);
-        mEditImeOption = typedArray.getInt(R.styleable.SuperTextView_android_imeOptions, EditorInfo.IME_NULL);
-        mEditInputType = typedArray.getInt(R.styleable.SuperTextView_android_inputType, EditorInfo.TYPE_NULL);
-        mRightEditTextColor = typedArray.getColorStateList(R.styleable.SuperTextView_sEditTextColor);
-        mRightEditHintTextColor = typedArray.getColorStateList(R.styleable.SuperTextView_sEditHintTextColor);
-        mEditHintText = typedArray.getString(R.styleable.SuperTextView_sEditHint);
-        editActiveLineColor = typedArray.getColor(R.styleable.SuperTextView_sEditActiveLineColor, editActiveLineColor);
+                mThumbResource = typedArray.getDrawable(R.styleable.SuperTextView_sThumbResource);
+                mTrackResource = typedArray.getDrawable(R.styleable.SuperTextView_sTrackResource);
+            }break;
+            case TYPE_EDIT:{
+                rightEditMarginRight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sEditMarginRight, 0);
+                mEditMinWidth = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sEditMinWidth, 0);
+                mEditImeOption = typedArray.getInt(R.styleable.SuperTextView_android_imeOptions, EditorInfo.IME_NULL);
+                mEditInputType = typedArray.getInt(R.styleable.SuperTextView_android_inputType, EditorInfo.TYPE_NULL);
+                mRightEditTextColor = typedArray.getColorStateList(R.styleable.SuperTextView_sEditTextColor);
+                mRightEditHintTextColor = typedArray.getColorStateList(R.styleable.SuperTextView_sEditHintTextColor);
+                mEditHintText = typedArray.getString(R.styleable.SuperTextView_sEditHint);
+                editActiveLineColor = typedArray.getColor(R.styleable.SuperTextView_sEditActiveLineColor, editActiveLineColor);
+                mEditTextSize = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sEditTextSize, defaultSize);
+                mEditCusorDrawableRes = typedArray.getResourceId(R.styleable.SuperTextView_sEditCursorDrawable,0);
+                mEditCusorVisible = typedArray.getBoolean(R.styleable.SuperTextView_sEditCursorVisible,true);
+            }break;
+        }
 
         centerSpaceHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterSpaceHeight, dip2px(mContext, 5));
         ////////////////////////////////////////////////////
@@ -950,6 +963,7 @@ public class SuperTextView extends RelativeLayout {
 
 
     private void initRightEditText() {
+
         if (mEditText == null) {
             mEditText = new AppCompatEditText(mContext);
             mEditText.setSingleLine(true);
@@ -957,9 +971,11 @@ public class SuperTextView extends RelativeLayout {
             mEditText.setImeOptions(mEditImeOption);
             mEditText.setInputType(mEditInputType);
             mEditText.setBackgroundDrawable(null);
-
+            mEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX,mEditTextSize);
+            mEditText.setCursorVisible(mEditCusorVisible);
             setFocusable(true);
             setFocusableInTouchMode(true);
+            EditTextHelper.INSTANCE.setCursorDrawable(mEditText,mEditCusorDrawableRes);
         }
 
         if(mRightEditHintTextColor!=null){
@@ -2130,6 +2146,21 @@ public class SuperTextView extends RelativeLayout {
                 throw new NullPointerException();
             }
             mEditText.setTextColor(color);
+        }
+        return this;
+    }
+
+    public SuperTextView setEditCursorVisible(boolean visible){
+        if (mEditText != null) {
+            mEditText.setCursorVisible(visible);
+        }
+        return this;
+    }
+
+
+    public SuperTextView setEditCursorDrawableRes(@DrawableRes int drawableRes){
+        if (mEditText != null) {
+           EditTextHelper.INSTANCE.setCursorDrawable(mEditText,drawableRes);
         }
         return this;
     }
