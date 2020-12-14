@@ -973,8 +973,8 @@ public class SuperTextView extends RelativeLayout {
             mEditText.setBackgroundDrawable(null);
             mEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX,mEditTextSize);
             mEditText.setCursorVisible(mEditCusorVisible);
-            setFocusable(true);
-            setFocusableInTouchMode(true);
+            //setFocusable(true);
+            //setFocusableInTouchMode(true);
             EditTextHelper.INSTANCE.setCursorDrawable(mEditText,mEditCusorDrawableRes);
         }
 
@@ -999,10 +999,12 @@ public class SuperTextView extends RelativeLayout {
         mEditParams.addRule(RelativeLayout.LEFT_OF, R.id.sRightImgId);
         mEditParams.addRule(RelativeLayout.CENTER_VERTICAL, TRUE);
         mEditParams.setMargins(0, 0, rightEditMarginRight, 0);
-//        mEditParams.width = 200;
         mEditText.setId(R.id.sRightEditTextId);
         mEditText.setLayoutParams(mEditParams);
 
+        addView(mEditText);
+        //setFocusable(false);
+        //setFocusableInTouchMode(false);
 
         mEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -1027,6 +1029,8 @@ public class SuperTextView extends RelativeLayout {
             }
         });
 
+
+
         if(editActiveLineColor!=-1){
             mEditText.setOnFocusChangeListener(new OnFocusChangeListener() {
                 @Override
@@ -1041,7 +1045,7 @@ public class SuperTextView extends RelativeLayout {
         }
 
 
-        addView(mEditText);
+
     }
 
     /////////////////////////////////////默认属性设置----begin/////////////////////////////////
