@@ -926,9 +926,11 @@ public class SuperTextView extends RelativeLayout {
         mSwitch.setChecked(switchIsChecked);
         if (!TextUtils.isEmpty(mTextOff)) {
             mSwitch.setTextOff(mTextOff);
+            mSwitch.setShowText(true);
         }
         if (!TextUtils.isEmpty(mTextOn)) {
             mSwitch.setTextOn(mTextOn);
+            mSwitch.setShowText(true);
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
