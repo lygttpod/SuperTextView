@@ -1,7 +1,7 @@
 package com.allen.library.shape
 
 import android.content.Context
-import android.support.v7.widget.AppCompatTextView
+import androidx.appcompat.widget.AppCompatTextView
 import android.util.AttributeSet
 import com.allen.library.data.AttributeSetData
 import com.allen.library.helper.AttributeSetHelper

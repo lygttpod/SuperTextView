@@ -167,6 +167,7 @@
         <attr name="sRightViewType" format="enum">
             <enum name="checkbox" value="0" />
             <enum name="switchBtn" value="1" />
+            <enum name="edittext" value="2" />
         </attr>
 
         <attr name="sRightCheckBoxRes" format="reference" />
@@ -227,6 +228,18 @@
         </attr>
         <attr name="sLeftIconShowCircle" format="boolean" />
         <attr name="sRightIconShowCircle" format="boolean" />
+
+        <attr name="sEditMinWidth" format="dimension"/>
+        <attr name="sEditMarginRight" format="dimension" />
+        <attr name="android:imeOptions"/>
+        <attr name="android:inputType"/>
+        <attr name="sEditCursorDrawable" format="reference"/>
+        <attr name="sEditCursorVisible" format="boolean"/>
+        <attr name="sEditHint" format="string"/>
+        <attr name="sEditHintTextColor" format="color"/>
+        <attr name="sEditTextColor" format="color"/>
+        <attr name="sEditTextSize" format="dimension"/>
+        <attr name="sEditActiveLineColor" format="color" />
     </declare-styleable>
 
     <declare-styleable name="SuperButton">

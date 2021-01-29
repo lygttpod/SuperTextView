@@ -2,7 +2,7 @@ package com.allen.library.shape
 
 import android.content.Context
 import android.graphics.Canvas
-import android.support.constraint.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import android.util.AttributeSet
 import com.allen.library.data.AttributeSetData
 import com.allen.library.helper.AttributeSetHelper
