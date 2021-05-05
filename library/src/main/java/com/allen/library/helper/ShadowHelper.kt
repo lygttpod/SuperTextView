@@ -136,7 +136,9 @@ class ShadowHelper {
     }
 
     private fun setShadowWidthAndContentPadding() {
-        targetView?.setPadding(shadowLeftWidth.toInt(), shadowTopWidth.toInt(), shadowRightWidth.toInt(), shadowBottomWidth.toInt())
+        targetView?.post{
+            targetView?.setPadding(shadowLeftWidth.toInt(), shadowTopWidth.toInt(), shadowRightWidth.toInt(), shadowBottomWidth.toInt())
+        }
         shadowMaxWidth = listOf(shadowLeftWidth, shadowRightWidth, shadowTopWidth, shadowBottomWidth).max()
                 ?: 0f
         maxRadius = (height - shadowTopWidth - shadowBottomWidth) / 2
