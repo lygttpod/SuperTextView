@@ -541,8 +541,8 @@ public class SuperTextView extends RelativeLayout {
 
         centerSpaceHeight = typedArray.getDimensionPixelSize(R.styleable.SuperTextView_sCenterSpaceHeight, dip2px(mContext, 5));
         ////////////////////////////////////////////////////
-        selectorPressedColor = typedArray.getColor(R.styleable.SuperTextView_sShapeSelectorPressedColor, defaultShapeColor);
-        selectorNormalColor = typedArray.getColor(R.styleable.SuperTextView_sShapeSelectorNormalColor, defaultShapeColor);
+        selectorPressedColor = typedArray.getColor(R.styleable.SuperTextView_sShapeSelectorPressedColor, -1);
+        selectorNormalColor = typedArray.getColor(R.styleable.SuperTextView_sShapeSelectorNormalColor, -1);
 
         solidColor = typedArray.getColor(R.styleable.SuperTextView_sShapeSolidColor, defaultShapeColor);
 
@@ -626,7 +626,7 @@ public class SuperTextView extends RelativeLayout {
                     .setShapeStrokeWidth(strokeWidth)
                     .setShapeStrokeDashWidth(strokeDashWidth)
                     .setShapeStrokeDashGap(strokeDashGap)
-                    .setShapeUseSelector(true)
+                    .setShapeUseSelector(selectorNormalColor != -1 || selectorPressedColor != -1)
                     .setShapeSelectorNormalColor(selectorNormalColor)
                     .setShapeSelectorPressedColor(selectorPressedColor)
                     .into(this);
