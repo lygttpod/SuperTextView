@@ -3,6 +3,7 @@ package com.allen.supertextview
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.allen.library.helper.ShapeBuilder
+import com.allen.library.helper.ShapeType
 import kotlinx.android.synthetic.main.activiy_shape.*
 
 /**
@@ -21,7 +22,7 @@ class ShapeActivity : AppCompatActivity() {
 
         shape_text_view.setOnClickListener {
             shape_text_view.shapeBuilder?.let {
-                it.setShapeType(ShapeBuilder.RECTANGLE)
+                it.setShapeType(ShapeType.RECTANGLE)
                         .setShapeSolidColor(resources.getColor(R.color.colorAccent))
                         .setShapeStrokeColor(resources.getColor(R.color.colorPrimary))
                         .setShapeStrokeWidth(2)
@@ -39,7 +40,7 @@ class ShapeActivity : AppCompatActivity() {
      */
     private val normalShape: ShapeBuilder
         get() = ShapeBuilder()
-                .setShapeType(ShapeBuilder.RECTANGLE)
+                .setShapeType(ShapeType.RECTANGLE)
                 .setShapeSolidColor(resources.getColor(R.color.colorAccent))
                 .setShapeStrokeColor(resources.getColor(R.color.colorPrimary))
                 .setShapeStrokeWidth(2)

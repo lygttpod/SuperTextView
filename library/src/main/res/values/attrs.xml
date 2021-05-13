@@ -469,7 +469,17 @@
         <attr name="shapeSizeWidth" format="dimension" />
         <attr name="shapeSizeHeight" format="dimension" />
 
-        <attr name="shapeGradientAngle" format="float" />
+        <attr name="shapeGradientAngle" format="enum" >
+            <enum name="left_right" value="0" />
+            <enum name="bl_tr" value="45" />
+            <enum name="bottom_top" value="90" />
+            <enum name="br_tl" value="135" />
+            <enum name="right_left" value="180" />
+            <enum name="tr_bl" value="225" />
+            <enum name="top_bottom" value="270" />
+            <enum name="tl_br" value="315" />
+        </attr>
+
         <attr name="shapeGradientCenterX" format="dimension" />
         <attr name="shapeGradientCenterY" format="dimension" />
         <attr name="shapeGradientGradientRadius" format="dimension" />

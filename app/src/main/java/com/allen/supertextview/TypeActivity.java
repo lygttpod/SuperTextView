@@ -6,7 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.Gravity;
 
 import com.allen.library.SuperTextView;
+import com.allen.library.helper.ShapeGradientAngle;
 import com.allen.library.helper.ShapeBuilder;
+import com.allen.library.helper.ShapeGradientType;
+import com.allen.library.helper.ShapeType;
+import com.allen.library.shape.ShapeLinearLayout;
 import com.allen.supertextview.utils.DisplayUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
@@ -74,7 +78,7 @@ public class TypeActivity extends AppCompatActivity {
     private void setShape1(SuperTextView stv) {
         stv
                 .getShapeBuilder()
-                .setShapeGradientAngle(45)
+                .setShapeGradientAngle(ShapeGradientAngle.TL_BR)
                 .setShapeGradientStartColor(getResources().getColor(R.color.colorPrimary))
                 .setShapeGradientEndColor(getResources().getColor(R.color.colorAccent))
                 .into(stv);
@@ -83,13 +87,13 @@ public class TypeActivity extends AppCompatActivity {
     private void setShape2(SuperTextView stv) {
         ShapeBuilder shapeBuilder = new ShapeBuilder();
         shapeBuilder
-                .setShapeType(ShapeBuilder.RECTANGLE)
+                .setShapeType(ShapeType.RECTANGLE)
                 .setShapeCornersRadius(DisplayUtils.dip2px(this,25f))
                 .setShapeStrokeWidth(DisplayUtils.dip2px(this,2f))
                 .setShapeStrokeColor(Color.YELLOW)
                 .setShapeStrokeDashWidth(DisplayUtils.dip2px(this,5f))
                 .setShapeStrokeDashGap(DisplayUtils.dip2px(this,2f))
-                .setShapeGradientAngle(90)
+                .setShapeGradientAngle(ShapeGradientAngle.TR_BL)
                 .setShapeGradientStartColor(getResources().getColor(R.color.colorPrimary))
                 .setShapeGradientEndColor(getResources().getColor(R.color.colorAccent))
                 .into(stv);

@@ -313,7 +313,6 @@
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                stv:sGradientAngle="90"
                 stv:sGradientEndColor="@color/colorPrimary"
                 stv:sGradientStartColor="@color/colorAccent" />
 

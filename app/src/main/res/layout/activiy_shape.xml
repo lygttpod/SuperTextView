@@ -41,10 +41,10 @@
             android:gravity="center"
             shape:shapeCornersBottomLeftRadius="25dp"
             shape:shapeCornersTopLeftRadius="25dp"
-            shape:shapeGradientAngle="0"
+            shape:shapeGradientAngle="left_right"
+            shape:shapeGradientCenterColor="@color/gray"
             shape:shapeGradientEndColor="@color/colorPrimary"
-            shape:shapeGradientStartColor="@color/colorAccent"
-            shape:shapeGradientType="linear">
+            shape:shapeGradientStartColor="@color/colorAccent">
 
             <TextView
                 android:layout_width="wrap_content"

@@ -7,14 +7,21 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.util.AttributeSet;
 import android.view.Gravity;
 
+import com.allen.library.helper.ShapeGradientAngle;
 import com.allen.library.helper.ShapeBuilder;
+import com.allen.library.helper.ShapeGradientType;
+import com.allen.library.helper.ShapeType;
 
 /**
  * Created by Allen on 2017/7/6.
  * <p>
  * 超级按钮  实现shape所有的属性
+ *
+ * @deprecated Use {ShapeButton} instead.
+ *
  */
 
+@Deprecated
 public class SuperButton extends AppCompatButton {
 
     private Context mContext;
@@ -162,7 +169,7 @@ public class SuperButton extends AppCompatButton {
         setClickable(true);
         shapeBuilder = new ShapeBuilder();
         shapeBuilder
-                .setShapeType(shapeType)
+                .setShapeType(ShapeType.fromValue(shapeType))
                 .setShapeCornersRadius(cornersRadius)
                 .setShapeCornersTopLeftRadius(cornersTopLeftRadius)
                 .setShapeCornersTopRightRadius(cornersTopRightRadius)
@@ -179,8 +186,8 @@ public class SuperButton extends AppCompatButton {
                 .setShapeSelectorDisableColor(selectorDisableColor)
                 .setShapeSizeWidth(sizeWidth)
                 .setShapeSizeHeight(sizeHeight)
-                .setShapeGradientType(gradientType)
-                .setShapeGradientAngle(gradientAngle)
+                .setShapeGradientType(ShapeGradientType.fromValue(gradientType))
+                .setShapeGradientAngle(ShapeGradientAngle.fromValue(gradientAngle))
                 .setShapeGradientUseLevel(gradientUseLevel)
                 .setShapeGradientCenterX(gradientCenterX)
                 .setShapeGradientCenterY(gradientCenterY)
@@ -412,7 +419,7 @@ public class SuperButton extends AppCompatButton {
      * @return 对象
      */
     public SuperButton setShapeGradientAngle(int gradientAngle) {
-        this.shapeBuilder.setShapeGradientAngle(gradientAngle);
+        this.shapeBuilder.setShapeGradientAngle(ShapeGradientAngle.fromValue(gradientAngle));
         return this;
     }
 
@@ -488,7 +495,7 @@ public class SuperButton extends AppCompatButton {
      * @param gradientType 类型
      * @return 对象
      */
-    public SuperButton setShapeGradientType(int gradientType) {
+    public SuperButton setShapeGradientType(ShapeGradientType gradientType) {
         this.shapeBuilder.setShapeGradientType(gradientType);
         return this;
     }

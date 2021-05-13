@@ -4,8 +4,8 @@ import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.StateListDrawable
 import android.os.Build
-import androidx.core.view.ViewCompat
 import android.view.View
+import androidx.core.view.ViewCompat
 import com.allen.library.data.AttributeSetData
 
 /**
@@ -16,43 +16,58 @@ import com.allen.library.data.AttributeSetData
  * desc    : shape构造器
 </pre> *
  */
-class ShapeBuilder {
+
+enum class ShapeType(val value: Int) {
+    RECTANGLE(0),
+    OVAL(1),
+    LINE(2),
+    RING(3);
 
     companion object {
-
-        /**
-         * shape的样式
-         */
-        const val RECTANGLE = 0
-        const val OVAL = 1
-        const val LINE = 2
-        const val RING = 3
-
-        /**
-         * <gradient android:angle="integer" android:centerX="integer" android:centerY="integer" android:centerColor="integer" android:endColor="color" android:gradientRadius="integer" android:startColor="color" android:type=["linear" |></gradient> "radial" | "sweep"]
-         * android:useLevel=["true" | "false"] />
-         * 参数对应关系
-         */
-
-        //渐变色的显示方式
-        const val TOP_BOTTOM = 0
-        const val TR_BL = 1
-        const val RIGHT_LEFT = 2
-        const val BR_TL = 3
-        const val BOTTOM_TOP = 4
-        const val BL_TR = 5
-        const val LEFT_RIGHT = 6
-        const val TL_BR = 7
-
-        const val LINEAR = 0
-        const val RADIAL = 1
-        const val SWEEP = 2
+        @JvmStatic
+        fun fromValue(value: Int): ShapeType {
+            return values().find { it.value == value } ?: RECTANGLE
+        }
     }
+}
+
+enum class ShapeGradientAngle(val value: Int) {
+    LEFT_RIGHT(0),
+    BL_TR(45),
+    BOTTOM_TOP(90),
+    BR_TL(135),
+    RIGHT_LEFT(180),
+    TR_BL(225),
+    TOP_BOTTOM(270),
+    TL_BR(315);
+
+    companion object {
+        @JvmStatic
+        fun fromValue(value: Int): ShapeGradientAngle {
+            return values().find { it.value == value } ?: LEFT_RIGHT
+        }
+    }
+}
+
+enum class ShapeGradientType(val value: Int) {
+    LINEAR(0),
+    RADIAL(1),
+    SWEEP(2);
+
+    companion object {
+        @JvmStatic
+        fun fromValue(value: Int): ShapeGradientType {
+            return values().find { it.value == value } ?: LINEAR
+        }
+    }
+}
+
+class ShapeBuilder {
 
     /**
      * android:shape=["rectangle" | "oval" | "line" | "ring"]
      */
-    private var shapeType = -1
+    private var shapeType: ShapeType = ShapeType.RECTANGLE
 
     /**
      * <solid android:color="color"></solid>
@@ -76,7 +91,10 @@ class ShapeBuilder {
     private var cornersBottomLeftRadius = 0.0f
     private var cornersBottomRightRadius = 0.0f
 
-    private var gradientAngle = -1
+    /**
+     * <gradient android:angle="45"/>
+     */
+    private var shapeGradientAngle: ShapeGradientAngle = ShapeGradientAngle.LEFT_RIGHT
     private var gradientCenterX: Int = 0
     private var gradientCenterY: Int = 0
     private var gradientGradientRadius: Int = 0
@@ -85,8 +103,14 @@ class ShapeBuilder {
     private var gradientCenterColor = -1
     private var gradientEndColor = -1
 
-    private var gradientType: Int = 0
+    /**
+     * <gradient android:type=["radial" | "linear" | "sweep"] />
+     */
+    private var gradientType: ShapeGradientType = ShapeGradientType.LINEAR
 
+    /**
+     * <gradient android:useLevel="false" />
+     */
     private var gradientUseLevel: Boolean = false
 
     /**
@@ -116,9 +140,7 @@ class ShapeBuilder {
 
     private var useSelector: Boolean = false
 
-    private var targetView: View? = null
-
-    fun setShapeType(shapeType: Int): ShapeBuilder {
+    fun setShapeType(shapeType: ShapeType): ShapeBuilder {
         this.shapeType = shapeType
         return this
     }
@@ -203,8 +225,8 @@ class ShapeBuilder {
         return this
     }
 
-    fun setShapeGradientAngle(gradientAngle: Int): ShapeBuilder {
-        this.gradientAngle = gradientAngle
+    fun setShapeGradientAngle(shapeGradientAngle: ShapeGradientAngle): ShapeBuilder {
+        this.shapeGradientAngle = shapeGradientAngle
         return this
     }
 
@@ -238,7 +260,7 @@ class ShapeBuilder {
         return this
     }
 
-    fun setShapeGradientType(gradientType: Int): ShapeBuilder {
+    fun setShapeGradientType(gradientType: ShapeGradientType): ShapeBuilder {
         this.gradientType = gradientType
         return this
     }
@@ -250,7 +272,7 @@ class ShapeBuilder {
 
 
     fun init(targetView: View, attributeSetData: AttributeSetData) {
-        setShapeType(attributeSetData.shapeType)
+        setShapeType(ShapeType.fromValue(attributeSetData.shapeType))
         setShapeCornersRadius(attributeSetData.cornersRadius)
         setShapeCornersTopLeftRadius(attributeSetData.cornersTopLeftRadius)
         setShapeCornersTopRightRadius(attributeSetData.cornersTopRightRadius)
@@ -267,8 +289,8 @@ class ShapeBuilder {
         setShapeSelectorDisableColor(attributeSetData.selectorDisableColor)
         setShapeSizeWidth(attributeSetData.sizeWidth)
         setShapeSizeHeight(attributeSetData.sizeHeight)
-        setShapeGradientType(attributeSetData.gradientType)
-        setShapeGradientAngle(attributeSetData.gradientAngle)
+        setShapeGradientType(ShapeGradientType.fromValue(attributeSetData.gradientType))
+        setShapeGradientAngle(ShapeGradientAngle.fromValue(attributeSetData.gradientAngle))
         setShapeGradientGradientRadius(attributeSetData.gradientGradientRadius)
         setShapeGradientUseLevel(attributeSetData.gradientUseLevel)
         setShapeGradientCenterX(attributeSetData.gradientCenterX)
@@ -280,13 +302,11 @@ class ShapeBuilder {
     }
 
     private fun setShapeType(gradientDrawable: GradientDrawable) {
-        if (shapeType != -1) {
-            when (shapeType) {
-                RECTANGLE -> gradientDrawable.shape = GradientDrawable.RECTANGLE
-                OVAL -> gradientDrawable.shape = GradientDrawable.OVAL
-                LINE -> gradientDrawable.shape = GradientDrawable.LINE
-                RING -> gradientDrawable.shape = GradientDrawable.RING
-            }
+        when (shapeType) {
+            ShapeType.RECTANGLE -> gradientDrawable.shape = GradientDrawable.RECTANGLE
+            ShapeType.OVAL -> gradientDrawable.shape = GradientDrawable.OVAL
+            ShapeType.LINE -> gradientDrawable.shape = GradientDrawable.LINE
+            ShapeType.RING -> gradientDrawable.shape = GradientDrawable.RING
         }
     }
 
@@ -310,7 +330,7 @@ class ShapeBuilder {
      * 只有类型是矩形的时候设置圆角半径才有效
      */
     private fun setRadius(gradientDrawable: GradientDrawable) {
-        if (shapeType == RECTANGLE) {
+        if (shapeType == ShapeType.RECTANGLE) {
             if (cornersRadius != 0f) {
                 gradientDrawable.cornerRadius = cornersRadius
             } else {
@@ -359,17 +379,15 @@ class ShapeBuilder {
                     gradientDrawable.colors = intArrayOf(gradientStartColor, gradientCenterColor, gradientEndColor)
                 }
                 when (gradientType) {
-                    LINEAR -> {
+                    ShapeGradientType.LINEAR -> {
                         gradientDrawable.gradientType = GradientDrawable.LINEAR_GRADIENT
-                        if (gradientAngle != -1) {
-                            gradientDrawable.orientation = getGradientOrientationByAngle(gradientAngle)
-                        }
+                        gradientDrawable.orientation = getGradientOrientationByAngle(shapeGradientAngle)
                     }
-                    RADIAL -> {
+                    ShapeGradientType.RADIAL -> {
                         gradientDrawable.gradientType = GradientDrawable.RADIAL_GRADIENT
                         gradientDrawable.gradientRadius = gradientGradientRadius.toFloat()
                     }
-                    SWEEP -> gradientDrawable.gradientType = GradientDrawable.SWEEP_GRADIENT
+                    ShapeGradientType.SWEEP -> gradientDrawable.gradientType = GradientDrawable.SWEEP_GRADIENT
                 }
                 if (gradientCenterX != 0 || gradientCenterY != 0) {
                     gradientDrawable.setGradientCenter(gradientCenterX.toFloat(), gradientCenterY.toFloat())
@@ -383,21 +401,19 @@ class ShapeBuilder {
     /**
      * 设置颜色渐变类型
      *
-     * @param gradientAngle gradientAngle
+     * @param shapeGradientAngle gradientAngle
      * @return Orientation
      */
-    private fun getGradientOrientationByAngle(gradientAngle: Int): GradientDrawable.Orientation? {
-        return when (gradientAngle) {
-            0 -> GradientDrawable.Orientation.LEFT_RIGHT
-            45 -> GradientDrawable.Orientation.BL_TR
-            90 -> GradientDrawable.Orientation.BOTTOM_TOP
-            135 -> GradientDrawable.Orientation.BR_TL
-            180 -> GradientDrawable.Orientation.RIGHT_LEFT
-            225 -> GradientDrawable.Orientation.TR_BL
-            270 -> GradientDrawable.Orientation.TOP_BOTTOM
-            315 -> GradientDrawable.Orientation.TL_BR
-            360 -> GradientDrawable.Orientation.LEFT_RIGHT
-            else -> GradientDrawable.Orientation.LEFT_RIGHT
+    private fun getGradientOrientationByAngle(shapeGradientAngle: ShapeGradientAngle): GradientDrawable.Orientation {
+        return when (shapeGradientAngle) {
+            ShapeGradientAngle.LEFT_RIGHT -> GradientDrawable.Orientation.LEFT_RIGHT
+            ShapeGradientAngle.BL_TR -> GradientDrawable.Orientation.BL_TR
+            ShapeGradientAngle.BOTTOM_TOP -> GradientDrawable.Orientation.BOTTOM_TOP
+            ShapeGradientAngle.BR_TL -> GradientDrawable.Orientation.BR_TL
+            ShapeGradientAngle.RIGHT_LEFT -> GradientDrawable.Orientation.RIGHT_LEFT
+            ShapeGradientAngle.TR_BL -> GradientDrawable.Orientation.TR_BL
+            ShapeGradientAngle.TOP_BOTTOM -> GradientDrawable.Orientation.TOP_BOTTOM
+            ShapeGradientAngle.TL_BR -> GradientDrawable.Orientation.TL_BR
         }
     }
 

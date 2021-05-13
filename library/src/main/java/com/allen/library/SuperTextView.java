@@ -29,6 +29,7 @@ import androidx.appcompat.widget.SwitchCompat;
 
 import com.allen.library.helper.EditTextHelper;
 import com.allen.library.helper.ShapeBuilder;
+import com.allen.library.helper.ShapeType;
 
 /**
  * Created by Allen on 2017/7/1.
@@ -615,7 +616,7 @@ public class SuperTextView extends RelativeLayout {
     private void initShape() {
         if (useShape) {
             shapeBuilder
-                    .setShapeType(ShapeBuilder.RECTANGLE)
+                    .setShapeType(ShapeType.RECTANGLE)
                     .setShapeCornersRadius(cornersRadius)
                     .setShapeCornersTopLeftRadius(cornersTopLeftRadius)
                     .setShapeCornersTopRightRadius(cornersTopRightRadius)

@@ -94,9 +94,8 @@
                 android:id="@+id/super_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
-                android:text="超级按钮"
-                android:textColor="@color/white" />
+                android:textAllCaps="false"
+                android:text="超级按钮(即将废弃，使用ShapeButton替代)" />
 
             <Button
                 android:id="@+id/super_shape"
