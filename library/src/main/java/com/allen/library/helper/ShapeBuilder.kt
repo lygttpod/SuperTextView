@@ -387,18 +387,18 @@ class ShapeBuilder {
      * @return Orientation
      */
     private fun getGradientOrientationByAngle(gradientAngle: Int): GradientDrawable.Orientation? {
-        var orientation: GradientDrawable.Orientation? = null
-        when (gradientAngle) {
-            0 -> orientation = GradientDrawable.Orientation.LEFT_RIGHT
-            45 -> orientation = GradientDrawable.Orientation.BL_TR
-            90 -> orientation = GradientDrawable.Orientation.BOTTOM_TOP
-            135 -> orientation = GradientDrawable.Orientation.BR_TL
-            180 -> orientation = GradientDrawable.Orientation.RIGHT_LEFT
-            225 -> orientation = GradientDrawable.Orientation.TR_BL
-            270 -> orientation = GradientDrawable.Orientation.TOP_BOTTOM
-            315 -> orientation = GradientDrawable.Orientation.TL_BR
+        return when (gradientAngle) {
+            0 -> GradientDrawable.Orientation.LEFT_RIGHT
+            45 -> GradientDrawable.Orientation.BL_TR
+            90 -> GradientDrawable.Orientation.BOTTOM_TOP
+            135 -> GradientDrawable.Orientation.BR_TL
+            180 -> GradientDrawable.Orientation.RIGHT_LEFT
+            225 -> GradientDrawable.Orientation.TR_BL
+            270 -> GradientDrawable.Orientation.TOP_BOTTOM
+            315 -> GradientDrawable.Orientation.TL_BR
+            360 -> GradientDrawable.Orientation.LEFT_RIGHT
+            else -> GradientDrawable.Orientation.LEFT_RIGHT
         }
-        return orientation
     }
 
     /**
