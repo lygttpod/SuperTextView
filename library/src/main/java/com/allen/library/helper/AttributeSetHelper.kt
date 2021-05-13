@@ -51,8 +51,8 @@ class AttributeSetHelper {
         attributeSetData.sizeHeight = typedArray.getDimensionPixelSize(R.styleable.ShapeView_shapeSizeHeight, dip2px(context, 48f))
 
         attributeSetData.gradientAngle = typedArray.getFloat(R.styleable.ShapeView_shapeGradientAngle, -1f).toInt()
-        attributeSetData.gradientCenterX = typedArray.getDimensionPixelSize(R.styleable.ShapeView_shapeGradientCenterX, 0)
-        attributeSetData.gradientCenterY = typedArray.getDimensionPixelSize(R.styleable.ShapeView_shapeGradientCenterY, 0)
+        attributeSetData.gradientCenterX = typedArray.getFloat(R.styleable.ShapeView_shapeGradientCenterX, 0f)
+        attributeSetData.gradientCenterY = typedArray.getFloat(R.styleable.ShapeView_shapeGradientCenterY, 0f)
         attributeSetData.gradientGradientRadius = typedArray.getDimensionPixelSize(R.styleable.ShapeView_shapeGradientGradientRadius, 0)
 
         attributeSetData.gradientStartColor = typedArray.getColor(R.styleable.ShapeView_shapeGradientStartColor, -1)

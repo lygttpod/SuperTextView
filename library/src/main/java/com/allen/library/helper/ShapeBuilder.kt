@@ -95,8 +95,8 @@ class ShapeBuilder {
      * <gradient android:angle="45"/>
      */
     private var shapeGradientAngle: ShapeGradientAngle = ShapeGradientAngle.LEFT_RIGHT
-    private var gradientCenterX: Int = 0
-    private var gradientCenterY: Int = 0
+    private var gradientCenterX: Float = 0f
+    private var gradientCenterY: Float = 0f
     private var gradientGradientRadius: Int = 0
 
     private var gradientStartColor = -1
@@ -230,12 +230,12 @@ class ShapeBuilder {
         return this
     }
 
-    fun setShapeGradientCenterX(gradientCenterX: Int): ShapeBuilder {
+    fun setShapeGradientCenterX(gradientCenterX: Float): ShapeBuilder {
         this.gradientCenterX = gradientCenterX
         return this
     }
 
-    fun setShapeGradientCenterY(gradientCenterY: Int): ShapeBuilder {
+    fun setShapeGradientCenterY(gradientCenterY: Float): ShapeBuilder {
         this.gradientCenterY = gradientCenterY
         return this
     }
@@ -389,8 +389,8 @@ class ShapeBuilder {
                     }
                     ShapeGradientType.SWEEP -> gradientDrawable.gradientType = GradientDrawable.SWEEP_GRADIENT
                 }
-                if (gradientCenterX != 0 || gradientCenterY != 0) {
-                    gradientDrawable.setGradientCenter(gradientCenterX.toFloat(), gradientCenterY.toFloat())
+                if (gradientCenterX != 0f || gradientCenterY != 0f) {
+                    gradientDrawable.setGradientCenter(gradientCenterX, gradientCenterY)
                 }
                 gradientDrawable.useLevel = gradientUseLevel
             }

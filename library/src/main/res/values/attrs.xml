@@ -280,8 +280,8 @@
         <attr name="sSizeHeight" format="dimension" />
 
         <attr name="sGradientAngle" format="float" />
-        <attr name="sGradientCenterX" format="dimension" />
-        <attr name="sGradientCenterY" format="dimension" />
+        <attr name="sGradientCenterX" format="float" />
+        <attr name="sGradientCenterY" format="float" />
         <attr name="sGradientGradientRadius" format="dimension" />
         <attr name="sGradientStartColor" format="color" />
         <attr name="sGradientCenterColor" format="color" />
@@ -480,8 +480,8 @@
             <enum name="tl_br" value="315" />
         </attr>
 
-        <attr name="shapeGradientCenterX" format="dimension" />
-        <attr name="shapeGradientCenterY" format="dimension" />
+        <attr name="shapeGradientCenterX" format="float" />
+        <attr name="shapeGradientCenterY" format="float" />
         <attr name="shapeGradientGradientRadius" format="dimension" />
         <attr name="shapeGradientStartColor" format="color" />
         <attr name="shapeGradientCenterColor" format="color" />

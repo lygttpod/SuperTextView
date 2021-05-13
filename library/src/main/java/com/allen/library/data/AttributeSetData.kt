@@ -26,8 +26,8 @@ class AttributeSetData {
     var cornersBottomRightRadius = 0.0f
 
     var gradientAngle = -1
-    var gradientCenterX: Int = 0
-    var gradientCenterY: Int = 0
+    var gradientCenterX: Float = 0f
+    var gradientCenterY: Float = 0f
     var gradientGradientRadius: Int = 0
     var gradientStartColor = -1
     var gradientCenterColor = -1

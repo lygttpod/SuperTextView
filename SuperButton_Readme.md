@@ -100,8 +100,8 @@ sSizeWidth | dimension  | shape的SizeWidth | 默认0dp
 sSizeHeight | dimension  | shape的SizeHeight | 默认0dp
 sGradientOrientation | enum  | 设置渐变类型<br>TOP_BOTTOM<br>TR_BL<br>RIGHT_LEFT<br>BR_TL<br>BOTTOM_TOP<br>BL_TR<br>LEFT_RIGHT<br>TL_BR | 默认rectangle
 sGradientType | enum  | 设置渐变类型<br>linear<br>radial<br>sweep | 默认rectangle
-sGradientCenterX | dimension  | shape的CenterX | 默认0dp
-sGradientCenterY | dimension  | shape的CenterY | 默认0dp
+sGradientCenterX | float  | shape的CenterX | 默认0f
+sGradientCenterY | float  | shape的CenterY | 默认0f
 sGradientGradientRadius | dimension  | shape的GradientRadius | 默认0dp
 sGradientStartColor | color  | shape的StartColor |
 sGradientCenterColor | color  | shape的CenterColor |

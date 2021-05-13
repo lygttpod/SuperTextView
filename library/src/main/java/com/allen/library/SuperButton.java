@@ -50,8 +50,8 @@ public class SuperButton extends AppCompatButton {
     private int sizeHeight;
 
     private int gradientAngle;
-    private int gradientCenterX;
-    private int gradientCenterY;
+    private float gradientCenterX;
+    private float gradientCenterY;
     private int gradientGradientRadius;
 
     private int gradientStartColor;
@@ -149,8 +149,8 @@ public class SuperButton extends AppCompatButton {
         sizeHeight = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sSizeHeight, dip2px(mContext, 48));
 
         gradientAngle = (int) typedArray.getFloat(R.styleable.SuperButton_sGradientAngle, -1);
-        gradientCenterX = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sGradientCenterX, 0);
-        gradientCenterY = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sGradientCenterY, 0);
+        gradientCenterX = typedArray.getFloat(R.styleable.SuperButton_sGradientCenterX, 0f);
+        gradientCenterY = typedArray.getFloat(R.styleable.SuperButton_sGradientCenterY, 0f);
         gradientGradientRadius = typedArray.getDimensionPixelSize(R.styleable.SuperButton_sGradientGradientRadius, 0);
 
         gradientStartColor = typedArray.getColor(R.styleable.SuperButton_sGradientStartColor, -1);
@@ -429,7 +429,7 @@ public class SuperButton extends AppCompatButton {
      * @param gradientCenterX 中心x
      * @return 对象
      */
-    public SuperButton setShapeGradientCenterX(int gradientCenterX) {
+    public SuperButton setShapeGradientCenterX(float gradientCenterX) {
         this.shapeBuilder.setShapeGradientCenterX(gradientCenterX);
         return this;
     }
@@ -440,7 +440,7 @@ public class SuperButton extends AppCompatButton {
      * @param gradientCenterY 中心y
      * @return 对象
      */
-    public SuperButton setShapeGradientCenterY(int gradientCenterY) {
+    public SuperButton setShapeGradientCenterY(float gradientCenterY) {
         this.shapeBuilder.setShapeGradientCenterY(gradientCenterY);
         return this;
     }
