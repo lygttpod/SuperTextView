@@ -85,6 +85,7 @@ class ShadowHelper {
         initRadius()
         initShadowWidth()
         initPaint()
+        setContentPadding()
     }
 
     private fun initColor() {
@@ -136,10 +137,14 @@ class ShadowHelper {
     }
 
     private fun setShadowWidthAndContentPadding() {
-        targetView?.setPadding(shadowLeftWidth.toInt(), shadowTopWidth.toInt(), shadowRightWidth.toInt(), shadowBottomWidth.toInt())
+        setContentPadding()
         shadowMaxWidth = listOf(shadowLeftWidth, shadowRightWidth, shadowTopWidth, shadowBottomWidth).max()
                 ?: 0f
         maxRadius = (height - shadowTopWidth - shadowBottomWidth) / 2
+    }
+
+    private fun setContentPadding() {
+        targetView?.setPadding(shadowLeftWidth.toInt(), shadowTopWidth.toInt(), shadowRightWidth.toInt(), shadowBottomWidth.toInt())
     }
 
     private fun setRadius() {
