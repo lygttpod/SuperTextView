@@ -319,15 +319,15 @@ sCenterViewMarginLeft | dimension  | 中间view的MarginLeft | 默认10dp
 sCenterViewMarginRight | dimension  | 中间view的MarginRight | 默认10dp
 sRightViewMarginLeft | dimension  | 右边view的MarginLeft | 默认10dp
 sRightViewMarginRight | dimension  | 右边view的MarginRight | 默认10dp
-sLeftTextIsBold | boolean  | 左边文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
-sLeftTopTextIsBold | boolean  | 左上文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
-sLeftBottomTextIsBold | boolean  | 左下文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
-sCenterTextIsBold | boolean  | 中间文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
-sCenterTopTextIsBold | boolean  | 中上文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
-sCenterBottomTextIsBold | boolean  | 中下文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
-sRightTextIsBold | boolean  | 右边文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
-sRightTopTextIsBold | boolean  | 右上文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
-sRightBottomTextIsBold | boolean  | 右下文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
+sLeftTextIsBold(移除) | boolean  | 左边文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
+sLeftTopTextIsBold(移除) | boolean  | 左上文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
+sLeftBottomTextIsBold(移除) | boolean  | 左下文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
+sCenterTextIsBold(移除) | boolean  | 中间文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
+sCenterTopTextIsBold(移除) | boolean  | 中上文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
+sCenterBottomTextIsBold(移除) | boolean  | 中下文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
+sRightTextIsBold(移除) | boolean  | 右边文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
+sRightTopTextIsBold(移除) | boolean  | 右上文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
+sRightBottomTextIsBold(移除) | boolean  | 右下文字是否加粗 | 默认false（暂时去除此属性改为代码动态配置）
 sLeftIconRes | reference  | 左边图片资源  可以用来显示网络图片或者本地
 sRightIconRes | reference  | 右边图片资源  可以用来显示网络图片或者本地
 sLeftIconWidth | dimension  | 左边图片资源的宽度  用于固定图片大小的时候使用
